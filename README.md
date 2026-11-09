@@ -9,3 +9,4 @@ fase 3 será preservado em seu repositório original.
 O projeto está em planejamento; as funcionalidades abaixo ainda serão implementadas.
 
 - [Plano de execução e análise do feedback da fase 3](PLANO_DESENVOLVIMENTO.md)
+- [Escopo, cenários e critérios de aceite](docs/escopo-e-aceite.md)

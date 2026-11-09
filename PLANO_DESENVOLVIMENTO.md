@@ -113,6 +113,10 @@ Não é necessário hospedar toda a aplicação na nuvem para demonstrar integra
 
 Conclusão: especificação em `docs/escopo-e-aceite.md`, sem requisitos sem cenário.
 
+Definição documental realizada em [Escopo e aceite](docs/escopo-e-aceite.md).
+Prazo, recursos, acesso Azure e fontes de dados permanecem pendentes conforme
+o registro do documento; a extração seletiva pode prosseguir.
+
 ### Etapa 1 — Extrair a base útil da fase 3
 
 - Registrar a revisão de origem e inspecionar acoplamentos e testes relacionados.
@@ -242,6 +246,8 @@ móvel não entram no caminho crítico.
 - [x] Análise estática inicial da base da fase 3.
 - [x] Análise do feedback e plano de reaproveitamento.
 - [x] Registro deste plano no repositório da fase 4.
-- [ ] Execução das etapas 0–8.
+- [x] Etapa 0: definição documental de escopo, cenários e critérios de aceite.
+- [ ] Etapa 0: confirmação de prazo, recursos e acesso Azure.
+- [ ] Execução das etapas 1–8.
 
 Nenhum componente da fase 3 foi copiado ou modificado na elaboração deste plano.

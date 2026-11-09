@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "monitoramento-clinico-fiap"
+version = "0.1.0"
+description = "Academic multimodal monitoring prototype — FIAP Phase 4"
+readme = "README.md"
+requires-python = ">=3.12,<3.15"
+license = "LicenseRef-Proprietary"
+dependencies = ["pydantic>=2.10,<3"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3,<10", "ruff>=0.6,<1", "mypy>=1.11,<2"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "--strict-config --strict-markers"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "UP"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+packages = ["monitoramento_clinico"]
+mypy_path = "src"

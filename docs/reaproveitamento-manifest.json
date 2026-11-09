@@ -1,0 +1,48 @@
+{
+  "repository": "https://github.com/caiodesigner/challenge-fiap-fase-3",
+  "commit": "66f0a07544202f8dd241b41edb79d12962d5f5ea",
+  "source": "local working tree; hashes identify exact content",
+  "files": [
+    {
+      "source": "src/assistente_medico/data/anonymization.py",
+      "source_sha256": "81cbfd3da88cd3562956090812bc7d465f1b931ef1557f7abbca9c240f2a67f2",
+      "matches_commit_content": true,
+      "target": "src/monitoramento_clinico/data/anonymization.py",
+      "target_sha256": "81cbfd3da88cd3562956090812bc7d465f1b931ef1557f7abbca9c240f2a67f2"
+    },
+    {
+      "source": "src/assistente_medico/audit/recorder.py",
+      "source_sha256": "5539382cf796bf3fb47263a0e4b6246cab8beced571a01755bf572f55ddd4503",
+      "matches_commit_content": true,
+      "target": "src/monitoramento_clinico/audit/recorder.py",
+      "target_sha256": "ea694c9db6a7fe83d6f952948ca1621dd10c3ba0a92e4c98c867296d6c4739ca"
+    },
+    {
+      "source": "src/assistente_medico/repositories/clinical.py",
+      "source_sha256": "9559a4108f417770326973e371013d9b25a191a4cc6f914e46bb6a0c5d59d12c",
+      "matches_commit_content": true,
+      "target": "src/monitoramento_clinico/repositories/clinical.py",
+      "target_sha256": "9559a4108f417770326973e371013d9b25a191a4cc6f914e46bb6a0c5d59d12c"
+    },
+    {
+      "source": "data/database/schema.sql",
+      "source_sha256": "0666ae1e6463ddaa85b062b7dd817365db4a22cb79b347ba7218adb97b218ea7",
+      "matches_commit_content": true,
+      "target": "data/database/schema.sql",
+      "target_sha256": "e132dcd451e0a9809f82f87f1b01ff3b4466a36f812f0441f07ae8c1ad7ce0bf"
+    },
+    {
+      "source": "tests/data/test_anonymization.py",
+      "source_sha256": "2627b0386c5b0e700af6bfab67787729c15b71bcfc8f774559c4fdf216ba1a85",
+      "matches_commit_content": true,
+      "target": "tests/test_anonymization.py",
+      "target_sha256": "a51760b6407702eb4fcdd96fc41ba6b6d9475b30c226abbf290243bbe4a206b3"
+    }
+  ],
+  "preservation_check": {
+    "git_status_unchanged": true,
+    "commit_unchanged": true,
+    "inspected_source_hashes_unchanged": true,
+    "initial_git_status_sha256": "c71be585d1b718029479d8e8cd4256a11614cec193584bb0f8f39ad223d1809f"
+  }
+}

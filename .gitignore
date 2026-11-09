@@ -9,3 +9,18 @@
 # Arquivos do sistema
 .DS_Store
 Thumbs.db
+
+# Ambiente, ferramentas e saídas locais
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+coverage.xml
+build/
+dist/
+outputs/
+*.db

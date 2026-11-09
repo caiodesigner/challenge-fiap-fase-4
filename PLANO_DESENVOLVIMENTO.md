@@ -248,6 +248,8 @@ móvel não entram no caminho crítico.
 - [x] Registro deste plano no repositório da fase 4.
 - [x] Etapa 0: definição documental de escopo, cenários e critérios de aceite.
 - [ ] Etapa 0: confirmação de prazo, recursos e acesso Azure.
-- [ ] Execução das etapas 1–8.
+- [x] Etapa 1: extração seletiva da base e validação local; origem em `docs/reaproveitamento-fase-3.md`.
+- [ ] Execução das etapas 2–8.
 
-Nenhum componente da fase 3 foi copiado ou modificado na elaboração deste plano.
+Na elaboração inicial do plano não houve cópia de componentes. Na Etapa 1,
+os componentes úteis foram extraídos para a fase 4; a fase 3 permanece preservada.

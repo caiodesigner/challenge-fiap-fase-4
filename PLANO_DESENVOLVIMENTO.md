@@ -249,7 +249,9 @@ móvel não entram no caminho crítico.
 - [x] Etapa 0: definição documental de escopo, cenários e critérios de aceite.
 - [ ] Etapa 0: confirmação de prazo, recursos e acesso Azure.
 - [x] Etapa 1: extração seletiva da base e validação local; origem em `docs/reaproveitamento-fase-3.md`.
-- [ ] Execução das etapas 2–8.
+- [x] Etapa 2: contratos, schemas, fixtures e partições funcionais; subconjunto BIDMC para ingestão.
+- [ ] Etapa 2: incorporar fala/vídeo e congelar teste independente; ver `docs/dados-e-avaliacao.md`.
+- [ ] Execução das etapas 3–8.
 
 Na elaboração inicial do plano não houve cópia de componentes. Na Etapa 1,
 os componentes úteis foram extraídos para a fase 4; a fase 3 permanece preservada.

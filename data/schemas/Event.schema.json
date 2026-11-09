@@ -1,0 +1,114 @@
+{
+  "$defs": {
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "minLength": 1,
+          "title": "Source Id",
+          "type": "string"
+        },
+        "modality": {
+          "enum": [
+            "vitals",
+            "prescription",
+            "video",
+            "movement",
+            "audio",
+            "text"
+          ],
+          "title": "Modality",
+          "type": "string"
+        },
+        "start_seconds": {
+          "minimum": 0,
+          "title": "Start Seconds",
+          "type": "number"
+        },
+        "end_seconds": {
+          "minimum": 0,
+          "title": "End Seconds",
+          "type": "number"
+        },
+        "description": {
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "modality",
+        "start_seconds",
+        "end_seconds",
+        "description"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "event_id": {
+      "minLength": 1,
+      "title": "Event Id",
+      "type": "string"
+    },
+    "patient_id": {
+      "minLength": 1,
+      "title": "Patient Id",
+      "type": "string"
+    },
+    "session_id": {
+      "minLength": 1,
+      "title": "Session Id",
+      "type": "string"
+    },
+    "event_type": {
+      "minLength": 1,
+      "title": "Event Type",
+      "type": "string"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "title": "Occurred At",
+      "type": "string"
+    },
+    "ended_at": {
+      "format": "date-time",
+      "title": "Ended At",
+      "type": "string"
+    },
+    "processed_at": {
+      "format": "date-time",
+      "title": "Processed At",
+      "type": "string"
+    },
+    "detector_version": {
+      "minLength": 1,
+      "title": "Detector Version",
+      "type": "string"
+    },
+    "evidence": {
+      "items": {
+        "$ref": "#/$defs/Evidence"
+      },
+      "minItems": 1,
+      "title": "Evidence",
+      "type": "array"
+    }
+  },
+  "required": [
+    "event_id",
+    "patient_id",
+    "session_id",
+    "event_type",
+    "occurred_at",
+    "ended_at",
+    "processed_at",
+    "detector_version",
+    "evidence"
+  ],
+  "title": "Event",
+  "type": "object"
+}

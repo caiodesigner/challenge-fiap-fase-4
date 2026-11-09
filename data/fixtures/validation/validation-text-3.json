@@ -1,0 +1,7 @@
+{
+  "patient_id": "PAT-SYN-002",
+  "session_id": "SESSION-002",
+  "representation": "synthetic_fixture",
+  "transcript": "Não estou com falta de ar.",
+  "origin": "scripted_text_not_azure_transcription"
+}

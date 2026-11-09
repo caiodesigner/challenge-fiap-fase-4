@@ -1,0 +1,81 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "asset_id": {
+      "minLength": 1,
+      "title": "Asset Id",
+      "type": "string"
+    },
+    "patient_id": {
+      "minLength": 1,
+      "title": "Patient Id",
+      "type": "string"
+    },
+    "session_id": {
+      "minLength": 1,
+      "title": "Session Id",
+      "type": "string"
+    },
+    "modality": {
+      "enum": [
+        "audio",
+        "video"
+      ],
+      "title": "Modality",
+      "type": "string"
+    },
+    "path": {
+      "minLength": 1,
+      "title": "Path",
+      "type": "string"
+    },
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Sha256",
+      "type": "string"
+    },
+    "duration_seconds": {
+      "exclusiveMinimum": 0,
+      "title": "Duration Seconds",
+      "type": "number"
+    },
+    "content_kind": {
+      "enum": [
+        "technical_synthetic",
+        "staged",
+        "external"
+      ],
+      "title": "Content Kind",
+      "type": "string"
+    },
+    "source_group": {
+      "minLength": 1,
+      "title": "Source Group",
+      "type": "string"
+    },
+    "consent_or_license": {
+      "minLength": 1,
+      "title": "Consent Or License",
+      "type": "string"
+    },
+    "cloud_upload_allowed": {
+      "default": false,
+      "title": "Cloud Upload Allowed",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "asset_id",
+    "patient_id",
+    "session_id",
+    "modality",
+    "path",
+    "sha256",
+    "duration_seconds",
+    "content_kind",
+    "source_group",
+    "consent_or_license"
+  ],
+  "title": "MediaAsset",
+  "type": "object"
+}

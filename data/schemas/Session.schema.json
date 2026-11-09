@@ -1,0 +1,33 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "session_id": {
+      "minLength": 1,
+      "title": "Session Id",
+      "type": "string"
+    },
+    "patient_id": {
+      "minLength": 1,
+      "title": "Patient Id",
+      "type": "string"
+    },
+    "started_at": {
+      "format": "date-time",
+      "title": "Started At",
+      "type": "string"
+    },
+    "ended_at": {
+      "format": "date-time",
+      "title": "Ended At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "session_id",
+    "patient_id",
+    "started_at",
+    "ended_at"
+  ],
+  "title": "Session",
+  "type": "object"
+}

@@ -1,0 +1,7 @@
+{
+  "patient_id": "PAT-SYN-001",
+  "session_id": "SESSION-001",
+  "representation": "synthetic_fixture",
+  "transcript": "Estou confortável.",
+  "origin": "scripted_text_not_azure_transcription"
+}

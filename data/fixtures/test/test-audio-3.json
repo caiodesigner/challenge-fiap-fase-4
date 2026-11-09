@@ -1,0 +1,127 @@
+{
+  "patient_id": "PAT-SYN-003",
+  "session_id": "SESSION-003",
+  "representation": "synthetic_energy_envelope_not_voice",
+  "samples": [
+    {
+      "second": 0,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    },
+    {
+      "second": 1,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    },
+    {
+      "second": 2,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    },
+    {
+      "second": 3,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    },
+    {
+      "second": 4,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    },
+    {
+      "second": 5,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    },
+    {
+      "second": 6,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    },
+    {
+      "second": 7,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    },
+    {
+      "second": 8,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    },
+    {
+      "second": 9,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    },
+    {
+      "second": 10,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    },
+    {
+      "second": 11,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    },
+    {
+      "second": 12,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    },
+    {
+      "second": 13,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    },
+    {
+      "second": 14,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    },
+    {
+      "second": 15,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    },
+    {
+      "second": 16,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    },
+    {
+      "second": 17,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    },
+    {
+      "second": 18,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    },
+    {
+      "second": 19,
+      "left": 0,
+      "right": 0,
+      "visible": true
+    }
+  ]
+}

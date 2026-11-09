@@ -1,0 +1,136 @@
+{
+  "$defs": {
+    "ReferenceLabel": {
+      "additionalProperties": false,
+      "properties": {
+        "event_type": {
+          "minLength": 1,
+          "title": "Event Type",
+          "type": "string"
+        },
+        "start_seconds": {
+          "minimum": 0,
+          "title": "Start Seconds",
+          "type": "number"
+        },
+        "end_seconds": {
+          "minimum": 0,
+          "title": "End Seconds",
+          "type": "number"
+        },
+        "basis": {
+          "enum": [
+            "synthetic_rule",
+            "manual_annotation"
+          ],
+          "title": "Basis",
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "start_seconds",
+        "end_seconds",
+        "basis"
+      ],
+      "title": "ReferenceLabel",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "case_id": {
+      "minLength": 1,
+      "title": "Case Id",
+      "type": "string"
+    },
+    "scenario_id": {
+      "minLength": 1,
+      "title": "Scenario Id",
+      "type": "string"
+    },
+    "patient_id": {
+      "minLength": 1,
+      "title": "Patient Id",
+      "type": "string"
+    },
+    "session_id": {
+      "minLength": 1,
+      "title": "Session Id",
+      "type": "string"
+    },
+    "source_group": {
+      "minLength": 1,
+      "title": "Source Group",
+      "type": "string"
+    },
+    "split": {
+      "enum": [
+        "development",
+        "validation",
+        "test"
+      ],
+      "title": "Split",
+      "type": "string"
+    },
+    "modality": {
+      "enum": [
+        "vitals",
+        "prescription",
+        "video",
+        "movement",
+        "audio",
+        "text"
+      ],
+      "title": "Modality",
+      "type": "string"
+    },
+    "path": {
+      "minLength": 1,
+      "title": "Path",
+      "type": "string"
+    },
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Sha256",
+      "type": "string"
+    },
+    "input_status": {
+      "enum": [
+        "valid",
+        "invalid",
+        "insufficient"
+      ],
+      "title": "Input Status",
+      "type": "string"
+    },
+    "expected_outcome": {
+      "minLength": 1,
+      "title": "Expected Outcome",
+      "type": "string"
+    },
+    "labels": {
+      "items": {
+        "$ref": "#/$defs/ReferenceLabel"
+      },
+      "title": "Labels",
+      "type": "array"
+    }
+  },
+  "required": [
+    "case_id",
+    "scenario_id",
+    "patient_id",
+    "session_id",
+    "source_group",
+    "split",
+    "modality",
+    "path",
+    "sha256",
+    "input_status",
+    "expected_outcome",
+    "labels"
+  ],
+  "title": "EvaluationCase",
+  "type": "object"
+}

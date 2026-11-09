@@ -1,4 +1,4 @@
-.PHONY: install check test
+.PHONY: install check test data validate schemas
 PYTHON ?= python3
 VENV_PYTHON := .venv/bin/python
 
@@ -14,3 +14,15 @@ check:
 	$(VENV_PYTHON) -m ruff format --check .
 	$(VENV_PYTHON) -m mypy
 	$(VENV_PYTHON) -m pytest
+	$(VENV_PYTHON) -m monitoramento_clinico.data validate
+	$(VENV_PYTHON) scripts/prepare_bidmc.py validate
+
+data:
+	$(VENV_PYTHON) -m monitoramento_clinico.data generate
+
+validate:
+	$(VENV_PYTHON) -m monitoramento_clinico.data validate
+	$(VENV_PYTHON) scripts/prepare_bidmc.py validate
+
+schemas:
+	$(VENV_PYTHON) -m monitoramento_clinico.data schemas --root data/schemas

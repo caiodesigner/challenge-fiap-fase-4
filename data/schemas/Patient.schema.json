@@ -1,0 +1,28 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "patient_id": {
+      "pattern": "^PAT-SYN-\\d{3}$",
+      "title": "Patient Id",
+      "type": "string"
+    },
+    "age_years": {
+      "maximum": 120,
+      "minimum": 18,
+      "title": "Age Years",
+      "type": "integer"
+    },
+    "synthetic": {
+      "const": true,
+      "default": true,
+      "title": "Synthetic",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "patient_id",
+    "age_years"
+  ],
+  "title": "Patient",
+  "type": "object"
+}

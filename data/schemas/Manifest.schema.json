@@ -1,0 +1,348 @@
+{
+  "$defs": {
+    "EvaluationCase": {
+      "additionalProperties": false,
+      "properties": {
+        "case_id": {
+          "minLength": 1,
+          "title": "Case Id",
+          "type": "string"
+        },
+        "scenario_id": {
+          "minLength": 1,
+          "title": "Scenario Id",
+          "type": "string"
+        },
+        "patient_id": {
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "session_id": {
+          "minLength": 1,
+          "title": "Session Id",
+          "type": "string"
+        },
+        "source_group": {
+          "minLength": 1,
+          "title": "Source Group",
+          "type": "string"
+        },
+        "split": {
+          "enum": [
+            "development",
+            "validation",
+            "test"
+          ],
+          "title": "Split",
+          "type": "string"
+        },
+        "modality": {
+          "enum": [
+            "vitals",
+            "prescription",
+            "video",
+            "movement",
+            "audio",
+            "text"
+          ],
+          "title": "Modality",
+          "type": "string"
+        },
+        "path": {
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "input_status": {
+          "enum": [
+            "valid",
+            "invalid",
+            "insufficient"
+          ],
+          "title": "Input Status",
+          "type": "string"
+        },
+        "expected_outcome": {
+          "minLength": 1,
+          "title": "Expected Outcome",
+          "type": "string"
+        },
+        "labels": {
+          "items": {
+            "$ref": "#/$defs/ReferenceLabel"
+          },
+          "title": "Labels",
+          "type": "array"
+        }
+      },
+      "required": [
+        "case_id",
+        "scenario_id",
+        "patient_id",
+        "session_id",
+        "source_group",
+        "split",
+        "modality",
+        "path",
+        "sha256",
+        "input_status",
+        "expected_outcome",
+        "labels"
+      ],
+      "title": "EvaluationCase",
+      "type": "object"
+    },
+    "MediaAsset": {
+      "additionalProperties": false,
+      "properties": {
+        "asset_id": {
+          "minLength": 1,
+          "title": "Asset Id",
+          "type": "string"
+        },
+        "patient_id": {
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "session_id": {
+          "minLength": 1,
+          "title": "Session Id",
+          "type": "string"
+        },
+        "modality": {
+          "enum": [
+            "audio",
+            "video"
+          ],
+          "title": "Modality",
+          "type": "string"
+        },
+        "path": {
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "duration_seconds": {
+          "exclusiveMinimum": 0,
+          "title": "Duration Seconds",
+          "type": "number"
+        },
+        "content_kind": {
+          "enum": [
+            "technical_synthetic",
+            "staged",
+            "external"
+          ],
+          "title": "Content Kind",
+          "type": "string"
+        },
+        "source_group": {
+          "minLength": 1,
+          "title": "Source Group",
+          "type": "string"
+        },
+        "consent_or_license": {
+          "minLength": 1,
+          "title": "Consent Or License",
+          "type": "string"
+        },
+        "cloud_upload_allowed": {
+          "default": false,
+          "title": "Cloud Upload Allowed",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "asset_id",
+        "patient_id",
+        "session_id",
+        "modality",
+        "path",
+        "sha256",
+        "duration_seconds",
+        "content_kind",
+        "source_group",
+        "consent_or_license"
+      ],
+      "title": "MediaAsset",
+      "type": "object"
+    },
+    "Patient": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "pattern": "^PAT-SYN-\\d{3}$",
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "age_years": {
+          "maximum": 120,
+          "minimum": 18,
+          "title": "Age Years",
+          "type": "integer"
+        },
+        "synthetic": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "patient_id",
+        "age_years"
+      ],
+      "title": "Patient",
+      "type": "object"
+    },
+    "ReferenceLabel": {
+      "additionalProperties": false,
+      "properties": {
+        "event_type": {
+          "minLength": 1,
+          "title": "Event Type",
+          "type": "string"
+        },
+        "start_seconds": {
+          "minimum": 0,
+          "title": "Start Seconds",
+          "type": "number"
+        },
+        "end_seconds": {
+          "minimum": 0,
+          "title": "End Seconds",
+          "type": "number"
+        },
+        "basis": {
+          "enum": [
+            "synthetic_rule",
+            "manual_annotation"
+          ],
+          "title": "Basis",
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "start_seconds",
+        "end_seconds",
+        "basis"
+      ],
+      "title": "ReferenceLabel",
+      "type": "object"
+    },
+    "Session": {
+      "additionalProperties": false,
+      "properties": {
+        "session_id": {
+          "minLength": 1,
+          "title": "Session Id",
+          "type": "string"
+        },
+        "patient_id": {
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "started_at": {
+          "format": "date-time",
+          "title": "Started At",
+          "type": "string"
+        },
+        "ended_at": {
+          "format": "date-time",
+          "title": "Ended At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "session_id",
+        "patient_id",
+        "started_at",
+        "ended_at"
+      ],
+      "title": "Session",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "purpose": {
+      "const": "functional_fixtures_not_clinical_validation",
+      "title": "Purpose",
+      "type": "string"
+    },
+    "seed": {
+      "title": "Seed",
+      "type": "integer"
+    },
+    "source": {
+      "minLength": 1,
+      "title": "Source",
+      "type": "string"
+    },
+    "consent_or_license": {
+      "minLength": 1,
+      "title": "Consent Or License",
+      "type": "string"
+    },
+    "patients": {
+      "items": {
+        "$ref": "#/$defs/Patient"
+      },
+      "title": "Patients",
+      "type": "array"
+    },
+    "sessions": {
+      "items": {
+        "$ref": "#/$defs/Session"
+      },
+      "title": "Sessions",
+      "type": "array"
+    },
+    "assets": {
+      "items": {
+        "$ref": "#/$defs/MediaAsset"
+      },
+      "title": "Assets",
+      "type": "array"
+    },
+    "cases": {
+      "items": {
+        "$ref": "#/$defs/EvaluationCase"
+      },
+      "title": "Cases",
+      "type": "array"
+    }
+  },
+  "required": [
+    "purpose",
+    "seed",
+    "source",
+    "consent_or_license",
+    "patients",
+    "sessions",
+    "assets",
+    "cases"
+  ],
+  "title": "Manifest",
+  "type": "object"
+}

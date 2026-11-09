@@ -1,0 +1,6 @@
+{
+  "patient_id": "PAT-SYN-002",
+  "session_id": "SESSION-002",
+  "representation": "synthetic_features_not_video",
+  "samples": "corrupt fixture"
+}

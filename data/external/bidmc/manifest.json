@@ -1,0 +1,55 @@
+{
+  "source": "https://physionet.org/content/bidmc/1.0.0/",
+  "version": "1.0.0",
+  "license": "ODC-By-1.0",
+  "license_sha256": "76576a17b505dce71773415a18e965982bc8c0c9a60da71f1adb9df7644332a0",
+  "citation": "Pimentel et al. (2016), doi:10.1109/TBME.2016.2613124",
+  "synthetic": false,
+  "cloud_upload_allowed": false,
+  "purpose": "real_signal_ingestion_only_no_anomaly_ground_truth",
+  "missing_requirement": "blood pressure is not included in this subset",
+  "files": [
+    {
+      "path": "bidmc_01_Numerics.csv",
+      "url": "https://physionet.org/files/bidmc/1.0.0/bidmc_csv/bidmc_01_Numerics.csv",
+      "sha256": "27d43794cf2e7150db10e8bfe61d2bfdb26873a8f1629ffc5fbee5c9a4eb6ef5",
+      "source_group": "BIDMC-01",
+      "split": "development"
+    },
+    {
+      "path": "bidmc_02_Numerics.csv",
+      "url": "https://physionet.org/files/bidmc/1.0.0/bidmc_csv/bidmc_02_Numerics.csv",
+      "sha256": "99aef20b2846815d45ecde184da753de58c8a85b7dd7af74a2f4c5282013704d",
+      "source_group": "BIDMC-02",
+      "split": "development"
+    },
+    {
+      "path": "bidmc_03_Numerics.csv",
+      "url": "https://physionet.org/files/bidmc/1.0.0/bidmc_csv/bidmc_03_Numerics.csv",
+      "sha256": "6666475c072fe079f35f1fffe0890a97b56d1086985f8a5d76a23b88eb6c6036",
+      "source_group": "BIDMC-03",
+      "split": "validation"
+    },
+    {
+      "path": "bidmc_04_Numerics.csv",
+      "url": "https://physionet.org/files/bidmc/1.0.0/bidmc_csv/bidmc_04_Numerics.csv",
+      "sha256": "2d3f34558f11ae5ff4170793942c86fd76ecc9c11a3868fd9dbaabf3249ee121",
+      "source_group": "BIDMC-04",
+      "split": "validation"
+    },
+    {
+      "path": "bidmc_05_Numerics.csv",
+      "url": "https://physionet.org/files/bidmc/1.0.0/bidmc_csv/bidmc_05_Numerics.csv",
+      "sha256": "b26e17895c9961bf36c0172e0da2fd58120e30ab6df5c21a3cfc56665630c308",
+      "source_group": "BIDMC-05",
+      "split": "test"
+    },
+    {
+      "path": "bidmc_06_Numerics.csv",
+      "url": "https://physionet.org/files/bidmc/1.0.0/bidmc_csv/bidmc_06_Numerics.csv",
+      "sha256": "d7b221639fe1baa3360544ac6507af78871ec190ac79a44f122ddde119c22d05",
+      "source_group": "BIDMC-06",
+      "split": "test"
+    }
+  ]
+}

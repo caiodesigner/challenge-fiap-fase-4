@@ -1,0 +1,75 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "record_id": {
+      "minLength": 1,
+      "title": "Record Id",
+      "type": "string"
+    },
+    "patient_id": {
+      "minLength": 1,
+      "title": "Patient Id",
+      "type": "string"
+    },
+    "session_id": {
+      "minLength": 1,
+      "title": "Session Id",
+      "type": "string"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "title": "Occurred At",
+      "type": "string"
+    },
+    "ingested_at": {
+      "format": "date-time",
+      "title": "Ingested At",
+      "type": "string"
+    },
+    "signal": {
+      "enum": [
+        "heart_rate",
+        "systolic",
+        "diastolic",
+        "spo2"
+      ],
+      "title": "Signal",
+      "type": "string"
+    },
+    "value": {
+      "title": "Value",
+      "type": "number"
+    },
+    "unit": {
+      "enum": [
+        "bpm",
+        "mmHg",
+        "%"
+      ],
+      "title": "Unit",
+      "type": "string"
+    },
+    "quality": {
+      "default": "valid",
+      "enum": [
+        "valid",
+        "artifact",
+        "missing"
+      ],
+      "title": "Quality",
+      "type": "string"
+    }
+  },
+  "required": [
+    "record_id",
+    "patient_id",
+    "session_id",
+    "occurred_at",
+    "ingested_at",
+    "signal",
+    "value",
+    "unit"
+  ],
+  "title": "Measurement",
+  "type": "object"
+}

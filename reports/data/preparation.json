@@ -1,0 +1,42 @@
+{
+  "python": "3.14.4",
+  "functional_dataset": {
+    "cases": 90,
+    "patients": 3,
+    "assets": 3,
+    "distribution": {
+      "development/audio": 5,
+      "development/movement": 5,
+      "development/prescription": 5,
+      "development/text": 5,
+      "development/video": 5,
+      "development/vitals": 5,
+      "test/audio": 5,
+      "test/movement": 5,
+      "test/prescription": 5,
+      "test/text": 5,
+      "test/video": 5,
+      "test/vitals": 5,
+      "validation/audio": 5,
+      "validation/movement": 5,
+      "validation/prescription": 5,
+      "validation/text": 5,
+      "validation/video": 5,
+      "validation/vitals": 5
+    },
+    "scope": "functional_fixtures_not_clinical_validation"
+  },
+  "checks": {
+    "pytest_passed": 25,
+    "ruff": "passed",
+    "format": "passed",
+    "mypy": "passed",
+    "bidmc_validation": "passed",
+    "phase3_preserved": true
+  },
+  "limits": [
+    "No clinical performance evaluated",
+    "Human speech and clinical video pending",
+    "Independent media test not frozen"
+  ]
+}

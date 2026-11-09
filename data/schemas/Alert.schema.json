@@ -1,0 +1,86 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "alert_id": {
+      "minLength": 1,
+      "title": "Alert Id",
+      "type": "string"
+    },
+    "deduplication_key": {
+      "minLength": 1,
+      "title": "Deduplication Key",
+      "type": "string"
+    },
+    "patient_id": {
+      "minLength": 1,
+      "title": "Patient Id",
+      "type": "string"
+    },
+    "session_id": {
+      "minLength": 1,
+      "title": "Session Id",
+      "type": "string"
+    },
+    "event_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Event Ids",
+      "type": "array"
+    },
+    "emitted_at": {
+      "format": "date-time",
+      "title": "Emitted At",
+      "type": "string"
+    },
+    "severity": {
+      "enum": [
+        "observation",
+        "attention",
+        "priority"
+      ],
+      "title": "Severity",
+      "type": "string"
+    },
+    "status": {
+      "default": "open",
+      "enum": [
+        "open",
+        "acknowledged",
+        "closed"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "review": {
+      "anyOf": [
+        {
+          "enum": [
+            "confirmed",
+            "false_positive",
+            "inconclusive"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Review"
+    }
+  },
+  "required": [
+    "alert_id",
+    "deduplication_key",
+    "patient_id",
+    "session_id",
+    "event_ids",
+    "emitted_at",
+    "severity"
+  ],
+  "title": "Alert",
+  "type": "object"
+}

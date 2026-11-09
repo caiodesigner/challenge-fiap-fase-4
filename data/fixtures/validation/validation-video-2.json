@@ -1,0 +1,127 @@
+{
+  "patient_id": "PAT-SYN-002",
+  "session_id": "SESSION-002",
+  "representation": "synthetic_features_not_video",
+  "samples": [
+    {
+      "second": 0,
+      "left": 0.5,
+      "right": 0.5,
+      "visible": true
+    },
+    {
+      "second": 1,
+      "left": 0.631,
+      "right": 0.631,
+      "visible": true
+    },
+    {
+      "second": 2,
+      "left": 0.747,
+      "right": 0.747,
+      "visible": true
+    },
+    {
+      "second": 3,
+      "left": 0.837,
+      "right": 0.837,
+      "visible": true
+    },
+    {
+      "second": 4,
+      "left": 0.889,
+      "right": 0.889,
+      "visible": true
+    },
+    {
+      "second": 5,
+      "left": 0.898,
+      "right": 0.898,
+      "visible": true
+    },
+    {
+      "second": 6,
+      "left": 0.864,
+      "right": 0.864,
+      "visible": true
+    },
+    {
+      "second": 7,
+      "left": 0.789,
+      "right": 0.789,
+      "visible": true
+    },
+    {
+      "second": 8,
+      "left": 0.683,
+      "right": 0.683,
+      "visible": true
+    },
+    {
+      "second": 9,
+      "left": 0.556,
+      "right": 0.556,
+      "visible": true
+    },
+    {
+      "second": 10,
+      "left": 0.424,
+      "right": 0.14133333333333334,
+      "visible": true
+    },
+    {
+      "second": 11,
+      "left": 0.299,
+      "right": 0.09966666666666667,
+      "visible": true
+    },
+    {
+      "second": 12,
+      "left": 0.197,
+      "right": 0.06566666666666666,
+      "visible": true
+    },
+    {
+      "second": 13,
+      "left": 0.128,
+      "right": 0.042666666666666665,
+      "visible": true
+    },
+    {
+      "second": 14,
+      "left": 0.1,
+      "right": 0.03333333333333333,
+      "visible": true
+    },
+    {
+      "second": 15,
+      "left": 0.116,
+      "right": 0.03866666666666667,
+      "visible": true
+    },
+    {
+      "second": 16,
+      "left": 0.175,
+      "right": 0.05833333333333333,
+      "visible": true
+    },
+    {
+      "second": 17,
+      "left": 0.269,
+      "right": 0.08966666666666667,
+      "visible": true
+    },
+    {
+      "second": 18,
+      "left": 0.388,
+      "right": 0.12933333333333333,
+      "visible": true
+    },
+    {
+      "second": 19,
+      "left": 0.52,
+      "right": 0.17333333333333334,
+      "visible": true
+    }
+  ]
+}

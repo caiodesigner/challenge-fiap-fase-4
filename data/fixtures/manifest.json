@@ -1,0 +1,1536 @@
+{
+  "schema_version": "1.0",
+  "purpose": "functional_fixtures_not_clinical_validation",
+  "seed": 42,
+  "source": "deterministic project generator; no real patient data",
+  "consent_or_license": "author-generated; LicenseRef-Proprietary",
+  "patients": [
+    {
+      "patient_id": "PAT-SYN-001",
+      "age_years": 31,
+      "synthetic": true
+    },
+    {
+      "patient_id": "PAT-SYN-002",
+      "age_years": 32,
+      "synthetic": true
+    },
+    {
+      "patient_id": "PAT-SYN-003",
+      "age_years": 33,
+      "synthetic": true
+    }
+  ],
+  "sessions": [
+    {
+      "session_id": "SESSION-001",
+      "patient_id": "PAT-SYN-001",
+      "started_at": "2026-01-01T00:00:00Z",
+      "ended_at": "2026-01-01T00:01:00Z"
+    },
+    {
+      "session_id": "SESSION-002",
+      "patient_id": "PAT-SYN-002",
+      "started_at": "2026-01-02T00:00:00Z",
+      "ended_at": "2026-01-02T00:01:00Z"
+    },
+    {
+      "session_id": "SESSION-003",
+      "patient_id": "PAT-SYN-003",
+      "started_at": "2026-01-03T00:00:00Z",
+      "ended_at": "2026-01-03T00:01:00Z"
+    }
+  ],
+  "assets": [
+    {
+      "asset_id": "TONE-1",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "modality": "audio",
+      "path": "development/technical-tone.wav",
+      "sha256": "f1fa7fc8545919c82ef6d0e685ba8d52dca54fd8a0ca4bbd786724532e18a2fb",
+      "duration_seconds": 1.0,
+      "content_kind": "technical_synthetic",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "consent_or_license": "author-generated technical fixture",
+      "cloud_upload_allowed": false
+    },
+    {
+      "asset_id": "TONE-2",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "modality": "audio",
+      "path": "validation/technical-tone.wav",
+      "sha256": "9f185cb7e3ae2c500d23cbf5f249d29539486ace83c1ac027169244520c98452",
+      "duration_seconds": 1.0,
+      "content_kind": "technical_synthetic",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "consent_or_license": "author-generated technical fixture",
+      "cloud_upload_allowed": false
+    },
+    {
+      "asset_id": "TONE-3",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "modality": "audio",
+      "path": "test/technical-tone.wav",
+      "sha256": "23ef8998c4667b36a3bf1da2be922f7d7e85e3f24004d338ecdf3244b256fbd7",
+      "duration_seconds": 1.0,
+      "content_kind": "technical_synthetic",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "consent_or_license": "author-generated technical fixture",
+      "cloud_upload_allowed": false
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "development-vitals-1",
+      "scenario_id": "VIT-01",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "vitals",
+      "path": "development/development-vitals-1.json",
+      "sha256": "7c6acc8636816bc10b408d50bbe32b164e5ae05b9acb8db3f72cab2667db33af",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "development-vitals-2",
+      "scenario_id": "VIT-02",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "vitals",
+      "path": "development/development-vitals-2.json",
+      "sha256": "73f2eff5347ee1cf98acf1d2a5d84eb0f985427ff169370486c74ee15e08e3db",
+      "input_status": "valid",
+      "expected_outcome": "persistent_deviation",
+      "labels": [
+        {
+          "event_type": "persistent_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "development-vitals-3",
+      "scenario_id": "VIT-03",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "vitals",
+      "path": "development/development-vitals-3.json",
+      "sha256": "2fd94b98c3c39a21afe343ca6d9e135a48d472db16bcd3fa7d80f154e98b5acd",
+      "input_status": "valid",
+      "expected_outcome": "trend_deviation",
+      "labels": [
+        {
+          "event_type": "trend_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "development-vitals-4",
+      "scenario_id": "VIT-04",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "vitals",
+      "path": "development/development-vitals-4.json",
+      "sha256": "c5f8c256281de0ce84ebb8253ed53b106b84da692a61a325dc79f142363da592",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "development-vitals-5",
+      "scenario_id": "VIT-05",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "vitals",
+      "path": "development/development-vitals-5.json",
+      "sha256": "a4b84083704d12c19b3ec1ad88b74d1426a6bbabb1485cef815d21c101d6edd4",
+      "input_status": "invalid",
+      "expected_outcome": "reject_unit",
+      "labels": []
+    },
+    {
+      "case_id": "development-prescription-1",
+      "scenario_id": "PRE-01",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "prescription",
+      "path": "development/development-prescription-1.json",
+      "sha256": "ad7c10818efa65996c3962abe8afc9a420a608e7c8f61a60a6566e8a21b2fe48",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "development-prescription-2",
+      "scenario_id": "PRE-02",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "prescription",
+      "path": "development/development-prescription-2.json",
+      "sha256": "2b065109d4d094e3de6d73e550c73dfeb48095500dd3663791a53afd05855991",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "development-prescription-3",
+      "scenario_id": "PRE-03",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "prescription",
+      "path": "development/development-prescription-3.json",
+      "sha256": "e3d536ff2ce4a9d84273db68c220eec22dc30b85a40a763c00b33ff5fda01ce7",
+      "input_status": "valid",
+      "expected_outcome": "unexpected_prescription_change",
+      "labels": [
+        {
+          "event_type": "unexpected_prescription_change",
+          "start_seconds": 10.0,
+          "end_seconds": 10.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "development-prescription-4",
+      "scenario_id": "PRE-04",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "prescription",
+      "path": "development/development-prescription-4.json",
+      "sha256": "dcd04cd382bc8a439224160d06f6f0d95a5247b32da3935cc25485d444a23913",
+      "input_status": "valid",
+      "expected_outcome": "inconsistent_units",
+      "labels": []
+    },
+    {
+      "case_id": "development-prescription-5",
+      "scenario_id": "PRE-05",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "prescription",
+      "path": "development/development-prescription-5.json",
+      "sha256": "cd205682e85fb49e66b27b8fec66dfdd036e0bf86cfb45dee5bfcf27dcf851f5",
+      "input_status": "valid",
+      "expected_outcome": "deduplicate_and_preserve_history",
+      "labels": []
+    },
+    {
+      "case_id": "development-video-1",
+      "scenario_id": "VID-01",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "video",
+      "path": "development/development-video-1.json",
+      "sha256": "d42d450f3fe88ee62c7d8f1139c51f1f946cb50c6fc0cf4aaf60658d0429f0ef",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "development-video-2",
+      "scenario_id": "VID-02",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "video",
+      "path": "development/development-video-2.json",
+      "sha256": "12bd628d2327a02f9d6c5388ad7d6e763a02e11afa43bd9c27e357bdc866a888",
+      "input_status": "valid",
+      "expected_outcome": "asymmetry",
+      "labels": [
+        {
+          "event_type": "asymmetry",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "development-video-3",
+      "scenario_id": "VID-03",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "video",
+      "path": "development/development-video-3.json",
+      "sha256": "10bda3113987c99a31f1cf2ee7139116b52ebed50f348206b2a632bf8c2c5d32",
+      "input_status": "valid",
+      "expected_outcome": "interruption",
+      "labels": [
+        {
+          "event_type": "interruption",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "development-video-4",
+      "scenario_id": "VID-04",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "video",
+      "path": "development/development-video-4.json",
+      "sha256": "47f268583304d735ae5724656efb8df0b8eddce553b4bd4fc435895c9df71965",
+      "input_status": "insufficient",
+      "expected_outcome": "quality_issue",
+      "labels": []
+    },
+    {
+      "case_id": "development-video-5",
+      "scenario_id": "VID-05",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "video",
+      "path": "development/development-video-5.json",
+      "sha256": "afed43ff0b959d3457f2ef3b643e1977faa16ecbe98dea23d172b4335615e053",
+      "input_status": "invalid",
+      "expected_outcome": "reject_format",
+      "labels": []
+    },
+    {
+      "case_id": "development-movement-1",
+      "scenario_id": "MOV-01",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "movement",
+      "path": "development/development-movement-1.json",
+      "sha256": "d42d450f3fe88ee62c7d8f1139c51f1f946cb50c6fc0cf4aaf60658d0429f0ef",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "development-movement-2",
+      "scenario_id": "MOV-02",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "movement",
+      "path": "development/development-movement-2.json",
+      "sha256": "12bd628d2327a02f9d6c5388ad7d6e763a02e11afa43bd9c27e357bdc866a888",
+      "input_status": "valid",
+      "expected_outcome": "activity_change",
+      "labels": [
+        {
+          "event_type": "activity_change",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "development-movement-3",
+      "scenario_id": "MOV-03",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "movement",
+      "path": "development/development-movement-3.json",
+      "sha256": "5c9663638d904d72399200954c1309745ea41e3219c1648f2202dab35eac2db3",
+      "input_status": "valid",
+      "expected_outcome": "attempt_to_rise",
+      "labels": [
+        {
+          "event_type": "attempt_to_rise",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "development-movement-4",
+      "scenario_id": "MOV-04",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "movement",
+      "path": "development/development-movement-4.json",
+      "sha256": "47f268583304d735ae5724656efb8df0b8eddce553b4bd4fc435895c9df71965",
+      "input_status": "insufficient",
+      "expected_outcome": "quality_issue",
+      "labels": []
+    },
+    {
+      "case_id": "development-movement-5",
+      "scenario_id": "MOV-05",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "movement",
+      "path": "development/development-movement-5.json",
+      "sha256": "198b636cc5f5b42c69615cccf79add0c857a253b5c39a9e08c8f823de92bcf16",
+      "input_status": "valid",
+      "expected_outcome": "temporal_gap",
+      "labels": []
+    },
+    {
+      "case_id": "development-audio-1",
+      "scenario_id": "AUD-01",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "audio",
+      "path": "development/development-audio-1.json",
+      "sha256": "d7ea20b61dde596bf97d4c51217744e6d1403c925a1a362621c18bbb16f813f7",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "development-audio-2",
+      "scenario_id": "AUD-02",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "audio",
+      "path": "development/development-audio-2.json",
+      "sha256": "e76918671c36aefb2e78ef30d305669a6a5985d99566aac031d741666a62197b",
+      "input_status": "valid",
+      "expected_outcome": "pause_change",
+      "labels": [
+        {
+          "event_type": "pause_change",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "development-audio-3",
+      "scenario_id": "AUD-05",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "audio",
+      "path": "development/development-audio-3.json",
+      "sha256": "26553e4fb57957fbdc9df811d4a7991cb78696e7bc50e0a81d5df1d704aa534c",
+      "input_status": "insufficient",
+      "expected_outcome": "silence",
+      "labels": []
+    },
+    {
+      "case_id": "development-audio-4",
+      "scenario_id": "AUD-05",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "audio",
+      "path": "development/development-audio-4.json",
+      "sha256": "2736d7ec5d27ff506ae2849388d96e269b684a267bb5ded7c1f1a8482b96c419",
+      "input_status": "insufficient",
+      "expected_outcome": "quality_issue",
+      "labels": []
+    },
+    {
+      "case_id": "development-audio-5",
+      "scenario_id": "AUD-05",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "audio",
+      "path": "development/development-audio-5.json",
+      "sha256": "2147f1df30c5794c3045305f3c4165b53baa3e37e43a8dfa485a0c2b4111fa78",
+      "input_status": "invalid",
+      "expected_outcome": "reject_format",
+      "labels": []
+    },
+    {
+      "case_id": "development-text-1",
+      "scenario_id": "AUD-01",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "text",
+      "path": "development/development-text-1.json",
+      "sha256": "0896459c0d4f36800df8efd1da1a71544b775a6a119dd464b50cf10885700ee1",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "development-text-2",
+      "scenario_id": "AUD-03",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "text",
+      "path": "development/development-text-2.json",
+      "sha256": "8cea3855c6fdbbb332563269cb610767c9f8905e455823365f0f120e01d49dcd",
+      "input_status": "valid",
+      "expected_outcome": "critical_mention",
+      "labels": [
+        {
+          "event_type": "critical_mention",
+          "start_seconds": 0.0,
+          "end_seconds": 0.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "development-text-3",
+      "scenario_id": "AUD-04",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "text",
+      "path": "development/development-text-3.json",
+      "sha256": "712ee50bf01422995317701dfacf6eba06018068d7ce1773390b17f3f233e18a",
+      "input_status": "valid",
+      "expected_outcome": "negated_mention",
+      "labels": []
+    },
+    {
+      "case_id": "development-text-4",
+      "scenario_id": "AUD-06",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "text",
+      "path": "development/development-text-4.json",
+      "sha256": "a13040281e6195cecaf937656886b2f297c246200a9b5c85f9ee0d60fd84558b",
+      "input_status": "valid",
+      "expected_outcome": "historical_mention",
+      "labels": []
+    },
+    {
+      "case_id": "development-text-5",
+      "scenario_id": "AUD-05",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_group": "SYNTHETIC-SOURCE-001",
+      "split": "development",
+      "modality": "text",
+      "path": "development/development-text-5.json",
+      "sha256": "c7d11124ee19684a9ee0b26fb3ff3461dcd5ec6e125535304649d5088538735f",
+      "input_status": "insufficient",
+      "expected_outcome": "insufficient_text",
+      "labels": []
+    },
+    {
+      "case_id": "validation-vitals-1",
+      "scenario_id": "VIT-01",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "vitals",
+      "path": "validation/validation-vitals-1.json",
+      "sha256": "17fdcfb913d58aff897cdbd3e0cc7d4c2e73501ded92675b47d99d31334c231f",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "validation-vitals-2",
+      "scenario_id": "VIT-02",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "vitals",
+      "path": "validation/validation-vitals-2.json",
+      "sha256": "e184471fff641f61e9ed0a6c466e0670b749ba19b4cd74f919323a4e1054ed4f",
+      "input_status": "valid",
+      "expected_outcome": "persistent_deviation",
+      "labels": [
+        {
+          "event_type": "persistent_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "validation-vitals-3",
+      "scenario_id": "VIT-03",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "vitals",
+      "path": "validation/validation-vitals-3.json",
+      "sha256": "eb3f6f322c0d4003c8b8ed3243f033d0a039c3db32800dab36664ce7eaff524f",
+      "input_status": "valid",
+      "expected_outcome": "trend_deviation",
+      "labels": [
+        {
+          "event_type": "trend_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "validation-vitals-4",
+      "scenario_id": "VIT-04",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "vitals",
+      "path": "validation/validation-vitals-4.json",
+      "sha256": "98fdaf399209e092018fffe97a9e0315c85d704d8b06bafeb598903d747d3bb9",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "validation-vitals-5",
+      "scenario_id": "VIT-05",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "vitals",
+      "path": "validation/validation-vitals-5.json",
+      "sha256": "5b6934648efe9f03f81ecbb09cb604390cada54955d384257c0ab3430113041f",
+      "input_status": "invalid",
+      "expected_outcome": "reject_unit",
+      "labels": []
+    },
+    {
+      "case_id": "validation-prescription-1",
+      "scenario_id": "PRE-01",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "prescription",
+      "path": "validation/validation-prescription-1.json",
+      "sha256": "e14964acebd71f6d96a30036942a7bdc76e081256470ae05f7274c7410c2db51",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "validation-prescription-2",
+      "scenario_id": "PRE-02",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "prescription",
+      "path": "validation/validation-prescription-2.json",
+      "sha256": "51c1528c5222a3e504a03ab9612fa641844dec9f99e48308d543ee11b08cd054",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "validation-prescription-3",
+      "scenario_id": "PRE-03",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "prescription",
+      "path": "validation/validation-prescription-3.json",
+      "sha256": "4e4807deccaae5d13b3ead898f9f4f95bcfb79fc4662e88eca09df09cbde359c",
+      "input_status": "valid",
+      "expected_outcome": "unexpected_prescription_change",
+      "labels": [
+        {
+          "event_type": "unexpected_prescription_change",
+          "start_seconds": 10.0,
+          "end_seconds": 10.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "validation-prescription-4",
+      "scenario_id": "PRE-04",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "prescription",
+      "path": "validation/validation-prescription-4.json",
+      "sha256": "94f750d91c4c5c0924875bbbd47a5c8e058b39765d2a2bb5d6889521511d8981",
+      "input_status": "valid",
+      "expected_outcome": "inconsistent_units",
+      "labels": []
+    },
+    {
+      "case_id": "validation-prescription-5",
+      "scenario_id": "PRE-05",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "prescription",
+      "path": "validation/validation-prescription-5.json",
+      "sha256": "cc28b3de29905fdd902bb3ede06b186c82f6649a073f32013752b890c065ee61",
+      "input_status": "valid",
+      "expected_outcome": "deduplicate_and_preserve_history",
+      "labels": []
+    },
+    {
+      "case_id": "validation-video-1",
+      "scenario_id": "VID-01",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "video",
+      "path": "validation/validation-video-1.json",
+      "sha256": "8237261ab23048a783e450e9958c84a6ac7affa5ea202f890c1eaedcb7da0374",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "validation-video-2",
+      "scenario_id": "VID-02",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "video",
+      "path": "validation/validation-video-2.json",
+      "sha256": "3528a3fba28a2c12b16a3cea8c8ecd836ef6bad18ebe3517e53e9d2da4458727",
+      "input_status": "valid",
+      "expected_outcome": "asymmetry",
+      "labels": [
+        {
+          "event_type": "asymmetry",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "validation-video-3",
+      "scenario_id": "VID-03",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "video",
+      "path": "validation/validation-video-3.json",
+      "sha256": "f7481159cf1680e250b3bedb73e2df17ae55d0b0e6415919e18731e2177e32d8",
+      "input_status": "valid",
+      "expected_outcome": "interruption",
+      "labels": [
+        {
+          "event_type": "interruption",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "validation-video-4",
+      "scenario_id": "VID-04",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "video",
+      "path": "validation/validation-video-4.json",
+      "sha256": "2d71e1cc97869c713ff25afcc921cce808cd4ae9a804116c816520de6d91697f",
+      "input_status": "insufficient",
+      "expected_outcome": "quality_issue",
+      "labels": []
+    },
+    {
+      "case_id": "validation-video-5",
+      "scenario_id": "VID-05",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "video",
+      "path": "validation/validation-video-5.json",
+      "sha256": "c99cf0436cd9c1df1606c2795b8ed8c396341d7d6d3a01364393b21e2d7e2478",
+      "input_status": "invalid",
+      "expected_outcome": "reject_format",
+      "labels": []
+    },
+    {
+      "case_id": "validation-movement-1",
+      "scenario_id": "MOV-01",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "movement",
+      "path": "validation/validation-movement-1.json",
+      "sha256": "8237261ab23048a783e450e9958c84a6ac7affa5ea202f890c1eaedcb7da0374",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "validation-movement-2",
+      "scenario_id": "MOV-02",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "movement",
+      "path": "validation/validation-movement-2.json",
+      "sha256": "3528a3fba28a2c12b16a3cea8c8ecd836ef6bad18ebe3517e53e9d2da4458727",
+      "input_status": "valid",
+      "expected_outcome": "activity_change",
+      "labels": [
+        {
+          "event_type": "activity_change",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "validation-movement-3",
+      "scenario_id": "MOV-03",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "movement",
+      "path": "validation/validation-movement-3.json",
+      "sha256": "8b5bb2af4ef8e70de538805a51531716819990b1d0ec23cafeeb6c79cb0b472b",
+      "input_status": "valid",
+      "expected_outcome": "attempt_to_rise",
+      "labels": [
+        {
+          "event_type": "attempt_to_rise",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "validation-movement-4",
+      "scenario_id": "MOV-04",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "movement",
+      "path": "validation/validation-movement-4.json",
+      "sha256": "2d71e1cc97869c713ff25afcc921cce808cd4ae9a804116c816520de6d91697f",
+      "input_status": "insufficient",
+      "expected_outcome": "quality_issue",
+      "labels": []
+    },
+    {
+      "case_id": "validation-movement-5",
+      "scenario_id": "MOV-05",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "movement",
+      "path": "validation/validation-movement-5.json",
+      "sha256": "64cc247da7b343f9c1fad0140bf1654fe147ece8d588a52f68b80384beecd9c5",
+      "input_status": "valid",
+      "expected_outcome": "temporal_gap",
+      "labels": []
+    },
+    {
+      "case_id": "validation-audio-1",
+      "scenario_id": "AUD-01",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "audio",
+      "path": "validation/validation-audio-1.json",
+      "sha256": "66a8f7b7c3d67ccf7581f0643935d0fa7500c4e6e6bf7fdff688ef1718889351",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "validation-audio-2",
+      "scenario_id": "AUD-02",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "audio",
+      "path": "validation/validation-audio-2.json",
+      "sha256": "56072410eb251d329ee81e06d8d050d0b173d739350f11f88e1803194801dfd5",
+      "input_status": "valid",
+      "expected_outcome": "pause_change",
+      "labels": [
+        {
+          "event_type": "pause_change",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "validation-audio-3",
+      "scenario_id": "AUD-05",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "audio",
+      "path": "validation/validation-audio-3.json",
+      "sha256": "d97d9e5dec9b48a8e5f8e6b95cf001a97ce9b5cf3e4e23b61c0aeaa6ab1d88ee",
+      "input_status": "insufficient",
+      "expected_outcome": "silence",
+      "labels": []
+    },
+    {
+      "case_id": "validation-audio-4",
+      "scenario_id": "AUD-05",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "audio",
+      "path": "validation/validation-audio-4.json",
+      "sha256": "43d0fe3149ed2ce82db2217d830355be9b34783b8b54e90136ff23d586c23045",
+      "input_status": "insufficient",
+      "expected_outcome": "quality_issue",
+      "labels": []
+    },
+    {
+      "case_id": "validation-audio-5",
+      "scenario_id": "AUD-05",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "audio",
+      "path": "validation/validation-audio-5.json",
+      "sha256": "03b487db9b6959f5b61ace1d2fa24b7375434bb128a85baa3dc49fa4b196710b",
+      "input_status": "invalid",
+      "expected_outcome": "reject_format",
+      "labels": []
+    },
+    {
+      "case_id": "validation-text-1",
+      "scenario_id": "AUD-01",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "text",
+      "path": "validation/validation-text-1.json",
+      "sha256": "a029f83924d211ad99497cf184ee96368698ab1685dcc8256dfa59a2aa928504",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "validation-text-2",
+      "scenario_id": "AUD-03",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "text",
+      "path": "validation/validation-text-2.json",
+      "sha256": "fbe92ec4ca10aa508d98b32f6d6775de5b42bcc3874fbbc2453d3ef0e348369d",
+      "input_status": "valid",
+      "expected_outcome": "critical_mention",
+      "labels": [
+        {
+          "event_type": "critical_mention",
+          "start_seconds": 0.0,
+          "end_seconds": 0.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "validation-text-3",
+      "scenario_id": "AUD-04",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "text",
+      "path": "validation/validation-text-3.json",
+      "sha256": "a06d05ab31c773831e1235b06d6a211f1f0f8c120cf74ade37248314c97cd902",
+      "input_status": "valid",
+      "expected_outcome": "negated_mention",
+      "labels": []
+    },
+    {
+      "case_id": "validation-text-4",
+      "scenario_id": "AUD-06",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "text",
+      "path": "validation/validation-text-4.json",
+      "sha256": "cbaf1ee9955ba8838280938fa6a6fdb084ca9c9799448f740fbbc7d621e087ba",
+      "input_status": "valid",
+      "expected_outcome": "historical_mention",
+      "labels": []
+    },
+    {
+      "case_id": "validation-text-5",
+      "scenario_id": "AUD-05",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "source_group": "SYNTHETIC-SOURCE-002",
+      "split": "validation",
+      "modality": "text",
+      "path": "validation/validation-text-5.json",
+      "sha256": "f4830a29f85ba1f6478b0e2699d4efac140b3be199807b1eb6bb7e5b0c1f31bb",
+      "input_status": "insufficient",
+      "expected_outcome": "insufficient_text",
+      "labels": []
+    },
+    {
+      "case_id": "test-vitals-1",
+      "scenario_id": "VIT-01",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "vitals",
+      "path": "test/test-vitals-1.json",
+      "sha256": "f05202660a9cc79f83144ca4211541b099e493ee4272c0b7d3ccb1c61d067d1d",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "test-vitals-2",
+      "scenario_id": "VIT-02",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "vitals",
+      "path": "test/test-vitals-2.json",
+      "sha256": "945cb04230601c47df90f9774932e5ef10c1dbc146ba51d2cb7a2045e7133636",
+      "input_status": "valid",
+      "expected_outcome": "persistent_deviation",
+      "labels": [
+        {
+          "event_type": "persistent_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "test-vitals-3",
+      "scenario_id": "VIT-03",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "vitals",
+      "path": "test/test-vitals-3.json",
+      "sha256": "7cff9a4df2e260eb9390561c240dd24235dd5a92db319283c8c74546be30c195",
+      "input_status": "valid",
+      "expected_outcome": "trend_deviation",
+      "labels": [
+        {
+          "event_type": "trend_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "test-vitals-4",
+      "scenario_id": "VIT-04",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "vitals",
+      "path": "test/test-vitals-4.json",
+      "sha256": "88bee2f3752b5424bb8f101696821ec066f264a1a52e30d38ed305bafc1b75d3",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "test-vitals-5",
+      "scenario_id": "VIT-05",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "vitals",
+      "path": "test/test-vitals-5.json",
+      "sha256": "b477700bbd8135a650dc702d8566499d3c963174bd25f33bf445afb1b213d50f",
+      "input_status": "invalid",
+      "expected_outcome": "reject_unit",
+      "labels": []
+    },
+    {
+      "case_id": "test-prescription-1",
+      "scenario_id": "PRE-01",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "prescription",
+      "path": "test/test-prescription-1.json",
+      "sha256": "dcde4861907b3a4c22813d3d7fe134b41124f1aa13a6e15277d82f9beec01e10",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "test-prescription-2",
+      "scenario_id": "PRE-02",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "prescription",
+      "path": "test/test-prescription-2.json",
+      "sha256": "c6463871a53e4fd2a04e9d1f86747c0aa51a5e0e4b7bb9ac7ebc7e5598e4ee77",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "test-prescription-3",
+      "scenario_id": "PRE-03",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "prescription",
+      "path": "test/test-prescription-3.json",
+      "sha256": "104b5f799a7dd6a8fad0b32e7ae200537d0d41c97db7aaf4082a71bc4edb6bdb",
+      "input_status": "valid",
+      "expected_outcome": "unexpected_prescription_change",
+      "labels": [
+        {
+          "event_type": "unexpected_prescription_change",
+          "start_seconds": 10.0,
+          "end_seconds": 10.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "test-prescription-4",
+      "scenario_id": "PRE-04",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "prescription",
+      "path": "test/test-prescription-4.json",
+      "sha256": "63fced958632cfc9633d5e430b6988967f269ef4e3ea1e3980ff6ae2bf0423ac",
+      "input_status": "valid",
+      "expected_outcome": "inconsistent_units",
+      "labels": []
+    },
+    {
+      "case_id": "test-prescription-5",
+      "scenario_id": "PRE-05",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "prescription",
+      "path": "test/test-prescription-5.json",
+      "sha256": "e46c3f89fa4fc4a4fe0023e4f0ebaaad861b01ccf7be8a38c658dfcdb78f6f2c",
+      "input_status": "valid",
+      "expected_outcome": "deduplicate_and_preserve_history",
+      "labels": []
+    },
+    {
+      "case_id": "test-video-1",
+      "scenario_id": "VID-01",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "video",
+      "path": "test/test-video-1.json",
+      "sha256": "37cd0094f9191c63ece0a56f8e3cece1618d616dd6c562808bdd3904be706566",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "test-video-2",
+      "scenario_id": "VID-02",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "video",
+      "path": "test/test-video-2.json",
+      "sha256": "7f5f093345730a37f5d9a436691f1730e6476f157e6c10d999df92b7d7dd07b1",
+      "input_status": "valid",
+      "expected_outcome": "asymmetry",
+      "labels": [
+        {
+          "event_type": "asymmetry",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "test-video-3",
+      "scenario_id": "VID-03",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "video",
+      "path": "test/test-video-3.json",
+      "sha256": "dcffb67ed0d71c26c5ea2b354112344ec4b9b0fb1c2ea4555266eb5fd2d6e7a1",
+      "input_status": "valid",
+      "expected_outcome": "interruption",
+      "labels": [
+        {
+          "event_type": "interruption",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "test-video-4",
+      "scenario_id": "VID-04",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "video",
+      "path": "test/test-video-4.json",
+      "sha256": "fc5c54854a8c5dda1424136225307d387c2e78e01b88339bcd7cda721b3b18d5",
+      "input_status": "insufficient",
+      "expected_outcome": "quality_issue",
+      "labels": []
+    },
+    {
+      "case_id": "test-video-5",
+      "scenario_id": "VID-05",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "video",
+      "path": "test/test-video-5.json",
+      "sha256": "42955354b76588b1d262a78a10f7f6ea916ee3acbd58ead381a994ea9689bc5f",
+      "input_status": "invalid",
+      "expected_outcome": "reject_format",
+      "labels": []
+    },
+    {
+      "case_id": "test-movement-1",
+      "scenario_id": "MOV-01",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "movement",
+      "path": "test/test-movement-1.json",
+      "sha256": "37cd0094f9191c63ece0a56f8e3cece1618d616dd6c562808bdd3904be706566",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "test-movement-2",
+      "scenario_id": "MOV-02",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "movement",
+      "path": "test/test-movement-2.json",
+      "sha256": "7f5f093345730a37f5d9a436691f1730e6476f157e6c10d999df92b7d7dd07b1",
+      "input_status": "valid",
+      "expected_outcome": "activity_change",
+      "labels": [
+        {
+          "event_type": "activity_change",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "test-movement-3",
+      "scenario_id": "MOV-03",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "movement",
+      "path": "test/test-movement-3.json",
+      "sha256": "618f66828fbdaa7c80b710ef541e852bb02e2ed12d38ca0db53518633ab28f2c",
+      "input_status": "valid",
+      "expected_outcome": "attempt_to_rise",
+      "labels": [
+        {
+          "event_type": "attempt_to_rise",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "test-movement-4",
+      "scenario_id": "MOV-04",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "movement",
+      "path": "test/test-movement-4.json",
+      "sha256": "fc5c54854a8c5dda1424136225307d387c2e78e01b88339bcd7cda721b3b18d5",
+      "input_status": "insufficient",
+      "expected_outcome": "quality_issue",
+      "labels": []
+    },
+    {
+      "case_id": "test-movement-5",
+      "scenario_id": "MOV-05",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "movement",
+      "path": "test/test-movement-5.json",
+      "sha256": "7a6448815e4963d9f5d0ac562767fff4ff0183d13ce5e30fe7f6862c1107c050",
+      "input_status": "valid",
+      "expected_outcome": "temporal_gap",
+      "labels": []
+    },
+    {
+      "case_id": "test-audio-1",
+      "scenario_id": "AUD-01",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "audio",
+      "path": "test/test-audio-1.json",
+      "sha256": "de49a641dc9528a2cc32fc3dfae9e7f999e991f9893dcd03e8ced2e922a25c0c",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "test-audio-2",
+      "scenario_id": "AUD-02",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "audio",
+      "path": "test/test-audio-2.json",
+      "sha256": "13dd2e5c894d95a7c051b9bc8267e258ddd17b56bb9f4a78c7a9f90d056f9b91",
+      "input_status": "valid",
+      "expected_outcome": "pause_change",
+      "labels": [
+        {
+          "event_type": "pause_change",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "test-audio-3",
+      "scenario_id": "AUD-05",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "audio",
+      "path": "test/test-audio-3.json",
+      "sha256": "22599fcf797907dde9da938abf3cb1c257bcd2a79a96327b732594b207baf72d",
+      "input_status": "insufficient",
+      "expected_outcome": "silence",
+      "labels": []
+    },
+    {
+      "case_id": "test-audio-4",
+      "scenario_id": "AUD-05",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "audio",
+      "path": "test/test-audio-4.json",
+      "sha256": "6b50bf1cc061bc6d13efae4bdb94011cd88bbe6e6416536de348cddb040c1f40",
+      "input_status": "insufficient",
+      "expected_outcome": "quality_issue",
+      "labels": []
+    },
+    {
+      "case_id": "test-audio-5",
+      "scenario_id": "AUD-05",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "audio",
+      "path": "test/test-audio-5.json",
+      "sha256": "fab05f8f40a510222bdfc8395f7273be523016bb74d4118f44bcf65fcf2231c6",
+      "input_status": "invalid",
+      "expected_outcome": "reject_format",
+      "labels": []
+    },
+    {
+      "case_id": "test-text-1",
+      "scenario_id": "AUD-01",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "text",
+      "path": "test/test-text-1.json",
+      "sha256": "315c78dc8d3a7ea015de52e62d3afcb176cb24c15c76b48c5a823ed63f2a8df5",
+      "input_status": "valid",
+      "expected_outcome": "no_event",
+      "labels": []
+    },
+    {
+      "case_id": "test-text-2",
+      "scenario_id": "AUD-03",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "text",
+      "path": "test/test-text-2.json",
+      "sha256": "0d4d921003dd79eac143ed11e5c286db7c0313171ad012d5998481e07e6daef1",
+      "input_status": "valid",
+      "expected_outcome": "critical_mention",
+      "labels": [
+        {
+          "event_type": "critical_mention",
+          "start_seconds": 0.0,
+          "end_seconds": 0.0,
+          "basis": "synthetic_rule"
+        }
+      ]
+    },
+    {
+      "case_id": "test-text-3",
+      "scenario_id": "AUD-04",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "text",
+      "path": "test/test-text-3.json",
+      "sha256": "c3e3f1f05e7ab39c3fdab60dd83c5d00ae312e6e3ec4f7af32370ab25ae396ba",
+      "input_status": "valid",
+      "expected_outcome": "negated_mention",
+      "labels": []
+    },
+    {
+      "case_id": "test-text-4",
+      "scenario_id": "AUD-06",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "text",
+      "path": "test/test-text-4.json",
+      "sha256": "e7ca2e96f5f4e00aac76f675f4f79be5e8bf069e730711e22f69215e6b258d2f",
+      "input_status": "valid",
+      "expected_outcome": "historical_mention",
+      "labels": []
+    },
+    {
+      "case_id": "test-text-5",
+      "scenario_id": "AUD-05",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "source_group": "SYNTHETIC-SOURCE-003",
+      "split": "test",
+      "modality": "text",
+      "path": "test/test-text-5.json",
+      "sha256": "71f2c35a8f0b86cb333c0af7a254b653ca1901f679b73837cc4313927afc0ec9",
+      "input_status": "insufficient",
+      "expected_outcome": "insufficient_text",
+      "labels": []
+    }
+  ]
+}

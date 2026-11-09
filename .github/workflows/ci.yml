@@ -19,3 +19,5 @@ jobs:
       - run: python -m ruff format --check .
       - run: python -m mypy
       - run: python -m pytest
+      - run: python -m monitoramento_clinico.data validate
+      - run: python scripts/prepare_bidmc.py validate

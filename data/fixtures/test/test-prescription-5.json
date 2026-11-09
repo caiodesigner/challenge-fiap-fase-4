@@ -1,0 +1,51 @@
+{
+  "patient_id": "PAT-SYN-003",
+  "session_id": "SESSION-003",
+  "representation": "synthetic_fixture",
+  "prescriptions": [
+    {
+      "record_id": "test-prescription-5-version-0",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "medication_id": "SYNTHETIC-MED-A",
+      "occurred_at": "2026-01-03T00:00:00+00:00",
+      "action": "start",
+      "dose": 1,
+      "unit": "synthetic_unit",
+      "expected_change": false
+    },
+    {
+      "record_id": "test-prescription-5-version-1",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "medication_id": "SYNTHETIC-MED-A",
+      "occurred_at": "2026-01-03T00:00:10+00:00",
+      "action": "stop",
+      "dose": null,
+      "unit": null,
+      "expected_change": false
+    },
+    {
+      "record_id": "test-prescription-5-version-1",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "medication_id": "SYNTHETIC-MED-A",
+      "occurred_at": "2026-01-03T00:00:10+00:00",
+      "action": "stop",
+      "dose": null,
+      "unit": null,
+      "expected_change": false
+    },
+    {
+      "record_id": "test-prescription-5-restart",
+      "patient_id": "PAT-SYN-003",
+      "session_id": "SESSION-003",
+      "medication_id": "SYNTHETIC-MED-A",
+      "occurred_at": "2026-01-03T00:00:15+00:00",
+      "action": "start",
+      "dose": 1,
+      "unit": "synthetic_unit",
+      "expected_change": false
+    }
+  ]
+}

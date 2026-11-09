@@ -1,0 +1,95 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "record_id": {
+      "minLength": 1,
+      "title": "Record Id",
+      "type": "string"
+    },
+    "patient_id": {
+      "minLength": 1,
+      "title": "Patient Id",
+      "type": "string"
+    },
+    "session_id": {
+      "minLength": 1,
+      "title": "Session Id",
+      "type": "string"
+    },
+    "medication_id": {
+      "minLength": 1,
+      "title": "Medication Id",
+      "type": "string"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "title": "Occurred At",
+      "type": "string"
+    },
+    "action": {
+      "enum": [
+        "start",
+        "change",
+        "stop"
+      ],
+      "title": "Action",
+      "type": "string"
+    },
+    "dose": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Dose"
+    },
+    "unit": {
+      "anyOf": [
+        {
+          "enum": [
+            "synthetic_unit",
+            "incompatible_unit"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Unit"
+    },
+    "expected_change": {
+      "default": false,
+      "title": "Expected Change",
+      "type": "boolean"
+    },
+    "reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Reason"
+    }
+  },
+  "required": [
+    "record_id",
+    "patient_id",
+    "session_id",
+    "medication_id",
+    "occurred_at",
+    "action"
+  ],
+  "title": "PrescriptionVersion",
+  "type": "object"
+}

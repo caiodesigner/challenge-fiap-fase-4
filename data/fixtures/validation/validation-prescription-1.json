@@ -1,0 +1,29 @@
+{
+  "patient_id": "PAT-SYN-002",
+  "session_id": "SESSION-002",
+  "representation": "synthetic_fixture",
+  "prescriptions": [
+    {
+      "record_id": "validation-prescription-1-version-0",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "medication_id": "SYNTHETIC-MED-A",
+      "occurred_at": "2026-01-02T00:00:00+00:00",
+      "action": "start",
+      "dose": 1,
+      "unit": "synthetic_unit",
+      "expected_change": false
+    },
+    {
+      "record_id": "validation-prescription-1-version-1",
+      "patient_id": "PAT-SYN-002",
+      "session_id": "SESSION-002",
+      "medication_id": "SYNTHETIC-MED-A",
+      "occurred_at": "2026-01-02T00:00:10+00:00",
+      "action": "change",
+      "dose": 1,
+      "unit": "synthetic_unit",
+      "expected_change": false
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "checked_at": "2026-11-10T14:01:53.904516+00:00",
+  "functional_status": "passed",
+  "automated_tests_passed": 78,
+  "static_checks": "passed",
+  "dependencies": "passed",
+  "whisper": {
+    "status": "completed",
+    "device": "cpu",
+    "compute_type": "int8",
+    "elapsed_seconds": 3.459597806970123
+  },
+  "mediapipe": {
+    "pose_quality": {
+      "valid": 10
+    },
+    "blank_quality": {
+      "no_person": 10
+    },
+    "annotated_video_generated": true
+  },
+  "offline_check": {
+    "python_socket_connections_attempted": 0,
+    "hf_offline": true,
+    "azure_requests": 0
+  },
+  "panel": {
+    "automatic_local_transcription": true,
+    "downloads": 2,
+    "result_survives_rerun": true,
+    "inputs_isolated": true
+  },
+  "user_databases_unchanged": true,
+  "cuda_devices_visible": 0,
+  "accuracy_probe": {
+    "word_errors": 3,
+    "reference_words": 8,
+    "wer": 0.375,
+    "sample_kind": "single synthetic Portuguese utterance",
+    "expected_terms": [
+      "cansaco",
+      "falta de ar"
+    ],
+    "recognized_terms": [
+      "cansaco"
+    ],
+    "critical_term_recall": 0.5,
+    "reference": "Estou com falta de ar e sinto cansaço.",
+    "hypothesis": "Estou com falta de adicinho do cansaço.",
+    "not_representative_clinical_evaluation": true
+  },
+  "accuracy_status": "requires_representative_speech_and_review",
+  "limitations": [
+    "GPU not exposed to this execution environment",
+    "Synthetic utterance is not clinical speech validation",
+    "Python socket blocking does not instrument native-library sockets"
+  ]
+}

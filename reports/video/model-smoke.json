@@ -1,0 +1,126 @@
+{
+  "run_id": "d0b7e42b-2223-482c-bf00-5c7daefc0eb2",
+  "started_at": "2026-11-09T20:35:50.277119+00:00",
+  "status": "completed",
+  "patient_id": "PAT-SYN-001",
+  "session_id": "VIDEO-d0b7e42b-2223-482c-bf00-5c7daefc0eb2",
+  "config": {
+    "version": "pose-rules-v1",
+    "mode": "rehabilitation",
+    "sample_fps": 5,
+    "minimum_visibility": 0.6,
+    "asymmetry_degrees": 25,
+    "persistence_seconds": 1,
+    "interruption_seconds": 1.5,
+    "max_gap_seconds": 0.5,
+    "max_duration_seconds": 120
+  },
+  "source_name": "static-pose.avi",
+  "timeline_origin": "processing_start_assigned_not_capture_time",
+  "timing_assumption": "constant_frame_rate_nominal_fps",
+  "clinical_validation": false,
+  "source_sha256": "4658c0b8f589188df391c06994084804c5246cf7922148bce9920ac5096843ad",
+  "model_id": "mediapipe-pose-landmarker-lite:sha256:59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+  "decoded_frames": 10,
+  "source_fps": 5.0,
+  "sampled_frames": 10,
+  "duration_seconds": 2.0,
+  "quality_counts": {
+    "valid": 10
+  },
+  "quality_intervals": [],
+  "assessment": "assessable",
+  "deviations": [],
+  "events": [],
+  "features": [
+    {
+      "time_seconds": 0.0,
+      "quality": "valid",
+      "left_angle": 97.2624306431711,
+      "right_angle": 103.33852323215906,
+      "center_x": 0.4944245144724846,
+      "center_y": 0.5971465557813644
+    },
+    {
+      "time_seconds": 0.2,
+      "quality": "valid",
+      "left_angle": 98.37300296813994,
+      "right_angle": 103.95079634700615,
+      "center_x": 0.4946972131729126,
+      "center_y": 0.5980135649442673
+    },
+    {
+      "time_seconds": 0.4,
+      "quality": "valid",
+      "left_angle": 98.57786299601503,
+      "right_angle": 103.30464135568606,
+      "center_x": 0.4943625256419182,
+      "center_y": 0.5976358354091644
+    },
+    {
+      "time_seconds": 0.6,
+      "quality": "valid",
+      "left_angle": 98.57786299601503,
+      "right_angle": 103.30464135568606,
+      "center_x": 0.4943625256419182,
+      "center_y": 0.5976358354091644
+    },
+    {
+      "time_seconds": 0.8,
+      "quality": "valid",
+      "left_angle": 98.57786299601503,
+      "right_angle": 103.30464135568606,
+      "center_x": 0.4943625256419182,
+      "center_y": 0.5976358354091644
+    },
+    {
+      "time_seconds": 1.0,
+      "quality": "valid",
+      "left_angle": 98.57786299601503,
+      "right_angle": 103.30464135568606,
+      "center_x": 0.4943625256419182,
+      "center_y": 0.5976358354091644
+    },
+    {
+      "time_seconds": 1.2,
+      "quality": "valid",
+      "left_angle": 98.57786299601503,
+      "right_angle": 103.30464135568606,
+      "center_x": 0.4943625256419182,
+      "center_y": 0.5976358354091644
+    },
+    {
+      "time_seconds": 1.4,
+      "quality": "valid",
+      "left_angle": 98.57786299601503,
+      "right_angle": 103.30464135568606,
+      "center_x": 0.4943625256419182,
+      "center_y": 0.5976358354091644
+    },
+    {
+      "time_seconds": 1.6,
+      "quality": "valid",
+      "left_angle": 98.57786299601503,
+      "right_angle": 103.30464135568606,
+      "center_x": 0.4943625256419182,
+      "center_y": 0.5976358354091644
+    },
+    {
+      "time_seconds": 1.8,
+      "quality": "valid",
+      "left_angle": 98.57786299601503,
+      "right_angle": 103.30464135568606,
+      "center_x": 0.4943625256419182,
+      "center_y": 0.5976358354091644
+    }
+  ],
+  "annotated_video": "annotated.mp4",
+  "browser_playable": true,
+  "finished_at": "2026-11-09T20:35:51.207509+00:00",
+  "elapsed_seconds": 0.9303949979948811,
+  "verification_context": {
+    "construction": "Single image repeated for two seconds; no clinical motion",
+    "purpose": "real CPU inference and encoding smoke test only",
+    "sample_source_sha256": "c8a830ed683c0276d713dd5aeda28f415f10cd6291972084a40d0d8b934ed62b"
+  }
+}

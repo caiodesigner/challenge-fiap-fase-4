@@ -1,0 +1,62 @@
+{
+  "vitals_ui": {
+    "runs": 2,
+    "repeat_statuses": {
+      "duplicate": 80
+    },
+    "alerts": 4,
+    "review_history_entries": 2,
+    "closed_alerts": 1
+  },
+  "navigation": "passed",
+  "video_ui_pose": {
+    "status": "completed",
+    "assessment": "assessable",
+    "quality_counts": {
+      "valid": 10
+    },
+    "download_buttons": 3,
+    "model_id": "mediapipe-pose-landmarker-lite:sha256:59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+    "persisted_after_rerun": true
+  },
+  "video_ui_blank": {
+    "status": "completed",
+    "assessment": "insufficient",
+    "quality_counts": {
+      "no_person": 10
+    },
+    "download_buttons": 3,
+    "model_id": "mediapipe-pose-landmarker-lite:sha256:59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+    "persisted_after_rerun": true
+  },
+  "video_ui_corrupt": {
+    "status": "failed",
+    "assessment": null,
+    "quality_counts": null,
+    "download_buttons": 2,
+    "model_id": null,
+    "persisted_after_rerun": true
+  },
+  "user_databases_unchanged": true,
+  "checked_at": "2026-11-10T11:48:16.377424+00:00",
+  "automated_suite": {
+    "passed": 53,
+    "ruff": "passed",
+    "format": "passed",
+    "mypy": "passed",
+    "pip_check": "passed",
+    "ui_regression_test": "tests/test_interface.py"
+  },
+  "live_http": {
+    "base_url": "http://localhost:8501",
+    "health_status": 200,
+    "page_status": 200,
+    "note": "HTTP verified separately; widgets tested with isolated Streamlit AppTest"
+  },
+  "limitations": [
+    "No browser visual inspection or clinical performance claim",
+    "Pose video is a repeated reference image, not an exercise dataset",
+    "Evaluation on representative consented videos remains pending"
+  ],
+  "ui_method": "Streamlit AppTest; file uploader supplied with controlled bytes; real CPU inference; no browser upload automation"
+}

@@ -1,0 +1,8 @@
+{
+  "purpose": "Template: replace audio paths and references after listening; never use expected references as decoder prompts",
+  "split": "validation",
+  "samples": [
+    {"id": "speaker-01-affirmed", "audio": "recordings/speaker-01-affirmed.wav", "kind": "natural", "reference": "SUBSTITUA pela transcrição manual literal da gravação"},
+    {"id": "speaker-02-negated", "audio": "recordings/speaker-02-negated.wav", "kind": "natural", "reference": "SUBSTITUA pela transcrição manual literal da gravação"}
+  ]
+}

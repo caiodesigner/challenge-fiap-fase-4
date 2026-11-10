@@ -1,0 +1,132 @@
+{
+  "run_id": "a80c2def-492a-49fa-b08c-c4c73b61a66a",
+  "started_at": "2026-11-09T20:36:13.638283+00:00",
+  "status": "completed",
+  "patient_id": "PAT-SYN-001",
+  "session_id": "VIDEO-a80c2def-492a-49fa-b08c-c4c73b61a66a",
+  "config": {
+    "version": "pose-rules-v1",
+    "mode": "rehabilitation",
+    "sample_fps": 5,
+    "minimum_visibility": 0.6,
+    "asymmetry_degrees": 25,
+    "persistence_seconds": 1,
+    "interruption_seconds": 1.5,
+    "max_gap_seconds": 0.5,
+    "max_duration_seconds": 120
+  },
+  "source_name": "blank.avi",
+  "timeline_origin": "processing_start_assigned_not_capture_time",
+  "timing_assumption": "constant_frame_rate_nominal_fps",
+  "clinical_validation": false,
+  "source_sha256": "b8eecb0367ce5006d3ea34c8b6a99ab7c1892326dbddeeaf87301437f5fe9a53",
+  "model_id": "mediapipe-pose-landmarker-lite:sha256:59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+  "decoded_frames": 10,
+  "source_fps": 5.0,
+  "sampled_frames": 10,
+  "duration_seconds": 2.0,
+  "quality_counts": {
+    "no_person": 10
+  },
+  "quality_intervals": [
+    {
+      "reason": "no_person",
+      "start_seconds": 0.0,
+      "end_seconds": 1.8
+    }
+  ],
+  "assessment": "insufficient",
+  "deviations": [],
+  "events": [],
+  "features": [
+    {
+      "time_seconds": 0.0,
+      "quality": "no_person",
+      "left_angle": null,
+      "right_angle": null,
+      "center_x": null,
+      "center_y": null
+    },
+    {
+      "time_seconds": 0.2,
+      "quality": "no_person",
+      "left_angle": null,
+      "right_angle": null,
+      "center_x": null,
+      "center_y": null
+    },
+    {
+      "time_seconds": 0.4,
+      "quality": "no_person",
+      "left_angle": null,
+      "right_angle": null,
+      "center_x": null,
+      "center_y": null
+    },
+    {
+      "time_seconds": 0.6,
+      "quality": "no_person",
+      "left_angle": null,
+      "right_angle": null,
+      "center_x": null,
+      "center_y": null
+    },
+    {
+      "time_seconds": 0.8,
+      "quality": "no_person",
+      "left_angle": null,
+      "right_angle": null,
+      "center_x": null,
+      "center_y": null
+    },
+    {
+      "time_seconds": 1.0,
+      "quality": "no_person",
+      "left_angle": null,
+      "right_angle": null,
+      "center_x": null,
+      "center_y": null
+    },
+    {
+      "time_seconds": 1.2,
+      "quality": "no_person",
+      "left_angle": null,
+      "right_angle": null,
+      "center_x": null,
+      "center_y": null
+    },
+    {
+      "time_seconds": 1.4,
+      "quality": "no_person",
+      "left_angle": null,
+      "right_angle": null,
+      "center_x": null,
+      "center_y": null
+    },
+    {
+      "time_seconds": 1.6,
+      "quality": "no_person",
+      "left_angle": null,
+      "right_angle": null,
+      "center_x": null,
+      "center_y": null
+    },
+    {
+      "time_seconds": 1.8,
+      "quality": "no_person",
+      "left_angle": null,
+      "right_angle": null,
+      "center_x": null,
+      "center_y": null
+    }
+  ],
+  "annotated_video": "annotated.mp4",
+  "browser_playable": true,
+  "finished_at": "2026-11-09T20:36:14.302199+00:00",
+  "elapsed_seconds": 0.6639210529974662,
+  "verification_context": {
+    "construction": "Black frames for two seconds",
+    "purpose": "real CPU inference and encoding smoke test only",
+    "sample_source_sha256": "b8eecb0367ce5006d3ea34c8b6a99ab7c1892326dbddeeaf87301437f5fe9a53"
+  }
+}

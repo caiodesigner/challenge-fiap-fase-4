@@ -1,0 +1,455 @@
+{
+  "checked_at": "2026-11-10T14:25:36.490947+00:00",
+  "scope": "development probes only; not independent test or natural speech validation",
+  "synthesis": {
+    "engine": "eSpeak NG system library",
+    "voice": "pt-br",
+    "original_rate_wpm": 175,
+    "additional_rate_wpm": 140,
+    "references": "known synthesis inputs, not manually transcribed natural speech"
+  },
+  "manifest_sha256": "cbecc7f8cb051fd7b8f5e250838f35c7c226cdef303890a645e16f1920835500",
+  "results": [
+    {
+      "sample_id": "original-failure",
+      "kind": "synthetic",
+      "audio_sha256": "81732bba316fcaadcb670f23a0f9d9e8a5267506055e03dd2490c9aab0dd331c",
+      "model": "faster-whisper-small",
+      "reference": "Estou com falta de ar e sinto cansaço.",
+      "hypothesis": "Estou com falta de adicinho do cansaço.",
+      "inference": {
+        "status": "completed",
+        "language": "pt",
+        "device": "cpu",
+        "compute_type": "int8",
+        "model_path": "faster-whisper-small",
+        "model_sha256": "3e305921506d8872816023e4c273e75d2419fb89b24da97b4fe7bce14170d671",
+        "elapsed_seconds": 3.536214914987795,
+        "network_used": false
+      },
+      "metrics": {
+        "word_errors": 3,
+        "reference_words": 8,
+        "wer": 0.375,
+        "expected_mentions": 2,
+        "matched_mentions_with_context": 1,
+        "missed_mentions_with_context": 1,
+        "extra_mentions_with_context": 0,
+        "mention_context_exact_match": false
+      }
+    },
+    {
+      "sample_id": "affirmed",
+      "kind": "synthetic",
+      "audio_sha256": "a6601f65197de946dab24c2beaf1a64582340603e7740822d80e3fb5669bbb71",
+      "model": "faster-whisper-small",
+      "reference": "Estou com falta de ar.",
+      "hypothesis": "Estou confundando-se!",
+      "inference": {
+        "status": "completed",
+        "language": "pt",
+        "device": "cpu",
+        "compute_type": "int8",
+        "model_path": "faster-whisper-small",
+        "model_sha256": "3e305921506d8872816023e4c273e75d2419fb89b24da97b4fe7bce14170d671",
+        "elapsed_seconds": 5.809114852978382,
+        "network_used": false
+      },
+      "metrics": {
+        "word_errors": 4,
+        "reference_words": 5,
+        "wer": 0.8,
+        "expected_mentions": 1,
+        "matched_mentions_with_context": 0,
+        "missed_mentions_with_context": 1,
+        "extra_mentions_with_context": 0,
+        "mention_context_exact_match": false
+      }
+    },
+    {
+      "sample_id": "negated",
+      "kind": "synthetic",
+      "audio_sha256": "0dce9102a89a7938d8320b7676c6cc3893b052d74e96aa959e6adde4709a8305",
+      "model": "faster-whisper-small",
+      "reference": "Não estou com falta de ar.",
+      "hypothesis": "e estou confundando-se.",
+      "inference": {
+        "status": "completed",
+        "language": "pt",
+        "device": "cpu",
+        "compute_type": "int8",
+        "model_path": "faster-whisper-small",
+        "model_sha256": "3e305921506d8872816023e4c273e75d2419fb89b24da97b4fe7bce14170d671",
+        "elapsed_seconds": 9.715325233002659,
+        "network_used": false
+      },
+      "metrics": {
+        "word_errors": 5,
+        "reference_words": 6,
+        "wer": 0.8333333333333334,
+        "expected_mentions": 1,
+        "matched_mentions_with_context": 0,
+        "missed_mentions_with_context": 1,
+        "extra_mentions_with_context": 0,
+        "mention_context_exact_match": false
+      }
+    },
+    {
+      "sample_id": "neutral",
+      "kind": "synthetic",
+      "audio_sha256": "a79b43fa667d7be55e8d93f350ed90a64116a038bed7f08f37dd700821147d86",
+      "model": "faster-whisper-small",
+      "reference": "Hoje estou bem e vou caminhar no parque.",
+      "hypothesis": "Hoje estou bem e vou caminhar no parque.",
+      "inference": {
+        "status": "completed",
+        "language": "pt",
+        "device": "cpu",
+        "compute_type": "int8",
+        "model_path": "faster-whisper-small",
+        "model_sha256": "3e305921506d8872816023e4c273e75d2419fb89b24da97b4fe7bce14170d671",
+        "elapsed_seconds": 2.701074275013525,
+        "network_used": false
+      },
+      "metrics": {
+        "word_errors": 0,
+        "reference_words": 8,
+        "wer": 0.0,
+        "expected_mentions": 0,
+        "matched_mentions_with_context": 0,
+        "missed_mentions_with_context": 0,
+        "extra_mentions_with_context": 0,
+        "mention_context_exact_match": true
+      }
+    },
+    {
+      "sample_id": "history",
+      "kind": "synthetic",
+      "audio_sha256": "9cd1005f22323dd39500058bab4451d7403d3e0c0541d43a2cc2fb3faf9c1d4c",
+      "model": "faster-whisper-small",
+      "reference": "Ontem tive tontura.",
+      "hypothesis": "Não tem TV, não doutor!",
+      "inference": {
+        "status": "completed",
+        "language": "pt",
+        "device": "cpu",
+        "compute_type": "int8",
+        "model_path": "faster-whisper-small",
+        "model_sha256": "3e305921506d8872816023e4c273e75d2419fb89b24da97b4fe7bce14170d671",
+        "elapsed_seconds": 5.630001182027627,
+        "network_used": false
+      },
+      "metrics": {
+        "word_errors": 5,
+        "reference_words": 3,
+        "wer": 1.6666666666666667,
+        "expected_mentions": 1,
+        "matched_mentions_with_context": 0,
+        "missed_mentions_with_context": 1,
+        "extra_mentions_with_context": 0,
+        "mention_context_exact_match": false
+      }
+    },
+    {
+      "sample_id": "other",
+      "kind": "synthetic",
+      "audio_sha256": "6bc55b811fd9d41eb200a39b35aae82f6a1f0200202e152431e393322750edf6",
+      "model": "faster-whisper-small",
+      "reference": "Minha mãe está com dor no peito.",
+      "hypothesis": "Minha mãe está com todo o peito.",
+      "inference": {
+        "status": "completed",
+        "language": "pt",
+        "device": "cpu",
+        "compute_type": "int8",
+        "model_path": "faster-whisper-small",
+        "model_sha256": "3e305921506d8872816023e4c273e75d2419fb89b24da97b4fe7bce14170d671",
+        "elapsed_seconds": 2.694051945989486,
+        "network_used": false
+      },
+      "metrics": {
+        "word_errors": 2,
+        "reference_words": 7,
+        "wer": 0.2857142857142857,
+        "expected_mentions": 1,
+        "matched_mentions_with_context": 0,
+        "missed_mentions_with_context": 1,
+        "extra_mentions_with_context": 0,
+        "mention_context_exact_match": false
+      }
+    },
+    {
+      "sample_id": "contrast",
+      "kind": "synthetic",
+      "audio_sha256": "f3bbcea0b57efe4d64cad13a7bb941f351268b891b2f1bc142df1d4447d44cde",
+      "model": "faster-whisper-small",
+      "reference": "Não tenho dor no peito, mas estou com falta de ar.",
+      "hypothesis": "Não tenho dor no peito, mas estou com falta de ar.",
+      "inference": {
+        "status": "completed",
+        "language": "pt",
+        "device": "cpu",
+        "compute_type": "int8",
+        "model_path": "faster-whisper-small",
+        "model_sha256": "3e305921506d8872816023e4c273e75d2419fb89b24da97b4fe7bce14170d671",
+        "elapsed_seconds": 2.7803128940286115,
+        "network_used": false
+      },
+      "metrics": {
+        "word_errors": 0,
+        "reference_words": 11,
+        "wer": 0.0,
+        "expected_mentions": 2,
+        "matched_mentions_with_context": 2,
+        "missed_mentions_with_context": 0,
+        "extra_mentions_with_context": 0,
+        "mention_context_exact_match": true
+      }
+    },
+    {
+      "sample_id": "original-failure",
+      "kind": "synthetic",
+      "audio_sha256": "81732bba316fcaadcb670f23a0f9d9e8a5267506055e03dd2490c9aab0dd331c",
+      "model": "faster-whisper-medium",
+      "reference": "Estou com falta de ar e sinto cansaço.",
+      "hypothesis": "Estou com falta de adicinto cansaço.",
+      "inference": {
+        "status": "completed",
+        "language": "pt",
+        "device": "cpu",
+        "compute_type": "int8",
+        "model_path": "faster-whisper-medium",
+        "model_sha256": "9b45e1009dcc4ab601eff815b61d80e60ce3fd8c74c1a14f4a282258286b51ae",
+        "elapsed_seconds": 10.048463693994563,
+        "network_used": false,
+        "manual_review_required": true,
+        "recognition_quality_validated": false
+      },
+      "metrics": {
+        "word_errors": 3,
+        "reference_words": 8,
+        "wer": 0.375,
+        "expected_mentions": 2,
+        "matched_mentions_with_context": 1,
+        "missed_mentions_with_context": 1,
+        "extra_mentions_with_context": 0,
+        "mention_context_exact_match": false
+      }
+    },
+    {
+      "sample_id": "affirmed",
+      "kind": "synthetic",
+      "audio_sha256": "a6601f65197de946dab24c2beaf1a64582340603e7740822d80e3fb5669bbb71",
+      "model": "faster-whisper-medium",
+      "reference": "Estou com falta de ar.",
+      "hypothesis": "Estou com falta de ar.",
+      "inference": {
+        "status": "completed",
+        "language": "pt",
+        "device": "cpu",
+        "compute_type": "int8",
+        "model_path": "faster-whisper-medium",
+        "model_sha256": "9b45e1009dcc4ab601eff815b61d80e60ce3fd8c74c1a14f4a282258286b51ae",
+        "elapsed_seconds": 7.747961001994554,
+        "network_used": false,
+        "manual_review_required": true,
+        "recognition_quality_validated": false
+      },
+      "metrics": {
+        "word_errors": 0,
+        "reference_words": 5,
+        "wer": 0.0,
+        "expected_mentions": 1,
+        "matched_mentions_with_context": 1,
+        "missed_mentions_with_context": 0,
+        "extra_mentions_with_context": 0,
+        "mention_context_exact_match": true
+      }
+    },
+    {
+      "sample_id": "negated",
+      "kind": "synthetic",
+      "audio_sha256": "0dce9102a89a7938d8320b7676c6cc3893b052d74e96aa959e6adde4709a8305",
+      "model": "faster-whisper-medium",
+      "reference": "Não estou com falta de ar.",
+      "hypothesis": "e não é só com falta de ar.",
+      "inference": {
+        "status": "completed",
+        "language": "pt",
+        "device": "cpu",
+        "compute_type": "int8",
+        "model_path": "faster-whisper-medium",
+        "model_sha256": "9b45e1009dcc4ab601eff815b61d80e60ce3fd8c74c1a14f4a282258286b51ae",
+        "elapsed_seconds": 7.785619536996819,
+        "network_used": false,
+        "manual_review_required": true,
+        "recognition_quality_validated": false
+      },
+      "metrics": {
+        "word_errors": 3,
+        "reference_words": 6,
+        "wer": 0.5,
+        "expected_mentions": 1,
+        "matched_mentions_with_context": 1,
+        "missed_mentions_with_context": 0,
+        "extra_mentions_with_context": 0,
+        "mention_context_exact_match": true
+      }
+    },
+    {
+      "sample_id": "neutral",
+      "kind": "synthetic",
+      "audio_sha256": "a79b43fa667d7be55e8d93f350ed90a64116a038bed7f08f37dd700821147d86",
+      "model": "faster-whisper-medium",
+      "reference": "Hoje estou bem e vou caminhar no parque.",
+      "hypothesis": "Hoje estou bem e vou caminhar no parque.",
+      "inference": {
+        "status": "completed",
+        "language": "pt",
+        "device": "cpu",
+        "compute_type": "int8",
+        "model_path": "faster-whisper-medium",
+        "model_sha256": "9b45e1009dcc4ab601eff815b61d80e60ce3fd8c74c1a14f4a282258286b51ae",
+        "elapsed_seconds": 9.266491610032972,
+        "network_used": false,
+        "manual_review_required": true,
+        "recognition_quality_validated": false
+      },
+      "metrics": {
+        "word_errors": 0,
+        "reference_words": 8,
+        "wer": 0.0,
+        "expected_mentions": 0,
+        "matched_mentions_with_context": 0,
+        "missed_mentions_with_context": 0,
+        "extra_mentions_with_context": 0,
+        "mention_context_exact_match": true
+      }
+    },
+    {
+      "sample_id": "history",
+      "kind": "synthetic",
+      "audio_sha256": "9cd1005f22323dd39500058bab4451d7403d3e0c0541d43a2cc2fb3faf9c1d4c",
+      "model": "faster-whisper-medium",
+      "reference": "Ontem tive tontura.",
+      "hypothesis": "Não tem que vir com dúvida.",
+      "inference": {
+        "status": "completed",
+        "language": "pt",
+        "device": "cpu",
+        "compute_type": "int8",
+        "model_path": "faster-whisper-medium",
+        "model_sha256": "9b45e1009dcc4ab601eff815b61d80e60ce3fd8c74c1a14f4a282258286b51ae",
+        "elapsed_seconds": 10.474681755003985,
+        "network_used": false,
+        "manual_review_required": true,
+        "recognition_quality_validated": false
+      },
+      "metrics": {
+        "word_errors": 6,
+        "reference_words": 3,
+        "wer": 2.0,
+        "expected_mentions": 1,
+        "matched_mentions_with_context": 0,
+        "missed_mentions_with_context": 1,
+        "extra_mentions_with_context": 0,
+        "mention_context_exact_match": false
+      }
+    },
+    {
+      "sample_id": "other",
+      "kind": "synthetic",
+      "audio_sha256": "6bc55b811fd9d41eb200a39b35aae82f6a1f0200202e152431e393322750edf6",
+      "model": "faster-whisper-medium",
+      "reference": "Minha mãe está com dor no peito.",
+      "hypothesis": "Minha mãe está com dor no peito.",
+      "inference": {
+        "status": "completed",
+        "language": "pt",
+        "device": "cpu",
+        "compute_type": "int8",
+        "model_path": "faster-whisper-medium",
+        "model_sha256": "9b45e1009dcc4ab601eff815b61d80e60ce3fd8c74c1a14f4a282258286b51ae",
+        "elapsed_seconds": 11.017446938029025,
+        "network_used": false,
+        "manual_review_required": true,
+        "recognition_quality_validated": false
+      },
+      "metrics": {
+        "word_errors": 0,
+        "reference_words": 7,
+        "wer": 0.0,
+        "expected_mentions": 1,
+        "matched_mentions_with_context": 1,
+        "missed_mentions_with_context": 0,
+        "extra_mentions_with_context": 0,
+        "mention_context_exact_match": true
+      }
+    },
+    {
+      "sample_id": "contrast",
+      "kind": "synthetic",
+      "audio_sha256": "f3bbcea0b57efe4d64cad13a7bb941f351268b891b2f1bc142df1d4447d44cde",
+      "model": "faster-whisper-medium",
+      "reference": "Não tenho dor no peito, mas estou com falta de ar.",
+      "hypothesis": "Não tenho dor no peito, mas estou com falta de ar.",
+      "inference": {
+        "status": "completed",
+        "language": "pt",
+        "device": "cpu",
+        "compute_type": "int8",
+        "model_path": "faster-whisper-medium",
+        "model_sha256": "9b45e1009dcc4ab601eff815b61d80e60ce3fd8c74c1a14f4a282258286b51ae",
+        "elapsed_seconds": 8.82354688103078,
+        "network_used": false,
+        "manual_review_required": true,
+        "recognition_quality_validated": false
+      },
+      "metrics": {
+        "word_errors": 0,
+        "reference_words": 11,
+        "wer": 0.0,
+        "expected_mentions": 2,
+        "matched_mentions_with_context": 2,
+        "missed_mentions_with_context": 0,
+        "extra_mentions_with_context": 0,
+        "mention_context_exact_match": true
+      }
+    }
+  ],
+  "summaries": [
+    {
+      "model": "faster-whisper-small",
+      "kind": "synthetic",
+      "samples": 7,
+      "word_errors": 19,
+      "reference_words": 48,
+      "weighted_wer": 0.3958333333333333,
+      "matched_mentions_with_context": 3,
+      "expected_mentions": 8,
+      "extra_mentions_with_context": 0
+    },
+    {
+      "model": "faster-whisper-medium",
+      "kind": "synthetic",
+      "samples": 7,
+      "word_errors": 12,
+      "reference_words": 48,
+      "weighted_wer": 0.25,
+      "matched_mentions_with_context": 6,
+      "expected_mentions": 8,
+      "extra_mentions_with_context": 0
+    }
+  ],
+  "natural_speech_evaluated": false,
+  "clinical_validation": false,
+  "original_failure_corrected_automatically": false,
+  "decision": "keep small default; medium optional; require human review; natural validation pending",
+  "additional_experiments": {
+    "no_vad": "original failure persisted",
+    "silence_padding_0_5_seconds": "original failure persisted",
+    "beam_size_10": "original failure persisted",
+    "small_float32": "original failure persisted",
+    "generic_context_prompts": "original failure persisted; not adopted"
+  }
+}

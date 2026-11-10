@@ -1,0 +1,19 @@
+{
+  "scope": "Local audio implementation and Azure REST contract tests",
+  "tests_passed": 73,
+  "ruff": "passed",
+  "format": "passed",
+  "mypy": "passed",
+  "dependencies": "passed",
+  "ui_local_and_unconfigured_azure": "passed_with_isolated_inputs",
+  "azure_resources_created": false,
+  "real_azure_requests": 0,
+  "real_integration_validated": false,
+  "azure_transport_tests": "Controlled responses; not cloud evidence",
+  "pending": [
+    "Create/configure eligible F0 resources",
+    "Run real Speech and Language with appropriate audio",
+    "Evaluate representative annotated speech"
+  ],
+  "local_demo": "reports/audio/local-demo.json"
+}

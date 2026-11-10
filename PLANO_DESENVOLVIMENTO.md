@@ -251,7 +251,21 @@ móvel não entram no caminho crítico.
 - [x] Etapa 1: extração seletiva da base e validação local; origem em `docs/reaproveitamento-fase-3.md`.
 - [x] Etapa 2: contratos, schemas, fixtures e partições funcionais; subconjunto BIDMC para ingestão.
 - [ ] Etapa 2: incorporar fala/vídeo e congelar teste independente; ver `docs/dados-e-avaliacao.md`.
-- [ ] Execução das etapas 3–8.
+- [x] Etapa 3: primeiro fluxo incremental de sinais vitais, alertas persistidos, painel e demonstração 1×.
+- [x] Etapa 3: histórico persistido de cada reprodução, inclusive duplicações; dados anteriores preservados.
+- [x] Etapa 4: implementação de postura em CPU, regras temporais, vídeo anotado e relatórios; ver `docs/video-e-relatorios.md`.
+- [ ] Etapa 4: calibrar e avaliar com gravações representativas e referências independentes.
+- [x] Etapa 5: áudio local, análise acústica, termos críticos, adaptadores HTTPS Azure, painel e testes offline.
+- [x] Etapa 5: faster-whisper small CPU/int8 instalado e integrado ao painel, com MediaPipe em CPU; ver `docs/execucao-local.md`.
+- [ ] Etapa 5: configurar recursos F0 e executar integração real Speech/Language; ver `docs/audio-e-azure.md`.
+- [ ] Etapa 5: avaliar fala com locutores, transcrições e referências independentes.
+- [ ] Execução das etapas 6–8.
 
 Na elaboração inicial do plano não houve cópia de componentes. Na Etapa 1,
 os componentes úteis foram extraídos para a fase 4; a fase 3 permanece preservada.
+
+### Avaliação adicional do reconhecimento local
+
+- [x] Avaliador offline de WER e menções com negação, temporalidade e sujeito.
+- [x] Comparação sintética small/medium e referência manual no painel; evidências em `docs/validacao-local.md`.
+- [ ] Validar com fala natural, referências manuais revisadas e locutores separados; a falha automática no áudio sintético original permanece registrada.

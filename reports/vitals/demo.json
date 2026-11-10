@@ -1,0 +1,1721 @@
+{
+  "purpose": "functional demonstration only",
+  "python": "3.14.4",
+  "platform": "Linux-7.0.0-42-generic-x86_64-desconhecido-with-glibc2.43",
+  "config": {
+    "version": "synthetic-vitals-v1",
+    "purpose": "Synthetic demonstration only; not clinical thresholds",
+    "persistence_seconds": 3.0,
+    "max_gap_seconds": 2.0,
+    "limits": {
+      "heart_rate": [
+        50.0,
+        100.0
+      ],
+      "systolic": [
+        90.0,
+        150.0
+      ],
+      "diastolic": [
+        50.0,
+        100.0
+      ],
+      "spo2": [
+        92.0,
+        100.0
+      ]
+    }
+  },
+  "config_fingerprint": "f7eccf38c60e74a5",
+  "cases": {
+    "development-vitals-1": {
+      "summary": {
+        "mode": "accelerated_simulation",
+        "speed": 0,
+        "samples": 80,
+        "new_alerts": 0,
+        "statuses": {
+          "accepted": 80
+        },
+        "elapsed_seconds": 0.030179772002156824,
+        "processing_p95_ms": 0.5229830276221037,
+        "confirmation_to_alert_seconds": [],
+        "confirmation_to_alert_p95_seconds": null,
+        "onset_to_alert_seconds": [],
+        "realtime_claim": false,
+        "limitation": "Synthetic playback; no sensor or clinical validation"
+      },
+      "snapshot": {
+        "samples": [
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-0",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.407458+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-0",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.408198+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-0",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.408752+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-0",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.409333+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-1",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.409877+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-1",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.410404+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-1",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.410944+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-1",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.411433+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-2",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.411818+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-2",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.412131+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-2",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.412469+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-2",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.412813+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-3",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.413313+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-3",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.413795+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-3",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.414146+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-3",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.414504+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-4",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.414896+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-4",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.415238+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-4",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.415590+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-4",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.415968+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-5",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.416508+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-5",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.417049+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-5",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.417526+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-5",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.418018+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-6",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.418376+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-6",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.418796+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-6",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.419173+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-6",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.419623+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-7",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.419979+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-7",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.420307+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-7",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.420675+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-7",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.421017+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-8",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.421348+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-8",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.421696+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-8",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.422022+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-8",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.422342+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-9",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.422672+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-9",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.422992+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-9",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.423308+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-9",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.423656+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-10",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.423988+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-10",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.424335+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-10",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.424699+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-10",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.425040+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-11",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.425366+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-11",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.425721+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-11",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.426032+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-11",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.426342+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-12",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.426703+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-12",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.427015+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-12",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.427318+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-12",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.427688+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-13",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.428188+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-13",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.428650+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-13",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.429073+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-13",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.429382+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-14",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.429723+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-14",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.430041+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-14",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.430357+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-14",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.430704+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-15",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.431040+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-15",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.431335+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-15",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.431717+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-15",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.432011+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-16",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.432303+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-16",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.432671+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-16",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.432964+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-16",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.433351+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-17",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.433693+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-17",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.433987+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-17",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.434280+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-17",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.434604+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-18",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.434964+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-18",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.435264+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-18",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.435583+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-18",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.435889+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-heart_rate-19",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.436180+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-systolic-19",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.436470+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-diastolic-19",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.436806+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-1-spo2-19",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.437170+00:00"
+          }
+        ],
+        "events": [],
+        "alerts": [],
+        "history": []
+      }
+    },
+    "development-vitals-2": {
+      "summary": {
+        "mode": "cadence_1x_simulation",
+        "speed": 1,
+        "samples": 80,
+        "new_alerts": 4,
+        "statuses": {
+          "accepted": 80
+        },
+        "elapsed_seconds": 19.007728839002084,
+        "processing_p95_ms": 2.109971013851464,
+        "confirmation_to_alert_seconds": [
+          0.0008314619772136211,
+          0.0016964980168268085,
+          0.0025851299869827926,
+          0.003465946007054299
+        ],
+        "confirmation_to_alert_p95_seconds": 0.003465946007054299,
+        "onset_to_alert_seconds": [
+          3.0008314619772136,
+          3.001696498016827,
+          3.002585129986983,
+          3.0034659460070543
+        ],
+        "realtime_claim": true,
+        "limitation": "Synthetic playback; no sensor or clinical validation"
+      },
+      "repeated": {
+        "mode": "accelerated_simulation",
+        "speed": 0,
+        "samples": 80,
+        "new_alerts": 0,
+        "statuses": {
+          "duplicate": 80
+        },
+        "elapsed_seconds": 0.03858074900927022,
+        "processing_p95_ms": 0.8318870095536113,
+        "confirmation_to_alert_seconds": [],
+        "confirmation_to_alert_p95_seconds": null,
+        "onset_to_alert_seconds": [],
+        "realtime_claim": false,
+        "limitation": "Synthetic playback; no sensor or clinical validation"
+      },
+      "snapshot": {
+        "samples": [
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-0",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.440129+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-0",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.440484+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-0",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.440853+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-0",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:29.441198+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-1",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:30.440299+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-1",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:30.440857+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-1",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:30.441259+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-1",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:30.441664+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-2",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:31.440273+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-2",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:31.442314+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-2",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:31.444048+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-2",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:31.445627+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-3",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:32.440326+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-3",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:32.442516+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-3",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:32.444270+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-3",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:32.445065+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-4",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:33.440328+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-4",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:33.442505+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-4",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:33.444260+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-4",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:33.445763+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-5",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:34.440391+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-5",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:34.441833+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-5",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:34.443134+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-5",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:34.444336+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-6",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:35.440249+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-6",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:35.442443+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-6",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:35.444393+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-6",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:35.446073+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-7",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:36.440254+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-7",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:36.442386+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-7",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:36.444189+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-7",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:36.445930+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-8",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:37.440420+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-8",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:37.442632+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-8",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:37.443422+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-8",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:37.443784+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-9",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:38.440246+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-9",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:38.442247+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-9",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:38.443922+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-9",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:38.445508+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-10",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:39.440240+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-10",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:39.441081+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-10",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:39.441704+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-10",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:39.442321+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-11",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:40.440215+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-11",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:40.441127+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-11",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:40.441821+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-11",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:40.442353+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-12",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:41.440255+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-12",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:41.440814+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-12",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:41.441131+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-12",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:41.441443+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-13",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:42.440235+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-13",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:42.441326+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-13",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:42.442183+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-13",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:42.443082+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-14",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:43.440204+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-14",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:43.440746+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-14",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:43.441067+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-14",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:43.441376+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-15",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:44.440221+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-15",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:44.441817+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-15",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:44.443135+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-15",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:44.444422+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-16",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:45.440233+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-16",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:45.440865+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-16",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:45.441227+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-16",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:45.441563+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-17",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:46.440411+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-17",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:46.442643+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-17",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:46.444454+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-17",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:46.446151+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-18",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:47.440203+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-18",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:47.441102+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-18",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:47.441540+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-18",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:47.442053+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-heart_rate-19",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.440243+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-systolic-19",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.442404+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-diastolic-19",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.444369+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-2-spo2-19",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.446098+00:00"
+          }
+        ],
+        "events": [
+          {
+            "event_id": "event-cf7c406dd347f6e145ea69ba8799e3d3751cc20494a6f69762fbdcb09d65fb35",
+            "patient_id": "PAT-SYN-001",
+            "session_id": "SESSION-001",
+            "event_type": "persistent_deviation",
+            "occurred_at": "2026-01-01T00:00:10Z",
+            "ended_at": "2026-01-01T00:00:13Z",
+            "processed_at": "2026-11-09T20:07:42.440654Z",
+            "detector_version": "synthetic-vitals-v1",
+            "evidence": [
+              {
+                "source_id": "development-vitals-2-heart_rate-13",
+                "modality": "vitals",
+                "start_seconds": 10.0,
+                "end_seconds": 13.0,
+                "description": "heart_rate: 125.15 bpm; high; synthetic limits [50.0, 100.0]; first record development-vitals-2-heart_rate-10"
+              }
+            ]
+          },
+          {
+            "event_id": "event-62a58370d8d41070c916476a20e94ad85e38823255ed936f5640620c449847e4",
+            "patient_id": "PAT-SYN-001",
+            "session_id": "SESSION-001",
+            "event_type": "persistent_deviation",
+            "occurred_at": "2026-01-01T00:00:10Z",
+            "ended_at": "2026-01-01T00:00:13Z",
+            "processed_at": "2026-11-09T20:07:42.441574Z",
+            "detector_version": "synthetic-vitals-v1",
+            "evidence": [
+              {
+                "source_id": "development-vitals-2-systolic-13",
+                "modality": "vitals",
+                "start_seconds": 10.0,
+                "end_seconds": 13.0,
+                "description": "systolic: 170.18 mmHg; high; synthetic limits [90.0, 150.0]; first record development-vitals-2-systolic-10"
+              }
+            ]
+          },
+          {
+            "event_id": "event-4d37e5cad2372a8e37fb16b8528a0d4b980e6a2268f629d2b76576d48214bd92",
+            "patient_id": "PAT-SYN-001",
+            "session_id": "SESSION-001",
+            "event_type": "persistent_deviation",
+            "occurred_at": "2026-01-01T00:00:10Z",
+            "ended_at": "2026-01-01T00:00:13Z",
+            "processed_at": "2026-11-09T20:07:42.442432Z",
+            "detector_version": "synthetic-vitals-v1",
+            "evidence": [
+              {
+                "source_id": "development-vitals-2-diastolic-13",
+                "modality": "vitals",
+                "start_seconds": 10.0,
+                "end_seconds": 13.0,
+                "description": "diastolic: 129.82999999999998 mmHg; high; synthetic limits [50.0, 100.0]; first record development-vitals-2-diastolic-10"
+              }
+            ]
+          },
+          {
+            "event_id": "event-987c1025458dd7989d8e32f5b9b01dbe4875cc422c803a8aa0c72ffcbb47f554",
+            "patient_id": "PAT-SYN-001",
+            "session_id": "SESSION-001",
+            "event_type": "persistent_deviation",
+            "occurred_at": "2026-01-01T00:00:10Z",
+            "ended_at": "2026-01-01T00:00:13Z",
+            "processed_at": "2026-11-09T20:07:42.443325Z",
+            "detector_version": "synthetic-vitals-v1",
+            "evidence": [
+              {
+                "source_id": "development-vitals-2-spo2-13",
+                "modality": "vitals",
+                "start_seconds": 10.0,
+                "end_seconds": 13.0,
+                "description": "spo2: 85.99 %; low; synthetic limits [92.0, 100.0]; first record development-vitals-2-spo2-10"
+              }
+            ]
+          }
+        ],
+        "alerts": [
+          {
+            "alert_id": "alert-cf7c406dd347f6e145ea69ba8799e3d3751cc20494a6f69762fbdcb09d65fb35",
+            "deduplication_key": "cf7c406dd347f6e145ea69ba8799e3d3751cc20494a6f69762fbdcb09d65fb35",
+            "patient_id": "PAT-SYN-001",
+            "session_id": "SESSION-001",
+            "event_ids": [
+              "event-cf7c406dd347f6e145ea69ba8799e3d3751cc20494a6f69762fbdcb09d65fb35"
+            ],
+            "emitted_at": "2026-11-09T20:07:42.440693Z",
+            "severity": "attention",
+            "status": "closed",
+            "review": "confirmed"
+          },
+          {
+            "alert_id": "alert-62a58370d8d41070c916476a20e94ad85e38823255ed936f5640620c449847e4",
+            "deduplication_key": "62a58370d8d41070c916476a20e94ad85e38823255ed936f5640620c449847e4",
+            "patient_id": "PAT-SYN-001",
+            "session_id": "SESSION-001",
+            "event_ids": [
+              "event-62a58370d8d41070c916476a20e94ad85e38823255ed936f5640620c449847e4"
+            ],
+            "emitted_at": "2026-11-09T20:07:42.441600Z",
+            "severity": "attention",
+            "status": "open",
+            "review": null
+          },
+          {
+            "alert_id": "alert-4d37e5cad2372a8e37fb16b8528a0d4b980e6a2268f629d2b76576d48214bd92",
+            "deduplication_key": "4d37e5cad2372a8e37fb16b8528a0d4b980e6a2268f629d2b76576d48214bd92",
+            "patient_id": "PAT-SYN-001",
+            "session_id": "SESSION-001",
+            "event_ids": [
+              "event-4d37e5cad2372a8e37fb16b8528a0d4b980e6a2268f629d2b76576d48214bd92"
+            ],
+            "emitted_at": "2026-11-09T20:07:42.442459Z",
+            "severity": "attention",
+            "status": "open",
+            "review": null
+          },
+          {
+            "alert_id": "alert-987c1025458dd7989d8e32f5b9b01dbe4875cc422c803a8aa0c72ffcbb47f554",
+            "deduplication_key": "987c1025458dd7989d8e32f5b9b01dbe4875cc422c803a8aa0c72ffcbb47f554",
+            "patient_id": "PAT-SYN-001",
+            "session_id": "SESSION-001",
+            "event_ids": [
+              "event-987c1025458dd7989d8e32f5b9b01dbe4875cc422c803a8aa0c72ffcbb47f554"
+            ],
+            "emitted_at": "2026-11-09T20:07:42.443351Z",
+            "severity": "attention",
+            "status": "open",
+            "review": null
+          }
+        ],
+        "history": [
+          {
+            "history_id": 1,
+            "alert_id": "alert-cf7c406dd347f6e145ea69ba8799e3d3751cc20494a6f69762fbdcb09d65fb35",
+            "actor": "demo-professional",
+            "occurred_at": "2026-11-09T20:07:48.489080+00:00",
+            "action": "acknowledge",
+            "comment": "Synthetic alert inspected"
+          },
+          {
+            "history_id": 2,
+            "alert_id": "alert-cf7c406dd347f6e145ea69ba8799e3d3751cc20494a6f69762fbdcb09d65fb35",
+            "actor": "demo-professional",
+            "occurred_at": "2026-11-09T20:07:48.489442+00:00",
+            "action": "close",
+            "comment": "Confirmed against synthetic fixture"
+          }
+        ]
+      }
+    },
+    "development-vitals-4": {
+      "summary": {
+        "mode": "accelerated_simulation",
+        "speed": 0,
+        "samples": 80,
+        "new_alerts": 0,
+        "statuses": {
+          "accepted": 76,
+          "quality_issue": 4
+        },
+        "elapsed_seconds": 0.025523445045109838,
+        "processing_p95_ms": 0.3859220305457711,
+        "confirmation_to_alert_seconds": [],
+        "confirmation_to_alert_p95_seconds": null,
+        "onset_to_alert_seconds": [],
+        "realtime_claim": false,
+        "limitation": "Synthetic playback; no sensor or clinical validation"
+      },
+      "snapshot": {
+        "samples": [
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-0",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.493141+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-0",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.493541+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-0",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.493940+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-0",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.494325+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-1",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.494719+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-1",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.495119+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-1",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.495517+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-1",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.495923+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-2",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.496327+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-2",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.496688+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-2",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.497043+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-2",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.497397+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-3",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.497757+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-3",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.498119+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-3",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.498474+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-3",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.498847+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-4",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.499201+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-4",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.499564+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-4",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.499920+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-4",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.500274+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-5",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.500634+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-5",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.501004+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-5",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.501358+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-5",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.501686+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-6",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.502007+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-6",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.502330+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-6",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.502662+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-6",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.502983+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-7",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.503302+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-7",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.503631+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-7",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.503949+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-7",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.504268+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-8",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.504590+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-8",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.504912+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-8",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.505233+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-8",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.505559+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-9",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.505879+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-9",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.506214+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-9",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.506503+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-9",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.506806+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-10",
+            "status": "quality_issue",
+            "received_at": "2026-11-09T20:07:48.507097+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-10",
+            "status": "quality_issue",
+            "received_at": "2026-11-09T20:07:48.507389+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-10",
+            "status": "quality_issue",
+            "received_at": "2026-11-09T20:07:48.507686+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-10",
+            "status": "quality_issue",
+            "received_at": "2026-11-09T20:07:48.507975+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-11",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.508266+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-11",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.508565+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-11",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.508857+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-11",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.509149+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-12",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.509438+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-12",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.509738+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-12",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.510031+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-12",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.510322+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-13",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.510625+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-13",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.510916+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-13",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.511219+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-13",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.511499+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-14",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.511823+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-14",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.512103+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-14",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.512380+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-14",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.512665+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-15",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.512945+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-15",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.513228+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-15",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.513507+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-15",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.513836+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-16",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.514115+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-16",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.514395+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-16",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.514686+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-16",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.514966+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-17",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.515244+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-17",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.515521+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-17",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.515807+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-17",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.516086+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-18",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.516366+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-18",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.516654+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-18",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.516935+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-18",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.517215+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-heart_rate-19",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.517495+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-systolic-19",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.517814+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-diastolic-19",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.518093+00:00"
+          },
+          {
+            "session_id": "SESSION-001",
+            "record_id": "development-vitals-4-spo2-19",
+            "status": "accepted",
+            "received_at": "2026-11-09T20:07:48.518370+00:00"
+          }
+        ],
+        "events": [],
+        "alerts": [],
+        "history": []
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "purpose": "isolated replay history verification",
+  "summary": {
+    "mode": "cadence_1x_simulation",
+    "speed": 1,
+    "samples": 80,
+    "new_alerts": 0,
+    "statuses": {
+      "duplicate": 80
+    },
+    "elapsed_seconds": 19.004017792991363,
+    "processing_p95_ms": 1.2592109851539135,
+    "confirmation_to_alert_seconds": [],
+    "confirmation_to_alert_p95_seconds": null,
+    "onset_to_alert_seconds": [],
+    "realtime_claim": true,
+    "limitation": "Synthetic playback; no sensor or clinical validation",
+    "run_id": "e2b6cf07-17be-49be-88b8-b0f9e5de3f9f"
+  },
+  "runs": [
+    {
+      "run_id": "e2b6cf07-17be-49be-88b8-b0f9e5de3f9f",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_id": "agent-verification-repeat",
+      "started_at": "2026-11-09T20:34:12.244024+00:00",
+      "finished_at": "2026-11-09T20:34:31.249054+00:00",
+      "status": "completed",
+      "speed": 1,
+      "samples_requested": 80,
+      "config_fingerprint": "f7eccf38c60e74a5",
+      "summary": {
+        "mode": "cadence_1x_simulation",
+        "speed": 1,
+        "samples": 80,
+        "new_alerts": 0,
+        "statuses": {
+          "duplicate": 80
+        },
+        "elapsed_seconds": 19.004017792991363,
+        "processing_p95_ms": 1.2592109851539135,
+        "confirmation_to_alert_seconds": [],
+        "confirmation_to_alert_p95_seconds": null,
+        "onset_to_alert_seconds": [],
+        "realtime_claim": true,
+        "limitation": "Synthetic playback; no sensor or clinical validation",
+        "run_id": "e2b6cf07-17be-49be-88b8-b0f9e5de3f9f"
+      },
+      "error": null
+    },
+    {
+      "run_id": "a0c5a995-a794-4e2d-bc5e-1cf5651d61b5",
+      "patient_id": "PAT-SYN-001",
+      "session_id": "SESSION-001",
+      "source_id": "agent-verification-initial",
+      "started_at": "2026-11-09T20:34:12.218039+00:00",
+      "finished_at": "2026-11-09T20:34:12.243747+00:00",
+      "status": "completed",
+      "speed": 0,
+      "samples_requested": 80,
+      "config_fingerprint": "f7eccf38c60e74a5",
+      "summary": {
+        "mode": "accelerated_simulation",
+        "speed": 0,
+        "samples": 80,
+        "new_alerts": 4,
+        "statuses": {
+          "accepted": 80
+        },
+        "elapsed_seconds": 0.02517527196323499,
+        "processing_p95_ms": 0.37806195905432105,
+        "confirmation_to_alert_seconds": [],
+        "confirmation_to_alert_p95_seconds": null,
+        "onset_to_alert_seconds": [],
+        "realtime_claim": false,
+        "limitation": "Synthetic playback; no sensor or clinical validation",
+        "run_id": "a0c5a995-a794-4e2d-bc5e-1cf5651d61b5"
+      },
+      "error": null
+    }
+  ],
+  "total_alerts": 4
+}

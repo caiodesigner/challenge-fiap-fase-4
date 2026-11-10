@@ -1,0 +1,12 @@
+{
+  "version": "synthetic-vitals-v1",
+  "purpose": "Synthetic demonstration only; not clinical thresholds",
+  "persistence_seconds": 3,
+  "max_gap_seconds": 2,
+  "limits": {
+    "heart_rate": [50, 100],
+    "systolic": [90, 150],
+    "diastolic": [50, 100],
+    "spo2": [92, 100]
+  }
+}

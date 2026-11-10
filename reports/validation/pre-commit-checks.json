@@ -1,0 +1,41 @@
+{
+  "checked_at": "2026-11-10T18:25:08.736352+00:00",
+  "tests_passed": 83,
+  "ruff": "passed",
+  "format": "passed",
+  "mypy": "passed",
+  "pip_check": "passed",
+  "fixture_cases_validated": 90,
+  "bidmc_records_validated": 6,
+  "real_whisper_cpu_int8": "passed_offline",
+  "real_mediapipe_cpu": "passed_offline",
+  "speech_comparison_reproduced": true,
+  "speech_samples": 7,
+  "speech_models": 2,
+  "summaries": [
+    {
+      "model": "faster-whisper-small",
+      "kind": "synthetic",
+      "samples": 7,
+      "word_errors": 19,
+      "reference_words": 48,
+      "weighted_wer": 0.3958333333333333,
+      "missed_mentions_with_context": 5,
+      "extra_mentions_with_context": 0
+    },
+    {
+      "model": "faster-whisper-medium",
+      "kind": "synthetic",
+      "samples": 7,
+      "word_errors": 12,
+      "reference_words": 48,
+      "weighted_wer": 0.25,
+      "missed_mentions_with_context": 2,
+      "extra_mentions_with_context": 0
+    }
+  ],
+  "azure_requests": 0,
+  "natural_speech_validated": false,
+  "original_omission_resolved": false,
+  "scope": "functional checks and synthetic development probes; not clinical validation"
+}

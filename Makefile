@@ -1,4 +1,4 @@
-.PHONY: install check test data validate schemas
+.PHONY: install check test data validate schemas demo-vitals ui video-model
 PYTHON ?= python3
 VENV_PYTHON := .venv/bin/python
 
@@ -26,3 +26,12 @@ validate:
 
 schemas:
 	$(VENV_PYTHON) -m monitoramento_clinico.data schemas --root data/schemas
+
+demo-vitals:
+	$(VENV_PYTHON) scripts/demo_vitals.py
+
+ui:
+	$(VENV_PYTHON) -m streamlit run app.py
+
+video-model:
+	$(VENV_PYTHON) scripts/prepare_pose_model.py

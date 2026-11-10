@@ -1,0 +1,27 @@
+{
+  "scope": "local installation smoke test; not clinical or accuracy validation",
+  "versions": {
+    "faster-whisper": "1.2.1",
+    "ctranslate2": "4.8.5",
+    "av": "16.1.0",
+    "mediapipe": "0.10.35"
+  },
+  "cuda_devices_visible": 0,
+  "execution_device": "cpu",
+  "whisper": {
+    "status": "completed",
+    "language": "pt",
+    "compute_type": "int8",
+    "elapsed_seconds": 3.3496160290087573,
+    "transcript_characters": 39,
+    "model_sha256": "3e305921506d8872816023e4c273e75d2419fb89b24da97b4fe7bce14170d671",
+    "audio_sha256": "81732bba316fcaadcb670f23a0f9d9e8a5267506055e03dd2490c9aab0dd331c"
+  },
+  "mediapipe": {
+    "status": "passed",
+    "blank_frame_people": 0,
+    "model_id": "mediapipe-pose-landmarker-lite:sha256:59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a"
+  },
+  "azure_requests": 0,
+  "offline_model_loading": true
+}

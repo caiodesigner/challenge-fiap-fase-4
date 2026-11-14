@@ -1,5 +1,18 @@
 # Plano de execução — Tech Challenge Fase 4
 
+## Revisão de escopo — solução local
+
+Por decisão do autor, Azure Speech e Azure Language deixam de integrar o escopo
+ativo de desenvolvimento e entrega. A solução adotada usa faster-whisper para
+transcrição, análise acústica local, regras de termos/contexto e MediaPipe para
+vídeo, sem dependência de serviços pagos. Adaptadores Azure existentes ficam
+como legado opcional, sem tarefa de configuração ou validação real.
+
+O PDF original menciona Azure explicitamente; esta é uma adaptação deliberada
+do projeto, não uma alteração do enunciado nem comprovação de equivalência entre
+serviços. O processamento textual atual extrai menções e contexto; não implementa
+um substituto local de análise de sentimentos ou extração genérica de palavras-chave.
+
 ## 1. Objetivo e limites
 
 Construir um protótipo acadêmico que processe vídeo, áudio e registros clínicos,
@@ -23,7 +36,7 @@ um mesmo paciente; associações para demonstração serão identificadas como s
 | Feedback | Interpretação e ação na fase 4 | Evidência planejada |
 | --- | --- | --- |
 | Mascaramento e remoção de repetições foram pontos fortes | Preservar curadoria; ampliar para identificadores em transcrições e tratamento de mídias antes do envio à nuvem | Manifesto de origem, consentimento/licença, hashes e relatório de duplicações |
-| Treinamento real e resultados registrados | Preservar a disciplina de registrar configurações, versões, entradas e saídas de execuções reais | Relatórios por execução e amostras verificáveis de vídeo, áudio e Azure |
+| Treinamento real e resultados registrados | Preservar a disciplina de registrar configurações, versões, entradas e saídas de execuções reais | Relatórios por execução e amostras verificáveis de vídeo e áudio locais |
 | Busca cuidadosa e validação humana | Reutilizar controles pertinentes; separar alerta automático de decisão sobre conduta | Alerta emitido sem aguardar aprovação; reconhecimento e revisão posteriores |
 | Testes e organização foram positivos | Manter modularidade e testes de contratos, integração e falhas | CI e cenário E2E reproduzível |
 | Falta comparação direta antes/depois do treinamento | Comparar alternativas nas mesmas entradas e condições; não inferir ganho a partir de loss ou sucesso de validação de schema | Baseline e solução final pareados, com erros, acertos, latência e exemplos de regressão |
@@ -68,15 +81,15 @@ Não copiar `.git`, `.venv`, credenciais, bancos gerados ou diretórios de cache
 | Vídeos clínicos e movimentos/eventos fora do padrão | Extração de postura e características temporais; comparar com padrão do exercício | Vídeo com marcações, instante do desvio e comparação normal/anormal |
 | Relatório automático de vídeo | Relatório estruturado por sessão | Arquivo gerado com eventos, intervalos e evidências |
 | Alterações vocais | Características acústicas e detector com escopo definido pelos dados disponíveis | Áudios avaliados com rótulos de referência e análise de erros |
-| Azure Speech to Text | Adaptador de transcrição real | Execução real com transcrição, duração e versão/configuração |
-| Azure Text Analytics | Sentimentos e extração de termos; complementar vocabulário crítico com regras documentadas | Saída real do serviço e termos contextualizados, incluindo negação |
+| Transcrição (escopo local adaptado) | faster-whisper local | Transcrição, modelo, duração e configuração; referência manual na avaliação |
+| Texto (escopo local adaptado) | Regras locais de termos críticos e contexto | Menções, negação, temporalidade e sujeito; sentimentos fora deste escopo |
 | Anomalias em sinais vitais | Séries de frequência cardíaca, pressão e oxigenação com regras e detector temporal | Gráficos com verdade de referência, eventos e métricas |
 | Evolução de prescrições | Histórico ordenado, comparação de mudanças e regras de alterações inesperadas | Caso esperado, caso anômalo e justificativa; sem propor tratamento |
 | Movimentação na internação | Eventos temporais em vídeo de contexto de internação | Sequência normal/anormal e alerta com trecho correspondente |
 | Fusão multimodal | Correlação por paciente, sessão e janela temporal | Linha do tempo e alerta combinado rastreável às entradas |
 | Alertas automáticos em tempo real | Processamento incremental, persistência, exibição e reconhecimento | Medição evento→alerta, tratamento de repetição e demonstração contínua |
 | Código e relatório técnico | Instruções reproduzíveis, arquitetura, modelos e resultados | Execução a partir do README e relatório com limitações |
-| Vídeo de até 15 minutos | Roteiro incluindo Azure, áudio, vídeo e alerta | Link YouTube/Vimeo e conferência da duração |
+| Vídeo de até 15 minutos | Roteiro incluindo execução local, áudio, vídeo e alerta | Link YouTube/Vimeo e conferência da duração |
 
 OpenPose e YOLOv8 são exemplos de modelos no enunciado, não uma exigência de usar
 ambos. Azure Speech e Text Analytics são pedidos explicitamente. Os datasets
@@ -92,7 +105,7 @@ sem impedir alertas independentes das modalidades disponíveis.
 - Python como base; avaliar manutenção de Python 3.12 após verificar compatibilidade.
 - Pydantic para contratos; SQLite para o protótipo e repositórios separados de leitura/escrita.
 - OpenCV e um estimador de postura, a selecionar por teste de viabilidade.
-- Azure Speech e Azure Language, com credenciais em variáveis de ambiente.
+- faster-whisper para transcrição local e regras locais de análise de menções.
 - Librosa/SciPy para características acústicas, conforme o experimento escolhido.
 - Pandas/NumPy e scikit-learn para preparação, baselines e detectores.
 - Streamlit para upload, reprodução, gráficos, relatórios e fila de alertas.
@@ -100,7 +113,7 @@ sem impedir alertas independentes das modalidades disponíveis.
 
 Fusão inicial por regras explícitas, com janela temporal e evidências por
 modalidade. Não é necessário treinar um modelo multimodal único. A LLM é opcional.
-Não é necessário hospedar toda a aplicação na nuvem para demonstrar integração Azure.
+A solução ativa executa localmente; não requer conta Azure ou credenciais de nuvem.
 
 ## 6. Etapas e critérios de conclusão
 
@@ -108,13 +121,13 @@ Não é necessário hospedar toda a aplicação na nuvem para demonstrar integra
 
 - Transformar a matriz acima em checklist de requisitos.
 - Definir cenários normais, anormais, raros e entradas inválidas por modalidade.
-- Confirmar prazo na plataforma acadêmica, recursos locais e acesso Azure.
+- Confirmar prazo na plataforma acadêmica, recursos locais.
 - Definir métricas e metas experimentais antes de observar o conjunto de teste.
 
 Conclusão: especificação em `docs/escopo-e-aceite.md`, sem requisitos sem cenário.
 
 Definição documental realizada em [Escopo e aceite](docs/escopo-e-aceite.md).
-Prazo, recursos, acesso Azure e fontes de dados permanecem pendentes conforme
+Prazo, recursos e fontes de dados permanecem pendentes conforme
 o registro do documento; a extração seletiva pode prosseguir.
 
 ### Etapa 1 — Extrair a base útil da fase 3
@@ -164,17 +177,17 @@ latência. Reprodução é identificada como simulação e não prova integraç�
 
 Conclusão: exemplos normais/anormais avaliados e eventos integrados ao contrato comum.
 
-### Etapa 5 — Áudio e Azure
+### Etapa 5 — Áudio e análise textual local
 
-- Validar formato e qualidade; executar transcrição real pelo Azure Speech.
-- Executar sentimentos e extração textual pelo Azure Language.
+- Validar formato e qualidade; executar transcrição local com faster-whisper.
+- Analisar termos críticos e contexto por regras locais; sentimentos fora do escopo ativo.
 - Associar termos críticos a contexto, negação e referência temporal.
 - Extrair características acústicas e avaliar alterações vocais separadamente.
 - Distinguir sentimento textual, relato de sintoma e alteração acústica.
 - Registrar falhas, limites de acesso e latência; não apresentar saída simulada
-  como evidência de integração real.
+  como evidência de inferência real.
 
-Conclusão: uma execução real de ponta a ponta, com evidências sanitizadas e
+Conclusão: uma execução local real de ponta a ponta, com evidências sanitizadas e
 avaliação de transcrição/texto/voz separadas.
 
 ### Etapa 6 — Anomalias clínicas e fusão
@@ -200,8 +213,8 @@ com modalidade indisponível e sem atribuir eventos a outro paciente.
   não usar acurácia global isoladamente em dados desbalanceados.
 - Comparar detecção isolada e fusão para verificar se a combinação ajuda ou piora.
 - Testar isolamento de pacientes, ordenação temporal, duplicações, dados ausentes,
-  falhas Azure e persistência/reconhecimento de alertas.
-- Manter CI offline com doubles de serviços e executar integração real separadamente.
+  falhas de modelos locais e persistência/reconhecimento de alertas.
+- Manter CI offline; executar integração com modelos locais separadamente.
 
 Conclusão: relatório comparativo com ganhos e regressões, configurações e
 artefatos reproduzíveis. Cobertura de código não equivale a qualidade do detector.
@@ -212,7 +225,7 @@ artefatos reproduzíveis. Cobertura de código não equivale a qualidade do dete
 - Relatório com arquitetura, fluxo multimodal, modelos, dados, resultados,
   exemplos de anomalias, custos observados e limitações.
 - Matriz final com requisito → código → comando → evidência.
-- Roteiro e vídeo de até 15 minutos cobrindo execução real Azure, vídeo, áudio,
+- Roteiro e vídeo de até 15 minutos cobrindo execução local real, vídeo, áudio,
   anomalias, fusão e alerta à equipe.
 - Conferir link público/não listado, reprodutibilidade e submissão na plataforma.
 
@@ -222,11 +235,11 @@ serão realizadas na etapa correspondente.
 ## 7. Sequência, prioridades e riscos
 
 Dependência principal: 0 → 1 → 2 → 3 → 4/5 → 6 → 7 → 8.
-Os ensaios de acesso Azure e viabilidade de vídeo começam na etapa 0 para
+Os ensaios de viabilidade dos modelos locais começam na etapa 0 para
 revelar bloqueios cedo. Avaliação e documentação evoluem desde a etapa 2.
 O cronograma por datas depende do prazo de entrega ainda não informado.
 
-Prioridade obrigatória: modalidades, serviços Azure, três frentes de anomalia,
+Prioridade do escopo ativo: modalidades locais, três frentes de anomalia,
 relatórios de vídeo, fusão, alertas e entregáveis. Depois disso: melhorias de
 modelos. Chat, RAG, novo fine-tuning, infraestrutura distribuída e aplicativo
 móvel não entram no caminho crítico.
@@ -236,7 +249,7 @@ móvel não entram no caminho crítico.
 | Poucos dados rotulados ou acesso demorado | Validar acesso cedo, complementar cenários sintéticos identificados e limitar alegações |
 | Modelo de postura não reconhecer o contexto escolhido | Experimento curto antes de consolidar o dataset e a arquitetura |
 | Recursos locais insuficientes | Medir execução em CPU e usar modelos leves/amostragem de quadros conforme latência |
-| Azure indisponível ou sem credenciais | Adaptadores isolados e testes offline; evidência real permanece obrigatória para a entrega |
+| Modelos locais indisponíveis ou lentos | Instalação explícita, modo CPU e falhas observáveis; medir inferência e latência |
 | Alertas demais ou correlação errada | Avaliar negativos, tolerância temporal, deduplicação e isolamento de pacientes |
 | Reaproveitamento carregar complexidade desnecessária | Extrair por funcionalidade e comprovar uso; manter treino e LLM opcionais |
 
@@ -247,7 +260,7 @@ móvel não entram no caminho crítico.
 - [x] Análise do feedback e plano de reaproveitamento.
 - [x] Registro deste plano no repositório da fase 4.
 - [x] Etapa 0: definição documental de escopo, cenários e critérios de aceite.
-- [ ] Etapa 0: confirmação de prazo, recursos e acesso Azure.
+- [ ] Etapa 0: confirmação de prazo e recursos.
 - [x] Etapa 1: extração seletiva da base e validação local; origem em `docs/reaproveitamento-fase-3.md`.
 - [x] Etapa 2: contratos, schemas, fixtures e partições funcionais; subconjunto BIDMC para ingestão.
 - [ ] Etapa 2: incorporar fala/vídeo e congelar teste independente; ver `docs/dados-e-avaliacao.md`.
@@ -257,9 +270,14 @@ móvel não entram no caminho crítico.
 - [ ] Etapa 4: calibrar e avaliar com gravações representativas e referências independentes.
 - [x] Etapa 5: áudio local, análise acústica, termos críticos, adaptadores HTTPS Azure, painel e testes offline.
 - [x] Etapa 5: faster-whisper small CPU/int8 instalado e integrado ao painel, com MediaPipe em CPU; ver `docs/execucao-local.md`.
-- [ ] Etapa 5: configurar recursos F0 e executar integração real Speech/Language; ver `docs/audio-e-azure.md`.
+- [x] Etapa 5: Azure retirado do escopo ativo por decisão do autor; solução local adotada.
 - [ ] Etapa 5: avaliar fala com locutores, transcrições e referências independentes.
-- [ ] Execução das etapas 6–8.
+- [x] Etapa 6: implementação de histórico de prescrições, anomalias sintéticas, correlação temporal, disponibilidade, alertas e painel; ver `docs/anomalias-e-fusao.md`.
+- [ ] Etapa 6: comprovar comportamento com mídias e referências representativas; pendências anteriores preservadas.
+- [x] Etapa 7: avaliador pareado de regras, métricas por classe, relatório funcional e latência 1× em desenvolvimento; ver `docs/avaliacao-resultados.md`.
+- [ ] Etapa 7: revisar granularidade das referências, avaliar tendência, mídias representativas e qualidade da fusão; depois executar teste reservado.
+- [x] Etapa 8: relatório técnico, matriz de atendimento, guia consolidado e roteiro de 13min30s preparados; ver `docs/guia-entrega.md`.
+- [ ] Etapa 8: revisar documentos após avaliação representativa, gravar/publicar vídeo ≤ 15 minutos, confirmar versão/link e realizar submissão; estado em `docs/entrega.json`.
 
 Na elaboração inicial do plano não houve cópia de componentes. Na Etapa 1,
 os componentes úteis foram extraídos para a fase 4; a fase 3 permanece preservada.

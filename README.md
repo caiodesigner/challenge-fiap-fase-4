@@ -9,8 +9,10 @@ fase 3 será preservado em seu repositório original.
 O projeto tem uma base Python instalável e um primeiro fluxo completo de sinais
 vitais: ingestão incremental, detecção por regras sintéticas, alertas persistidos
 e painel de revisão. A análise postural de vídeo já gera desvios, relatórios e
-vídeo anotado. Áudio já possui análise acústica local, termos críticos e adaptadores
-Azure; a comprovação real na nuvem e a fusão ainda estão pendentes.
+vídeo anotado. Áudio possui transcrição faster-whisper, análise acústica e termos
+críticos locais. Histórico de prescrições e fusão multimodal estão implementados.
+A avaliação com dados representativos permanece pendente. Azure foi retirado
+do escopo ativo por decisão do autor; não requer conta ou credenciais de nuvem.
 
 - [Plano de execução e análise do feedback da fase 3](PLANO_DESENVOLVIMENTO.md)
 - [Escopo, cenários e critérios de aceite](docs/escopo-e-aceite.md)
@@ -18,8 +20,19 @@ Azure; a comprovação real na nuvem e a fusão ainda estão pendentes.
 - [Dados, contratos e conjuntos de avaliação](docs/dados-e-avaliacao.md)
 - [Fluxo de sinais vitais: execução, evidências e limites](docs/fluxo-sinais-vitais.md)
 - [Vídeo e relatórios de desvios](docs/video-e-relatorios.md)
-- [Áudio, análise acústica e Azure gratuito](docs/audio-e-azure.md)
+- [Áudio e adaptadores Azure legados (fora do escopo ativo)](docs/audio-e-azure.md)
 - [Instalação e execução totalmente local: Whisper e MediaPipe](docs/execucao-local.md)
+
+## Materiais de entrega
+
+- [Relatório técnico](docs/relatorio-tecnico.md)
+- [Matriz de atendimento e evidências](docs/matriz-atendimento.md)
+- [Guia consolidado de execução e entrega](docs/guia-entrega.md)
+- [Roteiro do vídeo de 13min30s](docs/roteiro-video.md)
+- [Estado da entrega e itens pendentes](docs/entrega.json)
+
+A documentação está preparada para revisão. Gravação/publicação do vídeo,
+avaliação representativa e fechamento da entrega permanecem pendentes.
 
 ## Instalação e verificação da base
 
@@ -102,7 +115,7 @@ no navegador; sem ele, é disponibilizado AVI para download.
 A inferência de postura foi verificada em CPU. A avaliação com vídeos clínicos
 representativos e rótulos independentes permanece pendente.
 
-## Áudio e Azure
+## Áudio e análise local
 
 No painel, escolha **Áudio**. O padrão **Whisper local** transcreve em português
 sem utilizar Azure. **Somente local** mantém a opção de análise acústica sem modelo.
@@ -117,7 +130,37 @@ Veja os resultados e o protocolo de fala natural em [validação local](docs/val
 .venv/bin/python scripts/analyze_audio.py caminho/audio.wav --whisper --device cpu
 ```
 
-O modo Azure exige recursos Speech e Language configurados no `.env` a partir
-de `.env.example`. Priorize os níveis gratuitos F0 e confira o
-[guia de configuração e custos](docs/audio-e-azure.md). Não houve criação de
-recursos nem chamadas reais nesta implementação; essa validação continua pendente.
+A solução adotada é local. Os adaptadores Azure existentes são legados opcionais,
+sem configuração ou validação exigidas no plano ativo. A análise textual local
+identifica termos críticos e contexto; não produz análise de sentimentos.
+A adaptação em relação ao enunciado está registrada no [plano](PLANO_DESENVOLVIMENTO.md).
+
+## Histórico clínico e fusão multimodal
+
+No painel, selecione **Histórico e fusão** e clique em **Processar cenário
+sintético**. A área reúne evolução das prescrições, linha do tempo, alertas
+isolados/combinados e revisão humana. Também permite importar relatórios de áudio
+e vídeo com associação temporal explícita e registrar modalidades indisponíveis.
+
+```bash
+.venv/bin/python scripts/demo_clinical_fusion.py
+```
+
+A demonstração usa fixtures de desenvolvimento e associações sintéticas, sem
+chamadas externas. Veja regras, limitações e formatos em
+[Anomalias clínicas e fusão](docs/anomalias-e-fusao.md). A avaliação com dados
+representativos permanece pendente.
+
+## Avaliação de resultados e latência
+
+```bash
+.venv/bin/python scripts/evaluate_local.py
+.venv/bin/python scripts/evaluate_local.py --case development-vitals-2 --speed 1 \
+  --output outputs/evaluation/cadence.json
+```
+
+O avaliador compara regras imediatas e temporais nas mesmas entradas e mede
+eventos, falhas e latência. Gera JSON e Markdown, usando bancos temporários.
+O padrão é a partição de desenvolvimento. Resultados e pendências de rótulos,
+tendência e volume de alertas estão em [Avaliação](docs/avaliacao-resultados.md).
+A avaliação com fala e vídeo representativos continua pendente.

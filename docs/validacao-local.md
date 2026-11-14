@@ -50,7 +50,8 @@ confirmadas em um conjunto independente, conforme o plano de avaliação.
 As verificações do painel usaram Streamlit AppTest, com entrada de arquivo
 controlada; não houve inspeção visual automatizada de navegador. O teste de
 postura usa imagem de referência repetida; não prova detecção de desvios em
-fisioterapia. A pendência de integração Azure exigida no enunciado continua aberta.
+fisioterapia. Na revisão posterior de escopo, o autor adotou a solução local e retirou Azure
+das pendências ativas; o enunciado original permanece registrado no plano.
 
 ## Comandos de reprodução da base
 

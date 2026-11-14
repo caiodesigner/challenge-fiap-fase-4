@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-11-10T18:39:11.192891+00:00",
+  "scope": "synthetic development integration; representative validation deferred",
+  "tests_passed": 103,
+  "checks": {
+    "ruff": "passed",
+    "format": "passed",
+    "mypy": "passed",
+    "diff_check": "passed"
+  },
+  "demo": {
+    "events": 7,
+    "isolated_alerts": 7,
+    "combined_pair_alerts": 15,
+    "prescription_versions": 2,
+    "idempotent_after_rerun": true,
+    "audio_status": "unavailable",
+    "model_inference": false,
+    "cloud_requests": 0
+  },
+  "clinical_validation": false,
+  "independent_test_used": false,
+  "limitations": [
+    "Pairwise fusion can produce many alerts; no precision gain claimed",
+    "Natural speech, representative video and real Azure validation pending",
+    "Media association requires explicit capture time or synthetic mapping"
+  ]
+}

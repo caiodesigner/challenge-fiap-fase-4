@@ -4,6 +4,19 @@ Status: definição inicial, anterior à implementação e à avaliação.
 Esta é a primeira fase de execução solicitada; corresponde à **Etapa 0** do
 plano. A Etapa 1 do plano continua sendo a extração seletiva da fase 3.
 
+## Revisão: escopo local adotado
+
+Por decisão do autor, Azure Speech/Language deixam de ser critérios ativos de
+implementação e entrega. Para a transcrição, adota-se faster-whisper; para texto,
+regras locais de termos, negação, sujeito e temporalidade. Sentimentos e extração
+genérica de palavras-chave não integram esta substituição. A avaliação passa a
+usar inferência local, referências manuais e latência dos modelos locais.
+
+As menções a Azure nas tabelas e cenários originais abaixo preservam a
+rastreabilidade ao PDF e à definição inicial; não são pendências do plano ativo.
+O roteiro final demonstrará a execução local. Essa mudança é uma decisão do
+projeto, sem alegar alteração do enunciado ou equivalência integral entre serviços.
+
 ## 1. Base da definição
 
 Requisitos: PDF “IADT - Fase 4 - Tech challenge”, páginas 2–4.

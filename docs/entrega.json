@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "project": "Challenge FIAP — Fase 4",
+  "documentation_date": "2026-11-13",
+  "scope": "local_processing",
+  "repository_url": "https://github.com/caiodesigner/challenge-fiap-fase-4",
+  "author_or_team": null,
+  "release_commit": null,
+  "materials": {
+    "technical_report": "docs/relatorio-tecnico.md",
+    "requirements_matrix": "docs/matriz-atendimento.md",
+    "execution_guide": "docs/guia-entrega.md",
+    "video_script": "docs/roteiro-video.md",
+    "evaluation_report": "reports/evaluation/development.json",
+    "cadence_report": "reports/evaluation/cadence-development.json"
+  },
+  "video": {
+    "state": "pending_recording",
+    "local_path": null,
+    "url": null,
+    "duration_seconds": null,
+    "planned_duration_seconds": 810,
+    "maximum_duration_seconds": 900,
+    "public_access_checked": false
+  },
+  "evaluation": {
+    "functional_development_executed": true,
+    "representative_media_complete": false,
+    "independent_test_complete": false
+  },
+  "pending": [
+    "Evaluate representative speech and video with independent references",
+    "Resolve signal-label granularity and missing trend detector",
+    "Evaluate redundant pairwise fusion alerts",
+    "Complete final reserved-test evaluation",
+    "Fill author/team and verify released repository revision",
+    "Record, measure, publish and check video access",
+    "Confirm platform deadline and submit deliverables"
+  ],
+  "final_submission_ready": false
+}

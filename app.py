@@ -6,6 +6,7 @@ from pathlib import Path
 import streamlit as st
 
 from monitoramento_clinico.audio_ui import render_audio_panel
+from monitoramento_clinico.clinical_ui import render_clinical_panel
 from monitoramento_clinico.contracts import Measurement
 from monitoramento_clinico.replay import load_case, replay
 from monitoramento_clinico.video_ui import render_video_panel
@@ -13,7 +14,12 @@ from monitoramento_clinico.vitals import ProcessingResult, VitalsConfig, VitalsM
 
 ROOT = Path(__file__).resolve().parent
 st.set_page_config(page_title="Monitoramento de sinais vitais", layout="wide")
-area = st.sidebar.radio("Área", ["Sinais vitais", "Vídeo", "Áudio"])
+area = st.sidebar.radio(
+    "Área", ["Sinais vitais", "Vídeo", "Áudio", "Histórico e fusão"]
+)
+if area == "Histórico e fusão":
+    render_clinical_panel(ROOT)
+    st.stop()
 if area == "Áudio":
     render_audio_panel(ROOT)
     st.stop()

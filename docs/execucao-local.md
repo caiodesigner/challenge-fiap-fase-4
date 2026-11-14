@@ -107,5 +107,6 @@ HF_HUB_OFFLINE=1 .venv/bin/python scripts/verify_local_stack.py caminho/audio.wa
 
 Isso testa os motores, não calcula qualidade de reconhecimento. Para avaliação,
 usar fala representativa com transcrição manual e medir erros, especialmente em
-termos críticos e negações. Os requisitos explícitos de Azure do challenge
-continuam pendentes; o modo local não é declarado como substituto dessa evidência.
+termos críticos e negações. Azure foi retirado do escopo ativo por decisão do autor. O enunciado original
+continua documentado; não há pendência de implementar ou validar esses serviços
+no plano adaptado.

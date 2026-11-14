@@ -1,11 +1,15 @@
 # Áudio, análise acústica e Azure
 
-## Estado
+> Registro de implementação anterior. Por decisão do autor, Azure está fora do
+> escopo ativo. Este guia é referência opcional para os adaptadores já existentes;
+> não é uma etapa a executar. A solução adotada está em [Execução local](execucao-local.md).
+
+## Estado histórico
 
 Implementados análise acústica, comparação com referência, termos críticos,
 adaptadores HTTPS reais, painel e relatórios persistidos. Não foram criados
 recursos Azure nem realizadas chamadas reais: as credenciais estão ausentes.
-R03/R04 permanecem pendentes de comprovação real. Testes com respostas controladas
+Naquele escopo, R03/R04 exigiam comprovação real; essa tarefa foi retirada do plano ativo. Testes com respostas controladas
 são marcados como `test_transport` e nunca como validação real.
 
 A demonstração em `reports/audio/local-demo.json` usa tons sintéticos, não fala

@@ -1,4 +1,4 @@
-.PHONY: install check test data validate schemas demo-vitals ui video-model
+.PHONY: install check test data validate schemas demo-vitals ui video-model evaluate
 PYTHON ?= python3
 VENV_PYTHON := .venv/bin/python
 
@@ -35,3 +35,6 @@ ui:
 
 video-model:
 	$(VENV_PYTHON) scripts/prepare_pose_model.py
+
+evaluate:
+	$(VENV_PYTHON) scripts/evaluate_local.py

@@ -24,7 +24,7 @@ from monitoramento_clinico.contracts import (
 class VitalsConfig(Contract):
     version: str = Field(min_length=1)
     purpose: str = Field(min_length=1)
-    persistence_seconds: float = Field(gt=0)
+    persistence_seconds: float = Field(ge=0)
     max_gap_seconds: float = Field(gt=0)
     limits: dict[str, tuple[float, float]]
 

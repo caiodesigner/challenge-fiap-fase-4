@@ -1,10 +1,43 @@
 # Avaliação de resultados, falhas e latência
 
+> Atualização de 15/11/2026: a revisão local v2 implementa tendência monotônica
+> por sinal, referências sintéticas por sinal e fusão agrupada por episódio.
+> As limitações abaixo sobre detector ausente, granularidade e fusão por pares
+> descrevem a revisão histórica v1. Consulte [prontidão da entrega](prontidao-entrega.md)
+> para comandos, resultados atuais e pendências externas.
+
+
 Esta é a primeira execução da etapa 8 da lista operacional (Etapa 7 do plano).
 O escopo ativo usa processamento local. Foram executadas as regras de sinais
 vitais e prescrições sobre as **fixtures sintéticas de desenvolvimento**. O
 conjunto de teste não foi usado nesta execução; dados representativos de mídia
 continuam pendentes.
+
+## Resultados atuais — revisão v2
+
+Execução local de 15/11/2026: **120 testes aprovados**, Ruff, formatação,
+Mypy e dependências verificados. O painel respondeu HTTP 200. Whisper e
+MediaPipe executaram em CPU, com modelos locais e sem Azure.
+
+Nas três partições sintéticas, sinais temporais tiveram nove acertos, zero
+extras e zero omissões; prescrições tiveram três acertos, zero extras e zero
+omissões (dose, suspensão e unidade incompatível). A baseline de sinais teve
+nove acertos e dois extras. Precisão/recall/F1 dos sinais temporais foram 1,0.
+Esses resultados refletem templates sintéticos compartilhados, não generalização.
+
+A fusão gerou oito alertas para sete eventos, sendo um combinado. Na reprodução
+1×, p95 desde o início do desvio foi aproximadamente 3,017 s na regra temporal
+e 0,017 s na imediata. São medidas da reprodução de sinais, sem captura real.
+
+Evidências: `reports/evaluation/development-v2.json`, `validation-v2.json`,
+`test-v2.json`, `cadence-v2.json`, `clinical-v2.json` e
+`reports/validation/local-stack-v2.json`. O protocolo atual identifica o sinal
+no pareamento. As referências v2 foram revisadas a partir da definição sintética
+dos cenários; a comparação direta com os números v1 abaixo não é apropriada.
+
+Fala/vídeo representativos, teste independente e avaliação da utilidade da fusão
+continuam pendentes. O guia [prontidao-entrega.md](prontidao-entrega.md) descreve
+execução e fechamento. As seções seguintes preservam o relatório histórico v1.
 
 ## Executar novamente
 

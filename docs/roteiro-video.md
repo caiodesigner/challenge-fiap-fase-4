@@ -1,5 +1,12 @@
 # Roteiro do vídeo — duração planejada de 13min30s
 
+> Atualização de 15/11/2026: a revisão local v2 implementa tendência monotônica
+> por sinal, referências sintéticas por sinal e fusão agrupada por episódio.
+> As limitações abaixo sobre detector ausente, granularidade e fusão por pares
+> descrevem a revisão histórica v1. Consulte [prontidão da entrega](prontidao-entrega.md)
+> para comandos, resultados atuais e pendências externas.
+
+
 Limite da entrega: 15 minutos. A agenda reserva 90 segundos para variações de
 execução e transições. O vídeo final ainda precisa ser gravado e publicado.
 Este roteiro apresenta a solução local adotada pelo autor.
@@ -119,7 +126,7 @@ Mostre o guia, comandos do avaliador, configuração e arquivos de saída. Exiba
 registro de testes; execute apenas comandos curtos no tempo disponível.
 
 “O guia reúne a instalação, preparação dos modelos, painel e demonstrações.
-Os resultados registram configurações, hashes e ambiente. A suíte possui 113
+Os resultados registram configurações, hashes e ambiente. A suíte possui 120
 testes aprovados. Os testes verificam integridade e comportamento programado;
 a avaliação com fala natural e movimentos representativos precisa ser ampliada.”
 
@@ -128,9 +135,9 @@ a avaliação com fala natural e movimentos representativos precisa ser ampliada
 Mostre a matriz e o estado da entrega.
 
 “O protótipo integra as frentes locais e registra evidências de cada alerta.
-As próximas melhorias são o detector de tendência, referências compatíveis com
-os eventos por sinal, avaliação com mídias independentes e controle de alertas
-redundantes. O repositório contém código, instruções, relatório e resultados
+A revisão v2 implementa tendências, referências por sinal e agrupamento de
+alertas. A próxima avaliação exige fala natural e vídeos representativos com
+referências independentes. O repositório contém código, instruções, relatório e resultados
 para reprodução. A matriz identifica o que está implementado e o que ainda
 precisa de avaliação.”
 

@@ -21,6 +21,7 @@ from monitoramento_clinico.contracts import Event, Evidence, Modality
 from monitoramento_clinico.data.anonymization import PATTERNS
 from monitoramento_clinico.data.fixtures import digest, write_json
 from monitoramento_clinico.local_speech import LocalSpeechClient
+from monitoramento_clinico.sentiment import analyze_sentiment
 
 
 def sanitize_transcript(text: str) -> str:
@@ -69,6 +70,7 @@ def analyze_audio(
         "transcript": None,
         "transcript_source": None,
         "mentions": [],
+        "local_sentiment": analyze_sentiment(None),
         "events": [],
         "cloud": {
             "speech": {"status": "not_requested"},
@@ -180,6 +182,7 @@ def analyze_audio(
             report["transcript"] = sanitize_transcript(transcript)
             report["mention_offsets"] = "sanitized_transcript_unicode_characters"
             report["mentions"] = analyze_mentions(report["transcript"])
+            report["local_sentiment"] = analyze_sentiment(report["transcript"])
         evidence: list[tuple[str, Modality, float, float, str]] = []
         for deviation in deviations:
             evidence.append(
@@ -277,5 +280,23 @@ def analyze_audio(
                 report.get("transcript") or "Não disponível.",
             ]
         )
+        sentiment = report["local_sentiment"]
+        lines.extend(
+            [
+                "",
+                "## Sentimento textual local",
+                "",
+                f"Status: {sentiment['status']}",
+                f"Classe: {sentiment['label'] or 'não disponível'}",
+                f"Método: {sentiment['method']} / {sentiment['version']}",
+                f"Índice lexical [-1, 1]: {sentiment['score']} (não é probabilidade)",
+                sentiment["limitation"],
+            ]
+        )
+        for item in sentiment["evidence"]:
+            lines.append(
+                f"- {item['polarity']}: {item['context']!r}; "
+                f"caracteres {item['start_character']}:{item['end_character']}"
+            )
         (output / "report.md").write_text("\n".join(lines) + "\n")
     return report

@@ -34,9 +34,9 @@ def test_invalid_input_and_unlabelled_quality_events_are_explicit() -> None:
     assert all(row["status"] == "rejected_invalid_input" for row in rejected["cases"])
     assert rejected["summaries"]["temporal"]["metrics"]["precision"] is None
     quality = evaluate("development-prescription-4")["cases"][0]
-    assert quality["predictions"] == []
-    assert quality["unscored_events"][0]["event_type"] == "prescription_unit_issue"
-    assert quality["comparison"]["metrics"]["f1"] is None
+    assert quality["predictions"][0]["event_type"] == "prescription_unit_issue"
+    assert quality["unscored_events"] == []
+    assert quality["comparison"]["metrics"]["true_positive"] == 1
 
 
 def test_missing_case_fails_instead_of_reporting_success() -> None:
@@ -58,9 +58,13 @@ def test_instant_baseline_emits_at_onset_and_temporal_waits() -> None:
             assert delta.total_seconds() == expected_seconds
 
 
-def test_trend_miss_is_exposed_by_class() -> None:
+def test_trend_detected_and_matched_per_signal() -> None:
     report = evaluate("development-vitals-3")
     for row in report["cases"]:
         assert (
-            row["comparison"]["by_event_type"]["trend_deviation"]["false_negative"] == 1
+            row["comparison"]["by_event_type"]["trend_deviation"]["false_negative"] == 0
+        )
+
+        assert (
+            row["comparison"]["by_event_type"]["trend_deviation"]["true_positive"] == 4
         )

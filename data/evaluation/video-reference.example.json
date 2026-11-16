@@ -1,0 +1,15 @@
+{
+  "purpose": "Preencher após anotar vídeo sem consultar previsões; event_type deve seguir video_rules.py",
+  "source_sha256": "SUBSTITUA_PELO_SHA256_DO_VIDEO",
+  "mode": "rehabilitation",
+  "annotator": "SUBSTITUA_PELO_RESPONSAVEL",
+  "source_group": "SUBSTITUA_PELA_PESSOA_OU_FONTE",
+  "labels": [
+    {
+      "event_type": "asymmetry",
+      "start_seconds": 10,
+      "end_seconds": 15,
+      "basis": "manual_annotation"
+    }
+  ]
+}

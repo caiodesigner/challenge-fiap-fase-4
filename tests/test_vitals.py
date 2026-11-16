@@ -165,3 +165,65 @@ def test_full_fixture_replay_and_deduplication(
     repeated = replay(monitor, session, samples, speed=0)
     assert repeated["statuses"] == {"duplicate": 80}
     assert len(monitor.snapshot()["alerts"]) == expected
+
+
+def test_trend_persists_restart_and_rearms_after_recovery(
+    monitor: VitalsMonitor,
+) -> None:
+    for second in range(4):
+        monitor.process(sample(second, 60 + second * 3))
+    restarted = VitalsMonitor(monitor.path, monitor.config)
+    restarted.process(sample(4, 72))
+    trends = [
+        e
+        for e in restarted.snapshot()["events"]
+        if e["event_type"] == "trend_deviation"
+    ]
+    assert len(trends) == 1
+    assert trends[0]["evidence"][0]["signal"] == "heart_rate"
+    assert restarted.process(sample(4, 72)).status == "duplicate"
+    for second in range(5, 9):
+        restarted.process(sample(second, 72))
+    for second in range(9, 14):
+        restarted.process(sample(second, 60 + (second - 9) * 3))
+    assert (
+        len(
+            [
+                e
+                for e in restarted.snapshot()["events"]
+                if e["event_type"] == "trend_deviation"
+            ]
+        )
+        == 2
+    )
+
+
+def test_trend_rejects_gap_artifact_and_out_of_order(monitor: VitalsMonitor) -> None:
+    monitor.process(sample(0, 60))
+    monitor.process(sample(1, 63))
+    monitor.process(sample(2, 66, quality="artifact"))
+    monitor.process(sample(3, 69))
+    monitor.process(sample(8, 84))
+    assert monitor.process(sample(7, 81)).status == "out_of_order"
+    assert not [
+        e for e in monitor.snapshot()["events"] if e["event_type"] == "trend_deviation"
+    ]
+
+
+def test_trend_accepts_irregular_sampling(monitor: VitalsMonitor) -> None:
+    for index, second in enumerate((0.0, 1.1, 2.2, 3.3, 4.4)):
+        monitor.process(
+            sample(
+                index, 60 + second * 3, occurred_at=START + timedelta(seconds=second)
+            )
+        )
+    assert (
+        len(
+            [
+                e
+                for e in monitor.snapshot()["events"]
+                if e["event_type"] == "trend_deviation"
+            ]
+        )
+        == 1
+    )

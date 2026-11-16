@@ -231,7 +231,11 @@ def generate_dataset(destination: Path) -> Manifest:
                             status, outcome = "invalid", "reject_format"
                 positive_types = {
                     "vitals": {1: "persistent_deviation", 2: "trend_deviation"},
-                    "prescription": {2: "unexpected_prescription_change"},
+                    "prescription": {
+                        2: "unexpected_prescription_change",
+                        3: "prescription_unit_issue",
+                        4: "unexpected_prescription_stop",
+                    },
                     "video": {1: "asymmetry", 2: "interruption"},
                     "movement": {1: "activity_change", 2: "attempt_to_rise"},
                     "audio": {1: "pause_change"},
@@ -249,6 +253,42 @@ def generate_dataset(destination: Path) -> Manifest:
                             "basis": "synthetic_rule",
                         }
                     ]
+                if modality == "vitals" and variant in {1, 2}:
+                    # References follow the synthetic scenario, never predictions.
+                    labels = []
+                    for signal in ("heart_rate", "systolic", "diastolic", "spo2"):
+                        if variant == 2:
+                            labels.append(
+                                dict(
+                                    event_type="trend_deviation",
+                                    signal=signal,
+                                    start_seconds=10,
+                                    end_seconds=19,
+                                    basis="synthetic_rule",
+                                )
+                            )
+                        # Threshold crossings in the generated ramp; persistent rules
+                        # require three seconds of observation before session end.
+                        onset = (
+                            10
+                            if variant == 1
+                            else {
+                                "heart_rate": 18,
+                                "systolic": 20,
+                                "diastolic": 16,
+                                "spo2": 18,
+                            }[signal]
+                        )
+                        if onset + 3 <= 19:
+                            labels.append(
+                                dict(
+                                    event_type="persistent_deviation",
+                                    signal=signal,
+                                    start_seconds=onset,
+                                    end_seconds=19,
+                                    basis="synthetic_rule",
+                                )
+                            )
                 relative = Path(split) / f"{case_id}.json"
                 path = destination / relative
                 write_json(path, payload)

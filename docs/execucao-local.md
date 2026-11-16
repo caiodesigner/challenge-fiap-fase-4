@@ -43,8 +43,9 @@ temporais, sem duplicar seu texto bruto no relatório.
 
 **Somente local** continua disponível para análise acústica e transcrição manual.
 **Azure Speech + Language** permanece opcional e separado; só esse modo utiliza
-os serviços configurados. Não há análise de sentimentos por modelo local nesta
-instalação: os termos críticos locais não são apresentados como sentimentos Azure.
+os serviços configurados. Sentimentos são analisados localmente por regras lexicais,
+com resultado e evidências separados dos termos críticos e de respostas Azure.
+Veja [sentimentos-locais.md](sentimentos-locais.md).
 
 Para vídeo, escolha **Vídeo**, envie a gravação e analise com o MediaPipe local.
 As limitações de enquadramento, taxa de quadros e qualidade permanecem válidas.

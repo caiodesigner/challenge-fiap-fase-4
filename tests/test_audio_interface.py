@@ -40,10 +40,15 @@ def test_audio_panel_local_and_missing_azure_never_send_requests(
     )
     panel = testing.AppTest.from_string(code, default_timeout=30).run()
     panel.radio[0].set_value("Somente local").run()
-    panel.text_area[0].input("Não estou com falta de ar.")
+    panel.text_area[0].input("Não estou com falta de ar. Estou tranquila.")
     panel.button[0].click().run()
     assert not panel.exception
     assert len(panel.get("download_button")) == 2
+    assert any(item.value == "Sentimento do relato" for item in panel.subheader)
+    saved = json.loads(
+        next((tmp_path / "outputs/audio").glob("*/report.json")).read_text()
+    )
+    assert saved["local_sentiment"]["label"] == "positive"
     panel.run()
     assert not panel.exception
     panel.radio[0].set_value("Azure Speech + Language").run()

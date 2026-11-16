@@ -111,6 +111,28 @@
       "expected_outcome": "persistent_deviation",
       "labels": [
         {
+          "signal": "heart_rate",
+          "event_type": "persistent_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "systolic",
+          "event_type": "persistent_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "diastolic",
+          "event_type": "persistent_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "spo2",
           "event_type": "persistent_deviation",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -132,6 +154,35 @@
       "expected_outcome": "trend_deviation",
       "labels": [
         {
+          "signal": "heart_rate",
+          "event_type": "trend_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "systolic",
+          "event_type": "trend_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "diastolic",
+          "event_type": "trend_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "diastolic",
+          "event_type": "persistent_deviation",
+          "start_seconds": 16.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "spo2",
           "event_type": "trend_deviation",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -209,6 +260,7 @@
       "expected_outcome": "unexpected_prescription_change",
       "labels": [
         {
+          "signal": null,
           "event_type": "unexpected_prescription_change",
           "start_seconds": 10.0,
           "end_seconds": 10.0,
@@ -227,8 +279,16 @@
       "path": "development/development-prescription-4.json",
       "sha256": "dcd04cd382bc8a439224160d06f6f0d95a5247b32da3935cc25485d444a23913",
       "input_status": "valid",
-      "expected_outcome": "inconsistent_units",
-      "labels": []
+      "expected_outcome": "prescription_unit_issue",
+      "labels": [
+        {
+          "signal": null,
+          "event_type": "prescription_unit_issue",
+          "start_seconds": 10.0,
+          "end_seconds": 10.0,
+          "basis": "synthetic_rule"
+        }
+      ]
     },
     {
       "case_id": "development-prescription-5",
@@ -241,8 +301,16 @@
       "path": "development/development-prescription-5.json",
       "sha256": "cd205682e85fb49e66b27b8fec66dfdd036e0bf86cfb45dee5bfcf27dcf851f5",
       "input_status": "valid",
-      "expected_outcome": "deduplicate_and_preserve_history",
-      "labels": []
+      "expected_outcome": "unexpected_prescription_stop",
+      "labels": [
+        {
+          "signal": null,
+          "event_type": "unexpected_prescription_stop",
+          "start_seconds": 10.0,
+          "end_seconds": 10.0,
+          "basis": "synthetic_rule"
+        }
+      ]
     },
     {
       "case_id": "development-video-1",
@@ -272,6 +340,7 @@
       "expected_outcome": "asymmetry",
       "labels": [
         {
+          "signal": null,
           "event_type": "asymmetry",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -293,6 +362,7 @@
       "expected_outcome": "interruption",
       "labels": [
         {
+          "signal": null,
           "event_type": "interruption",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -356,6 +426,7 @@
       "expected_outcome": "activity_change",
       "labels": [
         {
+          "signal": null,
           "event_type": "activity_change",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -377,6 +448,7 @@
       "expected_outcome": "attempt_to_rise",
       "labels": [
         {
+          "signal": null,
           "event_type": "attempt_to_rise",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -440,6 +512,7 @@
       "expected_outcome": "pause_change",
       "labels": [
         {
+          "signal": null,
           "event_type": "pause_change",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -517,6 +590,7 @@
       "expected_outcome": "critical_mention",
       "labels": [
         {
+          "signal": null,
           "event_type": "critical_mention",
           "start_seconds": 0.0,
           "end_seconds": 0.0,
@@ -594,6 +668,28 @@
       "expected_outcome": "persistent_deviation",
       "labels": [
         {
+          "signal": "heart_rate",
+          "event_type": "persistent_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "systolic",
+          "event_type": "persistent_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "diastolic",
+          "event_type": "persistent_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "spo2",
           "event_type": "persistent_deviation",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -615,6 +711,35 @@
       "expected_outcome": "trend_deviation",
       "labels": [
         {
+          "signal": "heart_rate",
+          "event_type": "trend_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "systolic",
+          "event_type": "trend_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "diastolic",
+          "event_type": "trend_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "diastolic",
+          "event_type": "persistent_deviation",
+          "start_seconds": 16.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "spo2",
           "event_type": "trend_deviation",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -692,6 +817,7 @@
       "expected_outcome": "unexpected_prescription_change",
       "labels": [
         {
+          "signal": null,
           "event_type": "unexpected_prescription_change",
           "start_seconds": 10.0,
           "end_seconds": 10.0,
@@ -710,8 +836,16 @@
       "path": "validation/validation-prescription-4.json",
       "sha256": "94f750d91c4c5c0924875bbbd47a5c8e058b39765d2a2bb5d6889521511d8981",
       "input_status": "valid",
-      "expected_outcome": "inconsistent_units",
-      "labels": []
+      "expected_outcome": "prescription_unit_issue",
+      "labels": [
+        {
+          "signal": null,
+          "event_type": "prescription_unit_issue",
+          "start_seconds": 10.0,
+          "end_seconds": 10.0,
+          "basis": "synthetic_rule"
+        }
+      ]
     },
     {
       "case_id": "validation-prescription-5",
@@ -724,8 +858,16 @@
       "path": "validation/validation-prescription-5.json",
       "sha256": "cc28b3de29905fdd902bb3ede06b186c82f6649a073f32013752b890c065ee61",
       "input_status": "valid",
-      "expected_outcome": "deduplicate_and_preserve_history",
-      "labels": []
+      "expected_outcome": "unexpected_prescription_stop",
+      "labels": [
+        {
+          "signal": null,
+          "event_type": "unexpected_prescription_stop",
+          "start_seconds": 10.0,
+          "end_seconds": 10.0,
+          "basis": "synthetic_rule"
+        }
+      ]
     },
     {
       "case_id": "validation-video-1",
@@ -755,6 +897,7 @@
       "expected_outcome": "asymmetry",
       "labels": [
         {
+          "signal": null,
           "event_type": "asymmetry",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -776,6 +919,7 @@
       "expected_outcome": "interruption",
       "labels": [
         {
+          "signal": null,
           "event_type": "interruption",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -839,6 +983,7 @@
       "expected_outcome": "activity_change",
       "labels": [
         {
+          "signal": null,
           "event_type": "activity_change",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -860,6 +1005,7 @@
       "expected_outcome": "attempt_to_rise",
       "labels": [
         {
+          "signal": null,
           "event_type": "attempt_to_rise",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -923,6 +1069,7 @@
       "expected_outcome": "pause_change",
       "labels": [
         {
+          "signal": null,
           "event_type": "pause_change",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -1000,6 +1147,7 @@
       "expected_outcome": "critical_mention",
       "labels": [
         {
+          "signal": null,
           "event_type": "critical_mention",
           "start_seconds": 0.0,
           "end_seconds": 0.0,
@@ -1077,6 +1225,28 @@
       "expected_outcome": "persistent_deviation",
       "labels": [
         {
+          "signal": "heart_rate",
+          "event_type": "persistent_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "systolic",
+          "event_type": "persistent_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "diastolic",
+          "event_type": "persistent_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "spo2",
           "event_type": "persistent_deviation",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -1098,6 +1268,35 @@
       "expected_outcome": "trend_deviation",
       "labels": [
         {
+          "signal": "heart_rate",
+          "event_type": "trend_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "systolic",
+          "event_type": "trend_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "diastolic",
+          "event_type": "trend_deviation",
+          "start_seconds": 10.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "diastolic",
+          "event_type": "persistent_deviation",
+          "start_seconds": 16.0,
+          "end_seconds": 19.0,
+          "basis": "synthetic_rule"
+        },
+        {
+          "signal": "spo2",
           "event_type": "trend_deviation",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -1175,6 +1374,7 @@
       "expected_outcome": "unexpected_prescription_change",
       "labels": [
         {
+          "signal": null,
           "event_type": "unexpected_prescription_change",
           "start_seconds": 10.0,
           "end_seconds": 10.0,
@@ -1193,8 +1393,16 @@
       "path": "test/test-prescription-4.json",
       "sha256": "63fced958632cfc9633d5e430b6988967f269ef4e3ea1e3980ff6ae2bf0423ac",
       "input_status": "valid",
-      "expected_outcome": "inconsistent_units",
-      "labels": []
+      "expected_outcome": "prescription_unit_issue",
+      "labels": [
+        {
+          "signal": null,
+          "event_type": "prescription_unit_issue",
+          "start_seconds": 10.0,
+          "end_seconds": 10.0,
+          "basis": "synthetic_rule"
+        }
+      ]
     },
     {
       "case_id": "test-prescription-5",
@@ -1207,8 +1415,16 @@
       "path": "test/test-prescription-5.json",
       "sha256": "e46c3f89fa4fc4a4fe0023e4f0ebaaad861b01ccf7be8a38c658dfcdb78f6f2c",
       "input_status": "valid",
-      "expected_outcome": "deduplicate_and_preserve_history",
-      "labels": []
+      "expected_outcome": "unexpected_prescription_stop",
+      "labels": [
+        {
+          "signal": null,
+          "event_type": "unexpected_prescription_stop",
+          "start_seconds": 10.0,
+          "end_seconds": 10.0,
+          "basis": "synthetic_rule"
+        }
+      ]
     },
     {
       "case_id": "test-video-1",
@@ -1238,6 +1454,7 @@
       "expected_outcome": "asymmetry",
       "labels": [
         {
+          "signal": null,
           "event_type": "asymmetry",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -1259,6 +1476,7 @@
       "expected_outcome": "interruption",
       "labels": [
         {
+          "signal": null,
           "event_type": "interruption",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -1322,6 +1540,7 @@
       "expected_outcome": "activity_change",
       "labels": [
         {
+          "signal": null,
           "event_type": "activity_change",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -1343,6 +1562,7 @@
       "expected_outcome": "attempt_to_rise",
       "labels": [
         {
+          "signal": null,
           "event_type": "attempt_to_rise",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -1406,6 +1626,7 @@
       "expected_outcome": "pause_change",
       "labels": [
         {
+          "signal": null,
           "event_type": "pause_change",
           "start_seconds": 10.0,
           "end_seconds": 19.0,
@@ -1483,6 +1704,7 @@
       "expected_outcome": "critical_mention",
       "labels": [
         {
+          "signal": null,
           "event_type": "critical_mention",
           "start_seconds": 0.0,
           "end_seconds": 0.0,

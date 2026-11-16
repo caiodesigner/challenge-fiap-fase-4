@@ -1,5 +1,12 @@
 # Anomalias clínicas e fusão multimodal
 
+> Atualização de 15/11/2026: a revisão local v2 implementa tendência monotônica
+> por sinal, referências sintéticas por sinal e fusão agrupada por episódio.
+> As limitações abaixo sobre detector ausente, granularidade e fusão por pares
+> descrevem a revisão histórica v1. Consulte [prontidão da entrega](prontidao-entrega.md)
+> para comandos, resultados atuais e pendências externas.
+
+
 Implementação da Etapa 6 do plano (sétima etapa operacional, pois a numeração
 começa em zero). Os cenários e limites são sintéticos; não definem recomendações
 médicas. A avaliação com dados representativos permanece para a etapa seguinte.

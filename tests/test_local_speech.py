@@ -22,7 +22,10 @@ def test_local_backend_is_offline_and_preserves_provenance(
             return iter(
                 [
                     SimpleNamespace(
-                        start=0, end=1, text="Estou com falta de ar.", words=[]
+                        start=0,
+                        end=1,
+                        text="Estou com falta de ar e preocupada.",
+                        words=[],
                     )
                 ]
             ), SimpleNamespace(language="pt")
@@ -40,6 +43,7 @@ def test_local_backend_is_offline_and_preserves_provenance(
     assert report["transcript_source"] == "faster_whisper_local"
     assert report["cloud_request_count"] == 0
     assert report["real_azure_validation"] is False
+    assert report["local_sentiment"]["label"] == "negative"
     assert report["local_speech"]["network_used"] is False
     assert report["local_speech"]["manual_review_required"] is True
     assert report["local_speech"]["recognition_quality_validated"] is False
@@ -55,6 +59,7 @@ def test_missing_model_preserves_acoustics(tmp_path: Path) -> None:
     )
     assert report["status"] == "partial"
     assert report["local_speech"]["status"] == "failed"
+    assert report["local_sentiment"]["label"] is None
     assert report["acoustics"]["quality"] == "assessable"
 
 

@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "--database", type=Path, default=Path("outputs/clinical-demo.db")
+        "--database", type=Path, default=Path("outputs/clinical-demo-v2.db")
     )
     parser.add_argument(
         "--report", type=Path, default=Path("outputs/clinical-demo.json")

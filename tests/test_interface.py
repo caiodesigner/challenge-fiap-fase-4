@@ -33,7 +33,9 @@ def test_replays_and_review_remain_visible_after_rerun(
     config = VitalsConfig.model_validate_json(
         (ROOT / "configs/vitals.json").read_text()
     )
-    snapshot = VitalsMonitor(tmp_path / "development-vitals-2.db", config).snapshot()
+    snapshot = VitalsMonitor(
+        tmp_path / "vitals-v2-development-vitals-2.db", config
+    ).snapshot()
     assert len(snapshot["runs"]) == 2
     assert snapshot["runs"][0]["summary"]["statuses"] == {"duplicate": 80}
     assert snapshot["alerts"][0]["status"] == "closed"

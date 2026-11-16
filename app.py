@@ -39,7 +39,7 @@ case = st.selectbox(
         "development-vitals-4",
     ],
 )
-monitor = VitalsMonitor(ROOT / f"outputs/{case}.db", config)
+monitor = VitalsMonitor(ROOT / f"outputs/vitals-v2-{case}.db", config)
 accelerated = st.checkbox("Reprodução acelerada (sem comprovação de cadência real)")
 selected_signal = st.selectbox(
     "Sinal no gráfico", ["heart_rate", "systolic", "diastolic", "spo2"]

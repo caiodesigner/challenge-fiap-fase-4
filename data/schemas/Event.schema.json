@@ -3,6 +3,24 @@
     "Evidence": {
       "additionalProperties": false,
       "properties": {
+        "signal": {
+          "anyOf": [
+            {
+              "enum": [
+                "heart_rate",
+                "systolic",
+                "diastolic",
+                "spo2"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Signal"
+        },
         "source_id": {
           "minLength": 1,
           "title": "Source Id",

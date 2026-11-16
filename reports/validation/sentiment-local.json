@@ -1,0 +1,272 @@
+{
+  "scope": "Functional lexical examples and real offline inference on synthetic speech; not representative clinical validation",
+  "automated_tests": {
+    "passed": 145,
+    "ruff": "passed",
+    "format": "passed",
+    "mypy": "passed"
+  },
+  "examples": [
+    {
+      "text": "Estou feliz e tranquila.",
+      "result": {
+        "status": "completed",
+        "reason": "lexical_evidence",
+        "label": "positive",
+        "language": "pt",
+        "method": "local_lexicon_rules",
+        "version": "sentiment-pt-lexicon-v1",
+        "score": 1.0,
+        "counts": {
+          "positive": 2,
+          "negative": 0,
+          "neutral": 0
+        },
+        "evidence": [
+          {
+            "matched_text": "feliz",
+            "start_character": 6,
+            "end_character": 11,
+            "context": "Estou feliz",
+            "context_start_character": 0,
+            "context_end_character": 11,
+            "negated": false,
+            "polarity": "positive"
+          },
+          {
+            "matched_text": "tranquila",
+            "start_character": 14,
+            "end_character": 23,
+            "context": "tranquila",
+            "context_start_character": 14,
+            "context_end_character": 23,
+            "negated": false,
+            "polarity": "positive"
+          }
+        ],
+        "offsets": "sanitized_transcript_unicode_characters",
+        "limitation": "Baseline lexical em português; não interpreta ironia nem todo contexto, não estima confiança e não constitui avaliação clínica. Ausência de evidência polar é classificada como neutra."
+      }
+    },
+    {
+      "text": "Estou preocupada e com medo.",
+      "result": {
+        "status": "completed",
+        "reason": "lexical_evidence",
+        "label": "negative",
+        "language": "pt",
+        "method": "local_lexicon_rules",
+        "version": "sentiment-pt-lexicon-v1",
+        "score": -1.0,
+        "counts": {
+          "positive": 0,
+          "negative": 2,
+          "neutral": 0
+        },
+        "evidence": [
+          {
+            "matched_text": "preocupada",
+            "start_character": 6,
+            "end_character": 16,
+            "context": "Estou preocupada",
+            "context_start_character": 0,
+            "context_end_character": 16,
+            "negated": false,
+            "polarity": "negative"
+          },
+          {
+            "matched_text": "medo",
+            "start_character": 23,
+            "end_character": 27,
+            "context": "com medo",
+            "context_start_character": 19,
+            "context_end_character": 27,
+            "negated": false,
+            "polarity": "negative"
+          }
+        ],
+        "offsets": "sanitized_transcript_unicode_characters",
+        "limitation": "Baseline lexical em português; não interpreta ironia nem todo contexto, não estima confiança e não constitui avaliação clínica. Ausência de evidência polar é classificada como neutra."
+      }
+    },
+    {
+      "text": "Estou tranquila, mas preocupada com o exame.",
+      "result": {
+        "status": "completed",
+        "reason": "lexical_evidence",
+        "label": "mixed",
+        "language": "pt",
+        "method": "local_lexicon_rules",
+        "version": "sentiment-pt-lexicon-v1",
+        "score": 0.0,
+        "counts": {
+          "positive": 1,
+          "negative": 1,
+          "neutral": 0
+        },
+        "evidence": [
+          {
+            "matched_text": "tranquila",
+            "start_character": 6,
+            "end_character": 15,
+            "context": "Estou tranquila",
+            "context_start_character": 0,
+            "context_end_character": 15,
+            "negated": false,
+            "polarity": "positive"
+          },
+          {
+            "matched_text": "preocupada",
+            "start_character": 21,
+            "end_character": 31,
+            "context": "preocupada",
+            "context_start_character": 21,
+            "context_end_character": 31,
+            "negated": false,
+            "polarity": "negative"
+          }
+        ],
+        "offsets": "sanitized_transcript_unicode_characters",
+        "limitation": "Baseline lexical em português; não interpreta ironia nem todo contexto, não estima confiança e não constitui avaliação clínica. Ausência de evidência polar é classificada como neutra."
+      }
+    },
+    {
+      "text": "A consulta está marcada para amanhã.",
+      "result": {
+        "status": "completed",
+        "reason": "no_polar_evidence",
+        "label": "neutral",
+        "language": "pt",
+        "method": "local_lexicon_rules",
+        "version": "sentiment-pt-lexicon-v1",
+        "score": 0.0,
+        "counts": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 0
+        },
+        "evidence": [],
+        "offsets": "sanitized_transcript_unicode_characters",
+        "limitation": "Baseline lexical em português; não interpreta ironia nem todo contexto, não estima confiança e não constitui avaliação clínica. Ausência de evidência polar é classificada como neutra."
+      }
+    },
+    {
+      "text": "Não estou bem.",
+      "result": {
+        "status": "completed",
+        "reason": "lexical_evidence",
+        "label": "negative",
+        "language": "pt",
+        "method": "local_lexicon_rules",
+        "version": "sentiment-pt-lexicon-v1",
+        "score": -1.0,
+        "counts": {
+          "positive": 0,
+          "negative": 1,
+          "neutral": 0
+        },
+        "evidence": [
+          {
+            "matched_text": "bem",
+            "start_character": 10,
+            "end_character": 13,
+            "context": "Não estou bem",
+            "context_start_character": 0,
+            "context_end_character": 13,
+            "negated": true,
+            "polarity": "negative"
+          }
+        ],
+        "offsets": "sanitized_transcript_unicode_characters",
+        "limitation": "Baseline lexical em português; não interpreta ironia nem todo contexto, não estima confiança e não constitui avaliação clínica. Ausência de evidência polar é classificada como neutra."
+      }
+    },
+    {
+      "text": "Não estou triste.",
+      "result": {
+        "status": "completed",
+        "reason": "lexical_evidence",
+        "label": "neutral",
+        "language": "pt",
+        "method": "local_lexicon_rules",
+        "version": "sentiment-pt-lexicon-v1",
+        "score": 0.0,
+        "counts": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 1
+        },
+        "evidence": [
+          {
+            "matched_text": "triste",
+            "start_character": 10,
+            "end_character": 16,
+            "context": "Não estou triste",
+            "context_start_character": 0,
+            "context_end_character": 16,
+            "negated": true,
+            "polarity": "neutral"
+          }
+        ],
+        "offsets": "sanitized_transcript_unicode_characters",
+        "limitation": "Baseline lexical em português; não interpreta ironia nem todo contexto, não estima confiança e não constitui avaliação clínica. Ausência de evidência polar é classificada como neutra."
+      }
+    },
+    {
+      "text": "Estou com falta de ar.",
+      "result": {
+        "status": "completed",
+        "reason": "no_polar_evidence",
+        "label": "neutral",
+        "language": "pt",
+        "method": "local_lexicon_rules",
+        "version": "sentiment-pt-lexicon-v1",
+        "score": 0.0,
+        "counts": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 0
+        },
+        "evidence": [],
+        "offsets": "sanitized_transcript_unicode_characters",
+        "limitation": "Baseline lexical em português; não interpreta ironia nem todo contexto, não estima confiança e não constitui avaliação clínica. Ausência de evidência polar é classificada como neutra."
+      }
+    }
+  ],
+  "whisper_smoke": {
+    "status": "completed",
+    "source_sha256": "a79b43fa667d7be55e8d93f350ed90a64116a038bed7f08f37dd700821147d86",
+    "transcript_source": "faster_whisper_local",
+    "transcript": "Hoje estou bem e vou caminhar no parque.",
+    "local_sentiment": {
+      "status": "completed",
+      "reason": "lexical_evidence",
+      "label": "positive",
+      "language": "pt",
+      "method": "local_lexicon_rules",
+      "version": "sentiment-pt-lexicon-v1",
+      "score": 1.0,
+      "counts": {
+        "positive": 1,
+        "negative": 0,
+        "neutral": 0
+      },
+      "evidence": [
+        {
+          "matched_text": "bem",
+          "start_character": 11,
+          "end_character": 14,
+          "context": "Hoje estou bem",
+          "context_start_character": 0,
+          "context_end_character": 14,
+          "negated": false,
+          "polarity": "positive"
+        }
+      ],
+      "offsets": "sanitized_transcript_unicode_characters",
+      "limitation": "Baseline lexical em português; não interpreta ironia nem todo contexto, não estima confiança e não constitui avaliação clínica. Ausência de evidência polar é classificada como neutra."
+    },
+    "cloud_request_count": 0
+  },
+  "natural_speech_evaluated": false
+}

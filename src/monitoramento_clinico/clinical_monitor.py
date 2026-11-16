@@ -22,12 +22,13 @@ from monitoramento_clinico.vitals import ProcessingResult, VitalsConfig, VitalsM
 
 
 class ClinicalConfig(Contract):
-    version: str = "synthetic-clinical-v1"
+    version: str = "synthetic-clinical-v2"
     fusion_window_seconds: float = Field(default=30, gt=0)
     unexpected_dose_ratio: float = Field(default=2, gt=1)
     fusion_event_types: list[str] = Field(
         default_factory=lambda: [
             "persistent_deviation",
+            "trend_deviation",
             "critical_mention",
             "unexpected_prescription_change",
             "unexpected_prescription_stop",
@@ -156,6 +157,7 @@ class ClinicalMonitor(VitalsMonitor):
         alerts: list[Alert] = []
         if event.event_type not in self.clinical_config.fusion_event_types:
             return alerts
+        compatible = [event]
         for row in connection.execute("SELECT payload FROM monitoring_events"):
             other = Event.model_validate_json(row[0])
             if other.event_type not in self.clinical_config.fusion_event_types:
@@ -172,9 +174,62 @@ class ClinicalMonitor(VitalsMonitor):
                 > self.clinical_config.fusion_window_seconds
             ):
                 continue
-            alert = self._alert(connection, [other, event])
-            if alert:
-                alerts.append(alert)
+            compatible.append(other)
+        if len(compatible) < 2:
+            return []
+        ids = {e.event_id for e in compatible}
+        for row in connection.execute("SELECT payload FROM monitoring_alerts"):
+            existing = Alert.model_validate_json(row[0])
+            if (existing.patient_id, existing.session_id) != (
+                event.patient_id,
+                event.session_id,
+            ):
+                continue
+            if len(existing.event_ids) < 2 or not ids.intersection(existing.event_ids):
+                continue
+            if ids.issubset(existing.event_ids):
+                return []
+            if existing.status != "open":
+                continue
+            # Bound the whole episode, avoiding transitive chains across time.
+            union = ids.union(existing.event_ids)
+            times = [
+                Event.model_validate_json(r[0]).occurred_at
+                for r in connection.execute("SELECT payload FROM monitoring_events")
+                if Event.model_validate_json(r[0]).event_id in union
+            ]
+            if (
+                max(times) - min(times)
+            ).total_seconds() > self.clinical_config.fusion_window_seconds:
+                continue
+            updated = existing.model_copy(update={"event_ids": sorted(union)})
+            connection.execute(
+                "UPDATE monitoring_alerts SET payload=? WHERE alert_id=?",
+                (updated.model_dump_json(), existing.alert_id),
+            )
+            return []
+        # Use a bounded episode rather than emitting every pair.
+        compatible.sort(key=lambda e: (e.occurred_at, e.event_id))
+        anchor = compatible[0].occurred_at
+        compatible = [
+            e
+            for e in compatible
+            if (e.occurred_at - anchor).total_seconds()
+            <= self.clinical_config.fusion_window_seconds
+        ]
+        if event not in compatible:
+            compatible = [
+                event,
+                min(
+                    compatible,
+                    key=lambda e: abs(
+                        (e.occurred_at - event.occurred_at).total_seconds()
+                    ),
+                ),
+            ]
+        alert = self._alert(connection, compatible)
+        if alert:
+            alerts.append(alert)
         return alerts
 
     def _store_event(self, connection: sqlite3.Connection, event: Event) -> list[Alert]:

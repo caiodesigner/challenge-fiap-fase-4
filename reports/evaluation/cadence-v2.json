@@ -1,0 +1,822 @@
+{
+  "scope": "synthetic functional fixtures; not independent clinical validation",
+  "split": "development",
+  "case_selection": "development-vitals-2",
+  "speed": 1,
+  "latency_scope": "cadence_1x_synthetic_playback",
+  "clinical_validation": false,
+  "representative_media_evaluated": false,
+  "manifest_sha256": "acfdb58fb7b4793d298929aa6b637ecba50c2fbfb4e5c5fb06c3252a8eb0fc04",
+  "protocol": {
+    "protocol_version": "functional-v2-local-signal",
+    "scope": "synthetic_functional_fixtures_only",
+    "development_split": "development",
+    "calibration_split": "validation",
+    "reporting_split": "test",
+    "independence_limit": "Shared generation templates; not an independent clinical test",
+    "comparisons": [
+      "baseline_vs_temporal",
+      "isolated_vs_fusion"
+    ],
+    "event_matching": {
+      "keys": [
+        "patient_id",
+        "session_id",
+        "event_type"
+      ],
+      "strategy": "one_to_one_nearest_onset",
+      "onset_tolerance_seconds": 5,
+      "tie_breaker": "event_id_lexicographic",
+      "extra_predictions": "false_positive",
+      "unmatched_references": "false_negative",
+      "text_and_prescription": "source_record_or_mention_id"
+    },
+    "fusion_window_seconds": 30,
+    "reordering_buffer_seconds": 5,
+    "metrics": [
+      "precision",
+      "recall",
+      "f1",
+      "false_alerts_per_hour",
+      "latency_p95",
+      "wer"
+    ],
+    "empty_denominator_policy": "report_null_with_counts",
+    "experimental_targets": {
+      "precision": 0.8,
+      "recall": 0.8,
+      "critical_term_recall": 0.9,
+      "local_latency_p95_seconds": 5
+    },
+    "no_clinical_performance_claim": true
+  },
+  "label_limitations": [
+    "Signal-specific synthetic references v2; trend and limit deviations are scored separately",
+    "Prescription references cover dose changes, stop and unit issues; sequence errors require additional annotated cases",
+    "Negative duration is last minus first observed timestamp, not the full session; short recordings do not establish long-term rates"
+  ],
+  "summaries": {
+    "instant": {
+      "cases": 1,
+      "scored_cases": 1,
+      "invalid_cases_rejected": 0,
+      "metrics": {
+        "true_positive": 4,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "by_event_type": {
+        "persistent_deviation": {
+          "true_positive": 4,
+          "false_positive": 0,
+          "false_negative": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      },
+      "negative_duration_seconds": 0,
+      "false_positives_on_negative_cases": 0,
+      "false_alerts_per_negative_hour": null,
+      "processing_p95_ms": 2.8844019980169833,
+      "confirmation_to_alert_p95_seconds": 0.01703348099908908,
+      "onset_to_alert_p95_seconds": 0.01703348099908908
+    },
+    "temporal": {
+      "cases": 1,
+      "scored_cases": 1,
+      "invalid_cases_rejected": 0,
+      "metrics": {
+        "true_positive": 4,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "by_event_type": {
+        "persistent_deviation": {
+          "true_positive": 4,
+          "false_positive": 0,
+          "false_negative": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      },
+      "negative_duration_seconds": 0,
+      "false_positives_on_negative_cases": 0,
+      "false_alerts_per_negative_hour": null,
+      "processing_p95_ms": 2.7078100029029883,
+      "confirmation_to_alert_p95_seconds": 0.017266390001168475,
+      "onset_to_alert_p95_seconds": 3.0172663900011685
+    }
+  },
+  "cases": [
+    {
+      "case_id": "development-vitals-2",
+      "scenario_id": "VIT-02",
+      "modality": "vitals",
+      "variant": "instant",
+      "input_sha256": "73f2eff5347ee1cf98acf1d2a5d84eb0f985427ff169370486c74ee15e08e3db",
+      "status": "completed",
+      "detector_config": {
+        "version": "baseline-instant-v1",
+        "purpose": "Synthetic demonstration only; not clinical thresholds",
+        "persistence_seconds": 0.0,
+        "max_gap_seconds": 2.0,
+        "trend_window_seconds": 4.0,
+        "trend_min_fraction": 0.15,
+        "limits": {
+          "heart_rate": [
+            50.0,
+            100.0
+          ],
+          "systolic": [
+            90.0,
+            150.0
+          ],
+          "diastolic": [
+            50.0,
+            100.0
+          ],
+          "spo2": [
+            92.0,
+            100.0
+          ]
+        }
+      },
+      "confirmation_to_alert_seconds": [
+        0.003730475997144822,
+        0.0084492149981088,
+        0.012749022997013526,
+        0.01703348099908908
+      ],
+      "onset_to_alert_seconds": [
+        0.003730475997144822,
+        0.0084492149981088,
+        0.012749022997013526,
+        0.01703348099908908
+      ],
+      "processing_ms": [
+        0.36560199805535376,
+        0.3975289982918184,
+        0.35149000177625567,
+        0.403260000894079,
+        2.9636510007549077,
+        3.059806000237586,
+        2.812224000081187,
+        2.8844019980169833,
+        2.833087000908563,
+        2.0093490020371974,
+        1.958848999493057,
+        1.9470860024739522,
+        3.062402000068687,
+        2.2160949993121903,
+        2.1098450015415438,
+        2.004913996643154,
+        2.8216310020070523,
+        2.1291179982654285,
+        2.0028230028401595,
+        1.9809330005955417,
+        2.872368997486774,
+        2.048410999123007,
+        2.110214001731947,
+        2.2024879981472623,
+        2.7247700018051546,
+        2.8429439989849925,
+        2.190672999859089,
+        2.0706180002889596,
+        2.793055999063654,
+        2.286502000060864,
+        2.175268997234525,
+        1.9926969980588183,
+        1.1559230006241705,
+        1.0423679996165447,
+        1.0887870012084022,
+        1.0983139982272405,
+        2.6049250009236857,
+        2.078689001791645,
+        2.174704997742083,
+        2.0470050003496,
+        3.4755490014504176,
+        2.5519049995637033,
+        2.5911670018103905,
+        2.5868289994832594,
+        0.5706289994122926,
+        0.39307000042754225,
+        0.3790110022237059,
+        0.3718569969350938,
+        0.7357659997069277,
+        0.422515000536805,
+        0.43516100049600936,
+        0.3939769994758535,
+        2.7437009994173422,
+        2.424379999865778,
+        0.9095469977182802,
+        0.4744360012409743,
+        2.7608549971773755,
+        1.832213001762284,
+        0.40231700040749274,
+        0.46875599946361035,
+        2.780088998406427,
+        2.273604997753864,
+        2.2810679984104354,
+        2.0755030018335674,
+        2.5572280028427485,
+        2.1118709992151707,
+        2.126203999068821,
+        1.9901659979950637,
+        2.4714899991522543,
+        2.0726420007122215,
+        2.1092119968670886,
+        2.024384000833379,
+        2.624239001306705,
+        2.196887999161845,
+        0.48654100100975484,
+        0.3690630001074169,
+        1.2745070016535465,
+        0.9021559999382589,
+        0.863220000610454,
+        0.874578003276838
+      ],
+      "ingestion_statuses": {
+        "accepted": 80
+      },
+      "comparison": {
+        "metrics": {
+          "true_positive": 4,
+          "false_positive": 0,
+          "false_negative": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "matches": [
+          {
+            "prediction_id": "event-5f796a4d29d4e28fbd650908f34a1918ce1721f45c12ec4735ad70c07d696741",
+            "reference_id": "reference-development-vitals-2-2",
+            "distance_seconds": 0.0
+          },
+          {
+            "prediction_id": "event-76b194465fa31c9dfdff86d9c586f2ecc3b1ce12b10051c3b81989ec0bd3e6cf",
+            "reference_id": "reference-development-vitals-2-1",
+            "distance_seconds": 0.0
+          },
+          {
+            "prediction_id": "event-940d10f5fbc1cd1e57e97d9578c81e022ea191bdb25bd0b2fadb0bf326fabfe5",
+            "reference_id": "reference-development-vitals-2-3",
+            "distance_seconds": 0.0
+          },
+          {
+            "prediction_id": "event-f196f76de7ed63325da565d3334168acc711f88b8f92fd16d113cca0c98a09e1",
+            "reference_id": "reference-development-vitals-2-0",
+            "distance_seconds": 0.0
+          }
+        ],
+        "unmatched_predictions": [],
+        "unmatched_references": [],
+        "by_event_type": {
+          "persistent_deviation": {
+            "true_positive": 4,
+            "false_positive": 0,
+            "false_negative": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        }
+      },
+      "duration_seconds": 19.0,
+      "negative_case": false,
+      "predictions": [
+        {
+          "event_id": "event-f196f76de7ed63325da565d3334168acc711f88b8f92fd16d113cca0c98a09e1",
+          "patient_id": "PAT-SYN-001",
+          "session_id": "SESSION-001",
+          "event_type": "persistent_deviation",
+          "occurred_at": "2026-01-01T00:00:10Z",
+          "ended_at": "2026-01-01T00:00:10Z",
+          "processed_at": "2026-11-15T20:56:52.024963Z",
+          "detector_version": "baseline-instant-v1",
+          "evidence": [
+            {
+              "signal": "heart_rate",
+              "source_id": "development-vitals-2-heart_rate-10",
+              "modality": "vitals",
+              "start_seconds": 10.0,
+              "end_seconds": 10.0,
+              "description": "heart_rate: 125.11 bpm; high; synthetic limits [50.0, 100.0]; first record development-vitals-2-heart_rate-10"
+            }
+          ]
+        },
+        {
+          "event_id": "event-76b194465fa31c9dfdff86d9c586f2ecc3b1ce12b10051c3b81989ec0bd3e6cf",
+          "patient_id": "PAT-SYN-001",
+          "session_id": "SESSION-001",
+          "event_type": "persistent_deviation",
+          "occurred_at": "2026-01-01T00:00:10Z",
+          "ended_at": "2026-01-01T00:00:10Z",
+          "processed_at": "2026-11-15T20:56:52.030115Z",
+          "detector_version": "baseline-instant-v1",
+          "evidence": [
+            {
+              "signal": "systolic",
+              "source_id": "development-vitals-2-systolic-10",
+              "modality": "vitals",
+              "start_seconds": 10.0,
+              "end_seconds": 10.0,
+              "description": "systolic: 170.01999999999998 mmHg; high; synthetic limits [90.0, 150.0]; first record development-vitals-2-systolic-10"
+            }
+          ]
+        },
+        {
+          "event_id": "event-5f796a4d29d4e28fbd650908f34a1918ce1721f45c12ec4735ad70c07d696741",
+          "patient_id": "PAT-SYN-001",
+          "session_id": "SESSION-001",
+          "event_type": "persistent_deviation",
+          "occurred_at": "2026-01-01T00:00:10Z",
+          "ended_at": "2026-01-01T00:00:10Z",
+          "processed_at": "2026-11-15T20:56:52.034434Z",
+          "detector_version": "baseline-instant-v1",
+          "evidence": [
+            {
+              "signal": "diastolic",
+              "source_id": "development-vitals-2-diastolic-10",
+              "modality": "vitals",
+              "start_seconds": 10.0,
+              "end_seconds": 10.0,
+              "description": "diastolic: 130.11 mmHg; high; synthetic limits [50.0, 100.0]; first record development-vitals-2-diastolic-10"
+            }
+          ]
+        },
+        {
+          "event_id": "event-940d10f5fbc1cd1e57e97d9578c81e022ea191bdb25bd0b2fadb0bf326fabfe5",
+          "patient_id": "PAT-SYN-001",
+          "session_id": "SESSION-001",
+          "event_type": "persistent_deviation",
+          "occurred_at": "2026-01-01T00:00:10Z",
+          "ended_at": "2026-01-01T00:00:10Z",
+          "processed_at": "2026-11-15T20:56:52.038701Z",
+          "detector_version": "baseline-instant-v1",
+          "evidence": [
+            {
+              "signal": "spo2",
+              "source_id": "development-vitals-2-spo2-10",
+              "modality": "vitals",
+              "start_seconds": 10.0,
+              "end_seconds": 10.0,
+              "description": "spo2: 86.01 %; low; synthetic limits [92.0, 100.0]; first record development-vitals-2-spo2-10"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "event_id": "reference-development-vitals-2-0",
+          "patient_id": "PAT-SYN-001",
+          "session_id": "SESSION-001",
+          "event_type": "persistent_deviation",
+          "occurred_at": "2026-01-01T00:00:10Z",
+          "ended_at": "2026-01-01T00:00:19Z",
+          "processed_at": "2026-01-01T00:00:00Z",
+          "detector_version": "fixture-reference-v1",
+          "evidence": [
+            {
+              "signal": "heart_rate",
+              "source_id": "development-vitals-2-reference-0",
+              "modality": "vitals",
+              "start_seconds": 10.0,
+              "end_seconds": 19.0,
+              "description": "Reference basis: synthetic_rule"
+            }
+          ]
+        },
+        {
+          "event_id": "reference-development-vitals-2-1",
+          "patient_id": "PAT-SYN-001",
+          "session_id": "SESSION-001",
+          "event_type": "persistent_deviation",
+          "occurred_at": "2026-01-01T00:00:10Z",
+          "ended_at": "2026-01-01T00:00:19Z",
+          "processed_at": "2026-01-01T00:00:00Z",
+          "detector_version": "fixture-reference-v1",
+          "evidence": [
+            {
+              "signal": "systolic",
+              "source_id": "development-vitals-2-reference-1",
+              "modality": "vitals",
+              "start_seconds": 10.0,
+              "end_seconds": 19.0,
+              "description": "Reference basis: synthetic_rule"
+            }
+          ]
+        },
+        {
+          "event_id": "reference-development-vitals-2-2",
+          "patient_id": "PAT-SYN-001",
+          "session_id": "SESSION-001",
+          "event_type": "persistent_deviation",
+          "occurred_at": "2026-01-01T00:00:10Z",
+          "ended_at": "2026-01-01T00:00:19Z",
+          "processed_at": "2026-01-01T00:00:00Z",
+          "detector_version": "fixture-reference-v1",
+          "evidence": [
+            {
+              "signal": "diastolic",
+              "source_id": "development-vitals-2-reference-2",
+              "modality": "vitals",
+              "start_seconds": 10.0,
+              "end_seconds": 19.0,
+              "description": "Reference basis: synthetic_rule"
+            }
+          ]
+        },
+        {
+          "event_id": "reference-development-vitals-2-3",
+          "patient_id": "PAT-SYN-001",
+          "session_id": "SESSION-001",
+          "event_type": "persistent_deviation",
+          "occurred_at": "2026-01-01T00:00:10Z",
+          "ended_at": "2026-01-01T00:00:19Z",
+          "processed_at": "2026-01-01T00:00:00Z",
+          "detector_version": "fixture-reference-v1",
+          "evidence": [
+            {
+              "signal": "spo2",
+              "source_id": "development-vitals-2-reference-3",
+              "modality": "vitals",
+              "start_seconds": 10.0,
+              "end_seconds": 19.0,
+              "description": "Reference basis: synthetic_rule"
+            }
+          ]
+        }
+      ],
+      "unscored_events": []
+    },
+    {
+      "case_id": "development-vitals-2",
+      "scenario_id": "VIT-02",
+      "modality": "vitals",
+      "variant": "temporal",
+      "input_sha256": "73f2eff5347ee1cf98acf1d2a5d84eb0f985427ff169370486c74ee15e08e3db",
+      "status": "completed",
+      "detector_config": {
+        "version": "synthetic-vitals-v2",
+        "purpose": "Synthetic demonstration only; not clinical thresholds",
+        "persistence_seconds": 3.0,
+        "max_gap_seconds": 2.0,
+        "trend_window_seconds": 4,
+        "trend_min_fraction": 0.15,
+        "limits": {
+          "heart_rate": [
+            50.0,
+            100.0
+          ],
+          "systolic": [
+            90.0,
+            150.0
+          ],
+          "diastolic": [
+            50.0,
+            100.0
+          ],
+          "spo2": [
+            92.0,
+            100.0
+          ]
+        }
+      },
+      "confirmation_to_alert_seconds": [
+        0.003298805000667926,
+        0.007870612000260735,
+        0.01224700899911113,
+        0.017266390001168475
+      ],
+      "onset_to_alert_seconds": [
+        3.003298805000668,
+        3.0078706120002607,
+        3.012247008999111,
+        3.0172663900011685
+      ],
+      "processing_ms": [
+        0.9202330002153758,
+        0.9156390005955473,
+        0.8964959997683764,
+        0.8931619995564688,
+        2.346623001358239,
+        1.915226999699371,
+        1.9878419989254326,
+        1.994422000279883,
+        2.638122001371812,
+        2.003960998990806,
+        2.0323700009612367,
+        2.0054180022270884,
+        2.675611998711247,
+        2.0568090003507677,
+        2.03350700030569,
+        1.9572149976738729,
+        2.700734999962151,
+        2.223504998255521,
+        0.7423100032610819,
+        0.3649870013759937,
+        1.453318000130821,
+        1.1693220003508031,
+        1.1863860017911065,
+        1.3077090006845538,
+        2.7078100029029883,
+        2.1300730004440993,
+        2.06922500001383,
+        2.028512997640064,
+        2.4733979989832733,
+        2.008038998610573,
+        1.9661970000015572,
+        1.9651160000648815,
+        1.230948997545056,
+        0.9455979998165276,
+        1.0323739988962188,
+        1.1279870013822801,
+        2.4863569997251034,
+        2.099156001349911,
+        2.100732999679167,
+        2.11003400181653,
+        2.621958003146574,
+        2.311659001861699,
+        2.064156000415096,
+        2.03496199901565,
+        2.7155979987583123,
+        2.440684002067428,
+        2.20997299766168,
+        2.1528990000660997,
+        2.7669810006045736,
+        2.4194649995479267,
+        2.1262459995341487,
+        2.002195997192757,
+        3.133731999696465,
+        2.6354490000812802,
+        2.6348999999754597,
+        3.187995000189403,
+        2.3996079980861396,
+        2.281422999658389,
+        2.0439289983187336,
+        2.0031419990118593,
+        2.6259469996148255,
+        2.2583319987461437,
+        2.1621330015477724,
+        1.9760889990720898,
+        2.6545769978838507,
+        2.320880001207115,
+        2.103157999954419,
+        1.9533269987732638,
+        2.601944001071388,
+        2.127029001712799,
+        2.0151149983576033,
+        2.079369998682523,
+        0.6106679975346196,
+        0.3859020034724381,
+        0.3693149992614053,
+        0.4096990014659241,
+        0.7046600003377534,
+        0.4180630021437537,
+        0.401807003072463,
+        0.4640970000764355
+      ],
+      "ingestion_statuses": {
+        "accepted": 80
+      },
+      "comparison": {
+        "metrics": {
+          "true_positive": 4,
+          "false_positive": 0,
+          "false_negative": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "matches": [
+          {
+            "prediction_id": "event-454fc83b63115e595d5601d6435e9d431b00fe17839bb7b78d3952272b8c5271",
+            "reference_id": "reference-development-vitals-2-1",
+            "distance_seconds": 0.0
+          },
+          {
+            "prediction_id": "event-530c63651aea8eb563b610ba63ca42357d1a5f8206f9475f437b1e6e80ba6255",
+            "reference_id": "reference-development-vitals-2-3",
+            "distance_seconds": 0.0
+          },
+          {
+            "prediction_id": "event-61bccfcad17caa447ddca2394ace961abf08fffc8db0d88b8022c506bbf41732",
+            "reference_id": "reference-development-vitals-2-0",
+            "distance_seconds": 0.0
+          },
+          {
+            "prediction_id": "event-69111e662d47367256b5fc2936b58e61caca6b6668973053da7ab5c28ec1c627",
+            "reference_id": "reference-development-vitals-2-2",
+            "distance_seconds": 0.0
+          }
+        ],
+        "unmatched_predictions": [],
+        "unmatched_references": [],
+        "by_event_type": {
+          "persistent_deviation": {
+            "true_positive": 4,
+            "false_positive": 0,
+            "false_negative": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        }
+      },
+      "duration_seconds": 19.0,
+      "negative_case": false,
+      "predictions": [
+        {
+          "event_id": "event-61bccfcad17caa447ddca2394ace961abf08fffc8db0d88b8022c506bbf41732",
+          "patient_id": "PAT-SYN-001",
+          "session_id": "SESSION-001",
+          "event_type": "persistent_deviation",
+          "occurred_at": "2026-01-01T00:00:10Z",
+          "ended_at": "2026-01-01T00:00:13Z",
+          "processed_at": "2026-11-15T20:57:14.036529Z",
+          "detector_version": "synthetic-vitals-v2",
+          "evidence": [
+            {
+              "signal": "heart_rate",
+              "source_id": "development-vitals-2-heart_rate-13",
+              "modality": "vitals",
+              "start_seconds": 10.0,
+              "end_seconds": 13.0,
+              "description": "heart_rate: 125.15 bpm; high; synthetic limits [50.0, 100.0]; first record development-vitals-2-heart_rate-10"
+            }
+          ]
+        },
+        {
+          "event_id": "event-454fc83b63115e595d5601d6435e9d431b00fe17839bb7b78d3952272b8c5271",
+          "patient_id": "PAT-SYN-001",
+          "session_id": "SESSION-001",
+          "event_type": "persistent_deviation",
+          "occurred_at": "2026-01-01T00:00:10Z",
+          "ended_at": "2026-01-01T00:00:13Z",
+          "processed_at": "2026-11-15T20:57:14.041215Z",
+          "detector_version": "synthetic-vitals-v2",
+          "evidence": [
+            {
+              "signal": "systolic",
+              "source_id": "development-vitals-2-systolic-13",
+              "modality": "vitals",
+              "start_seconds": 10.0,
+              "end_seconds": 13.0,
+              "description": "systolic: 170.18 mmHg; high; synthetic limits [90.0, 150.0]; first record development-vitals-2-systolic-10"
+            }
+          ]
+        },
+        {
+          "event_id": "event-69111e662d47367256b5fc2936b58e61caca6b6668973053da7ab5c28ec1c627",
+          "patient_id": "PAT-SYN-001",
+          "session_id": "SESSION-001",
+          "event_type": "persistent_deviation",
+          "occurred_at": "2026-01-01T00:00:10Z",
+          "ended_at": "2026-01-01T00:00:13Z",
+          "processed_at": "2026-11-15T20:57:14.045599Z",
+          "detector_version": "synthetic-vitals-v2",
+          "evidence": [
+            {
+              "signal": "diastolic",
+              "source_id": "development-vitals-2-diastolic-13",
+              "modality": "vitals",
+              "start_seconds": 10.0,
+              "end_seconds": 13.0,
+              "description": "diastolic: 129.82999999999998 mmHg; high; synthetic limits [50.0, 100.0]; first record development-vitals-2-diastolic-10"
+            }
+          ]
+        },
+        {
+          "event_id": "event-530c63651aea8eb563b610ba63ca42357d1a5f8206f9475f437b1e6e80ba6255",
+          "patient_id": "PAT-SYN-001",
+          "session_id": "SESSION-001",
+          "event_type": "persistent_deviation",
+          "occurred_at": "2026-01-01T00:00:10Z",
+          "ended_at": "2026-01-01T00:00:13Z",
+          "processed_at": "2026-11-15T20:57:14.050072Z",
+          "detector_version": "synthetic-vitals-v2",
+          "evidence": [
+            {
+              "signal": "spo2",
+              "source_id": "development-vitals-2-spo2-13",
+              "modality": "vitals",
+              "start_seconds": 10.0,
+              "end_seconds": 13.0,
+              "description": "spo2: 85.99 %; low; synthetic limits [92.0, 100.0]; first record development-vitals-2-spo2-10"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "event_id": "reference-development-vitals-2-0",
+          "patient_id": "PAT-SYN-001",
+          "session_id": "SESSION-001",
+          "event_type": "persistent_deviation",
+          "occurred_at": "2026-01-01T00:00:10Z",
+          "ended_at": "2026-01-01T00:00:19Z",
+          "processed_at": "2026-01-01T00:00:00Z",
+          "detector_version": "fixture-reference-v1",
+          "evidence": [
+            {
+              "signal": "heart_rate",
+              "source_id": "development-vitals-2-reference-0",
+              "modality": "vitals",
+              "start_seconds": 10.0,
+              "end_seconds": 19.0,
+              "description": "Reference basis: synthetic_rule"
+            }
+          ]
+        },
+        {
+          "event_id": "reference-development-vitals-2-1",
+          "patient_id": "PAT-SYN-001",
+          "session_id": "SESSION-001",
+          "event_type": "persistent_deviation",
+          "occurred_at": "2026-01-01T00:00:10Z",
+          "ended_at": "2026-01-01T00:00:19Z",
+          "processed_at": "2026-01-01T00:00:00Z",
+          "detector_version": "fixture-reference-v1",
+          "evidence": [
+            {
+              "signal": "systolic",
+              "source_id": "development-vitals-2-reference-1",
+              "modality": "vitals",
+              "start_seconds": 10.0,
+              "end_seconds": 19.0,
+              "description": "Reference basis: synthetic_rule"
+            }
+          ]
+        },
+        {
+          "event_id": "reference-development-vitals-2-2",
+          "patient_id": "PAT-SYN-001",
+          "session_id": "SESSION-001",
+          "event_type": "persistent_deviation",
+          "occurred_at": "2026-01-01T00:00:10Z",
+          "ended_at": "2026-01-01T00:00:19Z",
+          "processed_at": "2026-01-01T00:00:00Z",
+          "detector_version": "fixture-reference-v1",
+          "evidence": [
+            {
+              "signal": "diastolic",
+              "source_id": "development-vitals-2-reference-2",
+              "modality": "vitals",
+              "start_seconds": 10.0,
+              "end_seconds": 19.0,
+              "description": "Reference basis: synthetic_rule"
+            }
+          ]
+        },
+        {
+          "event_id": "reference-development-vitals-2-3",
+          "patient_id": "PAT-SYN-001",
+          "session_id": "SESSION-001",
+          "event_type": "persistent_deviation",
+          "occurred_at": "2026-01-01T00:00:10Z",
+          "ended_at": "2026-01-01T00:00:19Z",
+          "processed_at": "2026-01-01T00:00:00Z",
+          "detector_version": "fixture-reference-v1",
+          "evidence": [
+            {
+              "signal": "spo2",
+              "source_id": "development-vitals-2-reference-3",
+              "modality": "vitals",
+              "start_seconds": 10.0,
+              "end_seconds": 19.0,
+              "description": "Reference basis: synthetic_rule"
+            }
+          ]
+        }
+      ],
+      "unscored_events": []
+    }
+  ],
+  "checked_at": "2026-11-15T20:57:20.038421+00:00",
+  "protocol_sha256": "7d24b0298e2b7d8995f22764f14ab465ef8b4c08dbf18d308d85e2480fe527a6",
+  "vitals_config_sha256": "7eea6c900d80199d25819e340cbd0937db273076e5a2d076550fed424f65c1a2",
+  "environment": {
+    "python": "3.14.4",
+    "platform": "Linux-7.0.0-43-generic-x86_64-desconhecido-with-glibc2.43",
+    "pydantic": "2.14.3"
+  },
+  "cloud_requests": 0,
+  "model_inference": false,
+  "implementation_sha256": {
+    "contracts.py": "aab788e628f411331dd13c4f23380a453c2c894ec5303a534469caff04e4fe21",
+    "vitals.py": "eb0d1be8dc916041fd2c5b6ebbee5644b309173f75660e78198ebca6ff1f7ef5",
+    "replay.py": "7768008a7f8dabfa8b06a9e1f0b4b649150d525acf3dd3180ffe43a97b9bf3c1",
+    "clinical_monitor.py": "9518da6976c6b3de6f8843753b41ccdaaca729e04259c2ce4230815aeeeb44cf",
+    "event_evaluation.py": "f600a939a5af7342692cfd4876464b174471e55613cec1e831c9196774b96ac1",
+    "local_evaluation.py": "f4c8df7f2d5a1c2e254e5294871c41c2b373afdf36fca12db906c103ba2bbf7d"
+  }
+}

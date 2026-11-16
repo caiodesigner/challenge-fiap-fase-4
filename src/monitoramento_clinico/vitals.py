@@ -26,6 +26,8 @@ class VitalsConfig(Contract):
     purpose: str = Field(min_length=1)
     persistence_seconds: float = Field(ge=0)
     max_gap_seconds: float = Field(gt=0)
+    trend_window_seconds: float = Field(default=4, gt=0)
+    trend_min_fraction: float = Field(default=0.15, gt=0, le=1)
     limits: dict[str, tuple[float, float]]
 
     @model_validator(mode="after")
@@ -204,6 +206,10 @@ class VitalsMonitor:
                     status = "duplicate"
                 else:
                     status, alerts = self._detect(connection, session, sample)
+                    if status == "accepted":
+                        alerts.extend(self._detect_trend(connection, session, sample))
+                    elif status == "quality_issue":
+                        self._detect_trend(connection, session, sample)
                     connection.execute(
                         "INSERT INTO monitoring_samples VALUES (?, ?, ?, ?, ?)",
                         (
@@ -275,6 +281,7 @@ class VitalsMonitor:
                     evidence=[
                         Evidence(
                             source_id=sample.record_id,
+                            signal=sample.signal,
                             modality="vitals",
                             start_seconds=(onset - session.started_at).total_seconds(),
                             end_seconds=(
@@ -311,6 +318,113 @@ class VitalsMonitor:
             (*key, json.dumps(state)),
         )
         return ("quality_issue" if sample.quality != "valid" else "accepted"), alerts
+
+    def _detect_trend(
+        self, connection: sqlite3.Connection, session: Session, sample: Measurement
+    ) -> list[Alert]:
+        key = (sample.session_id, sample.signal, self.config.fingerprint + "-trend")
+        row = connection.execute(
+            "SELECT payload FROM detector_state "
+            "WHERE session_id=? AND signal=? AND config=?",
+            key,
+        ).fetchone()
+        state: dict[str, Any] = json.loads(row[0]) if row else {}
+        points = state.get("points", [])
+        if (
+            points
+            and (
+                sample.occurred_at - datetime.fromisoformat(points[-1][0])
+            ).total_seconds()
+            > self.config.max_gap_seconds
+        ):
+            state, points = {}, []
+        if sample.quality != "valid":
+            state, points = {}, []
+        else:
+            points.append([sample.occurred_at.isoformat(), sample.value])
+            # Retain the boundary sample for irregular sampling as well.
+            while (
+                len(points) > 2
+                and (
+                    sample.occurred_at - datetime.fromisoformat(points[1][0])
+                ).total_seconds()
+                >= self.config.trend_window_seconds
+            ):
+                points.pop(0)
+        alerts: list[Alert] = []
+        if len(points) >= 3:
+            duration = (
+                sample.occurred_at - datetime.fromisoformat(points[0][0])
+            ).total_seconds()
+            delta = points[-1][1] - points[0][1]
+            low, high = self.config.limits[sample.signal]
+            direction = 1 if delta > 0 else -1
+            consistent = all(
+                (b[1] - a[1]) * direction > 0
+                for a, b in zip(points, points[1:], strict=False)
+            )
+            active = (
+                duration >= self.config.trend_window_seconds
+                and abs(delta) >= (high - low) * self.config.trend_min_fraction
+                and consistent
+            )
+            if active and not state.get("fired"):
+                onset = datetime.fromisoformat(points[0][0])
+                identifier = hashlib.sha256(
+                    json.dumps([*key, points[0][0]]).encode()
+                ).hexdigest()
+                event = Event(
+                    event_id=f"trend-{identifier}",
+                    patient_id=sample.patient_id,
+                    session_id=sample.session_id,
+                    event_type="trend_deviation",
+                    occurred_at=onset,
+                    ended_at=sample.occurred_at,
+                    processed_at=datetime.now(UTC),
+                    detector_version=self.config.version,
+                    evidence=[
+                        Evidence(
+                            source_id=sample.record_id,
+                            signal=sample.signal,
+                            modality="vitals",
+                            start_seconds=(onset - session.started_at).total_seconds(),
+                            end_seconds=(
+                                sample.occurred_at - session.started_at
+                            ).total_seconds(),
+                            description=(
+                                f"{sample.signal}: monotonic change {delta:.3f} "
+                                f"{sample.unit} in {duration:.1f}s; synthetic rule"
+                            ),
+                        )
+                    ],
+                )
+                alert = Alert(
+                    alert_id=f"alert-{event.event_id}",
+                    deduplication_key=event.event_id,
+                    patient_id=sample.patient_id,
+                    session_id=sample.session_id,
+                    event_ids=[event.event_id],
+                    emitted_at=datetime.now(UTC),
+                    severity="attention",
+                )
+                connection.execute(
+                    "INSERT INTO monitoring_events VALUES (?, ?)",
+                    (event.event_id, event.model_dump_json()),
+                )
+                connection.execute(
+                    "INSERT INTO monitoring_alerts VALUES (?, ?, ?)",
+                    (alert.alert_id, alert.deduplication_key, alert.model_dump_json()),
+                )
+                alerts.append(alert)
+                state["fired"] = True
+            elif not active:
+                state["fired"] = False
+        state["points"] = points
+        connection.execute(
+            "INSERT OR REPLACE INTO detector_state VALUES (?, ?, ?, ?)",
+            (*key, json.dumps(state)),
+        )
+        return alerts
 
     def snapshot(self) -> dict[str, Any]:
         connection = self._connect()

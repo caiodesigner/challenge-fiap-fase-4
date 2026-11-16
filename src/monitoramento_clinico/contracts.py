@@ -108,6 +108,7 @@ class MediaAsset(Contract):
 
 
 class Evidence(Contract):
+    signal: Literal["heart_rate", "systolic", "diastolic", "spo2"] | None = None
     source_id: Identifier
     modality: Modality
     start_seconds: float = Field(ge=0)
@@ -152,6 +153,7 @@ class Alert(Contract):
 
 
 class ReferenceLabel(Contract):
+    signal: Literal["heart_rate", "systolic", "diastolic", "spo2"] | None = None
     event_type: Identifier
     start_seconds: float = Field(ge=0)
     end_seconds: float = Field(ge=0)

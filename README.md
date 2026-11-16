@@ -11,8 +11,9 @@ vitais: ingestão incremental, detecção por regras sintéticas, alertas persis
 e painel de revisão. A análise postural de vídeo já gera desvios, relatórios e
 vídeo anotado. Áudio possui transcrição faster-whisper, análise acústica e termos
 críticos locais. Histórico de prescrições e fusão multimodal estão implementados.
-A avaliação com dados representativos permanece pendente. Azure foi retirado
-do escopo ativo por decisão do autor; não requer conta ou credenciais de nuvem.
+A revisão v2 inclui detecção de tendência, avaliação por sinal e fusão agrupada.
+A avaliação com dados representativos permanece pendente. Azure é opcional conforme orientação do professor informada pelo autor
+e está fora do escopo ativo; não requer conta ou credenciais de nuvem.
 
 - [Plano de execução e análise do feedback da fase 3](PLANO_DESENVOLVIMENTO.md)
 - [Escopo, cenários e critérios de aceite](docs/escopo-e-aceite.md)
@@ -22,6 +23,18 @@ do escopo ativo por decisão do autor; não requer conta ou credenciais de nuvem
 - [Vídeo e relatórios de desvios](docs/video-e-relatorios.md)
 - [Áudio e adaptadores Azure legados (fora do escopo ativo)](docs/audio-e-azure.md)
 - [Instalação e execução totalmente local: Whisper e MediaPipe](docs/execucao-local.md)
+
+## Execução da revisão v2
+
+```bash
+make install-full  # para uma instalação nova
+# Baixe modelos conforme o guia; nesta máquina já estão instalados.
+make ready         # confere dependências, modelos e pendências de entrega
+make delivery      # testes, demonstração e avaliação das três partições sintéticas
+make ui            # inicia o painel
+```
+
+Veja [prontidão da entrega](docs/prontidao-entrega.md) para os resultados atuais.
 
 ## Materiais de entrega
 
@@ -132,7 +145,9 @@ Veja os resultados e o protocolo de fala natural em [validação local](docs/val
 
 A solução adotada é local. Os adaptadores Azure existentes são legados opcionais,
 sem configuração ou validação exigidas no plano ativo. A análise textual local
-identifica termos críticos e contexto; não produz análise de sentimentos.
+identifica termos críticos e contexto e classifica sentimentos por regras lexicais
+em português (positivo, negativo, neutro ou misto), com evidências nos relatórios.
+Veja [método e limitações](docs/sentimentos-locais.md).
 A adaptação em relação ao enunciado está registrada no [plano](PLANO_DESENVOLVIMENTO.md).
 
 ## Histórico clínico e fusão multimodal

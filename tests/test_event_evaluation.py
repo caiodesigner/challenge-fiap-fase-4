@@ -81,3 +81,16 @@ def test_fusion_counts_do_not_claim_quality_metrics() -> None:
     )
     assert result["alerts_per_event"] == 1.5
     assert result["precision_recall_for_fusion"] is None
+
+
+def test_signal_reference_does_not_match_another_signal() -> None:
+    reference = event("reference", "vitals", 10, kind="persistent_deviation")
+    reference.evidence[0].signal = "heart_rate"
+    wrong = event("wrong", "vitals", 10, kind="persistent_deviation")
+    wrong.evidence[0].signal = "spo2"
+    assert match_events([wrong], [reference])["metrics"] == detection_metrics(0, 1, 1)
+    right = event("right", "vitals", 10, kind="persistent_deviation")
+    right.evidence[0].signal = "heart_rate"
+    assert match_events([wrong, right], [reference])["metrics"] == detection_metrics(
+        1, 1, 0
+    )

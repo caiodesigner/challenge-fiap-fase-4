@@ -1,5 +1,5 @@
 {
-  "protocol_version": "functional-v1-local",
+  "protocol_version": "functional-v2-local-signal",
   "scope": "synthetic_functional_fixtures_only",
   "development_split": "development",
   "calibration_split": "validation",

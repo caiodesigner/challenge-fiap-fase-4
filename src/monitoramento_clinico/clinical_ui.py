@@ -33,7 +33,7 @@ def render_clinical_panel(root: Path) -> None:
     config = VitalsConfig.model_validate_json(
         (root / "configs/vitals.json").read_text()
     )
-    monitor = ClinicalMonitor(root / f"outputs/clinical-scenario-{case}.db", config)
+    monitor = ClinicalMonitor(root / f"outputs/clinical-v2-scenario-{case}.db", config)
     monitor.register_session(session)
     st.write(f"Paciente: {session.patient_id} · Sessão: {session.session_id}")
     st.caption("Cada cenário usa banco separado; associação sintética de fontes.")

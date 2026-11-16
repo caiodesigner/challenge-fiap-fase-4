@@ -131,6 +131,31 @@ def render_audio_panel(root: Path) -> None:
         "Análise de áudio registrada", reports, format_func=lambda p: p.parent.name
     )
     report = json.loads(selected.read_text())
+    sentiment = report.get("local_sentiment")
+    st.subheader("Sentimento do relato")
+    if sentiment and sentiment["status"] == "completed":
+        labels = {
+            "positive": "Positivo",
+            "negative": "Negativo",
+            "neutral": "Neutro",
+            "mixed": "Misto",
+        }
+        st.write(f"**{labels[sentiment['label']]}**")
+        st.caption(
+            "Classificação textual por regras locais em português. "
+            "Sentimento negativo não determina risco clínico."
+        )
+        if sentiment["evidence"]:
+            st.dataframe(sentiment["evidence"], hide_index=True)
+        else:
+            st.caption("Nenhuma expressão polar reconhecida no vocabulário local.")
+    elif sentiment:
+        st.info("Sentimento indisponível: não há transcrição utilizável.")
+    else:
+        st.info(
+            "Relatório anterior à análise de sentimentos. "
+            "Analise novamente para gerar esse resultado."
+        )
     st.json({key: value for key, value in report.items() if key != "acoustics"})
     if report.get("transcript_source") == "faster_whisper_local":
         st.warning(

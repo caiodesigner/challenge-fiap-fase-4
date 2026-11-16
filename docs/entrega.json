@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "project": "Challenge FIAP — Fase 4",
-  "documentation_date": "2026-11-13",
+  "documentation_date": "2026-11-15",
   "scope": "local_processing",
   "repository_url": "https://github.com/caiodesigner/challenge-fiap-fase-4",
   "author_or_team": null,
@@ -11,8 +11,13 @@
     "requirements_matrix": "docs/matriz-atendimento.md",
     "execution_guide": "docs/guia-entrega.md",
     "video_script": "docs/roteiro-video.md",
-    "evaluation_report": "reports/evaluation/development.json",
-    "cadence_report": "reports/evaluation/cadence-development.json"
+    "evaluation_report": "reports/evaluation/development-v2.json",
+    "cadence_report": "reports/evaluation/cadence-v2.json",
+    "validation_report": "reports/evaluation/validation-v2.json",
+    "synthetic_test_report": "reports/evaluation/test-v2.json",
+    "readiness_guide": "docs/prontidao-entrega.md",
+    "sentiment_method": "docs/sentimentos-locais.md",
+    "sentiment_validation": "reports/validation/sentiment-local.json"
   },
   "video": {
     "state": "pending_recording",
@@ -26,16 +31,23 @@
   "evaluation": {
     "functional_development_executed": true,
     "representative_media_complete": false,
-    "independent_test_complete": false
+    "independent_test_complete": false,
+    "functional_test_executed": true,
+    "local_sentiment_implemented": true,
+    "representative_sentiment_evaluation_complete": false
   },
   "pending": [
     "Evaluate representative speech and video with independent references",
-    "Resolve signal-label granularity and missing trend detector",
-    "Evaluate redundant pairwise fusion alerts",
-    "Complete final reserved-test evaluation",
+    "Evaluate independent media test and usefulness of grouped fusion alerts",
     "Fill author/team and verify released repository revision",
     "Record, measure, publish and check video access",
     "Confirm platform deadline and submit deliverables"
   ],
-  "final_submission_ready": false
+  "final_submission_ready": false,
+  "implementation_revision": "local-v2-trends-signal-labels-episode-fusion",
+  "azure_requirement": {
+    "required": false,
+    "basis": "Professor guidance reported by the author in this conversation",
+    "implementation": "local_processing"
+  }
 }

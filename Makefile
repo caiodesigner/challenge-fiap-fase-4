@@ -38,3 +38,17 @@ video-model:
 
 evaluate:
 	$(VENV_PYTHON) scripts/evaluate_local.py
+
+.PHONY: install-full ready delivery
+install-full:
+	$(PYTHON) -m venv .venv
+	$(VENV_PYTHON) -m pip install -e '.[audio,video,ui,dev]'
+
+ready:
+	$(VENV_PYTHON) scripts/check_delivery.py
+
+delivery: check ready
+	$(VENV_PYTHON) scripts/demo_clinical_fusion.py --database outputs/entrega/clinical-v2.db --report outputs/entrega/clinical-v2.json
+	$(VENV_PYTHON) scripts/evaluate_local.py --fusion-report outputs/entrega/clinical-v2.json --output outputs/entrega/development-v2.json
+	$(VENV_PYTHON) scripts/evaluate_local.py --split validation --output outputs/entrega/validation-v2.json
+	$(VENV_PYTHON) scripts/evaluate_local.py --split test --output outputs/entrega/test-v2.json

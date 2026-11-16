@@ -1,5 +1,5 @@
 {
-  "version": "synthetic-vitals-v1",
+  "version": "synthetic-vitals-v2",
   "purpose": "Synthetic demonstration only; not clinical thresholds",
   "persistence_seconds": 3,
   "max_gap_seconds": 2,

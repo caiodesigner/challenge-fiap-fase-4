@@ -67,6 +67,7 @@ def _references(
                 evidence=[
                     Evidence(
                         source_id=source,
+                        signal=label.signal,
                         modality=case.modality,
                         start_seconds=label.start_seconds,
                         end_seconds=label.end_seconds,
@@ -269,7 +270,12 @@ def evaluate_local_fixtures(
                         ingestion_statuses=statuses,
                         detector_config=clinical.clinical_config.model_dump(),
                     )
-                    monitored_types = {"unexpected_prescription_change"}
+                    monitored_types = {
+                        "unexpected_prescription_change",
+                        "unexpected_prescription_stop",
+                        "prescription_unit_issue",
+                        "prescription_sequence_issue",
+                    }
                 snapshot = monitor.snapshot()
                 all_events = [Event.model_validate(e) for e in snapshot["events"]]
                 predictions = [e for e in all_events if e.event_type in monitored_types]
@@ -305,12 +311,10 @@ def evaluate_local_fixtures(
         "manifest_sha256": digest(fixtures / "manifest.json"),
         "protocol": protocol,
         "label_limitations": [
-            "Vitals labels are episode-level, with no signal identifier; "
-            "extra signal events count as unmatched under the one-to-one protocol",
-            "No trend-specific detector implemented; "
-            "trend labels are not remapped to persistent deviations",
-            "Prescription scoring covers unexpected dose changes only; "
-            "stop, unit and sequence events are reported without quality metrics",
+            "Signal-specific synthetic references v2; "
+            "trend and limit deviations are scored separately",
+            "Prescription references cover dose changes, stop and unit issues; "
+            "sequence errors require additional annotated cases",
             "Negative duration is last minus first observed timestamp, "
             "not the full session; short recordings do not establish long-term rates",
         ],

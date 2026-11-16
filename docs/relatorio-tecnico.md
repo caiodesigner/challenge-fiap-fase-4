@@ -1,5 +1,12 @@
 # Relatório técnico — Monitoramento multimodal local
 
+> Atualização de 15/11/2026: a revisão local v2 implementa tendência monotônica
+> por sinal, referências sintéticas por sinal e fusão agrupada por episódio.
+> As limitações abaixo sobre detector ausente, granularidade e fusão por pares
+> descrevem a revisão histórica v1. Consulte [prontidão da entrega](prontidao-entrega.md)
+> para comandos, resultados atuais e pendências externas.
+
+
 **Tech Challenge FIAP — Fase 4**
 
 **Versão documental:** 13/11/2026
@@ -7,6 +14,32 @@
 **Repositório:** https://github.com/caiodesigner/challenge-fiap-fase-4
 
 **Estado:** implementação e ensaios funcionais documentados; avaliação representativa e vídeo final pendentes.
+
+## Resultados atuais — revisão v2
+
+Execução local de 15/11/2026: **120 testes aprovados**, Ruff, formatação,
+Mypy e dependências verificados. O painel respondeu HTTP 200. Whisper e
+MediaPipe executaram em CPU, com modelos locais e sem Azure.
+
+Nas três partições sintéticas, sinais temporais tiveram nove acertos, zero
+extras e zero omissões; prescrições tiveram três acertos, zero extras e zero
+omissões (dose, suspensão e unidade incompatível). A baseline de sinais teve
+nove acertos e dois extras. Precisão/recall/F1 dos sinais temporais foram 1,0.
+Esses resultados refletem templates sintéticos compartilhados, não generalização.
+
+A fusão gerou oito alertas para sete eventos, sendo um combinado. Na reprodução
+1×, p95 desde o início do desvio foi aproximadamente 3,017 s na regra temporal
+e 0,017 s na imediata. São medidas da reprodução de sinais, sem captura real.
+
+Evidências: `reports/evaluation/development-v2.json`, `validation-v2.json`,
+`test-v2.json`, `cadence-v2.json`, `clinical-v2.json` e
+`reports/validation/local-stack-v2.json`. O protocolo atual identifica o sinal
+no pareamento. As referências v2 foram revisadas a partir da definição sintética
+dos cenários; a comparação direta com os números v1 abaixo não é apropriada.
+
+Fala/vídeo representativos, teste independente e avaliação da utilidade da fusão
+continuam pendentes. O guia [prontidao-entrega.md](prontidao-entrega.md) descreve
+execução e fechamento. As seções seguintes preservam o relatório histórico v1.
 
 ## 1. Objetivo e escopo adotado
 
@@ -20,7 +53,11 @@ Por decisão do autor, a solução ativa executa localmente: faster-whisper para
 transcrição, MediaPipe para postura e regras locais para acústica, contexto
 textual, séries clínicas e correlação. O enunciado original menciona Azure
 Speech e Text Analytics; a substituição é uma adaptação de escopo documentada.
-Não há análise de sentimentos ou extração genérica de palavras-chave local.
+A análise local de sentimentos usa a baseline `sentiment-pt-lexicon-v1`, com
+negação, evidências e classes positiva, negativa, neutra e mista, integrada aos
+relatórios e ao painel. Não gera alerta clínico por polaridade. Veja
+[sentimentos-locais.md](sentimentos-locais.md) para limites e interpretação.
+Extração genérica de palavras-chave não está implementada.
 Adaptadores Azure anteriores permanecem opcionais no código.
 
 As demonstrações usam dados sintéticos e associações explicitamente artificiais

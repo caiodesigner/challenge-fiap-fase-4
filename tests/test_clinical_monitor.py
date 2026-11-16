@@ -219,7 +219,7 @@ def test_vitals_events_and_prescription_are_integrated(tmp_path: Path) -> None:
     e = event("voice", "text", (instant - START).total_seconds(), owner)
     m.ingest_event(e)
     before = m.snapshot()
-    assert any(len(a["event_ids"]) == 2 for a in before["alerts"])
+    assert any(len(a["event_ids"]) >= 2 for a in before["alerts"])
     replay(m, owner, samples, speed=0)
     assert m.snapshot()["alerts"] == before["alerts"]
 
@@ -230,3 +230,23 @@ def test_config_change_requires_separate_database(tmp_path: Path) -> None:
     m = monitor(tmp_path)
     with pytest.raises(ValueError, match="config changed"):
         ClinicalMonitor(m.path, m.config, ClinicalConfig(fusion_window_seconds=60))
+
+
+def test_fusion_groups_episode_without_pairwise_explosion(tmp_path: Path) -> None:
+    m = monitor(tmp_path)
+    items = [
+        event("v1", "vitals", 10),
+        event("v2", "vitals", 11),
+        event("voice", "text", 12),
+        event("pose", "video", 13),
+    ]
+    for item in items:
+        m.ingest_event(item)
+    combined = [a for a in m.snapshot()["alerts"] if len(a["event_ids"]) > 1]
+    assert len(combined) == 1
+    assert set(combined[0]["event_ids"]) == {e.event_id for e in items}
+    before = m.snapshot()["alerts"]
+    for item in items:
+        m.ingest_event(item)
+    assert m.snapshot()["alerts"] == before
+    assert len([a for a in m.snapshot()["alerts"] if len(a["event_ids"]) > 1]) == 1

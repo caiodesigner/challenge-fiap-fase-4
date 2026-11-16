@@ -2,6 +2,7 @@
 
 Este guia reúne os comandos para reproduzir o projeto e apresentar a entrega.
 O estado atual e os itens ainda abertos constam de [entrega.json](entrega.json).
+A revisão atual e os comandos consolidados estão em [prontidao-entrega.md](prontidao-entrega.md).
 O [relatório técnico](relatorio-tecnico.md) descreve resultados e limitações.
 
 ## 1. Instalar a partir do repositório
@@ -46,7 +47,7 @@ Não são necessárias credenciais Azure. O guia de instalação detalhado é
 .venv/bin/python scripts/prepare_bidmc.py validate
 ```
 
-O registro mais recente da suíte contém 113 testes aprovados. Os testes usam
+O registro mais recente da suíte contém 145 testes aprovados. Os testes usam
 entradas e bancos temporários. Não é preciso regenerar fixtures para executar o
 projeto: o catálogo e seus hashes já estão no repositório.
 

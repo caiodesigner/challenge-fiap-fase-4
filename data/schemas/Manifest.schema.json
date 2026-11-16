@@ -210,6 +210,24 @@
     "ReferenceLabel": {
       "additionalProperties": false,
       "properties": {
+        "signal": {
+          "anyOf": [
+            {
+              "enum": [
+                "heart_rate",
+                "systolic",
+                "diastolic",
+                "spo2"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Signal"
+        },
         "event_type": {
           "minLength": 1,
           "title": "Event Type",

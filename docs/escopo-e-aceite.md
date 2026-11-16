@@ -6,16 +6,18 @@ plano. A Etapa 1 do plano continua sendo a extração seletiva da fase 3.
 
 ## Revisão: escopo local adotado
 
-Por decisão do autor, Azure Speech/Language deixam de ser critérios ativos de
-implementação e entrega. Para a transcrição, adota-se faster-whisper; para texto,
-regras locais de termos, negação, sujeito e temporalidade. Sentimentos e extração
-genérica de palavras-chave não integram esta substituição. A avaliação passa a
-usar inferência local, referências manuais e latência dos modelos locais.
+Conforme orientação do professor comunicada pelo autor nesta conversa, o uso de
+Azure é opcional. O projeto mantém processamento local e não exige configuração,
+execução ou demonstração de serviços Azure. Esta atualização registra a orientação
+recebida; o PDF original permanece preservado sem alterações.
 
-As menções a Azure nas tabelas e cenários originais abaixo preservam a
-rastreabilidade ao PDF e à definição inicial; não são pendências do plano ativo.
-O roteiro final demonstrará a execução local. Essa mudança é uma decisão do
-projeto, sem alegar alteração do enunciado ou equivalência integral entre serviços.
+A dispensa de Azure não foi interpretada como dispensa das funcionalidades:
+transcrição, termos críticos, análise de sentimentos e alterações vocais.
+Sentimentos estão implementados por regras lexicais locais em português, com
+evidências e limitações em [sentimentos-locais.md](sentimentos-locais.md).
+
+As tabelas originais abaixo preservam o histórico do PDF; menções ao uso
+obrigatório de Azure são substituídas pela orientação acima.
 
 ## 1. Base da definição
 

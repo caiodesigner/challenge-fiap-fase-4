@@ -43,6 +43,11 @@ def match_events(
                 prediction.event_type,
             ) != (reference.patient_id, reference.session_id, reference.event_type):
                 continue
+            expected_signals = {e.signal for e in reference.evidence if e.signal}
+            if expected_signals and expected_signals != {
+                e.signal for e in prediction.evidence if e.signal
+            }:
+                continue
             source_match = any(
                 e.modality in {"text", "prescription"} for e in reference.evidence
             )

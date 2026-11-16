@@ -2,16 +2,18 @@
 
 ## Revisão de escopo — solução local
 
-Por decisão do autor, Azure Speech e Azure Language deixam de integrar o escopo
+Conforme orientação do professor informada pelo autor, Azure é opcional.
+Azure Speech e Azure Language deixam de integrar o escopo
 ativo de desenvolvimento e entrega. A solução adotada usa faster-whisper para
 transcrição, análise acústica local, regras de termos/contexto e MediaPipe para
 vídeo, sem dependência de serviços pagos. Adaptadores Azure existentes ficam
 como legado opcional, sem tarefa de configuração ou validação real.
 
-O PDF original menciona Azure explicitamente; esta é uma adaptação deliberada
-do projeto, não uma alteração do enunciado nem comprovação de equivalência entre
-serviços. O processamento textual atual extrai menções e contexto; não implementa
-um substituto local de análise de sentimentos ou extração genérica de palavras-chave.
+O PDF original menciona Azure explicitamente, mas a orientação posterior do
+professor permite dispensar o serviço. O PDF permanece preservado. O processamento
+textual extrai menções/contexto e classifica sentimentos por regras lexicais
+locais com evidências. Extração genérica de palavras-chave não é implementada.
+O método e seus limites estão em `docs/sentimentos-locais.md`.
 
 ## 1. Objetivo e limites
 
@@ -82,7 +84,7 @@ Não copiar `.git`, `.venv`, credenciais, bancos gerados ou diretórios de cache
 | Relatório automático de vídeo | Relatório estruturado por sessão | Arquivo gerado com eventos, intervalos e evidências |
 | Alterações vocais | Características acústicas e detector com escopo definido pelos dados disponíveis | Áudios avaliados com rótulos de referência e análise de erros |
 | Transcrição (escopo local adaptado) | faster-whisper local | Transcrição, modelo, duração e configuração; referência manual na avaliação |
-| Texto (escopo local adaptado) | Regras locais de termos críticos e contexto | Menções, negação, temporalidade e sujeito; sentimentos fora deste escopo |
+| Texto (escopo local adaptado) | Regras locais de termos críticos e contexto | Menções, negação, temporalidade, sujeito e sentimentos lexicais com evidências |
 | Anomalias em sinais vitais | Séries de frequência cardíaca, pressão e oxigenação com regras e detector temporal | Gráficos com verdade de referência, eventos e métricas |
 | Evolução de prescrições | Histórico ordenado, comparação de mudanças e regras de alterações inesperadas | Caso esperado, caso anômalo e justificativa; sem propor tratamento |
 | Movimentação na internação | Eventos temporais em vídeo de contexto de internação | Sequência normal/anormal e alerta com trecho correspondente |
@@ -180,7 +182,7 @@ Conclusão: exemplos normais/anormais avaliados e eventos integrados ao contrato
 ### Etapa 5 — Áudio e análise textual local
 
 - Validar formato e qualidade; executar transcrição local com faster-whisper.
-- Analisar termos críticos e contexto por regras locais; sentimentos fora do escopo ativo.
+- Analisar termos críticos, contexto e sentimentos por regras locais com evidências.
 - Associar termos críticos a contexto, negação e referência temporal.
 - Extrair características acústicas e avaliar alterações vocais separadamente.
 - Distinguir sentimento textual, relato de sintoma e alteração acústica.
@@ -287,3 +289,20 @@ os componentes úteis foram extraídos para a fase 4; a fase 3 permanece preserv
 - [x] Avaliador offline de WER e menções com negação, temporalidade e sujeito.
 - [x] Comparação sintética small/medium e referência manual no painel; evidências em `docs/validacao-local.md`.
 - [ ] Validar com fala natural, referências manuais revisadas e locutores separados; a falha automática no áudio sintético original permanece registrada.
+
+## Revisão de implementação — 15/11/2026
+
+- [x] Detector monotônico de tendência por sinal, persistido e reiniciável.
+- [x] Referências sintéticas por sinal e pareamento com identidade do sinal.
+- [x] Avaliação de dose, suspensão e unidades de prescrições.
+- [x] Fusão agrupada por episódio, com limite temporal e preservação de revisões.
+- [x] Execução das partições sintéticas development, validation e test.
+- [x] Verificação de instalação e comando consolidado `make delivery`.
+- [x] Avaliador de relatórios de vídeo com referências manuais separadas.
+- [ ] Avaliação com fala/vídeo representativos e teste independente por fonte.
+- [ ] Identificação/commit, vídeo publicado, revisão documental e submissão.
+
+Os itens históricos acima permanecem como registro da revisão anterior.
+A execução sintética de test não conclui o teste independente de mídia.
+
+- [x] Análise local de sentimentos integrada ao áudio, painel e relatórios, com testes.

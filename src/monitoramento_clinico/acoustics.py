@@ -13,10 +13,13 @@ from monitoramento_clinico.contracts import Contract
 
 
 class AcousticConfig(Contract):
-    version: str = "energy-pauses-v1"
+    version: str = "energy-pauses-v2"
     max_duration_seconds: float = Field(default=30, gt=0, le=60)
     frame_ms: int = Field(default=20, ge=10, le=100)
     silence_dbfs: float = Field(default=-55, ge=-100, le=-20)
+    adaptive_noise_floor: bool = True
+    noise_margin_db: float = Field(default=8, gt=0, le=20)
+    minimum_dynamic_range_db: float = Field(default=12, gt=0, le=40)
     minimum_pause_seconds: float = Field(default=0.5, gt=0)
     long_pause_seconds: float = Field(default=2, gt=0)
 
@@ -78,6 +81,18 @@ def analyze_acoustics(
         )
     )
     threshold = max(-50, max(frame["rms_dbfs"] for frame in frames) - 35)
+    energies = sorted(frame["rms_dbfs"] for frame in frames)
+    noise_floor = energies[int((len(energies) - 1) * 0.2)]
+    speech_level = energies[int((len(energies) - 1) * 0.9)]
+    dynamic_range = speech_level - noise_floor
+    threshold_method = "peak_relative"
+    # Only adapt when separate low/high energy populations are observable.
+    # A constant recording (including steady noise) must not become a pause.
+    if config.adaptive_noise_floor and dynamic_range >= config.minimum_dynamic_range_db:
+        threshold = max(
+            threshold, min(noise_floor + config.noise_margin_db, speech_level - 6)
+        )
+        threshold_method = "noise_floor_adaptive"
     active = [frame["rms_dbfs"] > threshold for frame in frames]
     pauses: list[dict[str, float]] = []
     active_indices = [index for index, value in enumerate(active) if value]
@@ -105,6 +120,10 @@ def analyze_acoustics(
         "rms_dbfs": overall,
         "clipping_ratio": clipping,
         "energy_activity_ratio": sum(active) / len(active),
+        "activity_threshold_dbfs": threshold,
+        "activity_threshold_method": threshold_method,
+        "estimated_noise_floor_dbfs": noise_floor,
+        "energy_dynamic_range_db": dynamic_range,
         "zero_crossing_rate": sum(
             (a < 0) != (b < 0) for a, b in zip(samples, samples[1:], strict=False)
         )

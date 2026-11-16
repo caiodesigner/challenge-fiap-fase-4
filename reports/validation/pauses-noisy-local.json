@@ -1,0 +1,214 @@
+{
+  "scope": "Development regression on author-provided recording; not clinical validation or held-out evaluation",
+  "source_name": "pausas_2.wav",
+  "source_sha256": "cb0e61271fadb6d8518c37c6e4c2d3d6132b2bff3a64b3aaeea05fe34ef06a08",
+  "before": {
+    "acoustics": {
+      "quality": "assessable",
+      "duration_seconds": 17.4506875,
+      "activity_threshold_dbfs": -47.612030355511024,
+      "activity_threshold_method": "peak_relative",
+      "estimated_noise_floor_dbfs": -47.807799211156365,
+      "energy_dynamic_range_db": 26.246130666135763,
+      "internal_pauses": [
+        {
+          "start_seconds": 2.24,
+          "end_seconds": 2.96,
+          "duration_seconds": 0.7199999999999998
+        }
+      ]
+    },
+    "acoustic_deviations": [],
+    "sentiment_version": "sentiment-pt-lexicon-v1",
+    "sentiment_label": "positive",
+    "sentiment_basis": "Original user report: introductory Bem"
+  },
+  "after": {
+    "acoustics": {
+      "quality": "assessable",
+      "duration_seconds": 17.4506875,
+      "activity_threshold_dbfs": -39.807799211156365,
+      "activity_threshold_method": "noise_floor_adaptive",
+      "estimated_noise_floor_dbfs": -47.807799211156365,
+      "energy_dynamic_range_db": 26.246130666135763,
+      "internal_pauses": [
+        {
+          "start_seconds": 2.04,
+          "end_seconds": 4.88,
+          "duration_seconds": 2.84
+        },
+        {
+          "start_seconds": 7.58,
+          "end_seconds": 10.4,
+          "duration_seconds": 2.8200000000000003
+        },
+        {
+          "start_seconds": 11.64,
+          "end_seconds": 14.32,
+          "duration_seconds": 2.6799999999999997
+        },
+        {
+          "start_seconds": 15.06,
+          "end_seconds": 15.8,
+          "duration_seconds": 0.7400000000000002
+        }
+      ]
+    },
+    "acoustic_deviations": [
+      {
+        "event_type": "long_pause_observed",
+        "start_seconds": 2.04,
+        "end_seconds": 4.88,
+        "duration_seconds": 2.84,
+        "reference_used": false
+      },
+      {
+        "event_type": "long_pause_observed",
+        "start_seconds": 7.58,
+        "end_seconds": 10.4,
+        "duration_seconds": 2.8200000000000003,
+        "reference_used": false
+      },
+      {
+        "event_type": "long_pause_observed",
+        "start_seconds": 11.64,
+        "end_seconds": 14.32,
+        "duration_seconds": 2.6799999999999997,
+        "reference_used": false
+      }
+    ],
+    "transcript": "Bem, eu estou com bastante falta de ar.",
+    "local_sentiment": {
+      "status": "completed",
+      "reason": "no_polar_evidence",
+      "label": "neutral",
+      "language": "pt",
+      "method": "local_lexicon_rules",
+      "version": "sentiment-pt-lexicon-v2",
+      "score": 0.0,
+      "counts": {
+        "positive": 0,
+        "negative": 0,
+        "neutral": 0
+      },
+      "evidence": [],
+      "offsets": "sanitized_transcript_unicode_characters",
+      "limitation": "Baseline lexical em português; não interpreta ironia nem todo contexto, não estima confiança e não constitui avaliação clínica. Ausência de evidência polar é classificada como neutra."
+    },
+    "mentions": [
+      {
+        "term": "falta de ar",
+        "matched_text": "falta de ar",
+        "start_character": 27,
+        "end_character": 38,
+        "assertion": "affirmed",
+        "temporality": "current",
+        "subject": "patient"
+      }
+    ],
+    "events": [
+      {
+        "event_id": "404323b7-5455-463c-99af-c02e1c813009-0",
+        "patient_id": "PAT-SYN-001",
+        "session_id": "AUDIO-404323b7-5455-463c-99af-c02e1c813009",
+        "event_type": "long_pause_observed",
+        "occurred_at": "2026-11-16T23:55:45.895337Z",
+        "ended_at": "2026-11-16T23:55:48.735337Z",
+        "processed_at": "2026-11-16T23:55:47.966113Z",
+        "detector_version": "energy-pauses-v2",
+        "evidence": [
+          {
+            "signal": null,
+            "source_id": "cb0e61271fadb6d8518c37c6e4c2d3d6132b2bff3a64b3aaeea05fe34ef06a08",
+            "modality": "audio",
+            "start_seconds": 2.04,
+            "end_seconds": 4.88,
+            "description": "Internal low-energy pause; not a diagnosis"
+          }
+        ]
+      },
+      {
+        "event_id": "404323b7-5455-463c-99af-c02e1c813009-1",
+        "patient_id": "PAT-SYN-001",
+        "session_id": "AUDIO-404323b7-5455-463c-99af-c02e1c813009",
+        "event_type": "long_pause_observed",
+        "occurred_at": "2026-11-16T23:55:51.435337Z",
+        "ended_at": "2026-11-16T23:55:54.255337Z",
+        "processed_at": "2026-11-16T23:55:47.966197Z",
+        "detector_version": "energy-pauses-v2",
+        "evidence": [
+          {
+            "signal": null,
+            "source_id": "cb0e61271fadb6d8518c37c6e4c2d3d6132b2bff3a64b3aaeea05fe34ef06a08",
+            "modality": "audio",
+            "start_seconds": 7.58,
+            "end_seconds": 10.4,
+            "description": "Internal low-energy pause; not a diagnosis"
+          }
+        ]
+      },
+      {
+        "event_id": "404323b7-5455-463c-99af-c02e1c813009-2",
+        "patient_id": "PAT-SYN-001",
+        "session_id": "AUDIO-404323b7-5455-463c-99af-c02e1c813009",
+        "event_type": "long_pause_observed",
+        "occurred_at": "2026-11-16T23:55:55.495337Z",
+        "ended_at": "2026-11-16T23:55:58.175337Z",
+        "processed_at": "2026-11-16T23:55:47.966222Z",
+        "detector_version": "energy-pauses-v2",
+        "evidence": [
+          {
+            "signal": null,
+            "source_id": "cb0e61271fadb6d8518c37c6e4c2d3d6132b2bff3a64b3aaeea05fe34ef06a08",
+            "modality": "audio",
+            "start_seconds": 11.64,
+            "end_seconds": 14.32,
+            "description": "Internal low-energy pause; not a diagnosis"
+          }
+        ]
+      },
+      {
+        "event_id": "404323b7-5455-463c-99af-c02e1c813009-3",
+        "patient_id": "PAT-SYN-001",
+        "session_id": "AUDIO-404323b7-5455-463c-99af-c02e1c813009",
+        "event_type": "critical_mention",
+        "occurred_at": "2026-11-16T23:55:43.855337Z",
+        "ended_at": "2026-11-16T23:55:43.855337Z",
+        "processed_at": "2026-11-16T23:55:47.966241Z",
+        "detector_version": "energy-pauses-v2",
+        "evidence": [
+          {
+            "signal": null,
+            "source_id": "cb0e61271fadb6d8518c37c6e4c2d3d6132b2bff3a64b3aaeea05fe34ef06a08",
+            "modality": "text",
+            "start_seconds": 0.0,
+            "end_seconds": 0.0,
+            "description": "Term falta de ar; characters 27:38; no word-level audio alignment available"
+          }
+        ]
+      }
+    ],
+    "cloud_request_count": 0,
+    "transcription": {
+      "status": "completed",
+      "language": "pt",
+      "device": "cpu",
+      "compute_type": "int8",
+      "model_path": "faster-whisper-small",
+      "model_sha256": "3e305921506d8872816023e4c273e75d2419fb89b24da97b4fe7bce14170d671",
+      "elapsed_seconds": 4.014606371012633,
+      "network_used": false,
+      "manual_review_required": true,
+      "recognition_quality_validated": false,
+      "segments": [
+        {
+          "start_seconds": 0.24,
+          "end_seconds": 16.1,
+          "word_count": 8
+        }
+      ]
+    }
+  },
+  "interpretation": "Energy-based pause events and an affirmed symptom mention; not a medical diagnosis",
+  "original_user_report_matches_source": true
+}

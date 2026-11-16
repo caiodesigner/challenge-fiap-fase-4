@@ -88,3 +88,25 @@ def test_no_transcription_is_not_reported_as_neutral(tmp_path: Path) -> None:
     assert report["status"] == "completed"
     assert report["local_sentiment"]["status"] == "not_assessable"
     assert report["local_sentiment"]["label"] is None
+
+
+@pytest.mark.parametrize(
+    "text,expected",
+    [
+        ("Bem, eu estou com bastante falta de ar.", "neutral"),
+        ("Bem... eu estou com falta de ar.", "neutral"),
+        ("Bem eu estou com falta de ar.", "neutral"),
+        ("Bem, eu estou preocupado.", "negative"),
+        ("Bem, estou feliz.", "positive"),
+        ("Estou bem.", "positive"),
+        ("Não estou bem.", "negative"),
+        ("Tudo bem, obrigado.", "positive"),
+        ("Fui bem atendido.", "positive"),
+        ("Bem atendido, estou satisfeito.", "positive"),
+    ],
+)
+def test_opening_bem_is_not_confused_with_wellbeing(text: str, expected: str) -> None:
+    result = analyze_sentiment(text)
+    assert result["label"] == expected
+    if text.startswith(("Bem, eu", "Bem...", "Bem eu")):
+        assert not any(e["matched_text"] == "Bem" for e in result["evidence"])

@@ -126,3 +126,24 @@ em falhas dos serviços, sem apresentar resultado parcial como validação real.
 - Comparar transcrição com referência manual e avaliar termos/voz separadamente,
   com fontes e locutores independentes entre partições.
 - Ampliar exemplos antes de inferir robustez ou qualidade clínica.
+
+## Revisão de pausas com ruído — energy-pauses-v2
+
+O limiar de atividade é separado do limiar de qualidade `silence_dbfs`.
+A versão v1 usava apenas o pico menos 35 dB, limitado inferiormente a −50 dBFS.
+Isso fragmentava pausas em gravações com ruído de fundo. Na versão v2, quando a
+diferença entre percentis 90 e 20 da energia dos quadros é pelo menos 12 dB,
+o limiar também considera o percentil 20 mais 8 dB, limitado ao percentil 90
+menos 6 dB. O limiar final nunca fica abaixo da regra anterior. Sem esse
+contraste, a regra anterior é preservada. `adaptive_noise_floor=False` permite
+comparação com o comportamento anterior.
+
+Os relatórios registram limiar efetivo, método, piso de ruído estimado e
+amplitude de energia. O critério de evento permanece em dois segundos: não foi
+reduzido para acomodar a gravação. Na amostra enviada pelo autor, foram
+detectadas pausas de 2,84 s, 2,82 s e 2,68 s, preservando a menção crítica.
+
+É uma heurística de energia, não um detector de fala validado. Ruído variável,
+música e vozes externas ainda podem interferir; não comprova dificuldade
+respiratória. Gravações curtas ou sem contraste podem não permitir adaptação.
+Novas análises usam v2; relatórios antigos permanecem preservados.

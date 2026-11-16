@@ -5,7 +5,7 @@ from typing import Any
 
 from monitoramento_clinico.clinical_text import plain
 
-VERSION = "sentiment-pt-lexicon-v1"
+VERSION = "sentiment-pt-lexicon-v2"
 LIMITATION = (
     "Baseline lexical em português; não interpreta ironia nem todo contexto, "
     "não estima confiança e não constitui avaliação clínica. "
@@ -115,6 +115,21 @@ def analyze_sentiment(text: str | None) -> dict[str, Any]:
                 continue
             if word not in POSITIVE | NEGATIVE:
                 continue
+            # A standalone opening "Bem, ..." is a discourse marker.
+            # Preserve affect in "Estou bem", "Tudo bem" and "Bem atendido".
+            if word == "bem" and index == scope_start:
+                following_clause = text[clause.end() :].lstrip(" ,.!?;:\n")
+                opening = (
+                    index == len(words) - 1 and bool(following_clause.strip())
+                ) or words[index + 1 : index + 2] in (
+                    ["eu"],
+                    ["estou"],
+                    ["tenho"],
+                    ["entao"],
+                    ["acho"],
+                )
+                if opening:
+                    continue
             # "bem preocupado" uses bem as an intensifier, not positive affect.
             if (
                 word == "bem"

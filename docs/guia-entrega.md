@@ -47,7 +47,7 @@ Não são necessárias credenciais Azure. O guia de instalação detalhado é
 .venv/bin/python scripts/prepare_bidmc.py validate
 ```
 
-O registro mais recente da suíte contém 145 testes aprovados. Os testes usam
+O registro mais recente da suíte contém 160 testes aprovados. Os testes usam
 entradas e bancos temporários. Não é preciso regenerar fixtures para executar o
 projeto: o catálogo e seus hashes já estão no repositório.
 

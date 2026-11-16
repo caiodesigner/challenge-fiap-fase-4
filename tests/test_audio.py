@@ -220,3 +220,61 @@ def test_env_loader_never_executes_commands(
 
     assert os.environ["AZURE_SPEECH_KEY"] == "$(touch should-not-exist)"
     assert not (tmp_path / "should-not-exist").exists()
+
+
+def noisy_wav(
+    path: Path, pause: bool, noise_amplitude: float = 250, speech: bool = True
+) -> Path:
+    import random
+
+    rng = random.Random(2026)
+    data = bytearray()
+    for index in range(5 * 16000):
+        # A steady background remains present throughout the internal pause.
+        value = rng.uniform(-noise_amplitude, noise_amplitude)
+        if speech and (not pause or not 1 <= index / 16000 < 4):
+            value += 5500 * math.sin(2 * math.pi * 220 * index / 16000)
+        data.extend(struct.pack("<h", int(value)))
+    with wave.open(str(path), "wb") as stream:
+        stream.setparams((1, 2, 16000, 0, "NONE", "not compressed"))
+        stream.writeframes(data)
+    return path
+
+
+@pytest.mark.parametrize("noise_amplitude", [150, 250, 600])
+def test_adaptive_pause_detection_with_background_noise(
+    tmp_path: Path, noise_amplitude: float
+) -> None:
+    from monitoramento_clinico.acoustics import AcousticConfig
+
+    source = noisy_wav(
+        tmp_path / "noisy.wav", pause=True, noise_amplitude=noise_amplitude
+    )
+    legacy = analyze_acoustics(source, AcousticConfig(adaptive_noise_floor=False))
+    adaptive = analyze_acoustics(source)
+    if noise_amplitude >= 250:
+        assert acoustic_events(legacy) == []
+    else:
+        assert acoustic_events(legacy)[0]["duration_seconds"] == pytest.approx(3)
+    events = acoustic_events(adaptive)
+    assert len(events) == 1
+    assert events[0]["duration_seconds"] == pytest.approx(3, abs=0.05)
+    assert adaptive["activity_threshold_method"] == "noise_floor_adaptive"
+
+
+def test_adaptive_detection_does_not_invent_pauses_in_continuous_audio(
+    tmp_path: Path,
+) -> None:
+    features = analyze_acoustics(noisy_wav(tmp_path / "continuous.wav", pause=False))
+    assert features["internal_pauses"] == []
+    assert acoustic_events(features) == []
+    assert features["activity_threshold_method"] == "peak_relative"
+
+
+def test_stationary_noise_is_not_reported_as_a_voice_pause(tmp_path: Path) -> None:
+    features = analyze_acoustics(
+        noisy_wav(tmp_path / "noise.wav", pause=False, speech=False)
+    )
+    assert features["activity_threshold_method"] == "peak_relative"
+    assert features["internal_pauses"] == []
+    assert acoustic_events(features) == []

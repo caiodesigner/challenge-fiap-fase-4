@@ -53,7 +53,7 @@ separado, evitando misturar decisões de regras diferentes.
 
 ## Evidências
 
-A suíte final contém **120 testes aprovados**, além de Ruff, formatação e Mypy.
+A suíte final contém **160 testes aprovados**, além de Ruff, formatação e Mypy.
 O painel respondeu HTTP 200; Whisper/MediaPipe foram conferidos em CPU.
 
 A execução das três partições sintéticas produziu precisão/recall/F1 de 1,0 para
@@ -98,3 +98,14 @@ Preencha equipe e commit em `docs/entrega.json`, revise o relatório/roteiro usa
 os resultados v2, grave/publique o vídeo de até 900 segundos, confira acesso sem
 login, confirme o prazo e faça a submissão. `final_submission_ready` permanece
 falso até concluir esses itens e a avaliação representativa.
+
+## Correção em gravação real com pausas
+
+A versão `energy-pauses-v2` estima o ruído de fundo ao calcular atividade e
+mantém o critério de dois segundos para pausas prolongadas. A versão
+`sentiment-pt-lexicon-v2` trata “Bem, ...” introdutório como marcador discursivo.
+A gravação de 17,45 s fornecida pelo autor foi reprocessada: sentimento neutro,
+menção crítica e três eventos de pausas prolongadas. Evidência em
+`reports/validation/pauses-noisy-local.json`. São resultados de desenvolvimento,
+sem validação clínica. Reanalise arquivos para gerar relatórios com os detectores
+v2; os relatórios antigos não são alterados.

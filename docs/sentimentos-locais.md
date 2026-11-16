@@ -24,7 +24,7 @@ o sentimento fica indisponível (`not_assessable`, classe e índice `null`).
 
 ## Método e interpretação
 
-A versão `sentiment-pt-lexicon-v1` é uma baseline determinística com vocabulário
+A versão `sentiment-pt-lexicon-v2` é uma baseline determinística com vocabulário
 de expressões afetivas em português e escopo curto de negação por oração.
 Não exige modelo adicional. A análise retorna:
 
@@ -66,3 +66,13 @@ A verificação completa passou com **145 testes**, Ruff, formatação e Mypy.
 Uma gravação sintética também foi transcrita pelo Whisper real em CPU e
 classificada localmente, sem chamadas de nuvem. Exemplos e evidência estão em
 [reports/validation/sentiment-local.json](../reports/validation/sentiment-local.json).
+
+## Regressão com relato pausado
+
+Na versão v2, “Bem, eu estou com bastante falta de ar” é neutro: o “Bem”
+introdutório não conta como bem-estar. “Estou bem”, “Tudo bem” e “Fui bem
+atendido” preservam a classificação positiva. Sentimentos e detecção de
+pausas continuam separados. Os relatórios v1 preservam o comportamento antigo;
+reprocesse o áudio para obter o novo resultado. A comparação da gravação
+fornecida pelo autor está em
+[pauses-noisy-local.json](../reports/validation/pauses-noisy-local.json).

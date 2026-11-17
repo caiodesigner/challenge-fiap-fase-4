@@ -2,6 +2,10 @@
 
 Repositório do projeto Challenge FIAP — Fase 4.
 
+**Autor:** Caio Lucas Santos Silva
+
+**RM:** RM373689 · **Turma:** 9IADT · **Trabalho individual**
+
 Evolução seletiva do assistente médico desenvolvido na fase 3, com foco em
 monitoramento multimodal de pacientes e detecção de anomalias. O projeto da
 fase 3 será preservado em seu repositório original.
@@ -12,8 +16,13 @@ e painel de revisão. A análise postural de vídeo já gera desvios, relatório
 vídeo anotado. Áudio possui transcrição faster-whisper, análise acústica e termos
 críticos locais. Histórico de prescrições e fusão multimodal estão implementados.
 A revisão v2 inclui detecção de tendência, avaliação por sinal e fusão agrupada.
-A avaliação com dados representativos permanece pendente. Azure é opcional conforme orientação do professor informada pelo autor
-e está fora do escopo ativo; não requer conta ou credenciais de nuvem.
+Foram demonstrados exemplos de REHAB24-6, Sit-To-Stand e SPIRA; a avaliação
+independente de desempenho permanece pendente.
+
+**Uso do Azure:** conforme orientação do professor relatada pelo autor, o Azure
+é opcional. O projeto adota processamento local com Whisper, MediaPipe e regras
+em português, sem exigir conta, credenciais ou demonstração de serviços Azure.
+Essa dispensa não elimina as funcionalidades de áudio, vídeo e detecção de anomalias.
 
 - [Plano de execução e análise do feedback da fase 3](PLANO_DESENVOLVIMENTO.md)
 - [Escopo, cenários e critérios de aceite](docs/escopo-e-aceite.md)
@@ -38,7 +47,8 @@ Veja [prontidão da entrega](docs/prontidao-entrega.md) para os resultados atuai
 
 ## Materiais de entrega
 
-- [Relatório técnico](docs/relatorio-tecnico.md)
+- [Relatório técnico em PDF](docs/relatorio-tecnico.pdf)
+- [Relatório técnico em Markdown](docs/relatorio-tecnico.md)
 - [Matriz de atendimento e evidências](docs/matriz-atendimento.md)
 - [Guia consolidado de execução e entrega](docs/guia-entrega.md)
 - [Roteiro do vídeo de 13min30s](docs/roteiro-video.md)

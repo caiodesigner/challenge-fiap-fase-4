@@ -330,8 +330,8 @@ A fusão demonstrada reúne fontes independentes em uma linha do tempo sintétic
 A cadência 1× não caracteriza monitoramento de sensores em produção. Autenticação,
 operação hospitalar e validação de segurança clínica não integram esta entrega.
 
-Para fechamento documental, faltam preencher identificação do autor, link/duração
-do vídeo e commit final. A publicação do vídeo deve respeitar o limite de 15 minutos
+A identificação do autor está preenchida. Para fechamento documental, faltam
+o link e a duração do vídeo e o commit final. A publicação do vídeo deve respeitar o limite de 15 minutos
 e permitir acesso público ou não listado. O estado da submissão está em
 [entrega.json](entrega.json); o roteiro e a lista de verificação estão em
 [roteiro-video.md](roteiro-video.md) e [prontidao-entrega.md](prontidao-entrega.md).

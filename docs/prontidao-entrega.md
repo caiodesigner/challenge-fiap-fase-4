@@ -94,7 +94,8 @@ Fala/vídeo representativos, referências humanas e teste independente não fora
 fabricados nem declarados concluídos. Permanece registrada a falha de transcrição
 da sonda sintética original. Confira manualmente a transcrição da demonstração.
 
-Preencha equipe e commit em `docs/entrega.json`, revise o relatório/roteiro usando
+A autoria individual de Caio Lucas Santos Silva (RM373689, turma 9IADT) está
+registrada em `docs/entrega.json`. Preencha o commit final e revise o relatório/roteiro usando
 os resultados v2, grave/publique o vídeo de até 900 segundos, confira acesso sem
 login, confirme o prazo e faça a submissão. `final_submission_ready` permanece
 falso até concluir esses itens e a avaliação representativa.

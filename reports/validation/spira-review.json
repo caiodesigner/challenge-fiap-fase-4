@@ -1,0 +1,342 @@
+{
+  "scope": "Technical screening and selected development examples, not independent clinical validation",
+  "dataset_url": "https://zenodo.org/records/6672451",
+  "paper_url": "https://aclanthology.org/2021.findings-acl.55/",
+  "inventory": {
+    "wav_files": 469,
+    "speech_files": 453,
+    "patient_files": 218,
+    "control_files": 235,
+    "hospital_noise_files": 16,
+    "metadata_rows": {
+      "metadata_eval": 32,
+      "metadata_test": 108,
+      "metadata_train": 292
+    },
+    "unique_metadata_files": 423,
+    "unlisted_speech_files": 30,
+    "overlapping_train_eval_paths": [
+      "controle/05fe5eb5-0d08-48fa-8610-e8fec56f5d8e_1.wav",
+      "controle/2527bd90-5a3c-445d-aec5-996516311fe6_1.wav",
+      "pacientes/PTT-20200522-WA0015.wav",
+      "pacientes/PTT-20200530-WA0013.wav",
+      "pacientes/PTT-20200601-WA0005.wav",
+      "pacientes/PTT-20200602-WA0023.wav",
+      "pacientes/PTT-20200608-WA0017.wav",
+      "pacientes/PTT-20200610-WA0003.wav",
+      "pacientes/PTT-20200612-WA0031.wav"
+    ]
+  },
+  "screening": {
+    "files": 315,
+    "classes": {
+      "controle": 157,
+      "pacientes": 158
+    },
+    "files_with_long_pauses": {
+      "controle": 2,
+      "pacientes": 20
+    },
+    "test_inference_executed": false,
+    "selection": "Unique train-only paths after energy screening; chosen examples cannot estimate accuracy"
+  },
+  "samples": [
+    {
+      "id": "01_controle_continuo",
+      "purpose": "Controle sem pausa interna detectada",
+      "original_path": "controle/f8aff043-f548-4a0e-8ea3-07a00a9237a7_1.wav",
+      "original_sha256": "23c03ea676ec1a3c7d45811105123c8b8b9b140d60221d2e62bfcfbef42d053c",
+      "converted_path": "outputs/spira-review/selected/01_controle_continuo.wav",
+      "converted_sha256": "d71b59d51442e9d37e27343827888cabc5add44aea449da07c43f4c0de931395",
+      "original_split": "train",
+      "dataset_class": "0",
+      "dataset_dyspnea_code": "0",
+      "duration_seconds": 8.5333125,
+      "internal_pauses": [],
+      "pause_events": [],
+      "automatic_transcript": "O amor ao próximo ajuda a enfrentar o coronavírus com a força que a gente precisa.",
+      "sentiment": {
+        "status": "completed",
+        "reason": "no_polar_evidence",
+        "label": "neutral",
+        "language": "pt",
+        "method": "local_lexicon_rules",
+        "version": "sentiment-pt-lexicon-v2",
+        "score": 0.0,
+        "counts": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 0
+        },
+        "evidence": [],
+        "offsets": "sanitized_transcript_unicode_characters",
+        "limitation": "Baseline lexical em português; não interpreta ironia nem todo contexto, não estima confiança e não constitui avaliação clínica. Ausência de evidência polar é classificada como neutra."
+      },
+      "mentions": [],
+      "event_types": [],
+      "report_path": "outputs/spira-review/analysis/f4ed3bb3-e3c7-465b-8321-f751cad30da2/report.json",
+      "human_review_required": true
+    },
+    {
+      "id": "02_paciente_pausas",
+      "purpose": "Paciente com pausas longas",
+      "original_path": "pacientes/PTT-20200521-WA0003.wav",
+      "original_sha256": "4b93694018ee84cd236c44448606e77dddd2dc2da521552c1a3bccb63cfa490e",
+      "converted_path": "outputs/spira-review/selected/02_paciente_pausas.wav",
+      "converted_sha256": "9b116d141fa7334717e08159e6d6d9f2b9b176db6b9277b1a7517ba9e5e3c3cd",
+      "original_split": "train",
+      "dataset_class": "1",
+      "dataset_dyspnea_code": "5",
+      "duration_seconds": 22.38,
+      "internal_pauses": [
+        {
+          "start_seconds": 2.04,
+          "end_seconds": 3.9,
+          "duration_seconds": 1.8599999999999999
+        },
+        {
+          "start_seconds": 5.22,
+          "end_seconds": 5.82,
+          "duration_seconds": 0.6000000000000005
+        },
+        {
+          "start_seconds": 6.8,
+          "end_seconds": 8.04,
+          "duration_seconds": 1.2399999999999993
+        },
+        {
+          "start_seconds": 8.6,
+          "end_seconds": 10.52,
+          "duration_seconds": 1.92
+        },
+        {
+          "start_seconds": 11.56,
+          "end_seconds": 12.32,
+          "duration_seconds": 0.7599999999999998
+        },
+        {
+          "start_seconds": 13.5,
+          "end_seconds": 16.14,
+          "duration_seconds": 2.6400000000000006
+        },
+        {
+          "start_seconds": 17.94,
+          "end_seconds": 18.8,
+          "duration_seconds": 0.8599999999999994
+        },
+        {
+          "start_seconds": 19.14,
+          "end_seconds": 19.66,
+          "duration_seconds": 0.5199999999999996
+        }
+      ],
+      "pause_events": [
+        {
+          "event_type": "long_pause_observed",
+          "start_seconds": 13.5,
+          "end_seconds": 16.14,
+          "duration_seconds": 2.6400000000000006,
+          "reference_used": false
+        }
+      ],
+      "automatic_transcript": "Amor ao próximo, ajudar a enfrentar a Covid com a força que a gente precisa.",
+      "sentiment": {
+        "status": "completed",
+        "reason": "no_polar_evidence",
+        "label": "neutral",
+        "language": "pt",
+        "method": "local_lexicon_rules",
+        "version": "sentiment-pt-lexicon-v2",
+        "score": 0.0,
+        "counts": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 0
+        },
+        "evidence": [],
+        "offsets": "sanitized_transcript_unicode_characters",
+        "limitation": "Baseline lexical em português; não interpreta ironia nem todo contexto, não estima confiança e não constitui avaliação clínica. Ausência de evidência polar é classificada como neutra."
+      },
+      "mentions": [],
+      "event_types": [
+        "long_pause_observed"
+      ],
+      "report_path": "outputs/spira-review/analysis/33285903-b43d-46da-baa7-23d9118398ca/report.json",
+      "human_review_required": true
+    },
+    {
+      "id": "03_paciente_pausas",
+      "purpose": "Segundo paciente com pausas longas",
+      "original_path": "pacientes/PTT-20200610-WA0015.wav",
+      "original_sha256": "499bba85df2d949e61c6514ca3cec1ff064391cf04359637bb243ebfb890d6be",
+      "converted_path": "outputs/spira-review/selected/03_paciente_pausas.wav",
+      "converted_sha256": "a9a86d05b663fd90d29b2ccbdf62d39a882720fa45e0ab7ea3f9a538dba59fd9",
+      "original_split": "train",
+      "dataset_class": "1",
+      "dataset_dyspnea_code": "5",
+      "duration_seconds": 24.58,
+      "internal_pauses": [
+        {
+          "start_seconds": 2.84,
+          "end_seconds": 4.08,
+          "duration_seconds": 1.2400000000000002
+        },
+        {
+          "start_seconds": 5.92,
+          "end_seconds": 8.42,
+          "duration_seconds": 2.5
+        },
+        {
+          "start_seconds": 9.82,
+          "end_seconds": 11.64,
+          "duration_seconds": 1.8200000000000003
+        },
+        {
+          "start_seconds": 13.6,
+          "end_seconds": 14.18,
+          "duration_seconds": 0.5800000000000001
+        },
+        {
+          "start_seconds": 16.4,
+          "end_seconds": 16.9,
+          "duration_seconds": 0.5
+        },
+        {
+          "start_seconds": 23.28,
+          "end_seconds": 24.36,
+          "duration_seconds": 1.0799999999999983
+        }
+      ],
+      "pause_events": [
+        {
+          "event_type": "long_pause_observed",
+          "start_seconds": 5.92,
+          "end_seconds": 8.42,
+          "duration_seconds": 2.5,
+          "reference_used": false
+        }
+      ],
+      "automatic_transcript": "O amor, o próprio, o próximo ajuda a enfrentar o coronavírus, uma força que a gente precisa.",
+      "sentiment": {
+        "status": "completed",
+        "reason": "no_polar_evidence",
+        "label": "neutral",
+        "language": "pt",
+        "method": "local_lexicon_rules",
+        "version": "sentiment-pt-lexicon-v2",
+        "score": 0.0,
+        "counts": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 0
+        },
+        "evidence": [],
+        "offsets": "sanitized_transcript_unicode_characters",
+        "limitation": "Baseline lexical em português; não interpreta ironia nem todo contexto, não estima confiança e não constitui avaliação clínica. Ausência de evidência polar é classificada como neutra."
+      },
+      "mentions": [],
+      "event_types": [
+        "long_pause_observed"
+      ],
+      "report_path": "outputs/spira-review/analysis/54125464-0993-43f2-83ea-c4dad045bdf8/report.json",
+      "human_review_required": true
+    },
+    {
+      "id": "04_controle_com_pausa",
+      "purpose": "Contraponto: controle também pode ter pausa longa",
+      "original_path": "controle/62e9fe9b-005c-484b-a5c3-682bd1d88ccb_1.wav",
+      "original_sha256": "8c3d725316c4affd9ec47ad4b84487a0bb54f97ffe5078c46368bf9d69a32feb",
+      "converted_path": "outputs/spira-review/selected/04_controle_com_pausa.wav",
+      "converted_sha256": "c20e696136a11f86d4915b3be3833d02866dd158046024fd6d7a764226a4ab39",
+      "original_split": "train",
+      "dataset_class": "0",
+      "dataset_dyspnea_code": "0",
+      "duration_seconds": 14.08,
+      "internal_pauses": [
+        {
+          "start_seconds": 5.04,
+          "end_seconds": 8.2,
+          "duration_seconds": 3.1599999999999993
+        }
+      ],
+      "pause_events": [
+        {
+          "event_type": "long_pause_observed",
+          "start_seconds": 5.04,
+          "end_seconds": 8.2,
+          "duration_seconds": 3.1599999999999993,
+          "reference_used": false
+        }
+      ],
+      "automatic_transcript": "[Omitted: spoken self-identification. Review the local report before public presentation.]",
+      "sentiment": {
+        "status": "completed",
+        "reason": "no_polar_evidence",
+        "label": "neutral",
+        "language": "pt",
+        "method": "local_lexicon_rules",
+        "version": "sentiment-pt-lexicon-v2",
+        "score": 0.0,
+        "counts": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 0
+        },
+        "evidence": [],
+        "offsets": "sanitized_transcript_unicode_characters",
+        "limitation": "Baseline lexical em português; não interpreta ironia nem todo contexto, não estima confiança e não constitui avaliação clínica. Ausência de evidência polar é classificada como neutra."
+      },
+      "mentions": [],
+      "event_types": [
+        "long_pause_observed"
+      ],
+      "report_path": "outputs/spira-review/analysis/20ee52c6-4f4d-4b75-a9a2-5fd0b0111b36/report.json",
+      "human_review_required": true,
+      "presentation_review": "Spoken self-identification precedes the standard reading; pause is not diagnostic."
+    },
+    {
+      "id": "05_paciente_sem_pausa",
+      "purpose": "Contraponto: paciente pode não ter pausa longa",
+      "original_path": "pacientes/PTT-20200529-WA0007.wav",
+      "original_sha256": "c16ba0a288f83889d8da18494ef3d5e443da82682ad546472c8462348e14c4fa",
+      "converted_path": "outputs/spira-review/selected/05_paciente_sem_pausa.wav",
+      "converted_sha256": "e1148cfe351227bfe1999c136eaa9c10b3d161f8c4bf21fb07959b63ed6b2776",
+      "original_split": "train",
+      "dataset_class": "1",
+      "dataset_dyspnea_code": "5",
+      "duration_seconds": 7.52,
+      "internal_pauses": [],
+      "pause_events": [],
+      "automatic_transcript": "O amor ao próximo ajuda a enfrentar os coronavírus com a força que a gente precisa.",
+      "sentiment": {
+        "status": "completed",
+        "reason": "no_polar_evidence",
+        "label": "neutral",
+        "language": "pt",
+        "method": "local_lexicon_rules",
+        "version": "sentiment-pt-lexicon-v2",
+        "score": 0.0,
+        "counts": {
+          "positive": 0,
+          "negative": 0,
+          "neutral": 0
+        },
+        "evidence": [],
+        "offsets": "sanitized_transcript_unicode_characters",
+        "limitation": "Baseline lexical em português; não interpreta ironia nem todo contexto, não estima confiança e não constitui avaliação clínica. Ausência de evidência polar é classificada como neutra."
+      },
+      "mentions": [],
+      "event_types": [],
+      "report_path": "outputs/spira-review/analysis/cd419408-f4df-48f2-aefb-179bef85ec7f/report.json",
+      "human_review_required": true
+    }
+  ],
+  "limitations": [
+    "No human listening review or reference transcription completed by this analysis",
+    "Energy pauses are not labels for respiratory insufficiency",
+    "The five examples were selected after observing acoustic outputs",
+    "Original CSV partitions contain nine shared paths between train and eval",
+    "Different recordings/speakers do not establish longitudinal baseline for same patient",
+    "All selected examples were neutral with no critical mentions; prepared reading is not a consultation transcript"
+  ]
+}

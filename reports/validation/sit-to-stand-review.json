@@ -1,0 +1,489 @@
+{
+  "scope": "Technical compatibility and actual MediaPipe inference on Subject 14 before/after videos; not clinical evaluation",
+  "dataset_url": "https://dataverse.telkomuniversity.ac.id/dataset.xhtml?persistentId=doi:10.34820/FK2/VAEGNR",
+  "mode": "inpatient",
+  "input_modified": false,
+  "survey": [
+    {
+      "path": "/home/caio-lucas/Documentos/IA-PARA-DEVS/fase_4_base_de_dados/sit-to-stand/out_Subject_14_after.mp4",
+      "name": "out_Subject_14_after.mp4",
+      "bytes": 14324550,
+      "opened": true,
+      "fps": 30.0,
+      "frames": 1054,
+      "duration_seconds": 35.13333333333333,
+      "width": 1920,
+      "height": 1080,
+      "source_sha256": "cd9d63adaf045cd1ec7c1a859154e62de60424a56da572617d8e980e3eba7ef7",
+      "status": "completed",
+      "assessment": "assessable",
+      "quality_counts": {
+        "valid": 176
+      },
+      "deviations": [
+        {
+          "event_type": "rise_candidate",
+          "start_seconds": 28.8,
+          "end_seconds": 29.8
+        }
+      ],
+      "report_path": "outputs/sit-to-stand-review/analysis/3f8ac30a-c78b-46cd-9049-31678abf7a50/report.json",
+      "annotated_video": "outputs/sit-to-stand-review/analysis/3f8ac30a-c78b-46cd-9049-31678abf7a50/annotated.mp4",
+      "feature_count": 176
+    },
+    {
+      "path": "/home/caio-lucas/Documentos/IA-PARA-DEVS/fase_4_base_de_dados/sit-to-stand/out_Subject_14_before.mp4",
+      "name": "out_Subject_14_before.mp4",
+      "bytes": 13030747,
+      "opened": true,
+      "fps": 30.0,
+      "frames": 945,
+      "duration_seconds": 31.5,
+      "width": 1920,
+      "height": 1080,
+      "source_sha256": "e1b74a3970df61a1243c69040482224357be4692fa7188899e9f040ab904d670",
+      "status": "completed",
+      "assessment": "assessable",
+      "quality_counts": {
+        "valid": 158
+      },
+      "deviations": [],
+      "report_path": "outputs/sit-to-stand-review/analysis/2e36768f-c2b2-4ee2-b513-0e906b3f7425/report.json",
+      "annotated_video": "outputs/sit-to-stand-review/analysis/2e36768f-c2b2-4ee2-b513-0e906b3f7425/annotated.mp4",
+      "feature_count": 158
+    }
+  ],
+  "sampled_landmark_diagnostic": [
+    {
+      "name": "out_Subject_14_after.mp4",
+      "samples": [
+        {
+          "time_seconds": 0,
+          "pose_count": 1,
+          "points": {
+            "11": {
+              "visibility": 0.9988299012184143,
+              "x": 0.5070000886917114,
+              "y": 0.3882531225681305
+            },
+            "12": {
+              "visibility": 0.9982748031616211,
+              "x": 0.4956832826137543,
+              "y": 0.3868044912815094
+            },
+            "13": {
+              "visibility": 0.9119542241096497,
+              "x": 0.4753853678703308,
+              "y": 0.5307425260543823
+            },
+            "14": {
+              "visibility": 0.04924774914979935,
+              "x": 0.47116509079933167,
+              "y": 0.5250425934791565
+            },
+            "23": {
+              "visibility": 0.9960156083106995,
+              "x": 0.5303979516029358,
+              "y": 0.6252171397209167
+            },
+            "24": {
+              "visibility": 0.9957941770553589,
+              "x": 0.522175133228302,
+              "y": 0.615070104598999
+            }
+          }
+        },
+        {
+          "time_seconds": 3,
+          "pose_count": 1,
+          "points": {
+            "11": {
+              "visibility": 0.9993014335632324,
+              "x": 0.5493960380554199,
+              "y": 0.392761766910553
+            },
+            "12": {
+              "visibility": 0.9989036321640015,
+              "x": 0.5408006310462952,
+              "y": 0.38591450452804565
+            },
+            "13": {
+              "visibility": 0.8527382612228394,
+              "x": 0.5059680342674255,
+              "y": 0.5165010094642639
+            },
+            "14": {
+              "visibility": 0.07765775918960571,
+              "x": 0.5145214200019836,
+              "y": 0.49987393617630005
+            },
+            "23": {
+              "visibility": 0.9980807304382324,
+              "x": 0.5247685313224792,
+              "y": 0.6227994561195374
+            },
+            "24": {
+              "visibility": 0.9972261786460876,
+              "x": 0.5195594429969788,
+              "y": 0.602276086807251
+            }
+          }
+        },
+        {
+          "time_seconds": 6,
+          "pose_count": 1,
+          "points": {
+            "11": {
+              "visibility": 0.9990531802177429,
+              "x": 0.49877873063087463,
+              "y": 0.3947899043560028
+            },
+            "12": {
+              "visibility": 0.9980789422988892,
+              "x": 0.47780823707580566,
+              "y": 0.3991542458534241
+            },
+            "13": {
+              "visibility": 0.9186061024665833,
+              "x": 0.4712586998939514,
+              "y": 0.5301647782325745
+            },
+            "14": {
+              "visibility": 0.0468149371445179,
+              "x": 0.458374947309494,
+              "y": 0.5196642875671387
+            },
+            "23": {
+              "visibility": 0.9993256330490112,
+              "x": 0.5159248113632202,
+              "y": 0.612583577632904
+            },
+            "24": {
+              "visibility": 0.9992867112159729,
+              "x": 0.49891358613967896,
+              "y": 0.6031692028045654
+            }
+          }
+        },
+        {
+          "time_seconds": 12,
+          "pose_count": 1,
+          "points": {
+            "11": {
+              "visibility": 0.9991455078125,
+              "x": 0.41981643438339233,
+              "y": 0.1879851520061493
+            },
+            "12": {
+              "visibility": 0.9941993951797485,
+              "x": 0.43252474069595337,
+              "y": 0.19521121680736542
+            },
+            "13": {
+              "visibility": 0.9376015663146973,
+              "x": 0.4028351902961731,
+              "y": 0.28834980726242065
+            },
+            "14": {
+              "visibility": 0.024225637316703796,
+              "x": 0.4283878803253174,
+              "y": 0.32040393352508545
+            },
+            "23": {
+              "visibility": 0.9980833530426025,
+              "x": 0.4194568395614624,
+              "y": 0.4590805470943451
+            },
+            "24": {
+              "visibility": 0.9970118999481201,
+              "x": 0.42831167578697205,
+              "y": 0.45446425676345825
+            }
+          }
+        },
+        {
+          "time_seconds": 18,
+          "pose_count": 1,
+          "points": {
+            "11": {
+              "visibility": 0.998822033405304,
+              "x": 0.5099425911903381,
+              "y": 0.3882743716239929
+            },
+            "12": {
+              "visibility": 0.9987862706184387,
+              "x": 0.5050672292709351,
+              "y": 0.38758623600006104
+            },
+            "13": {
+              "visibility": 0.8744382858276367,
+              "x": 0.4769306182861328,
+              "y": 0.5320357084274292
+            },
+            "14": {
+              "visibility": 0.04842266067862511,
+              "x": 0.480305016040802,
+              "y": 0.5455463528633118
+            },
+            "23": {
+              "visibility": 0.9948674440383911,
+              "x": 0.5318657755851746,
+              "y": 0.6235683560371399
+            },
+            "24": {
+              "visibility": 0.995598316192627,
+              "x": 0.5198469758033752,
+              "y": 0.6084374785423279
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "out_Subject_14_before.mp4",
+      "samples": [
+        {
+          "time_seconds": 0,
+          "pose_count": 1,
+          "points": {
+            "11": {
+              "visibility": 0.9987189769744873,
+              "x": 0.5059091448783875,
+              "y": 0.3003283739089966
+            },
+            "12": {
+              "visibility": 0.996941864490509,
+              "x": 0.48960256576538086,
+              "y": 0.29871252179145813
+            },
+            "13": {
+              "visibility": 0.9096320867538452,
+              "x": 0.47761309146881104,
+              "y": 0.45707571506500244
+            },
+            "14": {
+              "visibility": 0.0419779010117054,
+              "x": 0.4798109829425812,
+              "y": 0.43488800525665283
+            },
+            "23": {
+              "visibility": 0.9972289204597473,
+              "x": 0.5286633372306824,
+              "y": 0.5331599712371826
+            },
+            "24": {
+              "visibility": 0.9959791898727417,
+              "x": 0.5138773918151855,
+              "y": 0.5154211521148682
+            }
+          }
+        },
+        {
+          "time_seconds": 3,
+          "pose_count": 1,
+          "points": {
+            "11": {
+              "visibility": 0.9992935657501221,
+              "x": 0.4906614422798157,
+              "y": 0.30179280042648315
+            },
+            "12": {
+              "visibility": 0.998941957950592,
+              "x": 0.4815867841243744,
+              "y": 0.29753389954566956
+            },
+            "13": {
+              "visibility": 0.8360490202903748,
+              "x": 0.4710553288459778,
+              "y": 0.4566202759742737
+            },
+            "14": {
+              "visibility": 0.051878854632377625,
+              "x": 0.4727794826030731,
+              "y": 0.442943811416626
+            },
+            "23": {
+              "visibility": 0.9975810050964355,
+              "x": 0.5239046216011047,
+              "y": 0.5310689210891724
+            },
+            "24": {
+              "visibility": 0.9975042939186096,
+              "x": 0.5137350559234619,
+              "y": 0.5171425342559814
+            }
+          }
+        },
+        {
+          "time_seconds": 6,
+          "pose_count": 1,
+          "points": {
+            "11": {
+              "visibility": 0.9981587529182434,
+              "x": 0.4877907335758209,
+              "y": 0.2936648428440094
+            },
+            "12": {
+              "visibility": 0.9977307915687561,
+              "x": 0.468170166015625,
+              "y": 0.29409292340278625
+            },
+            "13": {
+              "visibility": 0.7836813926696777,
+              "x": 0.4659598469734192,
+              "y": 0.4422784447669983
+            },
+            "14": {
+              "visibility": 0.05368322506546974,
+              "x": 0.46325814723968506,
+              "y": 0.4193198084831238
+            },
+            "23": {
+              "visibility": 0.998806357383728,
+              "x": 0.523819625377655,
+              "y": 0.5226967930793762
+            },
+            "24": {
+              "visibility": 0.9989169836044312,
+              "x": 0.5092611908912659,
+              "y": 0.509678304195404
+            }
+          }
+        },
+        {
+          "time_seconds": 12,
+          "pose_count": 1,
+          "points": {
+            "11": {
+              "visibility": 0.9992461204528809,
+              "x": 0.544023334980011,
+              "y": 0.30085980892181396
+            },
+            "12": {
+              "visibility": 0.9985427856445312,
+              "x": 0.5275803208351135,
+              "y": 0.2927297353744507
+            },
+            "13": {
+              "visibility": 0.8101837038993835,
+              "x": 0.5062926411628723,
+              "y": 0.40114283561706543
+            },
+            "14": {
+              "visibility": 0.032182879745960236,
+              "x": 0.5120844841003418,
+              "y": 0.4198612868785858
+            },
+            "23": {
+              "visibility": 0.9984682202339172,
+              "x": 0.5274398922920227,
+              "y": 0.5444120168685913
+            },
+            "24": {
+              "visibility": 0.9979687333106995,
+              "x": 0.5156876444816589,
+              "y": 0.5219114422798157
+            }
+          }
+        },
+        {
+          "time_seconds": 18,
+          "pose_count": 1,
+          "points": {
+            "11": {
+              "visibility": 0.9995872378349304,
+              "x": 0.5536287426948547,
+              "y": 0.30242919921875
+            },
+            "12": {
+              "visibility": 0.9992627501487732,
+              "x": 0.5475835800170898,
+              "y": 0.2927780747413635
+            },
+            "13": {
+              "visibility": 0.9319207072257996,
+              "x": 0.5091620683670044,
+              "y": 0.4341979920864105
+            },
+            "14": {
+              "visibility": 0.06142328307032585,
+              "x": 0.5178079605102539,
+              "y": 0.4288118779659271
+            },
+            "23": {
+              "visibility": 0.9984362721443176,
+              "x": 0.5276630520820618,
+              "y": 0.5442487001419067
+            },
+            "24": {
+              "visibility": 0.998340368270874,
+              "x": 0.5230812430381775,
+              "y": 0.5291944146156311
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "observations": [
+    "Sampled images show side-view sit-to-stand movements, existing skeleton overlay and removed background",
+    "Frame counts match the previously inspected Excel files: before 945, after 1054",
+    "Both analyses completed processing but assessment was insufficient; no valid features and no events",
+    "extract_features requires both elbows even though inpatient rules rely on trunk center",
+    "At sampled times, landmark 14 visibility was approximately 0.02 to 0.08, below required 0.6",
+    "Both shoulders and hips had substantially higher visibility in diagnostic samples"
+  ],
+  "conclusion": "Both videos assessable with trunk-only inpatient features; after has one rise_candidate, before has no confirmed events under unchanged thresholds.",
+  "limitations": [
+    "No clinical fatigue classification implemented",
+    "Before and after refer to exercise timing, not normal/abnormal ground-truth labels",
+    "Energy or postural events must not be inferred from absence of events in insufficient-quality analysis",
+    "Static frame inspection and sampled landmark analysis do not replace clinical review"
+  ],
+  "survey_before_fix": [
+    {
+      "path": "/home/caio-lucas/Documentos/IA-PARA-DEVS/fase_4_base_de_dados/sit-to-stand/out_Subject_14_after.mp4",
+      "name": "out_Subject_14_after.mp4",
+      "bytes": 14324550,
+      "opened": true,
+      "fps": 30.0,
+      "frames": 1054,
+      "duration_seconds": 35.13333333333333,
+      "width": 1920,
+      "height": 1080,
+      "source_sha256": "cd9d63adaf045cd1ec7c1a859154e62de60424a56da572617d8e980e3eba7ef7",
+      "status": "completed",
+      "assessment": "insufficient",
+      "quality_counts": {
+        "low_confidence": 176
+      },
+      "deviations": [],
+      "report_path": "outputs/sit-to-stand-review/analysis/7c1be289-1412-4d58-a0c6-f0929f58d208/report.json",
+      "annotated_video": "outputs/sit-to-stand-review/analysis/7c1be289-1412-4d58-a0c6-f0929f58d208/annotated.mp4",
+      "feature_count": 176
+    },
+    {
+      "path": "/home/caio-lucas/Documentos/IA-PARA-DEVS/fase_4_base_de_dados/sit-to-stand/out_Subject_14_before.mp4",
+      "name": "out_Subject_14_before.mp4",
+      "bytes": 13030747,
+      "opened": true,
+      "fps": 30.0,
+      "frames": 945,
+      "duration_seconds": 31.5,
+      "width": 1920,
+      "height": 1080,
+      "source_sha256": "e1b74a3970df61a1243c69040482224357be4692fa7188899e9f040ab904d670",
+      "status": "completed",
+      "assessment": "insufficient",
+      "quality_counts": {
+        "low_confidence": 158
+      },
+      "deviations": [],
+      "report_path": "outputs/sit-to-stand-review/analysis/1400eea4-7dc8-4260-be92-139749bc5f0e/report.json",
+      "annotated_video": "outputs/sit-to-stand-review/analysis/1400eea4-7dc8-4260-be92-139749bc5f0e/annotated.mp4",
+      "feature_count": 158
+    }
+  ],
+  "detector_version": "pose-rules-v2",
+  "source_overlays": "Input contains pre-existing skeleton lines; MediaPipe runs independently on decoded images; source markings are not our predictions or independent ground truth."
+}

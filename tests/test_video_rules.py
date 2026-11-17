@@ -87,3 +87,21 @@ def test_activity_change_after_active_baseline() -> None:
         event.event_type == "activity_change"
         for event in detect_deviations(frames, VideoConfig(mode="inpatient"))
     )
+
+
+def test_trunk_only_pose_supports_inpatient_but_not_rehabilitation() -> None:
+    frames = [
+        PoseFeatures(
+            time_seconds=i * 0.2,
+            quality="valid",
+            center_x=0.5,
+            center_y=0.8 if i == 0 else 0.5,
+        )
+        for i in range(10)
+    ]
+    events = detect_deviations(frames, VideoConfig(mode="inpatient"))
+    assert [event.event_type for event in events] == ["rise_candidate"]
+    with pytest.raises(ValueError, match="bilateral shoulder"):
+        detect_deviations(frames, VideoConfig())
+    with pytest.raises(ValueError, match="trunk center"):
+        PoseFeatures(time_seconds=0, quality="valid")

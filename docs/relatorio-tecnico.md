@@ -1,303 +1,337 @@
 # Relatório técnico — Monitoramento multimodal local
 
-> Atualização de 15/11/2026: a revisão local v2 implementa tendência monotônica
-> por sinal, referências sintéticas por sinal e fusão agrupada por episódio.
-> As limitações abaixo sobre detector ausente, granularidade e fusão por pares
-> descrevem a revisão histórica v1. Consulte [prontidão da entrega](prontidao-entrega.md)
-> para comandos, resultados atuais e pendências externas.
-
-
 **Tech Challenge FIAP — Fase 4**
 
-**Versão documental:** 13/11/2026
+**Autor:** Caio Lucas Santos Silva — trabalho individual.
+
+**RM:** RM373689  |  **Turma:** 9IADT
 
 **Repositório:** https://github.com/caiodesigner/challenge-fiap-fase-4
 
-**Estado:** implementação e ensaios funcionais documentados; avaliação representativa e vídeo final pendentes.
+**Revisão:** processamento local, tendências por sinal, fusão por episódio e regras posturais v2.
 
-## Resultados atuais — revisão v2
+**Vídeo de apresentação:** link e duração pendentes.
 
-Execução local de 15/11/2026: **120 testes aprovados**, Ruff, formatação,
-Mypy e dependências verificados. O painel respondeu HTTP 200. Whisper e
-MediaPipe executaram em CPU, com modelos locais e sem Azure.
+**Commit de entrega:** registrar após o fechamento das alterações.
 
-Nas três partições sintéticas, sinais temporais tiveram nove acertos, zero
-extras e zero omissões; prescrições tiveram três acertos, zero extras e zero
-omissões (dose, suspensão e unidade incompatível). A baseline de sinais teve
-nove acertos e dois extras. Precisão/recall/F1 dos sinais temporais foram 1,0.
-Esses resultados refletem templates sintéticos compartilhados, não generalização.
+## 1. Objetivo e atendimento ao desafio
 
-A fusão gerou oito alertas para sete eventos, sendo um combinado. Na reprodução
-1×, p95 desde o início do desvio foi aproximadamente 3,017 s na regra temporal
-e 0,017 s na imediata. São medidas da reprodução de sinais, sem captura real.
+O projeto demonstra análise de dados multimodais para monitoramento preventivo:
+sinais vitais, versões de prescrições, áudio, texto e vídeos de fisioterapia ou
+movimentação em cadeira. A aplicação transforma observações em eventos com
+intervalos e evidências, correlaciona fontes e emite alertas para revisão humana.
+O escopo é acadêmico; os limiares não foram validados para decisões clínicas.
 
-Evidências: `reports/evaluation/development-v2.json`, `validation-v2.json`,
-`test-v2.json`, `cadence-v2.json`, `clinical-v2.json` e
-`reports/validation/local-stack-v2.json`. O protocolo atual identifica o sinal
-no pareamento. As referências v2 foram revisadas a partir da definição sintética
-dos cenários; a comparação direta com os números v1 abaixo não é apropriada.
+O PDF original está preservado em
+[IADT - Fase 4 - Tech challenge.pdf](IADT%20-%20Fase%204%20-%20Tech%20challenge.pdf).
+Conforme orientação do professor relatada pelo autor, o uso de Azure é opcional.
+A entrega adota execução local: faster-whisper para transcrição, regras em
+português para sentimentos e menções críticas, MediaPipe para postura e regras
+para séries temporais e correlação. Os adaptadores Azure permanecem opcionais.
+OpenPose e YOLOv8 são exemplos no enunciado; a implementação postural usa MediaPipe.
 
-Fala/vídeo representativos, teste independente e avaliação da utilidade da fusão
-continuam pendentes. O guia [prontidao-entrega.md](prontidao-entrega.md) descreve
-execução e fechamento. As seções seguintes preservam o relatório histórico v1.
+| Frente | Implementação demonstrada | Evidência |
+| --- | --- | --- |
+| Fisioterapia | Assimetria entre braços e interrupção exploratória | Processamento real de trechos REHAB24-6; assimetria confirmada em um exemplo |
+| Cadeira/internação | Centro do tronco, candidato a levantamento e mudança de atividade | Processamento real do par Sit-To-Stand; um candidato a levantamento |
+| Áudio | Transcrição, pausas, características acústicas e termos críticos | SPIRA e gravação encenada do autor |
+| Sentimentos | Vocabulário e regras em português, com negação e contexto | Testes automatizados e exemplos no painel |
+| Sinais vitais | Desvio persistente e tendência por sinal | Avaliação sintética e reprodução no painel |
+| Prescrições | Mudanças inesperadas, interrupções e inconsistências | Histórico sintético versionado |
+| Alertas e fusão | Correlação por episódio, reconhecimento e encerramento | Avaliação sintética e importação de relatórios no painel |
 
-## 1. Objetivo e escopo adotado
+A análise acústica identifica indícios observáveis, como pausas; não diagnostica
+disartria, fadiga ou dificuldade respiratória. A detecção de interrupção e de
+mudança de atividade tem testes funcionais, mas não foi demonstrada nos trechos
+externos selecionados como evento positivo validado.
 
-O projeto demonstra monitoramento de adultos sintéticos em internação e
-reabilitação. Processa sinais vitais, postura/movimentação em vídeo, áudio,
-menções textuais e versões de prescrições, gerando eventos explicáveis e alertas
-para revisão humana. O alerta é emitido automaticamente; o profissional pode
-reconhecer e depois encerrar, registrando a revisão.
-
-Por decisão do autor, a solução ativa executa localmente: faster-whisper para
-transcrição, MediaPipe para postura e regras locais para acústica, contexto
-textual, séries clínicas e correlação. O enunciado original menciona Azure
-Speech e Text Analytics; a substituição é uma adaptação de escopo documentada.
-A análise local de sentimentos usa a baseline `sentiment-pt-lexicon-v1`, com
-negação, evidências e classes positiva, negativa, neutra e mista, integrada aos
-relatórios e ao painel. Não gera alerta clínico por polaridade. Veja
-[sentimentos-locais.md](sentimentos-locais.md) para limites e interpretação.
-Extração genérica de palavras-chave não está implementada.
-Adaptadores Azure anteriores permanecem opcionais no código.
-
-As demonstrações usam dados sintéticos e associações explicitamente artificiais
-entre fontes. O sistema não recomenda tratamentos ou doses. As regras de
-severidade e os limites numéricos foram definidos para o experimento acadêmico.
-
-## 2. Evolução da fase anterior
-
-A fase 3 foi preservada em seu repositório. A extração seletiva tomou como
-referência o commit `66f0a07544202f8dd241b41edb79d12962d5f5ea`, trazendo regras de
-mascaramento textual, auditoria e leitura parametrizada de contexto clínico.
-O inventário registra origem, adaptações e hashes em
-[reaproveitamento-fase-3.md](reaproveitamento-fase-3.md) e
-[reaproveitamento-manifest.json](reaproveitamento-manifest.json).
-
-Os processadores, contratos multimodais, monitor incremental, histórico de
-prescrições, fusão e painel foram desenvolvidos para a fase 4. Pesos, caches,
-bancos e resultados de treinamento da fase 3 não foram copiados como evidência
-experimental desta entrega. Não houve novo fine-tuning nesta fase.
-
-O feedback anterior motivou comparação pareada entre alternativas e registro de
-regressões. A necessidade de ampliar exemplos continua aberta, principalmente
-para voz natural, movimentos e referências independentes.
-
-## 3. Arquitetura e fluxo
+## 2. Arquitetura e fluxo multimodal
 
 ```mermaid
 flowchart TD
-    V[Séries de sinais vitais] --> VT[Regras imediatas ou temporais]
+    V[Séries de sinais vitais] --> VT[Persistência e tendência por sinal]
     P[Versões de prescrição] --> PR[Comparação do histórico]
     M[Vídeo] --> MP[MediaPipe e regras temporais]
-    A[Áudio] --> AC[Características acústicas]
+    A[Áudio WAV] --> AC[Energia e pausas]
     A --> WH[faster-whisper local]
     WH --> TX[Mascaramento e contexto textual]
-    VT --> EV[Eventos com paciente, sessão, intervalo e evidência]
-    PR --> EV
-    MP --> AL[Alinhamento explícito de captura]
+    TX --> SE[Sentimento e menções críticas]
+    MP --> AL[Associação temporal explícita]
     AC --> AL
-    TX --> AL
+    SE --> AL
+    VT --> EV[Eventos com paciente, sessão e evidências]
+    PR --> EV
     AL --> EV
-    EV --> DB[SQLite e correlação temporal]
-    DB --> UI[Painel, alertas e relatórios]
+    EV --> DB[SQLite e fusão por episódio]
+    DB --> UI[Streamlit: alertas e relatórios]
     UI --> RV[Reconhecimento e encerramento com revisão]
 ```
 
-Os contratos Pydantic exigem identificadores, unidades compatíveis e horários
-com fuso. Ocorrência e processamento são campos distintos. Os relatórios de mídia
-atuais usam início do processamento como origem; a integração à sessão exige
-horário de captura informado ou associação marcada como sintética.
+Contratos Pydantic validam identidades, unidades, intervalos e horários com fuso.
+Ocorrência e processamento são registrados separadamente. SQLite armazena
+amostras, eventos, alertas, prescrições, execuções e revisões. Chaves determinísticas
+permitem deduplicação de ingestões idênticas.
 
-O SQLite registra sessões, amostras, estado dos detectores, eventos, alertas,
-reproduções e revisões. A extensão clínica adiciona versões de prescrição,
-disponibilidade das modalidades, configuração e origem dos eventos importados.
-Chaves determinísticas evitam duplicações em reprocessamentos idênticos.
+O painel apresenta quatro áreas: Sinais vitais, Vídeo, Áudio e Histórico e fusão.
+Áudio e vídeo produzem JSON e Markdown; vídeo também produz mídia anotada.
+Os relatórios registram configurações, versões dos detectores e hash da entrada.
 
-Os processadores de mídia geram JSON e Markdown; o vídeo inclui arquivo anotado.
-O painel Streamlit reúne sinais vitais, vídeo, áudio e histórico/fusão. Falhas ou
-disponibilidade desconhecida ficam visíveis, sem bloquear fontes independentes.
+A origem temporal inicial dos relatórios de mídia é o começo do processamento,
+não o horário real da gravação. Para integrar eventos, o usuário informa uma
+origem de captura com fuso e o tipo de associação. Fontes independentes utilizadas
+neste trabalho são vinculadas como **associação sintética de demonstração**.
+Isso não comprova simultaneidade nem acompanhamento do mesmo paciente real.
 
-## 4. Tecnologias e ambiente
+## 3. Tecnologias e execução
 
-| Componente | Papel e configuração verificada |
+| Componente | Uso |
 | --- | --- |
-| Python e Pydantic | Contratos, ingestão e regras; ambiente local Python 3.14.4, suporte declarado 3.12–3.14 |
-| SQLite | Persistência transacional e histórico de alertas |
-| Streamlit | Painel local e exportações |
-| faster-whisper 1.2.1 | Transcrição em português, modelo small, CPU/int8, quatro threads; medium disponível para comparação |
-| CTranslate2 4.8.5 e PyAV 16.1.0 | Execução do Whisper e decodificação; PyAV limitado à série 16 testada |
+| Python/Pydantic | Contratos, validação e processamento; ambiente verificado Python 3.14.4 |
+| SQLite | Persistência e rastreabilidade |
+| Streamlit | Interface local |
+| faster-whisper 1.2.1 | Whisper small em português, CPU/int8 |
+| CTranslate2/PyAV | Inferência e decodificação de áudio |
 | MediaPipe 0.10.35 | Pose Landmarker Lite em CPU |
-| OpenCV e FFmpeg | Leitura de vídeo, marcações e conversão para reprodução no navegador |
-| Pytest, Ruff e Mypy | Testes funcionais, estilo e tipos |
+| OpenCV/FFmpeg | Decodificação, marcações e vídeo para navegador |
+| Pytest/Ruff/Mypy | Testes, estilo, formatação e tipos |
 
-Os modelos ficam fora do Git em `models/`. O download inicial requer internet;
-a análise carrega os pesos locais. O computador informado possui i7-10750H,
-32 GB de RAM e GTX 1650 de 4 GB. O ambiente do agente não expôs dispositivos
-CUDA; os resultados registrados são de CPU. Não foi validada execução em GPU.
+Pesos ficam em `models/`, fora do Git. Seu preparo inicial requer download;
+as análises documentadas usam modelos locais. O computador informado pelo autor
+possui i7-10750H, 32 GB de RAM e GTX 1650 de 4 GB. As execuções registradas foram
+em CPU; a execução em GPU não foi validada. Não houve chamadas à nuvem nas
+análises locais documentadas.
 
-As versões de bibliotecas constam dos relatórios de instalação e avaliação.
-As instruções com revisões dos modelos estão em [execucao-local.md](execucao-local.md).
-Não foram realizados gastos com APIs nesta execução; o processamento usa recursos locais.
+Instalação, preparo dos modelos e execução estão em
+[execucao-local.md](execucao-local.md) e [guia-entrega.md](guia-entrega.md).
+Para iniciar o painel após o preparo do ambiente:
 
-## 5. Dados e referências
+```bash
+.venv/bin/python -m streamlit run app.py
+```
 
-O manifesto contém 90 casos funcionais sintéticos, cinco por frente em cada
-partição: sinais, prescrições, vídeo, movimentação, áudio e texto. Três pacientes
-sintéticos possuem sessões distintas. O catálogo registra hashes, origem,
-formato, resultado esperado e base dos rótulos.
+A fase 3 foi preservada em seu repositório. Foram reaproveitados componentes
+selecionados de mascaramento textual, auditoria e contexto, com origem e hashes em
+[reaproveitamento-fase-3.md](reaproveitamento-fase-3.md) e
+[reaproveitamento-manifest.json](reaproveitamento-manifest.json).
+Não houve novo fine-tuning nesta fase.
 
-Há também seis registros públicos de séries numéricas BIDMC, separados por
-fonte, com licença e manifesto em `data/external/bidmc/`. A comparação de eventos
-apresentada aqui foi executada sobre fixtures sintéticas, não sobre os registros
-BIDMC como se possuíssem rótulos de anomalia.
+## 4. Métodos implementados
 
-Parte das fixtures de mídia contém características artificiais ou tons técnicos,
-sem fala ou vídeo clínico. Os ensaios reais dos motores usam uma imagem repetida
-e fala eSpeak NG sintetizada. Esses materiais verificam execução, formatos e
-falhas; sua representatividade é limitada.
+### 4.1 Sinais vitais
 
-As partições do catálogo compartilham templates de geração e não equivalem a um
-teste clínico independente. Nesta etapa de avaliação foi usada a partição de
-desenvolvimento. Gravações naturais consentidas/licenciadas, referências manuais
-e teste independente por pessoa/locutor continuam pendentes.
+São processados frequência cardíaca, pressão sistólica/diastólica e SpO₂.
+A configuração sintética padrão exige três segundos de desvio para confirmação,
+controlando qualidade, lacunas e ordem temporal. A alternativa imediata usa os
+mesmos limites sem aguardar persistência. O detector de tendência considera
+progressão monotônica, janela de quatro segundos e variação mínima relativa à
+faixa configurada, produzindo `trend_deviation` por sinal.
 
-## 6. Processamento implementado
+A reprodução permite cadência 1× ou execução acelerada, com registro da velocidade.
+São séries gravadas simuladas, sem integração com sensores hospitalares.
 
-### Sinais vitais
+### 4.2 Postura e movimento
 
-As regras cobrem frequência cardíaca, pressão sistólica/diastólica e SpO₂.
-A solução temporal exige três segundos de desvio e controla lacunas, qualidade,
-ordenação e duplicação. A baseline usa os mesmos limites, filtros e SQLite,
-com confirmação imediata, configurada como zero segundos. A configuração padrão
-permanece em três segundos.
+O MediaPipe estima pontos corporais em quadros amostrados a 5 FPS. As regras
+`pose-rules-v2` distinguem os contextos:
 
-A reprodução tem modo acelerado e cadência 1×, com registro separado do tempo de
-processamento e do atraso desde confirmação/início. São simulações de séries
-gravadas. Não foi implementado detector específico da classe `trend_deviation`.
+- **Reabilitação:** exige ambos os ombros, quadris e cotovelos; observa diferença
+  angular superior a 25° por um segundo e interrupção após movimento em amplitude
+  intermediária por 1,5 segundo.
+- **Internação/cadeira:** exige ombros e quadris para o centro do tronco, sem
+  exigir cotovelos; observa elevação superior a 0,15 da altura do quadro frente à
+  referência inicial por um segundo e mudança persistente de atividade.
 
-### Vídeo e movimentação
+A confiança mínima é 0,60 nos pontos necessários. Ausência de pessoa, múltiplas
+poses ou baixa confiança interrompem candidatos. A análise distingue
+`assessable`, `partial` e `insufficient`. Ângulos ficam nulos na Internação.
+A correção por contexto removeu a rejeição indevida dos vídeos laterais da cadeira,
+sem ajustar os limiares para obter eventos nesses arquivos.
 
-O Pose Landmarker Lite fornece pontos posturais; regras exploratórias observam
-assimetria/interrupção no exercício e candidatos a levantar/alterações de
-atividade no contexto de internação. O pipeline sinaliza pessoa ausente,
-qualidade insuficiente e lacunas. Gera intervalos, características, relatório
-e vídeo anotado. A validação com movimentos e referências independentes está pendente.
+### 4.3 Áudio, texto e sentimentos
 
-### Áudio e texto
+O fluxo recebe WAV mono PCM 16-bit/16 kHz, de 0,3 a 30 segundos. Calcula energia,
+atividade, pausas e clipping, com referência acústica opcional. O detector
+`energy-pauses-v2` estima ruído de fundo quando há dinâmica suficiente e observa
+pausas internas prolongadas a partir de dois segundos.
 
-O pipeline verifica WAV mono PCM 16-bit, 16 kHz, com duração de 0,3 a 30 segundos.
-Calcula energia, pausas, silêncio e clipping, com referência acústica opcional.
-O Whisper gera a transcrição local. O texto sanitizado passa por regras de
-menção, negação, sujeito e temporalidade antes da geração de eventos.
+Whisper transcreve em português. Regras textuais consideram termos críticos,
+negação, sujeito e temporalidade. A baseline `sentiment-pt-lexicon-v2` classifica
+sentimentos positivo, negativo, neutro e misto, com evidências e tratamento de
+“Bem...” introdutório. Polaridade não determina risco clínico.
+Não há extração genérica de palavras-chave nem alinhamento por palavra para fusão.
+Veja [sentimentos-locais.md](sentimentos-locais.md).
 
-Energia e pausas não comprovam disartria ou fadiga. Sentimento e diagnóstico
-não são inferidos por essas regras. Menções textuais usam o início do relato;
-não existe alinhamento clínico por palavra integrado à fusão.
+### 4.4 Prescrições, fusão e revisão
 
-### Prescrições
+O histórico compara versões aceitas do mesmo medicamento e sessão. Mudanças
+previstas exigem motivo; alterações inesperadas, suspensão e reinício podem gerar
+eventos. Unidades incompatíveis e transições inválidas geram observações e não
+substituem o estado aceito. Doses e unidades dos exemplos são sintéticas.
 
-O histórico compara a última versão aceita do mesmo medicamento na sessão.
-Mudanças previstas exigem motivo. Alterações não previstas com razão entre doses
-≥ 2, transições de zero para dose positiva e interrupções podem gerar eventos.
-Unidades incompatíveis e transições inválidas geram observações e não atualizam
-o estado aceito. As unidades são sintéticas; não há conversão farmacológica.
+A fusão agrupa eventos elegíveis do mesmo paciente e sessão em episódios limitados
+a 30 segundos, evitando crescimento de todas as combinações por pares. Áudio/texto
+formam uma família de evidências; vídeo/movimento, outra. Alertas isolados são
+preservados e a correlação pode elevar a prioridade experimental.
 
-### Fusão e revisão
+O fluxo registra reconhecimento e encerramento, com responsável, comentário e
+resultado (`confirmed`, `false_positive` ou `inconclusive`). A emissão automática
+precede a revisão. O painel não implementa autenticação profissional de produção.
 
-Eventos elegíveis do mesmo paciente e sessão, com inícios a até 30 segundos,
-podem gerar alerta combinado. Áudio/texto formam uma família; vídeo/movimentação,
-outra, evitando reforço entre visões dependentes da mesma fonte. O mecanismo
-atual gera pares e mantém os alertas isolados.
+## 5. Dados e resultados
 
-Severidades experimentais: observação de consistência, atenção para evento
-isolado elegível e prioridade para correlação. A emissão antecede a revisão.
-Estados aberto, reconhecido e encerrado preservam responsável, comentário e
-resultado da revisão. O painel usa identidade de demonstração, sem autenticação
-profissional de produção.
+### 5.1 Avaliação sintética de sinais e prescrições
 
-## 7. Avaliação e resultados
+O catálogo tem 90 casos funcionais, distribuídos em desenvolvimento, validação e
+teste. As partições compartilham templates; não constituem teste clínico independente.
+Há também seis registros públicos BIDMC, sem rótulos de anomalia usados nesta métrica.
 
-O protocolo de `configs/evaluation.json` define pareamento um a um por paciente,
-sessão e classe. Séries usam tolerância de cinco segundos; texto/prescrições usam
-identidade do registro. Contagens e denominadores acompanham métricas; resultado
-indefinido é `null`. Não foram alterados rótulos após observar as previsões.
+Na avaliação v2, **em cada partição**, os sinais temporais tiveram nove acertos,
+zero extras e zero omissões; prescrições tiveram três acertos, zero extras e zero
+omissões. A baseline de sinais teve nove acertos e dois extras. Precisão, recall
+e F1 dos sinais temporais foram 1,0 nesse conjunto sintético. As referências v2
+identificam o sinal e não devem ser comparadas diretamente aos antigos números v1.
 
-### Comparação de regras nas mesmas entradas
+Fontes: [development-v2.json](../reports/evaluation/development-v2.json),
+[validation-v2.json](../reports/evaluation/validation-v2.json) e
+[test-v2.json](../reports/evaluation/test-v2.json).
 
-| Alternativa | TP | FP | FN | Precisão | Recall | F1 |
-| --- | --- | --- | --- | --- | --- | --- |
-| Sinais, imediata | 1 | 6 | 1 | 0,143 | 0,500 | 0,222 |
-| Sinais, temporal | 1 | 4 | 1 | 0,200 | 0,500 | 0,286 |
-| Alteração inesperada de dose | 1 | 0 | 0 | 1,000 | 1,000 | 1,000 |
+Na reprodução 1×, o p95 desde o início do desvio foi aproximadamente 3,017 segundos
+para a regra temporal e 0,017 segundo para a imediata. Essa medida não inclui
+sensores, rede ou inferência de mídia.
+Fonte: [cadence-v2.json](../reports/evaluation/cadence-v2.json).
 
-Fonte: [development.json](../reports/evaluation/development.json).
-Foram cinco casos de sinais e cinco de prescrição; um caso inválido de sinais
-foi rejeitado nas duas alternativas e aparece separadamente.
+A demonstração agrupada de fusão registrou sete eventos e oito alertas, sendo
+um combinado. É um ensaio funcional sem referência clínica para medir utilidade.
+Fonte: [clinical-v2.json](../reports/evaluation/clinical-v2.json).
 
-A anotação de sinais possui um rótulo de episódio para quatro sinais alterados.
-O protocolo aceita um evento e conta três como extras. Isso limita a
-interpretação da precisão. A classe de tendência não foi reconhecida. As metas
-experimentais de precisão/recall ≥ 0,80 não foram atingidas nos sinais agregados.
-O único caso positivo de dose não estima generalização; eventos de unidade,
-sequência e interrupção sem referências completas permanecem fora dessa métrica.
+### 5.2 Fisioterapia — REHAB24-6
 
-Foram 38 segundos negativos de sinais e 45 de prescrições, sem FP das classes
-avaliadas. A exposição é curta para estimar estabilidade de falsos alertas.
+Foram inventariados 130 vídeos e processados 12 trechos de Arm VW (Ex2), com
+anotações oficiais. Os cortes preservam velocidade, usam 960×540/30 FPS e não
+alteram os originais. Os dois exemplos principais pertencem à mesma pessoa.
 
-### Latência
+| Exemplo | Duração | Resultado |
+| --- | --- | --- |
+| `01_ex2_correto.mp4` | 8,03 s | Avaliável, sem evento confirmado |
+| `02_ex2_assimetria.mp4` | 16,03 s | Avaliável, `asymmetry` entre 1,20 e 2,80 s |
 
-No caso `development-vitals-2` reproduzido em 1×, a regra temporal teve p95 de
-aproximadamente **15,2 ms após a confirmação** e **3,015 s desde o início** do
-desvio. A baseline imediata teve aproximadamente 15,6 ms em ambas as medidas.
-A janela de três segundos explica a diferença. A medição inclui a persistência
-nessa reprodução; não inclui sensores, rede ou modelos de mídia.
-Fonte: [cadence-development.json](../reports/evaluation/cadence-development.json).
+Os relatórios exportados pelo autor confirmaram esses resultados na versão v2:
+41/41 e 81/81 quadros válidos, respectivamente. Na triagem mais ampla, seis trechos
+corretos não geraram eventos; de seis incorretos, apenas um gerou assimetria.
+Portanto, as regras têm cobertura limitada: o rótulo incorreto do dataset engloba
+erros além dos detectados. Não houve evento de interrupção nessa seleção.
 
-### Reconhecimento de fala e postura
+A seleção final considerou as saídas observadas e é demonstrativa, sem estimativa
+independente de sensibilidade. Detalhes e rastreabilidade em
+[analise-rehab24.md](analise-rehab24.md) e
+[rehab24-review.json](../reports/validation/rehab24-review.json).
 
-Sete sondas sintéticas de fala produziram WER ponderado de 39,6% com small e 25%
-com medium. No áudio original de oito palavras, ambos perderam “falta de ar”,
-com três erros de edição. Isso mantém a revisão manual e a avaliação com fala
-natural como pendências. Fonte:
-[speech-recognition-comparison.json](../reports/validation/speech-recognition-comparison.json).
+### 5.3 Cadeira — Sit-To-Stand
 
-A execução real de postura em imagem repetida identificou dez quadros avaliáveis;
-a ausência de pessoa também foi exercitada. Esses ensaios verificam o motor e a
-codificação de vídeo, sem comprovar detecção de desvios clínicos.
+Os dois vídeos Subject 14 mostram movimento de sentar/levantar em vista lateral.
+Após corrigir os pontos exigidos no contexto Internação, a execução real retornou:
 
-### Volume da fusão e robustez
+| Exemplo | Duração | Quadros válidos | Resultado |
+| --- | --- | --- | --- |
+| `out_Subject_14_before.mp4` | 31,50 s | 158/158 | Avaliável, sem evento confirmado |
+| `out_Subject_14_after.mp4` | 35,13 s | 176/176 | Avaliável, `rise_candidate` entre 28,8 e 29,8 s |
 
-A demonstração sintética produziu sete eventos, sete alertas isolados e 15
-combinados: 22 alertas. O crescimento por pares indica necessidade de estudar
-redundância e agrupamento. Faltam referências multimodais para calcular precisão
-e recall da fusão. Fonte: [stage-clinical-fusion.json](../reports/validation/stage-clinical-fusion.json).
+Antes da correção, ambos eram rejeitados por baixa confiança do cotovelo ocluído.
+A ausência de evento no before não significa ausência de levantamento. Os rótulos
+before/after indicam antes/depois do exercício, não normalidade ou risco clínico.
+A associação ao cenário de internação é uma simulação.
 
-A suíte passou com **113 testes**, além de Ruff, formatação e Mypy. Os testes
-cobrem contratos, contexto textual, isolamento, rejeição de formatos, persistência,
-reprocessamento, transições de alerta, limites da janela e rollback de lotes.
-Essas verificações não substituem qualidade do detector ou avaliação de mídia.
+As linhas e ângulos já desenhados pertencem à fonte. O PDF não exige explicitamente
+vídeos crus nem proíbe sobreposições. A aplicação executa MediaPipe sobre as imagens,
+sem consumir planilhas ou ler os ângulos escritos. Na demonstração, entrada e saída
+devem ser identificadas; marcações prévias podem afetar a estimação e não constituem
+referência independente. Evidências em [analise-sit-to-stand.md](analise-sit-to-stand.md)
+e [sit-to-stand-review.json](../reports/validation/sit-to-stand-review.json).
 
-## 8. Reprodutibilidade e rastreabilidade
+### 5.4 Fala natural — SPIRA e gravação encenada
 
-O [guia de entrega](guia-entrega.md) reúne instalação e execução. A
-[matriz de atendimento](matriz-atendimento.md) relaciona requisitos, código,
-comandos e evidências. O [roteiro do vídeo](roteiro-video.md) organiza a demonstração
-em 13min30s. Os resultados JSON incluem configurações, hashes, ambiente, entradas,
-previsões e referências por caso. Modelos e arquivos gerados continuam fora do Git.
+Foram inventariados 469 WAVs: 218 de pacientes, 235 de controles e 16 de ruído.
+Cinco exemplos exclusivos de treino foram convertidos sem cortes para o formato
+aceito e executados com Whisper small CPU/int8. Arquivos compartilhados entre
+treino e validação não foram selecionados.
 
-O código possui licença declarada `LicenseRef-Proprietary`; materiais externos
-mantêm seus avisos. O manifesto da extração documenta as atribuições da fase 3.
+| Arquivo preparado | Duração | Maior pausa interna | Evento de pausa longa |
+| --- | --- | --- | --- |
+| `01_controle_continuo.wav` | 8,53 s | 0,00 s | Não |
+| `02_paciente_pausas.wav` | 22,38 s | 2,64 s | Sim, 13,50–16,14 s |
+| `03_paciente_pausas.wav` | 24,58 s | 2,50 s | Sim, 5,92–8,42 s |
+| `04_controle_com_pausa.wav` | 14,08 s | 3,16 s | Sim |
+| `05_paciente_sem_pausa.wav` | 7,52 s | 0,00 s | Não |
 
-## 9. Limitações e fechamento da entrega
+Os cinco retornaram sentimento neutro e nenhuma menção crítica. O conteúdo é
+leitura de frase preparada, não consulta espontânea. Há paciente sem pausa e
+controle com pausa; a aplicação não prevê o grupo clínico. Um controle contém
+autoapresentação falada, exigindo revisão antes de exposição pública.
+Fontes e seleção em [analise-spira.md](analise-spira.md) e
+[spira-review.json](../reports/validation/spira-review.json).
 
-As limitações conhecidas são: dados sintéticos e poucos locutores/fontes,
-granularidade incompleta dos rótulos, detector de tendência ausente, omissão de
-termo crítico pelo Whisper, latência medida em uma série curta, importação de
-mídia com origem temporal informada e volume de alertas por pares.
+Uma gravação encenada de 17,45 segundos do autor, com “Bem...” e falta de ar,
+permitiu corrigir sensibilidade a ruído e polaridade do marcador introdutório.
+Após a correção houve sentimento neutro, menção crítica e três pausas prolongadas.
+É uma regressão de desenvolvimento, não um teste reservado.
+Fonte: [pauses-noisy-local.json](../reports/validation/pauses-noisy-local.json).
 
-Antes do fechamento, faltam avaliar fala/vídeo representativos, revisar as
-referências e o detector de tendência, comparar a utilidade da fusão e executar
-o teste reservado. Também faltam gravar, conferir e publicar o vídeo final com
-até 15 minutos, registrando seu link. O estado da entrega está em
-[entrega.json](entrega.json). A documentação descreve as evidências atuais e deve
-ser revisada quando esses resultados forem ampliados.
+Ensaios anteriores com sete sondas de fala sintetizada tiveram WER ponderado de
+39,6% (small) e 25% (medium), incluindo omissão de termo crítico. Esses valores
+não medem desempenho no SPIRA e reforçam a necessidade de conferir a transcrição.
+Fonte: [speech-recognition-comparison.json](../reports/validation/speech-recognition-comparison.json).
+
+### 5.5 Verificação funcional integrada
+
+A última verificação automatizada concluiu **163 testes aprovados**, Ruff,
+formatação, Mypy e validação dos catálogos sintético e BIDMC. Os testes cobrem
+contratos, regras, contexto textual, persistência, isolamento, importação,
+deduplicação, revisão de alertas e a separação dos requisitos posturais por contexto.
+
+O autor informou sucesso na execução manual do roteiro no painel: mídia,
+sinais persistentes e tendências, revisão de alertas, prescrições e importação
+para fusão. Esse registro é confirmação manual relatada. Os JSONs de fusão dessa
+rodada não foram anexados à documentação versionada; a evidência automatizada
+permanece a dos arquivos citados. Não se atribuem métricas clínicas a essa confirmação.
+
+## 6. Fontes, licenças e rastreabilidade
+
+- **REHAB24-6:** [Zenodo](https://zenodo.org/records/13305826).
+  Černek, A.; Sedmidubsky, J.; Budikova, P. *REHAB24-6: Physical Therapy Dataset
+  for Analyzing Pose Estimation Methods*. SISAP, 2024. Uso da distribuição
+  restrito a pesquisa acadêmica ou sem fins lucrativos, não comercial.
+- **SPIRA:** [Zenodo](https://zenodo.org/records/6672451) e
+  [artigo original](https://aclanthology.org/2021.findings-acl.55/).
+  Preservar créditos e termos da distribuição; esta seleção não altera seus direitos.
+- **Sit-To-Stand:** [registro do dataset](https://dataverse.telkomuniversity.ac.id/dataset.xhtml?persistentId=doi:10.34820/FK2/VAEGNR).
+  Dados distribuídos sob CC0 conforme registro da análise da fonte.
+- **BIDMC:** origem e licença registradas no manifesto em `data/external/bidmc/`.
+
+As mídias externas, modelos, bancos e saídas completas ficam fora do Git.
+Os resumos versionados preservam hashes e mapeamentos para as execuções locais.
+As licenças das fontes continuam aplicáveis. O código declara
+`LicenseRef-Proprietary`; isso não substitui licenças de terceiros.
+
+## 7. Limitações e conclusão técnica
+
+A solução executa o fluxo local completo nos exemplos documentados: ingestão,
+inferência de mídia, detecção por regras, relatórios, associação temporal,
+alertas e revisão. As bases públicas ampliaram a demonstração para além das
+fixtures artificiais e expuseram limites de cobertura das regras.
+
+Não há validação clínica, ensaio prospectivo, teste independente de mídia por
+pessoa/locutor ou avaliação humana sistemática de utilidade dos alertas. A seleção
+de exemplos foi orientada por resultados observados. Os templates sintéticos
+compartilhados limitam a interpretação das métricas. Transcrição pode omitir
+sintomas; pausas, sentimento e postura não determinam diagnóstico. Vista da câmera,
+oclusões, marcações prévias e movimentos da câmera afetam a detecção.
+
+A fusão demonstrada reúne fontes independentes em uma linha do tempo sintética.
+A cadência 1× não caracteriza monitoramento de sensores em produção. Autenticação,
+operação hospitalar e validação de segurança clínica não integram esta entrega.
+
+Para fechamento documental, faltam preencher identificação do autor, link/duração
+do vídeo e commit final. A publicação do vídeo deve respeitar o limite de 15 minutos
+e permitir acesso público ou não listado. O estado da submissão está em
+[entrega.json](entrega.json); o roteiro e a lista de verificação estão em
+[roteiro-video.md](roteiro-video.md) e [prontidao-entrega.md](prontidao-entrega.md).

@@ -21,7 +21,7 @@ class VideoDeviation(Contract):
 
 
 class VideoConfig(Contract):
-    version: str = "pose-rules-v1"
+    version: str = "pose-rules-v2"
     mode: Literal["rehabilitation", "inpatient"] = "rehabilitation"
     sample_fps: float = Field(default=5, ge=1, le=15)
     minimum_visibility: float = Field(default=0.6, ge=0, le=1)
@@ -48,16 +48,10 @@ class PoseFeatures(Contract):
 
     @model_validator(mode="after")
     def valid_features(self) -> "PoseFeatures":
-        if self.quality == "valid" and any(
-            value is None
-            for value in (
-                self.left_angle,
-                self.right_angle,
-                self.center_x,
-                self.center_y,
-            )
-        ):
-            raise ValueError("valid pose requires all features")
+        if self.quality == "valid" and (self.center_x is None or self.center_y is None):
+            raise ValueError("valid pose requires trunk center")
+        if (self.left_angle is None) != (self.right_angle is None):
+            raise ValueError("shoulder angles must be provided together")
         return self
 
 
@@ -105,7 +99,6 @@ def detect_deviations(
             baseline_motion = []
         conditions: dict[str, tuple[bool, float]] = {}
         if frame.quality == "valid":
-            assert frame.left_angle is not None and frame.right_angle is not None
             assert frame.center_x is not None and frame.center_y is not None
             comparable = (
                 previous is not None and previous.quality == "valid" and not gap
@@ -113,19 +106,9 @@ def detect_deviations(
             angular_speed = 0.0
             displacement = 0.0
             if comparable:
-                assert previous is not None and previous.left_angle is not None
-                assert (
-                    previous.right_angle is not None and previous.center_x is not None
-                )
+                assert previous is not None and previous.center_x is not None
                 assert previous.center_y is not None
                 dt = frame.time_seconds - previous.time_seconds
-                angular_speed = (
-                    max(
-                        abs(frame.left_angle - previous.left_angle),
-                        abs(frame.right_angle - previous.right_angle),
-                    )
-                    / dt
-                )
                 displacement = (
                     math.hypot(
                         frame.center_x - previous.center_x,
@@ -134,6 +117,20 @@ def detect_deviations(
                     / dt
                 )
             if config.mode == "rehabilitation":
+                if frame.left_angle is None or frame.right_angle is None:
+                    raise ValueError(
+                        "rehabilitation requires bilateral shoulder angles"
+                    )
+                if comparable:
+                    assert previous is not None
+                    if previous.left_angle is None or previous.right_angle is None:
+                        raise ValueError(
+                            "rehabilitation requires bilateral shoulder angles"
+                        )
+                    angular_speed = max(
+                        abs(frame.left_angle - previous.left_angle),
+                        abs(frame.right_angle - previous.right_angle),
+                    ) / (frame.time_seconds - previous.time_seconds)
                 if angular_speed > 10:
                     moved = True
                 angle = (frame.left_angle + frame.right_angle) / 2

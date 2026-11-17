@@ -89,3 +89,21 @@ def test_invalid_video_leaves_failed_report(tmp_path: Path) -> None:
     reports = list((tmp_path / "out").glob("*/report.json"))
     assert len(reports) == 1
     assert json.loads(reports[0].read_text())["status"] == "failed"
+
+
+@pytest.mark.parametrize(
+    "mode,expected", [("inpatient", "valid"), ("rehabilitation", "low_confidence")]
+)
+def test_occluded_elbow_is_only_required_for_rehabilitation(
+    mode: str, expected: str
+) -> None:
+    points = pose()
+    points[14].visibility = 0.05
+    config = VideoConfig.model_validate({"mode": mode})
+    result = extract_features([points], 320, 240, 0, config)
+    assert result.quality == expected
+    if mode == "inpatient":
+        assert result.center_y == pytest.approx(0.5)
+        assert result.left_angle is None and result.right_angle is None
+    points[24].visibility = 0.05
+    assert extract_features([points], 320, 240, 0, config).quality == "low_confidence"

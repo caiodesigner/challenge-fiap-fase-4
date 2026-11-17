@@ -63,7 +63,10 @@ Todos esses diretórios são locais e ignorados pelo Git.
 | Leito/cadeira | `rise_candidate` | Centro do tronco sobe >0,15 da altura do quadro frente à referência inicial por 1 s |
 | Leito/cadeira | `activity_change` | Após referência inicial ativa de 15 deslocamentos válidos, redução persistente do movimento por 3 s |
 
-Ângulos usam quadril, ombro e cotovelo, com correção da proporção da imagem.
+Na Reabilitação, ângulos usam quadril, ombro e cotovelo dos dois lados, com
+correção da proporção da imagem. Na Internação, `pose-rules-v2` exige apenas
+ombros e quadris para calcular o centro do tronco; ângulos ficam nulos.
+A confiança mínima continua 0,60 nos pontos exigidos em cada contexto.
 Essas regras não são limites clínicos validados. `rise_candidate` não confirma
 levantamento nem prevê queda; movimento de câmera pode gerar falso positivo.
 Exercícios com pausas planejadas exigem revisão da regra de interrupção.
@@ -108,3 +111,13 @@ representativos consentidos/licenciados, anotações independentes e calibraçã
 para demonstrar precisão/recall em fisioterapia e internação. Nomes de arquivos,
 vídeo anotado e pontos corporais não constituem anonimização certificada;
 revisar relatórios de mídia real antes de publicar.
+
+## Vídeos com marcações prévias
+
+O PDF original, seção Análise de Vídeo (p. 3), exige processamento, detecção
+própria de desvios e relatórios; não exige explicitamente vídeos crus nem
+proíbe sobreposições. Ao usar material já anotado, identifique a fonte e mostre
+separadamente a entrada e a saída da aplicação. As linhas e ângulos da fonte
+não são resultados deste projeto. O MediaPipe processa os quadros decodificados;
+não utiliza as planilhas nem lê os números desenhados. Marcações e remoção de
+fundo podem influenciar a estimativa; não constituem validação independente.

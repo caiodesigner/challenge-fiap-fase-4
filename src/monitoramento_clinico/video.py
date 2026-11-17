@@ -73,7 +73,9 @@ def extract_features(
             time_seconds=second, quality="no_person" if not poses else "multiple_people"
         )
     pose = poses[0]
-    required = (11, 12, 13, 14, 23, 24)
+    required: tuple[int, ...] = (11, 12, 23, 24)
+    if config.mode == "rehabilitation":
+        required += (13, 14)
     if len(pose) < 25 or any(
         not all(
             math.isfinite(value)
@@ -95,11 +97,13 @@ def extract_features(
     def point(index: int) -> tuple[float, float]:
         return pose[index].x * width, pose[index].y * height
 
-    try:
-        left = shoulder_angle(point(23), point(11), point(13))
-        right = shoulder_angle(point(24), point(12), point(14))
-    except ValueError:
-        return PoseFeatures(time_seconds=second, quality="low_confidence")
+    left = right = None
+    if config.mode == "rehabilitation":
+        try:
+            left = shoulder_angle(point(23), point(11), point(13))
+            right = shoulder_angle(point(24), point(12), point(14))
+        except ValueError:
+            return PoseFeatures(time_seconds=second, quality="low_confidence")
     return PoseFeatures(
         time_seconds=second,
         quality="valid",
@@ -217,7 +221,7 @@ def analyze_video(
                                 2,
                             )
             text = f"t={second:.2f}s {feature.quality}"
-            if feature.quality == "valid":
+            if feature.left_angle is not None and feature.right_angle is not None:
                 text += f" L={feature.left_angle:.0f} R={feature.right_angle:.0f}"
             cv2.putText(
                 frame, text, (10, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 220, 255), 1

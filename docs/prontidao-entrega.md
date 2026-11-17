@@ -109,3 +109,23 @@ menção crítica e três eventos de pausas prolongadas. Evidência em
 `reports/validation/pauses-noisy-local.json`. São resultados de desenvolvimento,
 sem validação clínica. Reanalise arquivos para gerar relatórios com os detectores
 v2; os relatórios antigos não são alterados.
+
+## Exemplos externos de áudio — SPIRA
+
+Foram preparados cinco exemplos de treino em `outputs/spira-review/selected/`,
+com conversão e execução real. Consulte [analise-spira.md](analise-spira.md)
+para escolher os arquivos, resultados esperados e limitações.
+
+## Exemplos externos de vídeo — REHAB24-6
+
+Foram analisados 12 trechos Arm VW e separados quatro exemplos em
+`outputs/rehab24-review/selected/`. Consulte [analise-rehab24.md](analise-rehab24.md)
+para cortes, rótulos originais, resultados reais e limitações de cobertura.
+
+## Vídeos em cadeira — Sit-to-Stand
+
+Os dois MP4 de Subject 14 foram analisados no modo Internação. O conteúdo e
+formato são adequados. Com `pose-rules-v2`, o modo Internação exige ombros e
+quadris, sem cotovelos: ambos ficaram avaliáveis. After gerou um candidato a
+levantamento (28,8–29,8 s); before não gerou eventos confirmados. Consulte
+[analise-sit-to-stand.md](analise-sit-to-stand.md) para resultados e limitações.

@@ -32,7 +32,9 @@ class ClinicalConfig(Contract):
             "critical_mention",
             "unexpected_prescription_change",
             "unexpected_prescription_stop",
+            # Legacy synthetic event; retained for persisted config compatibility.
             "long_pause",
+            # long_pause_observed has no reference and remains observation-only.
             "pause_change",
             "asymmetry",
             "interruption",

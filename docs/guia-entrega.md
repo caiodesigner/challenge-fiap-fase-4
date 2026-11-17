@@ -139,7 +139,7 @@ suas licenças; a origem da fase 3 consta do manifesto correspondente.
 
 ## 6. Gravar, conferir e publicar o vídeo
 
-Siga o [roteiro de 13min30s](roteiro-video.md). Prepare modelos e arquivos antes
+Siga o [roteiro de produção](roteiro-video.md). Prepare modelos e arquivos antes
 da gravação; deixe a execução 1× visível por alguns segundos para mostrar a
 cadência. Apresente os erros conhecidos e diferencie as fontes sintéticas das
 gravações utilizadas nos motores locais.

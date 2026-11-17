@@ -10,7 +10,7 @@
 
 **Revisão:** processamento local, tendências por sinal, fusão por episódio e regras posturais v2.
 
-**Vídeo de apresentação:** link e duração pendentes.
+**Vídeo de apresentação:** [YouTube — não listado](https://youtu.be/5SKJyl_HEk4) · 9min15s.
 
 **Commit de entrega:** registrar após o fechamento das alterações.
 
@@ -173,6 +173,12 @@ a 30 segundos, evitando crescimento de todas as combinações por pares. Áudio/
 formam uma família de evidências; vídeo/movimento, outra. Alertas isolados são
 preservados e a correlação pode elevar a prioridade experimental.
 
+Pausas sem referência (`long_pause_observed`) são observações: ficam na linha do
+tempo, mas não participam da correlação. Mudanças frente a uma referência
+(`pause_change`) são elegíveis à fusão. O tipo `long_pause` é legado sintético;
+não é o tipo emitido no fluxo atual sem referência. A política e seus testes
+estão em [politica-pausas-fusao.md](politica-pausas-fusao.md).
+
 O fluxo registra reconhecimento e encerramento, com responsável, comentário e
 resultado (`confirmed`, `false_positive` ou `inconclusive`). A emissão automática
 precede a revisão. O painel não implementa autenticação profissional de produção.
@@ -283,7 +289,7 @@ Fonte: [speech-recognition-comparison.json](../reports/validation/speech-recogni
 
 ### 5.5 Verificação funcional integrada
 
-A última verificação automatizada concluiu **163 testes aprovados**, Ruff,
+A última verificação automatizada concluiu **167 testes aprovados**, Ruff,
 formatação, Mypy e validação dos catálogos sintético e BIDMC. Os testes cobrem
 contratos, regras, contexto textual, persistência, isolamento, importação,
 deduplicação, revisão de alertas e a separação dos requisitos posturais por contexto.
@@ -330,8 +336,9 @@ A fusão demonstrada reúne fontes independentes em uma linha do tempo sintétic
 A cadência 1× não caracteriza monitoramento de sensores em produção. Autenticação,
 operação hospitalar e validação de segurança clínica não integram esta entrega.
 
-A identificação do autor está preenchida. Para fechamento documental, faltam
-o link e a duração do vídeo e o commit final. A publicação do vídeo deve respeitar o limite de 15 minutos
-e permitir acesso público ou não listado. O estado da submissão está em
+A identificação do autor está preenchida e o vídeo foi publicado como não listado,
+conforme informado pelo autor. Para fechamento documental, faltam conferir sua
+reprodução sem login e registrar o commit final publicado. A duração de 9min15s
+está abaixo do limite de 15 minutos. O estado da submissão está em
 [entrega.json](entrega.json); o roteiro e a lista de verificação estão em
 [roteiro-video.md](roteiro-video.md) e [prontidao-entrega.md](prontidao-entrega.md).

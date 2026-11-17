@@ -1,0 +1,40 @@
+{
+  "decision": "explicit_observation_policy",
+  "long_pause_observed": {
+    "reference": false,
+    "severity": "observation",
+    "eligible_for_correlation": false
+  },
+  "pause_change": {
+    "reference": true,
+    "severity": "attention",
+    "eligible_for_correlation": true
+  },
+  "long_pause": "legacy synthetic type retained for compatibility",
+  "new_regression_cases": 4,
+  "arrival_orders": [
+    "audio_first",
+    "video_first"
+  ],
+  "checks": [
+    "actual acoustic event names",
+    "event persistence",
+    "isolated severity",
+    "combined alert eligibility",
+    "reopen database",
+    "deduplication"
+  ],
+  "suite_passed": 167,
+  "ruff": "passed",
+  "format": "passed",
+  "mypy": "passed",
+  "fixture_validation": "passed",
+  "existing_configuration_compatible": true,
+  "configuration_fingerprint": "d6cae271baaba0a6",
+  "clinical_validation": false,
+  "implementation_sha256": {
+    "src/monitoramento_clinico/clinical_monitor.py": "59fcd31600a651af4305f8a6af888f56ced92535c01e0c10f0d0594b01949da7",
+    "src/monitoramento_clinico/clinical_ui.py": "e7db03369698a70e658d0dba0502163c0db0e526c677afd49721483275da5091",
+    "tests/test_clinical_monitor.py": "4bcdf1396ecc391b936dd2696d85a13086bca347dbea6c998ad1ac252f9136f7"
+  }
+}

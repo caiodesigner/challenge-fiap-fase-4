@@ -1,0 +1,166 @@
+{
+  "scope": "Audit against supplied PDF, with Azure optional per professor guidance reported by author; no grading or clinical guarantee",
+  "checks": {
+    "pytest_passed": 163,
+    "ruff": "passed",
+    "format": "passed",
+    "mypy": "passed",
+    "fixture_validation": "passed",
+    "bidmc_validation": "passed",
+    "pip_check": "passed",
+    "local_execution_ready": true
+  },
+  "metrics_by_split": {
+    "development": {
+      "instant": {
+        "true_positive": 9,
+        "false_positive": 2,
+        "false_negative": 0,
+        "precision": 0.8181818181818182,
+        "recall": 1.0,
+        "f1": 0.9
+      },
+      "prescription_rules": {
+        "true_positive": 3,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "temporal": {
+        "true_positive": 9,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    },
+    "validation": {
+      "instant": {
+        "true_positive": 9,
+        "false_positive": 2,
+        "false_negative": 0,
+        "precision": 0.8181818181818182,
+        "recall": 1.0,
+        "f1": 0.9
+      },
+      "prescription_rules": {
+        "true_positive": 3,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "temporal": {
+        "true_positive": 9,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    },
+    "test": {
+      "instant": {
+        "true_positive": 9,
+        "false_positive": 2,
+        "false_negative": 0,
+        "precision": 0.8181818181818182,
+        "recall": 1.0,
+        "f1": 0.9
+      },
+      "prescription_rules": {
+        "true_positive": 3,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "temporal": {
+        "true_positive": 9,
+        "false_positive": 0,
+        "false_negative": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    }
+  },
+  "media_fusion_probe": {
+    "scope": "Real exported media events re-associated to a temporary synthetic session; no changes to demo DB",
+    "events": [
+      {
+        "event_id": "aligned-d561f7aac0b0de5049b00076189c66e8d2263cef1d94d8aba088b03d6cfe8c35",
+        "event_type": "asymmetry",
+        "occurred_at": "2026-01-01T00:00:11.200000Z"
+      },
+      {
+        "event_id": "aligned-72e218da5753d77a7cafc037db2ae5b45ca53199469f701d2e691b0a40229273",
+        "event_type": "long_pause_observed",
+        "occurred_at": "2026-01-01T00:00:13.500000Z"
+      }
+    ],
+    "alerts": [
+      {
+        "severity": "attention",
+        "event_ids": [
+          "aligned-d561f7aac0b0de5049b00076189c66e8d2263cef1d94d8aba088b03d6cfe8c35"
+        ]
+      },
+      {
+        "severity": "observation",
+        "event_ids": [
+          "aligned-72e218da5753d77a7cafc037db2ae5b45ca53199469f701d2e691b0a40229273"
+        ]
+      }
+    ],
+    "eligible_types": [
+      "persistent_deviation",
+      "trend_deviation",
+      "critical_mention",
+      "unexpected_prescription_change",
+      "unexpected_prescription_stop",
+      "long_pause",
+      "pause_change",
+      "asymmetry",
+      "interruption",
+      "rise_candidate",
+      "activity_change"
+    ]
+  },
+  "video": {
+    "decode_complete": true,
+    "duration_seconds": 555.021333,
+    "within_900_second_limit": true,
+    "resolution": [
+      1920,
+      1080
+    ],
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "audio_sample_rate": 48000,
+    "chapters": 12,
+    "integrated_loudness_lufs": -16.2,
+    "true_peak_dbfs": -4.3,
+    "black_segments_detected": 0,
+    "human_full_watch_review": "reported_pass_by_author",
+    "human_review": {
+      "reviewer": "Caio Lucas Santos Silva",
+      "basis": "Author reported watching the whole video and stated it appears correct in this conversation",
+      "kind": "author_self_review",
+      "independent_review": false
+    }
+  },
+  "release_commit": null,
+  "video_published": false,
+  "code_modified_in_this_audit": false,
+  "source_sha256": {
+    "src/monitoramento_clinico/clinical_monitor.py": "9518da6976c6b3de6f8843753b41ccdaaca729e04259c2ce4230815aeeeb44cf",
+    "src/monitoramento_clinico/acoustics.py": "a7b2336ea4296ef4e31869705d7858e34949be73e2f88e35c5e27fc5c63242ab",
+    "src/monitoramento_clinico/video_rules.py": "e9d3c90c443bc203cc7053865d64a633b9cba00f082e03008f8a5bcae8038e02"
+  }
+}

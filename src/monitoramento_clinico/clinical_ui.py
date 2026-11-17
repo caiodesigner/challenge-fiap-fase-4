@@ -139,7 +139,13 @@ def render_clinical_panel(root: Path) -> None:
     st.subheader("Alertas automáticos")
     st.caption(
         "attention: isolado; priority: correlação entre fontes; "
-        "observation: inconsistência de dado. Severidade experimental."
+        "observation: observação ou inconsistência de dado. Severidade experimental."
+    )
+    st.info(
+        "Política de pausas: long_pause_observed (sem referência acústica) "
+        "fica na linha do tempo como observação e não participa da correlação. "
+        "pause_change compara a pausa com uma referência e pode participar "
+        "da fusão com outra família de fontes. Uma pausa não é diagnóstico."
     )
     st.dataframe(snapshot["alerts"], hide_index=True)
     active = {a["alert_id"]: a for a in snapshot["alerts"] if a["status"] != "closed"}

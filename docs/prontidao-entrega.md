@@ -130,3 +130,20 @@ formato são adequados. Com `pose-rules-v2`, o modo Internação exige ombros e
 quadris, sem cotovelos: ambos ficaram avaliáveis. After gerou um candidato a
 levantamento (28,8–29,8 s); before não gerou eventos confirmados. Consulte
 [analise-sit-to-stand.md](analise-sit-to-stand.md) para resultados e limitações.
+
+## Auditoria após a revisão do vídeo
+
+O autor informou ter assistido e considerado correta a primeira montagem completa,
+de 9min15s. A revisão está registrada em `docs/entrega.json`; resta publicar o vídeo
+e conferir o link, publicar as últimas alterações do repositório e efetuar a
+submissão. Consulte [auditoria-final.md](auditoria-final.md) para cobertura por
+requisito e para a restrição identificada na correlação das pausas sem referência.
+A avaliação independente permanece uma limitação metodológica, não um novo arquivo
+obrigatório exigido pelo PDF.
+
+## Publicação informada pelo autor
+
+Vídeo não listado: [YouTube](https://youtu.be/5SKJyl_HEk4), com duração local medida de 9min15s.
+O acesso sem autenticação ainda deve ser conferido: a consulta automática não
+conseguiu carregar o YouTube neste ambiente. O link também consta do README,
+do relatório e de `docs/entrega.json`.

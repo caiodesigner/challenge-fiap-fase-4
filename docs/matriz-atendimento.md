@@ -1,37 +1,29 @@
-# Matriz de atendimento — requisito, código, execução e evidência
+# Matriz de atendimento — requisito, implementação e evidência
 
-Escopo ativo: solução local. Os IDs preservam a rastreabilidade à definição
-inicial. **Implementado** indica funcionalidade disponível; **parcial** indica
-lacuna de implementação, validação ou entrega indicada na última coluna.
+Escopo acadêmico local. Azure opcional conforme orientação do professor relatada
+pelo autor. Implementação funcional não equivale a validação clínica. A auditoria
+atual está em [auditoria-final.md](auditoria-final.md).
 
-| ID | Frente | Código principal | Execução | Evidência disponível | Estado e pendência |
-| --- | --- | --- | --- | --- | --- |
-| R01 | Vídeo e relatório | `src/monitoramento_clinico/video.py`, `video_rules.py`, `video_ui.py` | `scripts/analyze_video.py VIDEO --mode rehabilitation` | [Modelo em CPU](../reports/video/model-smoke.json), [validação](validacao-video.md) | Implementado; avaliação com movimentos anotados pendente |
-| R02 | Acústica e alterações vocais | `src/monitoramento_clinico/acoustics.py`, `audio.py` | `scripts/analyze_audio.py AUDIO` | [Demonstração acústica](../reports/audio/local-demo.json) | Medidas e referência implementadas; validação de alterações vocais pendente |
-| R03 adaptado | Transcrição local | `src/monitoramento_clinico/local_speech.py`, `audio_ui.py` | `scripts/analyze_audio.py AUDIO --whisper --device cpu` | [Execução local](../reports/validation/local-stack.json), [comparação](../reports/validation/speech-recognition-comparison.json) | Implementado; termo crítico omitido na sonda original e fala natural pendente |
-| R04 adaptado | Menções, contexto e sentimentos locais | `src/monitoramento_clinico/clinical_text.py`, `sentiment.py`, `speech_evaluation.py` | Painel **Áudio**, referência manual e relatório | [Validação local](validacao-local.md), `tests/test_audio.py` | Termos, negação, sujeito e tempo implementados; sentimentos locais implementados com evidências; validação representativa pendente |
-| R05 | Sinais vitais | `src/monitoramento_clinico/vitals.py`, `event_evaluation.py` | `scripts/evaluate_local.py` e painel **Sinais vitais** | [Desenvolvimento](../reports/evaluation/development.json) | Implementado na revisão v2: limites persistentes, tendência e referências por sinal; validação representativa pendente |
-| R06 | Histórico de prescrições | `src/monitoramento_clinico/clinical_monitor.py`, `clinical_ui.py` | `scripts/demo_clinical_fusion.py`, painel **Histórico e fusão** | [Integração](../reports/validation/stage-clinical-fusion.json) | Implementado com unidades sintéticas; referência mais ampla pendente |
-| R07 | Movimentação na internação | `src/monitoramento_clinico/video_rules.py` | `scripts/analyze_video.py VIDEO --mode inpatient` | [Regras e limites](video-e-relatorios.md), `tests/test_video_rules.py` | Regras implementadas; gravações de leito/cadeira e rótulos independentes pendentes |
-| R08 | Fusão temporal | `src/monitoramento_clinico/clinical_monitor.py`, `media_alignment.py` | `scripts/demo_clinical_fusion.py`, importação no painel | [Integração](../reports/validation/stage-clinical-fusion.json), [avaliação](avaliacao-resultados.md) | Implementado com agrupamento por episódio; validação da utilidade dos alertas pendente |
-| R09 | Emissão e revisão de alertas | `src/monitoramento_clinico/vitals.py`, `clinical_monitor.py`, `app.py` | Painel: processar → reconhecer → encerrar | [Histórico de reprodução](../reports/vitals/replay-history.json), testes de painel e persistência | Implementado; usuário de demonstração, sem autenticação de produção |
-| R10 | Cadência e latência | `src/monitoramento_clinico/replay.py`, `local_evaluation.py` | `scripts/evaluate_local.py --case development-vitals-2 --speed 1` | [Cadência 1×](../reports/evaluation/cadence-development.json) | Série gravada avaliada; sensores e latência de todas as mídias pendentes |
-| R11 | Código, relatório e instruções | `README.md`, `pyproject.toml`, `docs/` | [Guia](guia-entrega.md) | [Relatório técnico](relatorio-tecnico.md), [origem](reaproveitamento-fase-3.md) | Materiais preparados; revisão final após fechar pendências experimentais |
-| R12 | Vídeo de até 15 minutos | [Roteiro](roteiro-video.md) | Gravar conforme roteiro, conferir duração e link | [Estado da entrega](entrega.json) | Pendente de gravação e publicação |
+| ID | Frente | Código | Evidência atual | Estado e limites |
+| --- | --- | --- | --- | --- |
+| R01 | Vídeo e relatórios | `video.py`, `video_rules.py`, `video_ui.py` | [REHAB24-6](analise-rehab24.md) | Implementado; assimetria real demonstrada, cobertura limitada de erros |
+| R02 | Alterações vocais | `acoustics.py`, `audio.py` | [SPIRA](analise-spira.md), [regressão de pausas](../reports/validation/pauses-noisy-local.json) | Pausas/energia implementadas; sem classificação clínica de fadiga/disartria |
+| R03 adaptado | Transcrição local | `local_speech.py`, `audio_ui.py` | [SPIRA](analise-spira.md), [comparação Whisper](../reports/validation/speech-recognition-comparison.json) | Implementado; exige conferência da transcrição |
+| R04 adaptado | Termos críticos, contexto e sentimento | `clinical_text.py`, `sentiment.py` | [Sentimentos locais](sentimentos-locais.md), gravações encenadas | Implementado; regras lexicais, sem validação representativa independente |
+| R05 | Sinais vitais | `vitals.py`, `event_evaluation.py` | [Avaliação v2](../reports/evaluation/test-v2.json), [auditoria](../reports/validation/final-audit.json) | Persistência e tendência por sinal; exemplos sintéticos |
+| R06 | Prescrições | `clinical_monitor.py`, `clinical_ui.py` | [Avaliação v2](../reports/evaluation/test-v2.json) | Implementado; doses/unidades sintéticas |
+| R07 | Movimentação na internação | `video_rules.py`, `video.py` | [Sit-To-Stand](analise-sit-to-stand.md) | Contexto de tronco v2; cadeira demonstrada como simulação, não observação hospitalar |
+| R08 | Fusão temporal | `clinical_monitor.py`, `media_alignment.py` | [Auditoria de importação](../reports/validation/final-audit.json) | Episódios e origem explícita; [política de pausas](politica-pausas-fusao.md) documentada e testada |
+| R09 | Alertas e revisão | `vitals.py`, `clinical_monitor.py`, `app.py` | 167 testes e captura real das ações | Implementado no painel; identidade demonstrativa, sem autenticação de produção |
+| R10 | Cadência e latência | `replay.py`, `local_evaluation.py` | [Cadência 1×](../reports/evaluation/cadence-v2.json) | Reprodução incremental; não mede sensores ou latência completa de mídia |
+| R11 | Código e relatório | `README.md`, `docs/` | [Relatório PDF](relatorio-tecnico.pdf), [relatório Markdown](relatorio-tecnico.md) | Produzidos; publicar últimas alterações e registrar revisão final |
+| R12 | Vídeo até 15 minutos | [Produção](producao-video.md), [roteiro](roteiro-video.md) | MP4 Full HD de 9min15s, revisado pelo autor | Publicação YouTube/Vimeo e teste do link pendentes |
 
-Os comandos de scripts acima usam o prefixo `.venv/bin/python`. Substitua
-`AUDIO`/`VIDEO` por arquivos locais apropriados. A instalação dos extras e modelos
-está no guia; os comandos de mídia exigem os respectivos modelos disponíveis.
+Os nomes de código acima pertencem a `src/monitoramento_clinico/`, exceto
+`app.py`, na raiz. As análises reais exigem modelos locais e arquivos externos;
+instalação em [execucao-local.md](execucao-local.md).
 
-Conforme orientação do professor comunicada pelo autor nesta conversa, o uso de
-Azure é opcional. O projeto mantém processamento local e não exige configuração,
-execução ou demonstração de serviços Azure. Esta atualização registra a orientação
-recebida; o PDF original permanece preservado sem alterações.
-
-A dispensa de Azure não foi interpretada como dispensa das funcionalidades:
-transcrição, termos críticos, análise de sentimentos e alterações vocais.
-Sentimentos estão implementados por regras lexicais locais em português, com
-evidências e limitações em [sentimentos-locais.md](sentimentos-locais.md).
-
-Os relatórios em `reports/` são evidências históricas; novas execuções devem
-preferir `outputs/` para não substituir resultados já documentados.
+Materiais de terceiros mantêm seus créditos e licenças. Mídias e vídeos gerados
+permanecem em `outputs/`, ignorado pelo Git; resumos e hashes ficam em `reports/`.
+O PDF original não foi alterado. Teste independente e calibração são limitações
+de qualidade, sem criação de entregáveis adicionais não previstos no enunciado.

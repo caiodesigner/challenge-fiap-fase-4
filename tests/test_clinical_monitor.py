@@ -250,3 +250,49 @@ def test_fusion_groups_episode_without_pairwise_explosion(tmp_path: Path) -> Non
         m.ingest_event(item)
     assert m.snapshot()["alerts"] == before
     assert len([a for a in m.snapshot()["alerts"] if len(a["event_ids"]) > 1]) == 1
+
+
+@pytest.mark.parametrize("with_reference", [False, True])
+@pytest.mark.parametrize("audio_first", [False, True])
+def test_actual_acoustic_event_policy_in_fusion(
+    tmp_path: Path, with_reference: bool, audio_first: bool
+) -> None:
+    from monitoramento_clinico.acoustics import acoustic_events
+
+    features = {
+        "quality": "assessable",
+        "config": {"long_pause_seconds": 2},
+        "internal_pauses": [
+            {"start_seconds": 13.5, "end_seconds": 16.14, "duration_seconds": 2.64}
+        ],
+    }
+    reference = (
+        {"quality": "assessable", "longest_internal_pause_seconds": 0.5}
+        if with_reference
+        else None
+    )
+    acoustic = acoustic_events(features, reference)[0]
+    audio = event("actual-audio-type", "audio", 13.5, kind=acoustic["event_type"])
+    video = event("posture", "video", 11.2, kind="asymmetry")
+    m = monitor(tmp_path)
+    for item in [audio, video] if audio_first else [video, audio]:
+        m.ingest_event(item)
+    snapshot = m.snapshot()
+    assert len(snapshot["events"]) == 2
+    isolated = next(a for a in snapshot["alerts"] if a["event_ids"] == [audio.event_id])
+    combined = [a for a in snapshot["alerts"] if len(a["event_ids"]) > 1]
+    if with_reference:
+        assert acoustic["event_type"] == "pause_change"
+        assert isolated["severity"] == "attention"
+        assert len(combined) == 1
+        assert combined[0]["severity"] == "priority"
+        assert set(combined[0]["event_ids"]) == {audio.event_id, video.event_id}
+    else:
+        assert acoustic["event_type"] == "long_pause_observed"
+        assert isolated["severity"] == "observation"
+        assert combined == []
+    # Reopening and reimporting must preserve both policy and deduplication.
+    reopened = monitor(tmp_path)
+    assert reopened.ingest_event(audio) == []
+    assert reopened.ingest_event(video) == []
+    assert reopened.snapshot() == snapshot

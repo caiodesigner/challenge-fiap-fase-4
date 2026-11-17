@@ -1,149 +1,240 @@
-# Roteiro do vídeo — duração planejada de 13min30s
+# Roteiro de produção — demonstração do Tech Challenge
 
-> Atualização de 15/11/2026: a revisão local v2 implementa tendência monotônica
-> por sinal, referências sintéticas por sinal e fusão agrupada por episódio.
-> As limitações abaixo sobre detector ausente, granularidade e fusão por pares
-> descrevem a revisão histórica v1. Consulte [prontidão da entrega](prontidao-entrega.md)
-> para comandos, resultados atuais e pendências externas.
+**Autor:** Caio Lucas Santos Silva · **RM:** RM373689 · **Turma:** 9IADT.
 
+**Etapa:** roteiro preparado; capturas finais, locução e montagem ainda pendentes.
 
-Limite da entrega: 15 minutos. A agenda reserva 90 segundos para variações de
-execução e transições. O vídeo final ainda precisa ser gravado e publicado.
-Este roteiro apresenta a solução local adotada pelo autor.
+**Duração planejada:** 12:30 (750 segundos); limite do challenge: 15 minutos.
 
-## Preparação
+**Voz:** português brasileiro, ritmo moderado. Tempos incluem navegação, reprodução e pausas; ajustar após gerar a voz.
 
-Abra o painel, o relatório técnico, a matriz e os resultados antes da gravação.
-Tenha os modelos instalados, um WAV e os vídeos que serão demonstrados. Declare
-se cada mídia é natural, encenada, imagem repetida ou síntese técnica. Confira os
-arquivos e o enquadramento no ensaio para manter a apresentação no tempo previsto.
-As instruções de execução estão em [guia-entrega.md](guia-entrega.md).
+## Preparação da captura
 
-A demonstração de vídeo deve incluir o modo de exercício e o de internação.
-Enquanto as gravações representativas estiverem pendentes, a apresentação deve
-explicar o alcance do material técnico disponível e manter essa lacuna explícita.
+1. Iniciar a aplicação atualizada com `.venv/bin/python -m streamlit run app.py`.
+2. Usar navegador em 1920×1080, zoom legível, sem notificações ou janelas pessoais.
+3. Conferir modelos locais e arquivos abaixo. Fechar mensagens promocionais do Streamlit.
+4. Verificar previamente um alerta aberto e os resultados dos áudios encenados. Não apagar o histórico para repetir ações.
+5. Capturar cenas separadamente, incluindo ações de upload, execução e resultado. Esperas podem ser cortadas com indicação “tempo de processamento reduzido”.
+6. Nas duas reproduções de sinais, preservar cadência 1×. A prévia amostrada de 40 segundos não serve de evidência de cadência nem substitui estas capturas.
+7. Ao reproduzir áudios de pacientes, pausar a locução para permitir escuta. Não expor dados pessoais de outras gravações.
+8. Conferir cada resultado antes de associá-lo à fala. Se divergir do esperado, inspecionar o relatório; não editar a tela para aparentar outro resultado.
 
-## Agenda e fala sugerida
+## Arquivos de entrada
 
-| Intervalo | Duração | Tela e ação | Mensagem principal |
-| --- | --- | --- | --- |
-| 00:00–00:40 | 40 s | README e objetivo | Problema, escopo e solução local |
-| 00:40–01:30 | 50 s | Arquitetura e origem da fase 3 | Entradas, eventos, persistência e revisão |
-| 01:30–03:20 | 110 s | Painel de sinais | Cadência, desvio, emissão e revisão do alerta |
-| 03:20–05:00 | 100 s | Vídeo e relatórios | Postura, movimentação, qualidade e evidência visual |
-| 05:00–07:00 | 120 s | Áudio local | Transcrição, acústica, termos e conferência manual |
-| 07:00–09:15 | 135 s | Prescrições e fusão | Histórico, associação temporal e alertas combinados |
-| 09:15–11:15 | 120 s | Avaliação | Comparação, erros, latência e limitações |
-| 11:15–12:30 | 75 s | Guia e testes | Como reproduzir e localizar as evidências |
-| 12:30–13:30 | 60 s | Matriz e fechamento | Pendências e materiais de entrega |
+| Uso | Caminho |
+| --- | --- |
+| REHAB correto | `outputs/rehab24-review/selected/01_ex2_correto.mp4` |
+| REHAB assimetria | `outputs/rehab24-review/selected/02_ex2_assimetria.mp4` |
+| Cadeira | `/home/caio-lucas/Documentos/IA-PARA-DEVS/fase_4_base_de_dados/sit-to-stand/out_Subject_14_before.mp4` e `out_Subject_14_after.mp4` |
+| SPIRA | `outputs/spira-review/selected/01_controle_continuo.wav` e `02_paciente_pausas.wav` |
+| Áudios encenados | `/home/caio-lucas/Documentos/IA-PARA-DEVS/audios-fase4/`: `positivo.wav`, `negativo.wav`, `sintoma.wav`, `negacao.wav` |
+| Fusão | JSONs recém-exportados do vídeo com assimetria e do áudio SPIRA com pausa; identificar pelo conteúdo, não pelo nome genérico do download |
 
-### 00:00–00:40 — Contexto
+No painel de áudio: Whisper local, execução `cpu`, modelo `faster-whisper-small`, referência acústica vazia.
+Na fusão, a identidade de demonstração deve ser `PAT-SYN-001`. Não associar um relatório de outra identidade.
 
-“Este projeto acompanha adultos sintéticos em internação e reabilitação,
-combinando sinais, vídeo, áudio e registros clínicos para emitir alertas
-rastreáveis. A equipe revisa os alertas depois da emissão. Adotamos processamento
-local com Whisper e MediaPipe. A diferença em relação ao uso de Azure no
-escopo original está registrada no plano.”
+## Agenda
 
-### 00:40–01:30 — Arquitetura e reaproveitamento
+| Cena | Intervalo | Conteúdo |
+| --- | --- | --- |
+| 01 | 00:00–00:35 | Apresentação |
+| 02 | 00:35–01:20 | Arquitetura e processamento local |
+| 03 | 01:20–02:05 | Fisioterapia — execução sem desvio |
+| 04 | 02:05–03:00 | Fisioterapia — assimetria |
+| 05 | 03:00–04:15 | Cadeira — antes e depois |
+| 06 | 04:15–05:40 | Áudio SPIRA — controle e paciente |
+| 07 | 05:40–06:45 | Sentimentos, sintomas e negação |
+| 08 | 06:45–08:05 | Sinais vitais — persistência e tendência |
+| 09 | 08:05–08:50 | Reconhecimento e encerramento |
+| 10 | 08:50–09:40 | Prescrições e alertas |
+| 11 | 09:40–11:20 | Importação e fusão multimodal |
+| 12 | 11:20–12:30 | Resultados, limitações e fechamento |
 
-Mostre o diagrama do relatório e o manifesto da fase 3.
+## Cena 01 — Apresentação
 
-“Da fase anterior reaproveitamos componentes de mascaramento, auditoria e
-leitura de contexto. Os contratos e processadores multimodais foram construídos
-para esta fase. Cada evento mantém paciente, sessão, intervalo, detector e
-fontes de evidência. O SQLite preserva alertas, execuções e revisões.”
+**Janela:** 00:00–00:35 (35 s, incluindo ações e pausas).
 
-### 01:30–03:20 — Sinais vitais e alerta
+**Captura:** Cartela com título, nome, RM e turma; abrir README.
 
-Selecione `development-vitals-2`, mantenha a reprodução acelerada desmarcada e
-execute a sessão. Mostre alguns segundos de atualização e o histórico gravado.
-Escolha um alerta aberto, registre reconhecimento e encerramento com comentário;
-se estiver usando registros já revisados, abra o histórico da revisão.
+**Evidência a exibir:** Exibir autoria individual e objetivo. Sem simular resultados.
 
-“As regras cobrem frequência cardíaca, pressão sistólica e diastólica e
-oxigenação. A confirmação temporal exige três segundos de desvio. O alerta é
-emitido automaticamente. O histórico registra o processamento e a revisão, e
-repetir a mesma série preserva os registros sem duplicar os alertas.”
+**Texto na tela:** Monitoramento multimodal · Tech Challenge Fase 4
 
-### 03:20–05:00 — Vídeo e movimentação
+**Locução:**
 
-No painel **Vídeo**, apresente o arquivo de exercício, o resultado anotado e um
-intervalo do relatório. Mostre também o modo de internação e o tratamento de
-qualidade insuficiente. Identifique a origem de cada arquivo exibido.
+Este é o projeto de monitoramento multimodal desenvolvido individualmente por Caio Lucas Santos Silva, da turma nove IADT, para o Tech Challenge da fase quatro. A proposta é combinar sinais vitais, prescrições, áudio e vídeo para identificar alterações observáveis e gerar alertas rastreáveis. Nesta demonstração, veremos a aplicação funcionando com bases públicas e cenários sintéticos. Trata-se de um protótipo acadêmico, sem validação para decisões clínicas.
 
-“O MediaPipe fornece pontos posturais e regras temporais geram candidatos a
-desvios. Há fluxos para exercício e movimentação na internação. O relatório
-preserva intervalos e características. Pessoa ausente, enquadramento e baixa
-confiança são tratados como limitações observáveis. A avaliação com vídeos
-representativos e referências independentes ainda está pendente.”
+## Cena 02 — Arquitetura e processamento local
 
-### 05:00–07:00 — Áudio e texto
+**Janela:** 00:35–01:20 (45 s, incluindo ações e pausas).
 
-Selecione **Whisper local**, CPU e modelo instalado. Reproduza o WAV, processe-o
-e mostre transcrição, energia, pausas e termos com contexto. Insira uma referência
-manual e mostre a comparação. Identifique se o áudio foi sintetizado.
+**Captura:** Mostrar diagrama do relatório técnico e as quatro áreas do painel.
 
-“O áudio é processado localmente. Medimos características acústicas e
-transcrevemos com faster-whisper. As regras textuais tratam negação, sujeito e
-tempo. A referência manual permite verificar o reconhecimento. No ensaio
-sintético original, o modelo perdeu ‘falta de ar’; esse erro continua registrado.
-As medidas acústicas não foram validadas para diagnosticar fadiga ou disartria.”
+**Evidência a exibir:** Destacar entrada → processamento → evento → SQLite → alerta → revisão.
 
-### 07:00–09:15 — Histórico e fusão
+**Texto na tela:** Azure opcional conforme orientação do professor relatada pelo autor
 
-Em **Histórico e fusão**, mostre os cenários de mudança prevista e inesperada.
-Abra a linha do tempo, evidências e disponibilidade. Mostre a importação de um
-relatório com origem temporal explícita ou a evidência da demonstração CLI.
+**Locução:**
 
-“O histórico compara versões do mesmo medicamento sintético e distingue
-mudanças previstas, alterações inesperadas e inconsistências. A correlação
-exige o mesmo paciente e sessão e uma janela de 30 segundos. Áudio e texto são
-tratados como fontes dependentes, assim como vídeo e movimentação. Os relatórios
-de mídia exigem horário de captura informado ou associação marcada como
-sintética. A ausência de uma modalidade permite alertas das fontes disponíveis.”
+Conforme orientação do professor relatada pelo autor, o uso do Azure é opcional. Por isso, a solução utiliza processamento local. O Whisper transcreve a fala; regras em português analisam sentimentos, termos críticos e negações. O MediaPipe estima pontos corporais, e regras temporais analisam postura e movimento. Sinais e prescrições também passam por regras explícitas. Os eventos guardam paciente, sessão, intervalo e evidências. O SQLite preserva o histórico, e o painel permite reconhecer e encerrar alertas. As regras não recomendam tratamentos.
 
-Ao exibir a demonstração CLI, acrescente: “Os eventos textuais e visuais desta
-demonstração são fixtures de integração. A inferência dos motores foi apresentada
-nos respectivos painéis.”
+## Cena 03 — Fisioterapia — execução sem desvio
 
-### 09:15–11:15 — Resultados e erros
+**Janela:** 01:20–02:05 (45 s, incluindo ações e pausas).
 
-Abra `reports/evaluation/development.md`, os JSONs de desenvolvimento/cadência e
-a comparação de fala. Mostre os contadores e uma referência não pareada.
+**Captura:** Vídeo → Contexto: Elevação bilateral dos braços → enviar 01_ex2_correto.mp4 → Analisar vídeo.
 
-“A comparação usa as mesmas entradas e os mesmos limites, com zero ou três
-segundos de confirmação. A precisão agregada de sinais foi de 0,143 para 0,200,
-com recall de 0,500. Esses números têm uma limitação de anotação: há um rótulo
-por episódio e vários eventos por sinal. A classe de tendência também não foi
-reconhecida. Na reprodução 1×, o p95 temporal foi de cerca de 15 milissegundos
-após a confirmação e 3,015 segundos desde o início. Na fusão, sete eventos
-geraram 22 alertas, mostrando a necessidade de avaliar redundância.”
+**Evidência a exibir:** Mostrar nome do arquivo, processamento, assessable e ausência de eventos; reproduzir alguns segundos da saída.
 
-### 11:15–12:30 — Reprodução e evidências
+**Texto na tela:** REHAB24-6 · Arm VW · exemplo sem desvio confirmado
 
-Mostre o guia, comandos do avaliador, configuração e arquivos de saída. Exiba o
-registro de testes; execute apenas comandos curtos no tempo disponível.
+**Locução:**
 
-“O guia reúne a instalação, preparação dos modelos, painel e demonstrações.
-Os resultados registram configurações, hashes e ambiente. A suíte possui 120
-testes aprovados. Os testes verificam integridade e comportamento programado;
-a avaliação com fala natural e movimentos representativos precisa ser ampliada.”
+Começamos pela fisioterapia, com um trecho do exercício Arm VW da base REHAB24-6. Selecionamos o contexto de elevação bilateral dos braços e enviamos o arquivo. A aplicação estima a postura e compara os ângulos dos dois lados ao longo do tempo. Neste exemplo, os quadros são avaliáveis e não há desvio confirmado. Isso significa que as condições das regras não foram atingidas, e não uma aprovação clínica geral do exercício.
 
-### 12:30–13:30 — Fechamento
+## Cena 04 — Fisioterapia — assimetria
 
-Mostre a matriz e o estado da entrega.
+**Janela:** 02:05–03:00 (55 s, incluindo ações e pausas).
 
-“O protótipo integra as frentes locais e registra evidências de cada alerta.
-A revisão v2 implementa tendências, referências por sinal e agrupamento de
-alertas. A próxima avaliação exige fala natural e vídeos representativos com
-referências independentes. O repositório contém código, instruções, relatório e resultados
-para reprodução. A matriz identifica o que está implementado e o que ainda
-precisa de avaliação.”
+**Captura:** No mesmo contexto, enviar 02_ex2_assimetria.mp4 → Analisar vídeo.
 
-## Conferência do arquivo e do link
+**Evidência a exibir:** Mostrar evento asymmetry 1,20–2,80 s, vídeo nesse intervalo e relatório exportável.
 
-Após editar, confira áudio inteligível, textos legíveis e duração total ≤ 900 s.
-O roteiro de 810 s deixa 90 s de margem; a duração real deve ser medida no arquivo.
-Registre caminho, duração e URL em [entrega.json](entrega.json). Confira o link
-publicado em uma sessão sem autenticação antes de incluí-lo na submissão.
+**Texto na tela:** Assimetria detectada: 1,20 a 2,80 s
+
+**Locução:**
+
+Agora processamos um segundo trecho da mesma base e da mesma pessoa. O sistema identifica uma assimetria entre um vírgula vinte e dois vírgula oitenta segundos do trecho. A regra exige diferença angular superior a vinte e cinco graus, persistente por pelo menos um segundo. O relatório registra o intervalo e a evidência associada ao arquivo. A base anota diferentes tipos de execução incorreta, mas nossa regra cobre apenas parte deles. Portanto, não afirmamos reconhecer todo erro de fisioterapia.
+
+## Cena 05 — Cadeira — antes e depois
+
+**Janela:** 03:00–04:15 (75 s, incluindo ações e pausas).
+
+**Captura:** Vídeo → Contexto: Movimentação em leito/cadeira. Processar out_Subject_14_before.mp4 e depois out_Subject_14_after.mp4.
+
+**Evidência a exibir:** Before: 158/158 válidos, sem evento. After: 176/176 válidos, rise_candidate 28,8–29,8 s. Mostrar entrada e saída identificadas.
+
+**Texto na tela:** Sit-To-Stand · marcações prévias pertencem à fonte
+
+**Locução:**
+
+Para movimentação em cadeira, usamos o par antes e depois do exercício da base Sit-To-Stand. Esses nomes indicam o momento da coleta, não uma classificação de risco. No modo de internação, o sistema usa ombros e quadris para acompanhar o centro do tronco. Não exige cotovelos, que podem ficar ocultos na vista lateral. Ambos os vídeos são avaliáveis. O primeiro não gera evento confirmado; no segundo há um candidato a levantamento entre vinte e oito vírgula oito e vinte e nove vírgula oito segundos. A ausência de evento não significa ausência de movimento. As linhas e os ângulos originais já pertencem ao dataset; a aplicação executa sua própria estimativa sobre essas imagens.
+
+## Cena 06 — Áudio SPIRA — controle e paciente
+
+**Janela:** 04:15–05:40 (85 s, incluindo ações e pausas).
+
+**Captura:** Áudio → Whisper local → cpu → faster-whisper-small; referência vazia. Processar 01_controle_continuo.wav e 02_paciente_pausas.wav.
+
+**Evidência a exibir:** Reproduzir trecho curto de cada áudio, sem locução sobreposta. Mostrar transcrição, sentimento neutro e long_pause_observed no paciente: 13,50–16,14 s.
+
+**Texto na tela:** SPIRA · fala natural de leitura · pausa observada não é diagnóstico
+
+**Locução:**
+
+Na área de áudio, selecionamos o Whisper local em português, executado em CPU. Os exemplos da base SPIRA foram convertidos para WAV mono, dezesseis bits e dezesseis quilohertz. O controle selecionado não apresenta pausa interna prolongada. Já o exemplo de paciente apresenta uma pausa de aproximadamente dois vírgula sessenta e quatro segundos. Podemos ouvir a gravação e conferir a transcrição e o intervalo identificado. Os grupos paciente e controle são metadados da base; a aplicação não prevê esses grupos. Um paciente pode não ter pausas, e um controle também pode apresentar uma pausa longa. Os dois textos selecionados retornam sentimento neutro e não contêm menções críticas detectadas.
+
+## Cena 07 — Sentimentos, sintomas e negação
+
+**Janela:** 05:40–06:45 (65 s, incluindo ações e pausas).
+
+**Captura:** Em Áudio, processar positivo.wav, negativo.wav, sintoma.wav e negacao.wav da pasta audios-fase4; usar cortes de espera identificados.
+
+**Evidência a exibir:** Mostrar sentimento positivo/negativo e diferença entre menção afirmada e negada. Conferir as transcrições antes de narrar o resultado.
+
+**Texto na tela:** Gravações encenadas pelo autor · polaridade não determina risco
+
+**Locução:**
+
+Para demonstrar a análise textual, usamos gravações encenadas pelo autor. Os exemplos positivo e negativo permitem observar a classificação de sentimento por regras em português. Em seguida, comparamos uma menção afirmativa de sintoma com uma frase que o nega. A regra considera o contexto, evitando tratar automaticamente uma negação como sintoma presente. Um relato de sintoma também pode ser classificado como neutro: sentimento e risco clínico são conceitos diferentes. A transcrição precisa ser conferida, porque erros do reconhecimento de fala podem omitir ou alterar um termo importante.
+
+## Cena 08 — Sinais vitais — persistência e tendência
+
+**Janela:** 06:45–08:05 (80 s, incluindo ações e pausas).
+
+**Captura:** Sinais vitais → development-vitals-2 → heart_rate → desmarcar Reprodução acelerada → Reproduzir sessão. Depois development-vitals-3 e repetir.
+
+**Evidência a exibir:** Preservar 1× em ambas as reproduções (~20 s cada). Mostrar evento persistente e trend_deviation.
+
+**Texto na tela:** Dados sintéticos · reprodução 1× · limites experimentais
+
+**Locução:**
+
+Nos sinais vitais, a aplicação acompanha frequência cardíaca, pressão sistólica, pressão diastólica e saturação. Este cenário sintético apresenta um desvio persistente, com aumento da frequência cardíaca a partir do décimo segundo. Mantemos a reprodução em velocidade normal para mostrar a evolução temporal. A regra exige três segundos de persistência antes de confirmar o desvio. No segundo cenário, os valores mudam gradualmente, demonstrando o detector de tendência. Os limites são experimentais e servem à demonstração. A reprodução de séries gravadas não equivale à captura de sensores em um hospital.
+
+## Cena 09 — Reconhecimento e encerramento
+
+**Janela:** 08:05–08:50 (45 s, incluindo ações e pausas).
+
+**Captura:** Escolher alerta aberto → preencher responsável e comentário → Reconhecer → Registrar. No mesmo alerta: Encerrar → confirmed → Registrar.
+
+**Evidência a exibir:** Mostrar aberto → reconhecido → encerrado e histórico. Se já encerrado, mostrar revisão registrada; não apagar bancos.
+
+**Texto na tela:** Revisão humana registrada após a emissão automática
+
+**Locução:**
+
+O alerta é emitido automaticamente e depois passa por revisão humana. Informamos o responsável e um comentário para registrar o reconhecimento. Em seguida, encerramos o alerta com o resultado da revisão. Neste cenário sintético, confirmado significa que o desvio previsto no teste foi verificado. O histórico preserva as ações realizadas. Repetir a mesma sessão não deve duplicar amostras ou alertas. Se um alerta já tiver sido encerrado em um ensaio anterior, mostramos o registro existente.
+
+## Cena 10 — Prescrições e alertas
+
+**Janela:** 08:50–09:40 (50 s, incluindo ações e pausas).
+
+**Captura:** Histórico e fusão → 3 — mudança inesperada → Processar cenário sintético.
+
+**Evidência a exibir:** Mostrar dose sintética 1 → 4 no segundo 10, linha do tempo e alertas. Não fazer upload de prescrição adicional.
+
+**Texto na tela:** Prescrição sintética · não é recomendação de dose
+
+**Locução:**
+
+Na área de histórico e fusão, processamos o cenário de mudança inesperada de prescrição. O exemplo altera uma dose sintética de um para quatro no décimo segundo, sem indicação de mudança prevista. O sistema compara as versões e registra o evento e suas evidências. Existem também regras para interrupções e inconsistências de unidade ou sequência. Essas verificações são demonstrativas e não calculam doses terapêuticas nem substituem revisão de um profissional.
+
+## Cena 11 — Importação e fusão multimodal
+
+**Janela:** 09:40–11:20 (100 s, incluindo ações e pausas).
+
+**Captura:** Importar JSON do REHAB com asymmetry: início 2026-01-01T00:00:10+00:00; associação synthetic; Integrar eventos de mídia. Depois JSON do SPIRA com pausa: início 2026-01-01T00:00:00+00:00; mesma associação; integrar.
+
+**Evidência a exibir:** Mostrar upload do JSON, sucesso, linha do tempo, modalidades/evidências e proveniência synthetic; exportar clinical-fusion.json.
+
+**Texto na tela:** Fontes independentes · associação temporal sintética
+
+**Locução:**
+
+Agora integramos os relatórios que a própria aplicação gerou. Primeiro importamos o vídeo com assimetria e informamos um início artificial no décimo segundo da sessão. Depois importamos o áudio do SPIRA com pausa longa, alinhado ao início da sessão. Em ambos, selecionamos associação sintética de demonstração. As gravações são independentes, não foram feitas simultaneamente e não representam o mesmo paciente real. A aplicação preserva a origem e alinha os intervalos para permitir a demonstração da fusão. A linha do tempo reúne sinais, prescrições, áudio e vídeo. Eventos de famílias diferentes podem compor alertas por episódio, em uma janela limitada de trinta segundos. Nem toda importação cria um novo alerta prioritário. Podemos inspecionar as evidências, conferir a associação e exportar o histórico completo.
+
+## Cena 12 — Resultados, limitações e fechamento
+
+**Janela:** 11:20–12:30 (70 s, incluindo ações e pausas).
+
+**Captura:** Mostrar relatório PDF, evidências de avaliação, README e repositório. Encerrar com créditos das bases e da produção assistida por IA.
+
+**Evidência a exibir:** Mostrar 163 testes da verificação documentada, separar métricas sintéticas de demonstrações externas. Não afirmar teste clínico independente.
+
+**Texto na tela:** Fontes: REHAB24-6 · SPIRA · Sit-To-Stand · BIDMC
+
+**Locução:**
+
+A verificação automatizada documentada passou em cento e sessenta e três testes, além das checagens de tipos, estilo e dados. Nos conjuntos sintéticos, as regras temporais alcançaram os resultados registrados no relatório; isso não comprova generalização clínica. As bases públicas demonstraram execução real de fala e postura, mas os exemplos foram selecionados após observar os resultados. Permanecem limitações de transcrição, oclusão, cobertura de erros e falta de avaliação clínica independente. O repositório contém código, instruções, relatório técnico e evidências para reprodução. O trabalho foi desenvolvido individualmente, com produção audiovisual assistida por inteligência artificial. A locução será identificada como sintética caso esse recurso seja utilizado. Os créditos e termos das bases estão no relatório. Obrigado por acompanhar a demonstração.
+
+## Diretrizes para locução e edição
+
+- Ler RM como “erre eme, três sete três seis oito nove” e turma como “nove, i, a, dê, tê”.
+- Pronunciar SPIRA como “espira”, Whisper como “uísper” e MediaPipe como “mídia páip”.
+- Não ler caminhos, hashes ou JSONs inteiros. Usar destaques nos intervalos, qualidade e tipo de evento.
+- Se a locução for sintética, substituir na última cena a frase condicional por “A locução é sintética” e incluir esse crédito visualmente.
+- Legendar a fala e manter fonte suficiente para leitura em tela pequena. Créditos de origem acompanham as respectivas cenas.
+- A janela de cada cena não é a duração obrigatória da voz: reservar silêncio para ouvir exemplos e observar resultados. A duração exata depende da síntese e das capturas.
+- Nenhuma tela ou resultado clínico deve ser fabricado. Slides explicam o fluxo; as evidências vêm da aplicação.
+
+## Conferência antes da publicação
+
+Conferir áudio/vídeo, sentimentos e termos críticos, sinais persistentes e tendência,
+prescrições, emissão e revisão de alertas e associação sintética na fusão.
+Incluir fontes, limitações e Azure opcional conforme orientação do professor relatada pelo autor.
+Medir o MP4 final: duração máxima de 900 segundos. Publicar no YouTube ou Vimeo,
+público ou não listado, e testar acesso sem login. Só então atualizar URL, duração
+e estado do vídeo em `docs/entrega.json` e regenerar o relatório PDF se necessário.
+
+O roteiro não declara o vídeo gravado/publicado. A conclusão dessas etapas permanece pendente.

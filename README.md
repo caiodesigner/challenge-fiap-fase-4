@@ -47,15 +47,18 @@ Veja [prontidão da entrega](docs/prontidao-entrega.md) para os resultados atuai
 
 ## Materiais de entrega
 
+- [Vídeo de apresentação no YouTube — não listado, 9min15s](https://youtu.be/5SKJyl_HEk4)
+
 - [Relatório técnico em PDF](docs/relatorio-tecnico.pdf)
 - [Relatório técnico em Markdown](docs/relatorio-tecnico.md)
 - [Matriz de atendimento e evidências](docs/matriz-atendimento.md)
 - [Guia consolidado de execução e entrega](docs/guia-entrega.md)
-- [Roteiro do vídeo de 13min30s](docs/roteiro-video.md)
+- [Roteiro do vídeo de 12:30](docs/roteiro-video.md)
 - [Estado da entrega e itens pendentes](docs/entrega.json)
 
-A documentação está preparada para revisão. Gravação/publicação do vídeo,
-avaliação representativa e fechamento da entrega permanecem pendentes.
+O vídeo foi revisado pelo autor e publicado como não listado. Falta conferir
+sua reprodução sem login e publicar o estado final do repositório. A avaliação
+independente permanece uma limitação metodológica documentada.
 
 ## Instalação e verificação da base
 

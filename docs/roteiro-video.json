@@ -1,0 +1,140 @@
+{
+  "author": "Caio Lucas Santos Silva",
+  "planned_duration_seconds": 750,
+  "maximum_duration_seconds": 900,
+  "state": "script_prepared",
+  "scenes": [
+    {
+      "scene": 1,
+      "title": "Apresentação",
+      "start_seconds": 0,
+      "end_seconds": 35,
+      "duration_seconds": 35,
+      "actions": "Cartela com título, nome, RM e turma; abrir README.",
+      "evidence": "Exibir autoria individual e objetivo. Sem simular resultados.",
+      "overlay": "Monitoramento multimodal · Tech Challenge Fase 4",
+      "narration": "Este é o projeto de monitoramento multimodal desenvolvido individualmente por Caio Lucas Santos Silva, da turma nove IADT, para o Tech Challenge da fase quatro. A proposta é combinar sinais vitais, prescrições, áudio e vídeo para identificar alterações observáveis e gerar alertas rastreáveis. Nesta demonstração, veremos a aplicação funcionando com bases públicas e cenários sintéticos. Trata-se de um protótipo acadêmico, sem validação para decisões clínicas."
+    },
+    {
+      "scene": 2,
+      "title": "Arquitetura e processamento local",
+      "start_seconds": 35,
+      "end_seconds": 80,
+      "duration_seconds": 45,
+      "actions": "Mostrar diagrama do relatório técnico e as quatro áreas do painel.",
+      "evidence": "Destacar entrada → processamento → evento → SQLite → alerta → revisão.",
+      "overlay": "Azure opcional conforme orientação do professor relatada pelo autor",
+      "narration": "Conforme orientação do professor relatada pelo autor, o uso do Azure é opcional. Por isso, a solução utiliza processamento local. O Whisper transcreve a fala; regras em português analisam sentimentos, termos críticos e negações. O MediaPipe estima pontos corporais, e regras temporais analisam postura e movimento. Sinais e prescrições também passam por regras explícitas. Os eventos guardam paciente, sessão, intervalo e evidências. O SQLite preserva o histórico, e o painel permite reconhecer e encerrar alertas. As regras não recomendam tratamentos."
+    },
+    {
+      "scene": 3,
+      "title": "Fisioterapia — execução sem desvio",
+      "start_seconds": 80,
+      "end_seconds": 125,
+      "duration_seconds": 45,
+      "actions": "Vídeo → Contexto: Elevação bilateral dos braços → enviar 01_ex2_correto.mp4 → Analisar vídeo.",
+      "evidence": "Mostrar nome do arquivo, processamento, assessable e ausência de eventos; reproduzir alguns segundos da saída.",
+      "overlay": "REHAB24-6 · Arm VW · exemplo sem desvio confirmado",
+      "narration": "Começamos pela fisioterapia, com um trecho do exercício Arm VW da base REHAB24-6. Selecionamos o contexto de elevação bilateral dos braços e enviamos o arquivo. A aplicação estima a postura e compara os ângulos dos dois lados ao longo do tempo. Neste exemplo, os quadros são avaliáveis e não há desvio confirmado. Isso significa que as condições das regras não foram atingidas, e não uma aprovação clínica geral do exercício."
+    },
+    {
+      "scene": 4,
+      "title": "Fisioterapia — assimetria",
+      "start_seconds": 125,
+      "end_seconds": 180,
+      "duration_seconds": 55,
+      "actions": "No mesmo contexto, enviar 02_ex2_assimetria.mp4 → Analisar vídeo.",
+      "evidence": "Mostrar evento asymmetry 1,20–2,80 s, vídeo nesse intervalo e relatório exportável.",
+      "overlay": "Assimetria detectada: 1,20 a 2,80 s",
+      "narration": "Agora processamos um segundo trecho da mesma base e da mesma pessoa. O sistema identifica uma assimetria entre um vírgula vinte e dois vírgula oitenta segundos do trecho. A regra exige diferença angular superior a vinte e cinco graus, persistente por pelo menos um segundo. O relatório registra o intervalo e a evidência associada ao arquivo. A base anota diferentes tipos de execução incorreta, mas nossa regra cobre apenas parte deles. Portanto, não afirmamos reconhecer todo erro de fisioterapia."
+    },
+    {
+      "scene": 5,
+      "title": "Cadeira — antes e depois",
+      "start_seconds": 180,
+      "end_seconds": 255,
+      "duration_seconds": 75,
+      "actions": "Vídeo → Contexto: Movimentação em leito/cadeira. Processar out_Subject_14_before.mp4 e depois out_Subject_14_after.mp4.",
+      "evidence": "Before: 158/158 válidos, sem evento. After: 176/176 válidos, rise_candidate 28,8–29,8 s. Mostrar entrada e saída identificadas.",
+      "overlay": "Sit-To-Stand · marcações prévias pertencem à fonte",
+      "narration": "Para movimentação em cadeira, usamos o par antes e depois do exercício da base Sit-To-Stand. Esses nomes indicam o momento da coleta, não uma classificação de risco. No modo de internação, o sistema usa ombros e quadris para acompanhar o centro do tronco. Não exige cotovelos, que podem ficar ocultos na vista lateral. Ambos os vídeos são avaliáveis. O primeiro não gera evento confirmado; no segundo há um candidato a levantamento entre vinte e oito vírgula oito e vinte e nove vírgula oito segundos. A ausência de evento não significa ausência de movimento. As linhas e os ângulos originais já pertencem ao dataset; a aplicação executa sua própria estimativa sobre essas imagens."
+    },
+    {
+      "scene": 6,
+      "title": "Áudio SPIRA — controle e paciente",
+      "start_seconds": 255,
+      "end_seconds": 340,
+      "duration_seconds": 85,
+      "actions": "Áudio → Whisper local → cpu → faster-whisper-small; referência vazia. Processar 01_controle_continuo.wav e 02_paciente_pausas.wav.",
+      "evidence": "Reproduzir trecho curto de cada áudio, sem locução sobreposta. Mostrar transcrição, sentimento neutro e long_pause_observed no paciente: 13,50–16,14 s.",
+      "overlay": "SPIRA · fala natural de leitura · pausa observada não é diagnóstico",
+      "narration": "Na área de áudio, selecionamos o Whisper local em português, executado em CPU. Os exemplos da base SPIRA foram convertidos para WAV mono, dezesseis bits e dezesseis quilohertz. O controle selecionado não apresenta pausa interna prolongada. Já o exemplo de paciente apresenta uma pausa de aproximadamente dois vírgula sessenta e quatro segundos. Podemos ouvir a gravação e conferir a transcrição e o intervalo identificado. Os grupos paciente e controle são metadados da base; a aplicação não prevê esses grupos. Um paciente pode não ter pausas, e um controle também pode apresentar uma pausa longa. Os dois textos selecionados retornam sentimento neutro e não contêm menções críticas detectadas."
+    },
+    {
+      "scene": 7,
+      "title": "Sentimentos, sintomas e negação",
+      "start_seconds": 340,
+      "end_seconds": 405,
+      "duration_seconds": 65,
+      "actions": "Em Áudio, processar positivo.wav, negativo.wav, sintoma.wav e negacao.wav da pasta audios-fase4; usar cortes de espera identificados.",
+      "evidence": "Mostrar sentimento positivo/negativo e diferença entre menção afirmada e negada. Conferir as transcrições antes de narrar o resultado.",
+      "overlay": "Gravações encenadas pelo autor · polaridade não determina risco",
+      "narration": "Para demonstrar a análise textual, usamos gravações encenadas pelo autor. Os exemplos positivo e negativo permitem observar a classificação de sentimento por regras em português. Em seguida, comparamos uma menção afirmativa de sintoma com uma frase que o nega. A regra considera o contexto, evitando tratar automaticamente uma negação como sintoma presente. Um relato de sintoma também pode ser classificado como neutro: sentimento e risco clínico são conceitos diferentes. A transcrição precisa ser conferida, porque erros do reconhecimento de fala podem omitir ou alterar um termo importante."
+    },
+    {
+      "scene": 8,
+      "title": "Sinais vitais — persistência e tendência",
+      "start_seconds": 405,
+      "end_seconds": 485,
+      "duration_seconds": 80,
+      "actions": "Sinais vitais → development-vitals-2 → heart_rate → desmarcar Reprodução acelerada → Reproduzir sessão. Depois development-vitals-3 e repetir.",
+      "evidence": "Preservar 1× em ambas as reproduções (~20 s cada). Mostrar evento persistente e trend_deviation.",
+      "overlay": "Dados sintéticos · reprodução 1× · limites experimentais",
+      "narration": "Nos sinais vitais, a aplicação acompanha frequência cardíaca, pressão sistólica, pressão diastólica e saturação. Este cenário sintético apresenta um desvio persistente, com aumento da frequência cardíaca a partir do décimo segundo. Mantemos a reprodução em velocidade normal para mostrar a evolução temporal. A regra exige três segundos de persistência antes de confirmar o desvio. No segundo cenário, os valores mudam gradualmente, demonstrando o detector de tendência. Os limites são experimentais e servem à demonstração. A reprodução de séries gravadas não equivale à captura de sensores em um hospital."
+    },
+    {
+      "scene": 9,
+      "title": "Reconhecimento e encerramento",
+      "start_seconds": 485,
+      "end_seconds": 530,
+      "duration_seconds": 45,
+      "actions": "Escolher alerta aberto → preencher responsável e comentário → Reconhecer → Registrar. No mesmo alerta: Encerrar → confirmed → Registrar.",
+      "evidence": "Mostrar aberto → reconhecido → encerrado e histórico. Se já encerrado, mostrar revisão registrada; não apagar bancos.",
+      "overlay": "Revisão humana registrada após a emissão automática",
+      "narration": "O alerta é emitido automaticamente e depois passa por revisão humana. Informamos o responsável e um comentário para registrar o reconhecimento. Em seguida, encerramos o alerta com o resultado da revisão. Neste cenário sintético, confirmado significa que o desvio previsto no teste foi verificado. O histórico preserva as ações realizadas. Repetir a mesma sessão não deve duplicar amostras ou alertas. Se um alerta já tiver sido encerrado em um ensaio anterior, mostramos o registro existente."
+    },
+    {
+      "scene": 10,
+      "title": "Prescrições e alertas",
+      "start_seconds": 530,
+      "end_seconds": 580,
+      "duration_seconds": 50,
+      "actions": "Histórico e fusão → 3 — mudança inesperada → Processar cenário sintético.",
+      "evidence": "Mostrar dose sintética 1 → 4 no segundo 10, linha do tempo e alertas. Não fazer upload de prescrição adicional.",
+      "overlay": "Prescrição sintética · não é recomendação de dose",
+      "narration": "Na área de histórico e fusão, processamos o cenário de mudança inesperada de prescrição. O exemplo altera uma dose sintética de um para quatro no décimo segundo, sem indicação de mudança prevista. O sistema compara as versões e registra o evento e suas evidências. Existem também regras para interrupções e inconsistências de unidade ou sequência. Essas verificações são demonstrativas e não calculam doses terapêuticas nem substituem revisão de um profissional."
+    },
+    {
+      "scene": 11,
+      "title": "Importação e fusão multimodal",
+      "start_seconds": 580,
+      "end_seconds": 680,
+      "duration_seconds": 100,
+      "actions": "Importar JSON do REHAB com asymmetry: início 2026-01-01T00:00:10+00:00; associação synthetic; Integrar eventos de mídia. Depois JSON do SPIRA com pausa: início 2026-01-01T00:00:00+00:00; mesma associação; integrar.",
+      "evidence": "Mostrar upload do JSON, sucesso, linha do tempo, modalidades/evidências e proveniência synthetic; exportar clinical-fusion.json.",
+      "overlay": "Fontes independentes · associação temporal sintética",
+      "narration": "Agora integramos os relatórios que a própria aplicação gerou. Primeiro importamos o vídeo com assimetria e informamos um início artificial no décimo segundo da sessão. Depois importamos o áudio do SPIRA com pausa longa, alinhado ao início da sessão. Em ambos, selecionamos associação sintética de demonstração. As gravações são independentes, não foram feitas simultaneamente e não representam o mesmo paciente real. A aplicação preserva a origem e alinha os intervalos para permitir a demonstração da fusão. A linha do tempo reúne sinais, prescrições, áudio e vídeo. Eventos de famílias diferentes podem compor alertas por episódio, em uma janela limitada de trinta segundos. Nem toda importação cria um novo alerta prioritário. Podemos inspecionar as evidências, conferir a associação e exportar o histórico completo."
+    },
+    {
+      "scene": 12,
+      "title": "Resultados, limitações e fechamento",
+      "start_seconds": 680,
+      "end_seconds": 750,
+      "duration_seconds": 70,
+      "actions": "Mostrar relatório PDF, evidências de avaliação, README e repositório. Encerrar com créditos das bases e da produção assistida por IA.",
+      "evidence": "Mostrar 163 testes da verificação documentada, separar métricas sintéticas de demonstrações externas. Não afirmar teste clínico independente.",
+      "overlay": "Fontes: REHAB24-6 · SPIRA · Sit-To-Stand · BIDMC",
+      "narration": "A verificação automatizada documentada passou em cento e sessenta e três testes, além das checagens de tipos, estilo e dados. Nos conjuntos sintéticos, as regras temporais alcançaram os resultados registrados no relatório; isso não comprova generalização clínica. As bases públicas demonstraram execução real de fala e postura, mas os exemplos foram selecionados após observar os resultados. Permanecem limitações de transcrição, oclusão, cobertura de erros e falta de avaliação clínica independente. O repositório contém código, instruções, relatório técnico e evidências para reprodução. O trabalho foi desenvolvido individualmente, com produção audiovisual assistida por inteligência artificial. A locução será identificada como sintética caso esse recurso seja utilizado. Os créditos e termos das bases estão no relatório. Obrigado por acompanhar a demonstração."
+    }
+  ]
+}

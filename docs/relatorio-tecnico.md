@@ -6,7 +6,7 @@
 
 **RM:** RM373689  |  **Turma:** 9IADT
 
-**Repositório:** https://github.com/caiodesigner/challenge-fiap-fase-4
+**Repositório:** [https://github.com/caiodesigner/challenge-fiap-fase-4](https://github.com/caiodesigner/challenge-fiap-fase-4)
 
 **Revisão:** processamento local, tendências por sinal, fusão por episódio e regras posturais v2.
 

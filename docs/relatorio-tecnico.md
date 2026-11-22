@@ -10,7 +10,7 @@
 
 **Revisão:** processamento local, tendências por sinal, fusão por episódio e regras posturais v2.
 
-**Vídeo de apresentação:** [YouTube — não listado](https://youtu.be/5SKJyl_HEk4) · 9min15s.
+**Vídeo de apresentação:** [YouTube — não listado](https://youtu.be/3uFqN9_NPko) · 9min53s.
 
 **Commit de entrega:** registrar após o fechamento das alterações.
 
@@ -338,7 +338,35 @@ operação hospitalar e validação de segurança clínica não integram esta en
 
 A identificação do autor está preenchida e o vídeo foi publicado como não listado,
 conforme informado pelo autor. Para fechamento documental, faltam conferir sua
-reprodução sem login e registrar o commit final publicado. A duração de 9min15s
+reprodução sem login e registrar o commit final publicado. A duração de 9min53s
 está abaixo do limite de 15 minutos. O estado da submissão está em
 [entrega.json](entrega.json); o roteiro e a lista de verificação estão em
 [roteiro-video.md](roteiro-video.md) e [prontidao-entrega.md](prontidao-entrega.md).
+
+## 8. Exemplo de ponta a ponta — sinal vital
+
+O cenário sintético de frequência cardíaca demonstrado no vídeo ilustra o caminho
+de uma entrada até a revisão do alerta:
+
+1. **Entrada:** a aplicação recebe uma série gravada de sinais vitais de uma
+   sessão sintética. A frequência cardíaca aumenta a partir do décimo segundo.
+2. **Processamento:** a aplicação acompanha os valores ao longo do tempo e os
+   compara com a faixa configurada para esse sinal.
+3. **Regra:** quando o valor permanece fora da faixa por três segundos, o desvio
+   é confirmado. A espera evita confirmar imediatamente uma alteração passageira;
+   os limites e o tempo são experimentais, não critérios clínicos validados.
+4. **Evento:** o sistema registra um `persistent_deviation`, associado ao sinal,
+   à sessão, ao intervalo e às evidências da ocorrência.
+5. **Alerta:** a ocorrência gera um alerta automático no painel, que pode ser
+   consultado junto ao histórico. Na fusão, eventos elegíveis de outras fontes
+   podem ser correlacionados dentro das regras e da janela configuradas.
+6. **Revisão humana:** o responsável reconhece o alerta, registra um comentário
+   e o encerra com o resultado da revisão. A aplicação preserva essas ações; ela
+   não recomenda tratamento nem substitui a avaliação profissional.
+
+Este exemplo usa uma série gravada e sintética: ele demonstra a lógica do fluxo,
+mas não representa monitoramento de um sensor hospitalar em produção.
+
+**Contagem de testes no vídeo:** a locução registra a verificação anterior, com
+163 testes. Uma verificação posterior, após a inclusão de quatro casos sobre a
+política de pausas na fusão, registrou 167 testes aprovados, conforme a seção 5.5.

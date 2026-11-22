@@ -147,3 +147,26 @@ Vídeo não listado: [YouTube](https://youtu.be/5SKJyl_HEk4), com duração loca
 O acesso sem autenticação ainda deve ser conferido: a consulta automática não
 conseguiu carregar o YouTube neste ambiente. O link também consta do README,
 do relatório e de `docs/entrega.json`.
+
+## Segunda montagem local — esclarecimento da fusão
+
+`outputs/video-production/edit/tech-challenge-caio-v2.mp4` acrescenta duas
+cartelas ao final da cena de fusão: a política da pausa sem referência e um
+exemplo separado de alerta de tendência de frequência cardíaca, com evidência
+e resultado da revisão. O alerta foi conferido no banco local do cenário
+`development-vitals-3`. As cartelas são silenciosas e permanecem na tela por
+18 e 20 segundos; o restante da locução original foi preservado. Duração total:
+9min53s. Esta versão local ainda precisa de revisão audiovisual e publicação;
+o link publicado continua apontando para a versão anterior.
+
+## Terceira montagem local — contagem de testes
+
+`outputs/video-production/edit/tech-challenge-caio-v3.mp4` preserva os
+acréscimos da segunda montagem e esclarece em texto na cena final que os 163
+testes narrados pertencem à verificação anterior. A verificação posterior teve
+167 testes, após quatro novos casos de política de pausas. A locução original
+foi mantida. Esta versão também aguarda revisão audiovisual e publicação.
+
+O autor informou posteriormente a publicação da nova montagem em
+[YouTube](https://youtu.be/3uFqN9_NPko). A visibilidade, o acesso sem login e
+a revisão audiovisual integral desta versão ainda não foram confirmados.

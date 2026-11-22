@@ -47,7 +47,7 @@ Veja [prontidão da entrega](docs/prontidao-entrega.md) para os resultados atuai
 
 ## Materiais de entrega
 
-- [Vídeo de apresentação no YouTube — não listado, 9min15s](https://youtu.be/5SKJyl_HEk4)
+- [Vídeo de apresentação no YouTube — não listado, 9min53s](https://youtu.be/3uFqN9_NPko)
 
 - [Relatório técnico em PDF](docs/relatorio-tecnico.pdf)
 - [Relatório técnico em Markdown](docs/relatorio-tecnico.md)

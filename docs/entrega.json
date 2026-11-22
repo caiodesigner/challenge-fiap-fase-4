@@ -30,9 +30,9 @@
   },
   "video": {
     "state": "published_access_check_pending",
-    "local_path": "outputs/video-production/edit/tech-challenge-caio-v1.mp4",
-    "url": "https://youtu.be/5SKJyl_HEk4",
-    "duration_seconds": 555.021333,
+    "local_path": "outputs/video-production/edit/tech-challenge-caio-v3.mp4",
+    "url": "https://youtu.be/3uFqN9_NPko",
+    "duration_seconds": 593.021333,
     "planned_duration_seconds": 750,
     "maximum_duration_seconds": 900,
     "public_access_checked": false,
@@ -50,18 +50,18 @@
     "capture_state": "reviewed_in_video_by_author",
     "capture_local_path": "outputs/video-production/fullhd/demonstracao-fullhd-sem-locucao.mp4",
     "capture_duration_seconds": 345.2,
-    "assembly_state": "reviewed_and_publication_reported_by_author",
-    "human_review_complete": true,
-    "subtitles_local_path": "outputs/video-production/edit/legendas-completas.srt",
+    "assembly_state": "publication_reported_by_author_review_pending",
+    "human_review_complete": false,
+    "subtitles_local_path": "outputs/video-production/edit/legendas-v2.srt",
     "human_review": {
       "reviewer": "Caio Lucas Santos Silva",
-      "basis": "Author reported watching the whole video and stated it appears correct in this conversation",
+      "basis": "A revisão registrada anteriormente refere-se à versão v1; revisão integral da versão v3 não foi informada.",
       "kind": "author_self_review",
       "independent_review": false
     },
-    "visibility": "unlisted",
-    "publication_basis": "Link and unlisted visibility supplied by author",
-    "public_access_check_note": "Automated fetch of short and canonical YouTube URLs failed; playback without login not verified."
+    "visibility": "unconfirmed",
+    "publication_basis": "Novo link fornecido pelo autor; visibilidade ainda não confirmada.",
+    "public_access_check_note": "Nova publicação informada pelo autor; reprodução sem login ainda não verificada."
   },
   "evaluation": {
     "functional_development_executed": true,
